@@ -15,6 +15,25 @@
 		2D44BDC221B4BFA0009A1066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDC021B4BFA0009A1066 /* LaunchScreen.storyboard */; };
 		2D44BDCD21B4BFA1009A1066 /* eScan_for_Root_LabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44BDCC21B4BFA1009A1066 /* eScan_for_Root_LabTests.swift */; };
 		2D44BDD821B4BFA1009A1066 /* eScan_for_Root_LabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44BDD721B4BFA1009A1066 /* eScan_for_Root_LabUITests.swift */; };
+		2D44BDE621B56024009A1066 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDE521B56023009A1066 /* logo.png */; };
+		2D44BDEA21B569CC009A1066 /* escan.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDE921B569CC009A1066 /* escan.png */; };
+		2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDEB21B56EF4009A1066 /* mid_bg.jpg */; };
+		2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDED21B57231009A1066 /* richieBrace.jpg */; };
+		2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDEF21B5728D009A1066 /* orthotics.jpg */; };
+		2D44BDF221B79030009A1066 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDF121B7902F009A1066 /* Button.png */; };
+		2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */; };
+		2D52F7C421BC713D00AC60F5 /* patient.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D52F7C321BC713C00AC60F5 /* patient.png */; };
+		2D6663A521C8C90D007B5316 /* left-foot-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6663A321C8C90C007B5316 /* left-foot-md.png */; };
+		2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D6663A421C8C90C007B5316 /* right-foot-md.jpg */; };
+		2D67B42921C77AD3008CFA10 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D67B42721C77AD0008CFA10 /* checked.png */; };
+		2D67B42A21C77AD3008CFA10 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D67B42821C77AD2008CFA10 /* unchecked.png */; };
+		2D9B417521D2DF9C0022FE2D /* CustomPrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */; };
+		2D9B417721D3541D0022FE2D /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B417621D3541D0022FE2D /* Camera.png */; };
+		2D9B417A21D3559D0022FE2D /* StoryboardPlayground.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B417921D3559D0022FE2D /* StoryboardPlayground.storyboard */; };
+		2D9B417D21D874730022FE2D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B417C21D874720022FE2D /* CFNetwork.framework */; };
+		2D9B417F21D8747E0022FE2D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B417E21D8747E0022FE2D /* Security.framework */; };
+		2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B418021D87F0D0022FE2D /* mailcore2-ios.podspec.json */; };
+		2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5599121BC6D8B005F99BA /* structure scanner image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +50,62 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2D44BDB021B4BF9C009A1066;
 			remoteInfo = "eScan for Root Lab";
+		};
+		2D9B418E21D883B00022FE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C64EA537169E772200778456;
+			remoteInfo = "static mailcore2 osx";
+		};
+		2D9B419021D883B00022FE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6BA2C191705F4E6003F0E9E;
+			remoteInfo = "static mailcore2 ios";
+		};
+		2D9B419221D883B00022FE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C64EA78C169F259200778456;
+			remoteInfo = tests;
+		};
+		2D9B419421D883B00022FE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6A81B911706840C00882C15;
+			remoteInfo = "test-ios";
+		};
+		2D9B419621D883B00022FE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6BD288D170BD71100A91AC1;
+			remoteInfo = "mailcore osx";
+		};
+		2D9B419821D883B00022FE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27780C3A19CF9CD100C77E44;
+			remoteInfo = "mailcore ios";
+		};
+		2D9B419A21D883B00022FE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6B5AE0219F630B3001352A6;
+			remoteInfo = unittest;
+		};
+		2D9B419C21D883B00022FE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C600B6141A242C3F000728F1;
+			remoteInfo = unittestcpp;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -49,6 +124,27 @@
 		2D44BDD321B4BFA1009A1066 /* eScan for Root LabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eScan for Root LabUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D44BDD721B4BFA1009A1066 /* eScan_for_Root_LabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eScan_for_Root_LabUITests.swift; sourceTree = "<group>"; };
 		2D44BDD921B4BFA1009A1066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D44BDE521B56023009A1066 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		2D44BDE921B569CC009A1066 /* escan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = escan.png; sourceTree = "<group>"; };
+		2D44BDEB21B56EF4009A1066 /* mid_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mid_bg.jpg; sourceTree = "<group>"; };
+		2D44BDED21B57231009A1066 /* richieBrace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = richieBrace.jpg; sourceTree = "<group>"; };
+		2D44BDEF21B5728D009A1066 /* orthotics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = orthotics.jpg; sourceTree = "<group>"; };
+		2D44BDF121B7902F009A1066 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = podiatrist.jpeg; sourceTree = "<group>"; };
+		2D52F7C321BC713C00AC60F5 /* patient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patient.png; sourceTree = "<group>"; };
+		2D6663A321C8C90C007B5316 /* left-foot-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-foot-md.png"; sourceTree = "<group>"; };
+		2D6663A421C8C90C007B5316 /* right-foot-md.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "right-foot-md.jpg"; sourceTree = "<group>"; };
+		2D67B42721C77AD0008CFA10 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		2D67B42821C77AD2008CFA10 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrintRenderer.swift; sourceTree = "<group>"; };
+		2D9B417621D3541D0022FE2D /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
+		2D9B417921D3559D0022FE2D /* StoryboardPlayground.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StoryboardPlayground.storyboard; sourceTree = "<group>"; };
+		2D9B417C21D874720022FE2D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2D9B417E21D8747E0022FE2D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2D9B418021D87F0D0022FE2D /* mailcore2-ios.podspec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mailcore2-ios.podspec.json"; sourceTree = "<group>"; };
+		2D9B418221D87F740022FE2D /* Project-Name-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Name-Bridging-Header.h"; sourceTree = "<group>"; };
+		2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mailcore2.xcodeproj; path = "../../MailCore2/build-mac/mailcore2.xcodeproj"; sourceTree = "<group>"; };
+		2DC5599121BC6D8B005F99BA /* structure scanner image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structure scanner image.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +152,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D9B417F21D8747E0022FE2D /* Security.framework in Frameworks */,
+				2D9B417D21D874730022FE2D /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +177,14 @@
 		2D44BDA821B4BF9C009A1066 = {
 			isa = PBXGroup;
 			children = (
+				2D9B418221D87F740022FE2D /* Project-Name-Bridging-Header.h */,
+				2D9B418021D87F0D0022FE2D /* mailcore2-ios.podspec.json */,
+				2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */,
 				2D44BDB321B4BF9C009A1066 /* eScan for Root Lab */,
 				2D44BDCB21B4BFA1009A1066 /* eScan for Root LabTests */,
 				2D44BDD621B4BFA1009A1066 /* eScan for Root LabUITests */,
 				2D44BDB221B4BF9C009A1066 /* Products */,
+				2D9B417B21D874720022FE2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +201,12 @@
 		2D44BDB321B4BF9C009A1066 /* eScan for Root Lab */ = {
 			isa = PBXGroup;
 			children = (
+				2D9B417821D354280022FE2D /* images */,
 				2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */,
 				2D44BDB621B4BF9C009A1066 /* ViewController.swift */,
+				2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */,
 				2D44BDB821B4BF9C009A1066 /* Main.storyboard */,
+				2D9B417921D3559D0022FE2D /* StoryboardPlayground.storyboard */,
 				2D44BDBE21B4BFA0009A1066 /* Assets.xcassets */,
 				2D44BDC021B4BFA0009A1066 /* LaunchScreen.storyboard */,
 				2D44BDC321B4BFA0009A1066 /* Info.plist */,
@@ -126,6 +231,51 @@
 				2D44BDD921B4BFA1009A1066 /* Info.plist */,
 			);
 			path = "eScan for Root LabUITests";
+			sourceTree = "<group>";
+		};
+		2D9B417821D354280022FE2D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				2D9B417621D3541D0022FE2D /* Camera.png */,
+				2D6663A321C8C90C007B5316 /* left-foot-md.png */,
+				2D6663A421C8C90C007B5316 /* right-foot-md.jpg */,
+				2D67B42721C77AD0008CFA10 /* checked.png */,
+				2D67B42821C77AD2008CFA10 /* unchecked.png */,
+				2D52F7C321BC713C00AC60F5 /* patient.png */,
+				2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */,
+				2DC5599121BC6D8B005F99BA /* structure scanner image.png */,
+				2D44BDF121B7902F009A1066 /* Button.png */,
+				2D44BDE921B569CC009A1066 /* escan.png */,
+				2D44BDEB21B56EF4009A1066 /* mid_bg.jpg */,
+				2D44BDE521B56023009A1066 /* logo.png */,
+				2D44BDED21B57231009A1066 /* richieBrace.jpg */,
+				2D44BDEF21B5728D009A1066 /* orthotics.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		2D9B417B21D874720022FE2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D9B417E21D8747E0022FE2D /* Security.framework */,
+				2D9B417C21D874720022FE2D /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D9B418421D883AF0022FE2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D9B418F21D883B00022FE2D /* libMailCore.a */,
+				2D9B419121D883B00022FE2D /* libMailCore-ios.a */,
+				2D9B419321D883B00022FE2D /* tests */,
+				2D9B419521D883B00022FE2D /* test-ios.app */,
+				2D9B419721D883B00022FE2D /* MailCore.framework */,
+				2D9B419921D883B00022FE2D /* MailCore.framework */,
+				2D9B419B21D883B00022FE2D /* unittest.xctest */,
+				2D9B419D21D883B00022FE2D /* unittestcpp */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +368,12 @@
 			mainGroup = 2D44BDA821B4BF9C009A1066;
 			productRefGroup = 2D44BDB221B4BF9C009A1066 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2D9B418421D883AF0022FE2D /* Products */;
+					ProjectRef = 2D9B418321D883AF0022FE2D /* mailcore2.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2D44BDB021B4BF9C009A1066 /* eScan for Root Lab */,
@@ -227,14 +383,89 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		2D9B418F21D883B00022FE2D /* libMailCore.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMailCore.a;
+			remoteRef = 2D9B418E21D883B00022FE2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D9B419121D883B00022FE2D /* libMailCore-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libMailCore-ios.a";
+			remoteRef = 2D9B419021D883B00022FE2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D9B419321D883B00022FE2D /* tests */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = tests;
+			remoteRef = 2D9B419221D883B00022FE2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D9B419521D883B00022FE2D /* test-ios.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "test-ios.app";
+			remoteRef = 2D9B419421D883B00022FE2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D9B419721D883B00022FE2D /* MailCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MailCore.framework;
+			remoteRef = 2D9B419621D883B00022FE2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D9B419921D883B00022FE2D /* MailCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MailCore.framework;
+			remoteRef = 2D9B419821D883B00022FE2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D9B419B21D883B00022FE2D /* unittest.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = unittest.xctest;
+			remoteRef = 2D9B419A21D883B00022FE2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D9B419D21D883B00022FE2D /* unittestcpp */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = unittestcpp;
+			remoteRef = 2D9B419C21D883B00022FE2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		2D44BDAF21B4BF9C009A1066 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D44BDE621B56024009A1066 /* logo.png in Resources */,
+				2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */,
+				2D9B417A21D3559D0022FE2D /* StoryboardPlayground.storyboard in Resources */,
+				2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */,
+				2D9B417721D3541D0022FE2D /* Camera.png in Resources */,
 				2D44BDC221B4BFA0009A1066 /* LaunchScreen.storyboard in Resources */,
+				2D67B42921C77AD3008CFA10 /* checked.png in Resources */,
+				2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */,
+				2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */,
+				2D67B42A21C77AD3008CFA10 /* unchecked.png in Resources */,
 				2D44BDBF21B4BFA0009A1066 /* Assets.xcassets in Resources */,
+				2D6663A521C8C90D007B5316 /* left-foot-md.png in Resources */,
+				2D44BDF221B79030009A1066 /* Button.png in Resources */,
+				2D52F7C421BC713D00AC60F5 /* patient.png in Resources */,
+				2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */,
+				2D44BDEA21B569CC009A1066 /* escan.png in Resources */,
+				2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */,
 				2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */,
+				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +493,7 @@
 				2D44BDB721B4BF9C009A1066 /* ViewController.swift in Sources */,
 				2D44BDBD21B4BF9C009A1066 /* eScan_for_Root_Lab.xcdatamodeld in Sources */,
 				2D44BDB521B4BF9C009A1066 /* AppDelegate.swift in Sources */,
+				2D9B417521D2DF9C0022FE2D /* CustomPrintRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +677,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rootlab.eScan-for-Root-Lab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -462,7 +694,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rootlab.eScan-for-Root-Lab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
