@@ -1,1 +1,4 @@
-#import <MailCore/MailCore.h>
+
+#define HAS_LIBCXX
+#import "Structure.h"
+#import "StructureSLAM.h"

@@ -6,23 +6,60 @@
 //  Copyright © 2018 rootlab. All rights reserved.
 //
 
-//To talk about
-//Return computer, explain no Mac OS
-//Download app onto their ipad
-//Show app, ask if we like how form is coming
-//Ask about how we want Richie Brace form to work
-//Talk about email server
 
+//network solutions is the email provider
+
+
+//TODO
+//If heel cup height other type in, deselct UISwitches, vice versa, per left right
+//Add left and right on all items in the Orthosis Specification form
+//Add the word width after anterior width description
+//Have to have heel cup both left and right
+//Add white and naturl poly, make Natural the default (on top)
+//Put inch sign on polypropelene
+//make it so : material thickness or weight is required
+//TODO password protect - later
+//if email / sftp fails sending, then show order not sent
+
+// create an email account:  eScanOutbox@root-lab.com
 
 //Accomodative EVA - grey out edit button on orthosis material
 //PolyMax only can have a posting of Polypropylene
 //Nothing else can have a posting of Polypropylene
+//Highlight the buttons where action needs to be taken - if weight not supplied and need to choose material thickness, let them know
+// deselect vertical if inverted or everted selected
+// deselect inverted if vertical or everted selected
+// deselect everted if vertical or inverted selected
+// remove no filler between platforms
+// add new one for intrinsic metatarsal pad in mm left and right
+//On medial arch fill, only one selected per foot, and one must be selected, and standard is the default
+//posting form - rearfoot post motion, one has to be selected, only one selected, 4degree usually default, but from form
+//When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
+//Rearfoot posting elevator, only one allowed to be selected, one must be selected, 8mm default normally
+//Rearfoot post options, cannot do a long and a short
+//Non corrective forefoot post, if full width selected, others are not, and vice versa
+//Put stars by what is required and what isn't
+//Lets say if Rearfoot posting elevator is not complete, its section lights up red, the posting on the orthotics summary lights up red and the Presection on the summary is not checked
+//Top covers:Vinyl, leather, eva, NCN, Diabetic re the options accross the top, only one can be selected, and you choose the color or thicknesss, one must be selected
+//Add Poron under topcover, two buttons for 1/16 1/8, only one selected, not required
+//Corrections and modifications has to be the same if order two pairs - off same mold
+//Accomodations go on the top covers and extensions
+//4 ft reinforcement something
+
+//Cheif compleaint diagnossis button goes to the rush order forms
+
+//Combine cheif complaint diagnosis with / additional instructions
+//Cheif complaint diagnosis be 1 line
+
+
+//Pororn is not a top cover material, but it is an add on
+
 
 //TODO
-//Upload to git
 //Finish Defaults to Form
 //Finish Form to Order
 //Finish Order to text
+//Finish making a PDF
 //reset picker views
 //In order to save, need patient name, doctor name
 //Richie Brace Form
@@ -51,18 +88,25 @@
 
 
 //(TEST)Orthotics button label still off
-// (TEST) First name,  last name Practitioner Page
-// (TEST) First name,  last name 2 different boxes (Patient Page)
 
 
+// (DONE) First name,  last name Practitioner Page
+// (DONE) First name,  last name 2 different boxes (Patient Page)
 // (DONE) Add date order creation
 // (DONE) weight pounds
 // (DONE) height feet/inches
+// (DONE) back to 4, but if one selected, deselect the others
+// (DONE) Per weight is an option (if weight is supplied) as the default, otherwise it says  choose one
+
+
+//To talk about
+//contact network solutions ask about server - sftp yes thiers, no WIX
 
 
 
 import UIKit
 import CoreData
+import PDFKit
 
 let openingPageIndex = 0;
 let orderManagementPageIndex = 1;
@@ -96,19 +140,19 @@ var allOrders : [Order] = [];
 var currentOrder = 0
 var defaults : Defaults? = nil;
 
-let orthoticMateriaPickerData: [String] =
-    ["Functional - Polypropylene", "Functional - PolyMax™", "Functional - Graphite", "Functional - Fiberglass", "Functional - Acrylic",
-    "Sports - Multi-Sport™", "Sports - Multi-Sport-Plus™", "Sports - Soft-Sport™", "Sports - Soft-Sport-Flex™", "Sports - SSC™",
-    "Dress - Men's Dress", "Dress - Women's Casual", "Dress - Women's High-Heel", "Dress - Hole-Heel™", "Dress - Cobra",
-    "Specialty - Blake 25˚", "Specialty - Blake 35˚", "Specialty - Blake 45˚", "Specialty - Modified UCBL", "Specialty - Cusion-Flex™",
-    "Specialty - Cushion-Flex-Control™", "Specialty - Diaba-Flex™", "Specialty - Diaba-Flex-Control™", "Specialty - Accommodative"];
+let orthoticMateriaPickerData: [[String]] =
+    [["Functional", "Polypropylene", "PolyMax™", "Graphite", "Fiberglass", "Acrylic"],
+    ["Sports", "Multi-Sport™", "Multi-Sport-Plus™", "Soft-Sport™", "Soft-Sport-Flex™", "SSC™"],
+    ["Dress", "Men's Dress", "Women's Casual", "Women's High-Heel", "Hole-Heel™", "Cobra"],
+    ["Specialty", "Blake 25˚", "Blake 35˚", "Blake 45˚", "Modified UCBL", "Cusion-Flex™"],
+    ["Specialty", "Cushion-Flex-Control™", "Diaba-Flex™", "Diaba-Flex-Control™", "Accommodative"]];
 
 let orthoticMateriaPickerMap: [Int] =
-    [0, 0, 1, 2, 3,
-     0, 0, 0, 4, 1,
-     1, 1, 1, 0, 0,
-     0, 0, 0, 0, 4,
-     4, 4, 4, 5];
+    [0, 0, 1, 2, 3, 0, 0, 0, 0, 0,
+     0, 0, 0, 4, 1, 0, 0, 0, 0, 0,
+     1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 4, 0, 0, 0, 0, 0,
+     4, 4, 4, 5, 0, 0, 0, 0, 0, 0];
 
 
 let anteriorWidthPickerData: [String] =
@@ -120,32 +164,33 @@ let orthosisMaterialTypeLabels: [String] =
     ["Polypropylene","Graphite Composite (TL-2100)","Fiberglass Composite (TL-Silver)","Acrylic (Polydor)","High-Density Polyethylene (HDPE)"];
 
 let orthosisPolypropyleneColorLabels: [String] =
-    ["White","Natural"];
+    ["Natural","White"];
 
 let orthosisPolypropyleneLabels: [String] =
-    ["1/8","5/32","3/16","1/4"];
+    ["Per weight","1/8","5/32","3/16","1/4"];
 
 let orthosisGraphiteCompositeLabels: [String] =
-    [".070 semi-flexible",".090 semi-rigid",".110 rigid",".110 ultra strength"];
+    ["Per weight",".070 semi-flexible",".090 semi-rigid",".110 rigid",".110 ultra strength"];
 
 let orthosisFiberglassCompositeLabels: [String] =
-    [".085 semi-rigid",".110 rigid"];
+    ["Per weight",".085 semi-rigid",".110 rigid"];
 
 let orthosisAcrylicColorLabels: [String] =
     ["Amber","Pink","Green"];
 
 let orthosisAcrylicLabels: [String] =
-    ["3mm","3.5mm","4mm","5mm"];
+    ["Per weight","3mm","3.5mm","4mm","5mm"];
 
 let orthosisHighDensityPolyetheleneLabels: [String] =
-    ["2mm","3mm","4mm"];
+    ["Per weight","2mm","3mm","4mm"];
 
 
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     var screenViewing = 0;
     var practitioners = [Practitioner]()
+    var patients = [Patient]()
     var photos = [FootPhoto]()
     var defaultPractitioner : Practitioner?
     var pages = [UIView]();
@@ -160,6 +205,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        if (pickerView == orthoticsFunctional) {
+            return orthoticMateriaPickerData.count
+        }
         return 1
     }
     
@@ -168,7 +216,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if (pickerView == patientGender) {
             return 3;
         } else if (pickerView == orthoticsFunctional) {
-            return orthoticMateriaPickerData.count
+            return orthoticMateriaPickerData[component].count
         } else if (pickerView == practitionerPicker) {
             return practitioners.count;
         } else if (pickerView == orthoticSpecificationsAnteriorWidthLeftPicker) {
@@ -196,11 +244,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView == orthoticsFunctional) {
             let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
-            theMOI.orthoticsMaterialPickerSelection = Int16(row);
+            theMOI.orthoticsMaterialPickerSelection = Int16(row + (10 * component));
             theMOI.orthoticsMaterialSelection = Int16(orthoticMateriaPickerMap[Int(theMOI.orthoticsMaterialPickerSelection)]);
             orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
             resetDueToOrthosisTypeChange();
-            if (row == 0) { //Polypropylene
+            if (row == 0 && component == 0) { //Polypropylene
                 orthosisMaterialSelectionLabel.text = "semi-rigid polypropylene shell";
                 
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
@@ -211,129 +259,129 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 orthosisCorrectionsAndModificationsSelectionLabel.text = "intrinsic forefoot, vertical heel bisection";
                 orthosisPostingSelectionLabel.text = "4/4 firm crepe, 8mm elevator";
                 orthosisTopCoversAndExtensionsSelectionLabel.text = "orthosis length, vinyl";
-            } else if (row == 1) { //PolyMax
+            } else if (row == 1 && component == 0) { //PolyMax
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 2) {//Graphite
+            } else if (row == 2 && component == 0) {//Graphite
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 3) {//Fiberglass
+            } else if (row == 3 && component == 0) {//Fiberglass
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 4) { //Acrylic
+            } else if (row == 4 && component == 0) { //Acrylic
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 5) { //Multi Sport
+            } else if (row == 0 && component == 1) { //Multi Sport
 //                orthosisSpecificationsHeelCupHeight16mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight16mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 6) { //Multi Sport Plus
+            } else if (row == 1 && component == 1) { //Multi Sport Plus
                 //TODO how do I do 16
 //                orthosisSpecificationsHeelCupHeight16mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight16mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 7) { //Soft Sport
+            } else if (row == 2 && component == 1) { //Soft Sport
 //                orthosisSpecificationsHeelCupHeight16mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight16mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 8) { //Soft Sport Flex
+            } else if (row == 3 && component == 1) { //Soft Sport Flex
 //                orthosisSpecificationsHeelCupHeight16mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight16mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 9) { //SSC™
+            } else if (row == 4 && component == 1) { //SSC™
 
-            } else if (row == 10) { //Men's Dress
+            } else if (row == 0 && component == 2) { //Men's Dress
                 //TODO 12?
 //                orthosisSpecificationsHeelCupHeight12mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight12mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 11) { //Women's Casual
+            } else if (row == 1 && component == 2) { //Women's Casual
                 orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
-            } else if (row == 12) { //Women's High-Heel
+            } else if (row == 2 && component == 2) { //Women's High-Heel
                 //TODO what is minimal heel cup?
 //                orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
-            } else if (row == 13) { //Hole-Heel™
+            } else if (row == 3 && component == 2) { //Hole-Heel™
                 //TODO 10-12?
 //                orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
-            } else if (row == 14) { //Cobra
+            } else if (row == 4 && component == 2) { //Cobra
                 //TODO 12?
 //                orthosisSpecificationsHeelCupHeight12mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight12mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
 
-            } else if (row == 15) { //Blake 25
+            } else if (row == 0 && component == 3) { //Blake 25
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
                 orthosisSpecificationsOtherMedmmLeft.text="23";
                 orthosisSpecificationsOtherMedmmRight.text="23";
                 orthosisSpecificationsOtherLatmmLeft.text="21";
                 orthosisSpecificationsOtherLatmmRight.text="21";
-            } else if (row == 16) { //Blake 35˚
+            } else if (row == 1 && component == 3) { //Blake 35˚
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
                 orthosisSpecificationsOtherMedmmLeft.text="23";
                 orthosisSpecificationsOtherMedmmRight.text="23";
                 orthosisSpecificationsOtherLatmmLeft.text="21";
                 orthosisSpecificationsOtherLatmmRight.text="21";
-            } else if (row == 17) { //Blake 45˚
+            } else if (row == 2 && component == 3) { //Blake 45˚
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
                 orthosisSpecificationsOtherMedmmLeft.text="23";
                 orthosisSpecificationsOtherMedmmRight.text="23";
                 orthosisSpecificationsOtherLatmmLeft.text="21";
                 orthosisSpecificationsOtherLatmmRight.text="21";
-            } else if (row == 18) { //Modified UCBL
+            } else if (row == 3 && component == 3) { //Modified UCBL
                 //TODO 30?
                 //                orthosisSpecificationsHeelCupHeight12mmLeftUISwitch.isOn = true;
                 //                orthosisSpecificationsHeelCupHeight12mmRightUISwitch.isOn = true;
 
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(3, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(3, inComponent: 0, animated: false)
-            } else if (row == 19) { //Cusion-Flex™
+            } else if (row == 4 && component == 3) { //Cusion-Flex™
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 20) { //Cushion-Flex-Control™
+            } else if (row == 0 && component == 4) { //Cushion-Flex-Control™
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 21) { //Diaba-Flex™
+            } else if (row == 1 && component == 4) { //Diaba-Flex™
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
                 
-            } else if (row == 22) { //Diaba-Flex-Control™
+            } else if (row == 2 && component == 4) { //Diaba-Flex-Control™
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 23) { //Accommodative
+            } else if (row == 3 && component == 4) { //Accommodative
                 //TODO what is deep?
 //                orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
@@ -342,8 +390,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 
             }
             
+            for i in 0...4 {
+                if (component != i) {
+                    pickerView.selectRow(0, inComponent: i, animated: true);
+                }
+            }
             
-
             
             readOrthosisSpecificationForm();
             let description = calculateOrthosisSpecificationDescriptionFromOrder();
@@ -355,6 +407,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // The data to return fopr the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        let isWeightSupplied = Int((order.orderPatient?.weight) ?? 0) > 0;
         
         var pickerLabel: UILabel? = (view as? UILabel)
         if pickerLabel == nil {
@@ -368,7 +422,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             pickerLabel?.textAlignment = .center
         }
         if (pickerView == orthoticsFunctional) {
-            pickerLabel?.text = orthoticMateriaPickerData[row]
+            pickerLabel?.text = orthoticMateriaPickerData[component][row]
         } else if (pickerView == patientGender) {
             pickerLabel?.text = genderPickerViewValues[row]
         } else if (pickerView == practitionerPicker) {
@@ -380,15 +434,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         } else if (pickerView == orthoticMaterialPicker) {
             let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
             if (theMOI.orthoticsMaterialSelection == orthosisMaterialPolypropyleneIndex) {
-                pickerLabel?.text = orthosisPolypropyleneLabels[row];
+                
+                pickerLabel?.text = isWeightSupplied || row > 0 ? orthosisPolypropyleneLabels[row] : "Choose one";
             } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialGraphiteCompositeIndex) {
-                pickerLabel?.text = orthosisGraphiteCompositeLabels[row];
+                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisGraphiteCompositeLabels[row] : "Choose one";
             } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialFiberglassCompositeIndex) {
-                pickerLabel?.text = orthosisFiberglassCompositeLabels[row];
+                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisFiberglassCompositeLabels[row] : "Choose one";
             } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialAcrylicIndex) {
-                pickerLabel?.text = orthosisAcrylicLabels[row];
+                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisAcrylicLabels[row] : "Choose one";
             } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialHighDensityProlyetheleneIndex) {
-                pickerLabel?.text = orthosisHighDensityPolyetheleneLabels[row];
+                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisHighDensityPolyetheleneLabels[row] : "Choose one";
             }
         } else {
             pickerLabel?.text = String(row);
@@ -400,6 +455,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         pages.append(openingPage)              // 0
         pages.append(orderManagement)          // 1
@@ -418,7 +474,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         pages.append(orthoticsSpecificationsForm)         // 12
         pages.append(orthoticsPostingForm)                // 13
         pages.append(orthoticsTopCoversAndExtensionsForm) // 14
-        pages.append(orthoticsChiefComplaintForm)         // 15
+        pages.append(orthoticsRushOrderForm)         // 15
         pages.append(orthoticsRushOrderForm)              // 16
         pages.append(orthoticsCommentsInstructionsForm)   // 17
         pages.append(orthoticsAccommodationsAndAdditionsForm) // 18
@@ -436,7 +492,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         orthoticsSpecificationsForm.isHidden = true;
         orthoticsPostingForm.isHidden = true;
         orthoticsTopCoversAndExtensionsForm.isHidden = true;
-        orthoticsChiefComplaintForm.isHidden = true;
         orthoticsRushOrderForm.isHidden = true;
         orthoticsCommentsInstructionsForm.isHidden = true;
         orthoticsAccommodationsAndAdditionsForm.isHidden = true;
@@ -476,7 +531,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             orthosisSpecificationsButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisPostingButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisTopCoversAndExtensionsButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
-            orthosisChiefComplaintsDiagnosisButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisCommentsInstructionsButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisRushOrderButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
 
@@ -514,7 +568,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             orthosisSpecificationsLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisPostingLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisTopCoversAndExtensionsLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
-            orthosisChiefComplaintsDiagnosisLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisRushOrderLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisCommentsInstructionsLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
 
@@ -523,7 +576,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             orthosisSpecificationsLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisPostingLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisTopCoversAndExtensionsSelectionLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
-            orthosisChiefComplaintsDiagnosisSelectionLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisRushOrderSelectionLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisCommentsInstructionsSelectionLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
 
@@ -669,9 +721,56 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
         }
         
+            
+        practitionerNameInput.delegate = self
+        
+
+        practitionerNameInput.delegate = self
+        practitionerLastNameInput.delegate = self
+        practitionerBillingAddressInput.delegate = self
+        practitionerShippingAddressInput.delegate = self
+        patientNameInput.delegate = self
+        patientLastNameInput.delegate = self
+        patientAgeInput.delegate = self
+        patientHeightInput.delegate = self
+        patientWeightInput.delegate = self
+        patientShoeSizeInput.delegate = self
+        patientShoeTypeInput.delegate = self
+        correctionsAndModificationsCastOrientationInvertedLeft.delegate = self
+        correctionsAndModificationsCastOrientationInvertedRight.delegate = self
+        correctionsAndModificationsCastOrientationEvertedLeft.delegate = self
+        correctionsAndModificationsCastOrientationEvertedRight.delegate = self
+        correctionsAndModificationsPlantarFaciaAccomRight.delegate = self
+        correctionsAndModificationsPlantarFaciaAccomLeft.delegate = self
+        correctionsAndModificationsStyloidAccomRight.delegate = self
+        correctionsAndModificationsStyloidAccomLeft.delegate = self
+        correctionsAndModificationsAsMarkedOnCastRight.delegate = self
+        correctionsAndModificationsAsMarkedOnCastLeft.delegate = self
+        correctionsAndModificationsAddLatHeelExpansionRight.delegate = self
+        correctionsAndModificationsAddLatHeelExpansionLeft.delegate = self
+        correctionsAndModificationsMedialHeelSkiveRight.delegate = self
+        correctionsAndModificationsMedialHeelSkiveLeft.delegate = self
+        orthosisSpecificationsOtherMedmmLeft.delegate = self
+        orthosisSpecificationsOtherMedmmRight.delegate = self
+        orthosisSpecificationsOtherLatmmLeft.delegate = self
+        orthosisSpecificationsOtherLatmmRight.delegate = self
+        postingHeelLiftLeft.delegate = self
+        postingHeelLiftRight.delegate = self
+        postingRearfootPostMotionOtherDegreesLeft.delegate = self
+        postingRearfootPostMotionOtherDegreesRight.delegate = self
+        postingRearfootPostingElevatorOthermmLeft.delegate = self
+        postingRearfootPostingElevatorOthermmRight.delegate = self
+
+        
+        correctionsAndModificationsCastOrientationVerticalLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     @IBOutlet var openingPage: UIView!
     @IBOutlet var orderManagement: UIView!
     @IBOutlet var practitionerManagement: UIView!
@@ -685,7 +784,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var orthoticsPostingForm: UIView!
     @IBOutlet var orthoticsTopCoversAndExtensionsForm: UIView!
     @IBOutlet var orthoticsCommentsInstructionsForm: UIView!
-    @IBOutlet var orthoticsChiefComplaintForm: UIView!
     @IBOutlet var orthoticsRushOrderForm: UIView!
     @IBOutlet var orthoticsAccommodationsAndAdditionsForm: UIView!
     @IBOutlet var scanForm: UIView!
@@ -702,6 +800,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var submitFinishedUIImageView: UIImageView!
 
     
+    
     @IBOutlet var newOrderButton: UIButton!
     @IBOutlet var existingOrderButton: UIButton!
     @IBOutlet var nextButton: UIButton!
@@ -717,7 +816,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var orthosisSpecificationsButton: UIButton!
     @IBOutlet var orthosisPostingButton: UIButton!
     @IBOutlet var orthosisTopCoversAndExtensionsButton: UIButton!
-    @IBOutlet var orthosisChiefComplaintsDiagnosisButton: UIButton!
     @IBOutlet var orthosisRushOrderButton: UIButton!
     @IBOutlet var orthosisCommentsInstructionsButton: UIButton!
     @IBOutlet var okDeletePractitioner: UIButton!
@@ -757,7 +855,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var orthosisSpecificationsLabel: UILabel!
     @IBOutlet var orthosisPostingLabel: UILabel!
     @IBOutlet var orthosisTopCoversAndExtensionsLabel: UILabel!
-    @IBOutlet var orthosisChiefComplaintsDiagnosisLabel: UILabel!
     @IBOutlet var orthosisRushOrderLabel: UILabel!
     @IBOutlet var orthosisCommentsInstructionsLabel: UILabel!
     @IBOutlet var orthosisMaterialSelectionLabel: UILabel!
@@ -765,7 +862,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var orthosisSpecificationsSelectionLabel: UILabel!
     @IBOutlet var orthosisPostingSelectionLabel: UILabel!
     @IBOutlet var orthosisTopCoversAndExtensionsSelectionLabel: UILabel!
-    @IBOutlet var orthosisChiefComplaintsDiagnosisSelectionLabel: UILabel!
     @IBOutlet var orthosisRushOrderSelectionLabel: UILabel!
     @IBOutlet var orthosisCommentsInstructionsSelectionLabel: UILabel!
     @IBOutlet var orthoticMaterialTypeLabel: UILabel!
@@ -850,6 +946,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadUISwitch: UISwitch!
+    @IBOutlet var orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeftUISwitch: UISwitch!
+    @IBOutlet var orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeftUISwitch: UISwitch!
+    @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeftUISwitch: UISwitch!
+    @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeftUISwitch: UISwitch!
+
     @IBOutlet var postingRearfootPostMotion4DegreesMotionLeftUISwitch: UISwitch!
     @IBOutlet var postingRearfootPostMotion4DegreesMotionRightUISwitch: UISwitch!
     @IBOutlet var postingRearfootPostMotion0DegreesMotionLeftUISwitch: UISwitch!
@@ -876,12 +977,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var rushOrder2DayTurnaroundUISwitch: UISwitch!
     @IBOutlet var rushOrderNextDayTurnaroundUISwitch: UISwitch!
     @IBOutlet var rushOrderRequestedOnOrBeforeUISwitch: UISwitch!
-    @IBOutlet var rushOrderPleaseSendRxFormsUISwitch: UISwitch!
-    @IBOutlet var rushOrderPleaseSendAddressLabelsUISwitch: UISwitch!
-    @IBOutlet var rushOrderPleaseSendPrepaidLabelsUISwitch: UISwitch!
-    @IBOutlet var rushOrderPleaseSendSmallBoxesUISwitch: UISwitch!
-    @IBOutlet var rushOrderPleaseSendLargeBoxesUISwitch: UISwitch!
-    @IBOutlet var rushOrderStorePositiveModelsFor60DaysUISwitch: UISwitch!
 
     
     
@@ -968,6 +1063,29 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             changePageTo(pageTo: newOrderTypePageIndex);
             
             if (!((firstName?.isEmpty)!) && !((lastName?.isEmpty)!)) {
+                if (order.orderPatient == nil) {
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let context = appDelegate.persistentContainer.viewContext
+                    
+                    let newPatient = Patient.init(entity: NSEntityDescription.entity(forEntityName: "Patient", in:context)!, insertInto: context);
+                    newPatient.firstName = firstName;
+                    newPatient.lastName = lastName;
+                    newPatient.age = Int16(age!) ?? 0;
+                    newPatient.height = Int16(height!) ?? 0;
+                    newPatient.weight = Int16(weight!) ?? 0;
+                    newPatient.shoeSize = Int16(patientShoeSizeInput!.text!) ?? 0;
+                    newPatient.shoeType = patientShoeTypeInput.text;
+
+                    order.orderPatient = newPatient
+                    do {
+                        try context.save();
+                        patients.append(newPatient);
+                        appDelegate.saveContext();
+                    } catch let error as NSError {
+                        //TODO Cannot save, fail startup
+                        print("Could not save. \(error), \(error.userInfo)")
+                    }
+                }
                 order.orderPatient?.firstName = firstName;
                 order.orderPatient?.lastName = lastName;
                 order.orderPatient?.age = Int16(age!) ?? 0;
@@ -987,6 +1105,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         } else if (screenViewing == scanFormPageIndex) {
             changePageTo(pageTo: reviewAndSubmitPageIndex);
         } else if (screenViewing == reviewAndSubmitPageIndex) {
+            //makePdf2();
+
             changePageTo(pageTo: openingPageIndex);
             practitionerNameLabel.text = "No Name";
             patientNameLabel.text = "No Name";
@@ -1017,8 +1137,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             orthosisPostingSelectionLabel.text = description;
             changePageTo(pageTo: orthoticsFormPageIndex);
         } else if (screenViewing == orthoticsTopCoversAndExtensionsFormPageIndex) {
-            changePageTo(pageTo: orthoticsFormPageIndex);
-        } else if (screenViewing == orthoticsChiefComplaintFormPageIndex) {
             changePageTo(pageTo: orthoticsFormPageIndex);
         } else if (screenViewing == orthoticsRushOrderFormPageIndex) {
             changePageTo(pageTo: orthoticsFormPageIndex);
@@ -1091,9 +1209,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         changePageTo(pageTo: orthoticsTopCoversAndExtensionsFormPageIndex)
     }
     
-    @IBAction func ClickOrthosisChiefComplaintsDiagnosis(sender: UIButton){
-        changePageTo(pageTo: orthoticsChiefComplaintFormPageIndex)
-    }
     
     @IBAction func ClickOrthosisRushOrder(sender: UIButton){
         changePageTo(pageTo: orthoticsRushOrderFormPageIndex)
@@ -1287,20 +1402,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             rushOrder2DayTurnaroundUISwitch.isOn;
         order.rushOrderNextDayTurnaround =
             rushOrderNextDayTurnaroundUISwitch.isOn;
-        order.rushOrderPleaseSendRxForms =
-            rushOrderPleaseSendRxFormsUISwitch.isOn;
         order.rushOrderRequestedOnOrBefore =
             rushOrderRequestedOnOrBeforeUISwitch.isOn;
-        order.rushOrderPleaseSendLargeBoxes =
-            rushOrderPleaseSendLargeBoxesUISwitch.isOn;
-        order.rushOrderPleaseSendSmallBoxes =
-            rushOrderPleaseSendSmallBoxesUISwitch.isOn;
-        order.rushOrderPleaseSendAddressLabels =
-            rushOrderPleaseSendAddressLabelsUISwitch.isOn;
-        order.rushOrderPleaseSendPrepaidLabels =
-            rushOrderPleaseSendPrepaidLabelsUISwitch.isOn;
-        order.rushOrderStorePositiveModelsFor60Days =
-            rushOrderStorePositiveModelsFor60DaysUISwitch.isOn;
     }
 
     func setRushOrderFormFromOrder() {
@@ -1308,20 +1411,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             order.rushOrder2DayTurnaround;
         rushOrderNextDayTurnaroundUISwitch.isOn =
             order.rushOrderNextDayTurnaround;
-        rushOrderPleaseSendRxFormsUISwitch.isOn =
-            order.rushOrderPleaseSendRxForms;
         rushOrderRequestedOnOrBeforeUISwitch.isOn =
             order.rushOrderRequestedOnOrBefore;
-        rushOrderPleaseSendLargeBoxesUISwitch.isOn =
-            order.rushOrderPleaseSendLargeBoxes;
-        rushOrderPleaseSendSmallBoxesUISwitch.isOn =
-            order.rushOrderPleaseSendSmallBoxes;
-        rushOrderPleaseSendAddressLabelsUISwitch.isOn =
-            order.rushOrderPleaseSendAddressLabels;
-        rushOrderPleaseSendPrepaidLabelsUISwitch.isOn =
-            order.rushOrderPleaseSendPrepaidLabels;
-        rushOrderStorePositiveModelsFor60DaysUISwitch.isOn =
-            order.rushOrderStorePositiveModelsFor60Days;
     }
     
     func readCorrectionsAndModificationsForm() {
@@ -1520,13 +1611,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
         order.rushOrder2DayTurnaround = false;
         order.rushOrderNextDayTurnaround = false;
-        order.rushOrderPleaseSendRxForms = false;
         order.rushOrderRequestedOnOrBefore = false;
-        order.rushOrderPleaseSendLargeBoxes = false;
-        order.rushOrderPleaseSendSmallBoxes = false;
-        order.rushOrderPleaseSendAddressLabels = false;
-        order.rushOrderPleaseSendPrepaidLabels = false;
-        order.rushOrderStorePositiveModelsFor60Days = false;
     
         order.postingRearfootPostingElevator4mmLeft = false;
         order.postingRearfootPostingElevator8mmLeft = false;
@@ -1698,9 +1783,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if (order.orthosisSpecificationsHeelCupHeight10mmLeft && order.orthosisSpecificationsHeelCupHeight10mmRight) {
                 theReturn += ", "
             } else if (order.orthosisSpecificationsHeelCupHeight10mmLeft) {
-                theReturn += " L only, "
+                theReturn += " L, "
             } else {
-                theReturn += " R only, "
+                theReturn += " R, "
             }
         }
         if (order.orthosisSpecificationsHeelCupHeight14mmLeft || order.orthosisSpecificationsHeelCupHeight14mmRight) {
@@ -1708,9 +1793,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if (order.orthosisSpecificationsHeelCupHeight14mmLeft && order.orthosisSpecificationsHeelCupHeight14mmRight) {
                 theReturn += ", "
             } else if (order.orthosisSpecificationsHeelCupHeight14mmLeft) {
-                theReturn += " L only, "
+                theReturn += " L, "
             } else {
-                theReturn += " R only, "
+                theReturn += " R, "
             }
         }
         if (order.orthosisSpecificationsHeelCupHeight18mmLeft || order.orthosisSpecificationsHeelCupHeight18mmRight) {
@@ -1718,9 +1803,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if (order.orthosisSpecificationsHeelCupHeight18mmLeft && order.orthosisSpecificationsHeelCupHeight18mmRight) {
                 theReturn += ", "
             } else if (order.orthosisSpecificationsHeelCupHeight18mmLeft) {
-                theReturn += " L only, "
+                theReturn += " L, "
             } else {
-                theReturn += " R only, "
+                theReturn += " R, "
             }
         }
         if (order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft || order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight) {
@@ -1728,9 +1813,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if (order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft && order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight) {
                 theReturn += ", "
             } else if (order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft) {
-                theReturn += " L only, "
+                theReturn += " L, "
             } else {
-                theReturn += " R only, "
+                theReturn += " R, "
             }
         }
         if (order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft || order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight) {
@@ -1738,9 +1823,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if (order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft && order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight) {
                 theReturn += ", "
             } else if (order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft) {
-                theReturn += " L only, "
+                theReturn += " L, "
             } else {
-                theReturn += " R only, "
+                theReturn += " R, "
             }
         }
 
@@ -1808,26 +1893,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if (order.rushOrderNextDayTurnaround) {
             theReturn += "Next Day Turnaround, "
         }
-        if (order.rushOrderPleaseSendRxForms) {
-            theReturn += "Please Send Rx Forms, "
-        }
         if (order.rushOrderRequestedOnOrBefore) {
             theReturn += "Requested on or before" + "" + ", "
-        }
-        if (order.rushOrderPleaseSendLargeBoxes) {
-            theReturn += "Please Send Large Boxes, "
-        }
-        if (order.rushOrderPleaseSendSmallBoxes) {
-            theReturn += "Please Send Small Boxes, "
-        }
-        if (order.rushOrderPleaseSendAddressLabels) {
-            theReturn += "Please Send Address Labels, "
-        }
-        if (order.rushOrderPleaseSendPrepaidLabels) {
-            theReturn += "Please Send Prepaid Labels, "
-        }
-        if (order.rushOrderStorePositiveModelsFor60Days) {
-            theReturn += "Sore Positive Models for 60 Days, "
         }
 
         if (theReturn.hasSuffix(", ")) {
@@ -1836,6 +1903,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return theReturn;
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField,
+                                         reason: UITextField.DidEndEditingReason) {
+        if (textField == correctionsAndModificationsCastOrientationInvertedLeft) {
+            correctionsAndModificationsCastOrientationEvertedLeft.text = "";
+            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = false;
+        }
+        if (textField == correctionsAndModificationsCastOrientationEvertedLeft) {
+            correctionsAndModificationsCastOrientationInvertedLeft.text = "";
+            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = false;
+        }
+    }
+    
+    @objc func switchChanged(mySwitch: UISwitch) {
+        if (mySwitch == correctionsAndModificationsCastOrientationVerticalLeftUISwitch) {
+            correctionsAndModificationsCastOrientationInvertedLeft.text = "";
+            correctionsAndModificationsCastOrientationEvertedLeft.text = "";
+        }
+    }
     
     @IBAction func CameraAction(sender: UIButton) {
         let picker = UIImagePickerController()
@@ -1849,12 +1934,52 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBAction func ScanLeftFoot(sender: UIButton) {
         
+
+        
     }
 
     @IBAction func ScanRightFoot(sender: UIButton) {
         
     }
 
+    @IBAction func clickHeelCupHeight10Left(sender: UIButton) {
+        if (orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isSelected) {
+            orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isSelected = false;
+        }
+    }
+    @IBAction func clickHeelCupHeight18Left(sender: UIButton) {
+        if (orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isSelected) {
+            orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isSelected = false;
+        }
+    }
+    @IBAction func clickHeelCupHeight14Left(sender: UIButton) {
+        if (orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isSelected) {
+            orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isSelected = false;
+        }
+    }
+    @IBAction func clickHeelCupHeight10Right(sender: UIButton) {
+        if (orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isSelected) {
+            orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isSelected = false;
+        }
+    }
+    @IBAction func clickHeelCupHeight18Right(sender: UIButton) {
+        if (orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isSelected) {
+            orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isSelected = false;
+        }
+    }
+    @IBAction func clickHeelCupHeight14Right(sender: UIButton) {
+        if (orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isSelected) {
+            orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isSelected = false;
+        }
+    }
+
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         picker.dismiss(animated: true, completion: nil)
         
@@ -1882,26 +2007,76 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         
     }
-    
-    func drawPDFUsingPrintPageRenderer(printPageRenderer : CustomPrintPageRenderer) -> NSData! {
-        let data = NSMutableData()
-        UIGraphicsBeginPDFContextToData(data, CGRect.zero, nil)
-        UIGraphicsBeginPDFPage()
-        printPageRenderer.drawPage(at: 0, in: UIGraphicsGetPDFContextBounds())
-        UIGraphicsEndPDFContext()
-        return data
-    }
-    
-    func exportHTMLContentToPDF(HTMLContent: String) {
-        let printPageRenderer = CustomPrintPageRenderer();
-        let printFormatter = UIMarkupTextPrintFormatter(markupText: HTMLContent)
-        printPageRenderer.addPrintFormatter(printFormatter, startingAtPageAt: 0)
-        let pdfData = drawPDFUsingPrintPageRenderer(printPageRenderer: printPageRenderer)
+//
+//    func drawPDFUsingPrintPageRenderer(printPageRenderer : CustomPrintPageRenderer) -> NSData! {
+//        let data = NSMutableData()
+//        UIGraphicsBeginPDFContextToData(data, CGRect.zero, nil)
+//        UIGraphicsBeginPDFPage()
+//        printPageRenderer.drawPage(at: 0, in: UIGraphicsGetPDFContextBounds())
+//        UIGraphicsEndPDFContext()
+//        return data
+//    }
+//
+//    func exportHTMLContentToPDF(HTMLContent: String) {
+//        let printPageRenderer = CustomPrintPageRenderer();
+//        let printFormatter = UIMarkupTextPrintFormatter(markupText: HTMLContent)
+//        printPageRenderer.addPrintFormatter(printFormatter, startingAtPageAt: 0)
+//        let pdfData = drawPDFUsingPrintPageRenderer(printPageRenderer: printPageRenderer)
+//
+//        let pdfFilename = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("nameOfPDFfile.pdf")
+//
+//        pdfData?.write(to: (pdfFilename ?? nil)!, atomically: true)
+//    }
 
-        let pdfFilename = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("nameOfPDFfile.pdf")
-        
-        pdfData?.write(to: (pdfFilename ?? nil)!, atomically: true)
-    }
+//    func makePdf2() {
+//        let aPDFDocument = PDFDocument();
+//        
+//        
+//        let pdfLocation = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("nameOfPDFfile.pdf")
+//        
+//        aPDFDocument.insert(TestPDFPage(), at: 0)
+//        
+//        aPDFDocument.write(toFile: "/Users/rahmat/nameOfPDFfile.pdf")
+//
+//    }
+//
+//    class TestPDFPage :PDFPage{
+//        override func draw(with box: PDFDisplayBox, to context: CGContext) {
+//            super.draw(with: box, to: context)
+//            
+////            context.concatenate(CGAffineTransform(scaleX: 1.0, y: -1.0));
+////            context.concatenate(CGAffineTransform(translationX: 0.0, y: -CGFloat(context.height)));
+//            context.concatenate(CGAffineTransform(translationX: 0.0, y: 10.0));
+//
+//            
+//            UIGraphicsPushContext(context)
+//            context.saveGState()
+//            
+//            let aPath = UIBezierPath()
+//            aPath.move(to: CGPoint(x: 0, y: 0))
+//            aPath.addLine(to: CGPoint(x: 10, y: 10))
+//            aPath.close()
+//            
+//            UIColor.red.set()
+//            aPath.stroke()
+//            aPath.fill()
+//            
+//            let paragraphStyle = NSMutableParagraphStyle()
+//            paragraphStyle.alignment = .center
+//            
+//            let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 36)!, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+//            
+//            let string = "How much wood would a woodchuck\nchuck if a woodchuck would chuck wood?"
+//            string.draw(with: CGRect(x: 32, y: 32, width: 448, height: 448), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+//
+//            
+//
+//            context.restoreGState()
+//            UIGraphicsPopContext()
+//        }
+//    }
+
+    
 //
 //    class func sendEmail() {
 //
@@ -1969,6 +2144,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 //            }
 //        }
 //    }
+    
+    
 }
     
 
