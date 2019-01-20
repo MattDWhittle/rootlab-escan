@@ -21,6 +21,8 @@
         <attribute name="correctionsAndModificationsForefootCorrectionTypeExtrinsicRight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="correctionsAndModificationsForefootCorrectionTypeIntrinsicRight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="correctionsAndModificationsintrinsicMetatarsalPadLeft" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="correctionsAndModificationsintrinsicMetatarsalPadRight" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="correctionsAndModificationsMedialArchFillDecreasedLeft" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="correctionsAndModificationsMedialArchFillDecreasedRight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="correctionsAndModificationsMedialArchFillIncreasedLeft" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -109,8 +111,10 @@
     </entity>
     <entity name="Practitioner" representedClassName="Practitioner" syncable="YES" codeGenerationType="class">
         <attribute name="billingAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shippingAddress" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="parentOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="orderPractitioner" inverseEntity="Order" syncable="YES"/>
     </entity>
@@ -118,8 +122,8 @@
         <element name="Defaults" positionX="108" positionY="144" width="128" height="60"/>
         <element name="FootPhoto" positionX="117" positionY="153" width="128" height="90"/>
         <element name="MaterialOrderItem" positionX="305.16015625" positionY="67.2734375" width="128" height="90"/>
-        <element name="Order" positionX="128.48828125" positionY="203.7109375" width="128" height="1260"/>
+        <element name="Order" positionX="128.48828125" positionY="203.7109375" width="128" height="1290"/>
         <element name="Patient" positionX="58.953125" positionY="-11.796875" width="128" height="180"/>
-        <element name="Practitioner" positionX="-92.83203125" positionY="38.47265625" width="128" height="120"/>
+        <element name="Practitioner" positionX="-92.83203125" positionY="38.47265625" width="128" height="150"/>
     </elements>
 </model>

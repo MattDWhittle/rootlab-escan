@@ -11,40 +11,37 @@
 
 
 //TODO
-//If heel cup height other type in, deselct UISwitches, vice versa, per left right
-//Add left and right on all items in the Orthosis Specification form
-//Add the word width after anterior width description
-//Have to have heel cup both left and right
-//Add white and naturl poly, make Natural the default (on top)
-//Put inch sign on polypropelene
-//make it so : material thickness or weight is required
-//TODO password protect - later
-//if email / sftp fails sending, then show order not sent
 
-// create an email account:  eScanOutbox@root-lab.com
+//Top covers:Vinyl, leather, eva, NCN, Diabetic re the options accross the top, only one can be selected, and you choose the color or thicknesss, one must be selected
+//Add Poron under topcover, two buttons for 1/16 1/8, only one selected, not required
 
-//Accomodative EVA - grey out edit button on orthosis material
-//PolyMax only can have a posting of Polypropylene
-//Nothing else can have a posting of Polypropylene
-//Highlight the buttons where action needs to be taken - if weight not supplied and need to choose material thickness, let them know
-// deselect vertical if inverted or everted selected
-// deselect inverted if vertical or everted selected
-// deselect everted if vertical or inverted selected
-// remove no filler between platforms
-// add new one for intrinsic metatarsal pad in mm left and right
-//On medial arch fill, only one selected per foot, and one must be selected, and standard is the default
+//Finish Defaults to Form
+//eScan
+
 //posting form - rearfoot post motion, one has to be selected, only one selected, 4degree usually default, but from form
 //When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
 //Rearfoot posting elevator, only one allowed to be selected, one must be selected, 8mm default normally
 //Rearfoot post options, cannot do a long and a short
 //Non corrective forefoot post, if full width selected, others are not, and vice versa
+//Accomodative EVA - grey out edit button on orthosis material
 //Put stars by what is required and what isn't
 //Lets say if Rearfoot posting elevator is not complete, its section lights up red, the posting on the orthotics summary lights up red and the Presection on the summary is not checked
-//Top covers:Vinyl, leather, eva, NCN, Diabetic re the options accross the top, only one can be selected, and you choose the color or thicknesss, one must be selected
-//Add Poron under topcover, two buttons for 1/16 1/8, only one selected, not required
 //Corrections and modifications has to be the same if order two pairs - off same mold
 //Accomodations go on the top covers and extensions
 //4 ft reinforcement something
+//PolyMax only can have a posting of Polypropylene
+//Nothing else can have a posting of Polypropylene
+//Highlight the buttons where action needs to be taken - if weight not supplied and need to choose material thickness, let them know
+// add field for intrinsic metatarsal pad in mm left and right
+//read forms to stored stuff, picker views and text
+
+//Validation - Have to have heel cup both left and right
+//make it so : material thickness or weight is required
+
+//if email / sftp fails sending, then show order not sent
+//make sure save patient data upon leaving screen even if next not
+//Patient name needs to be there before allowed to proceed to orthotics
+//If rush order, say it in the subject of the email
 
 //Cheif compleaint diagnossis button goes to the rush order forms
 
@@ -54,16 +51,20 @@
 
 //Pororn is not a top cover material, but it is an add on
 
+//TODO password protect - later
+
+// create an email account:  eScanOutbox@root-lab.com
+
+
+
 
 //TODO
-//Finish Defaults to Form
 //Finish Form to Order
 //Finish Order to text
 //Finish making a PDF
 //reset picker views
 //In order to save, need patient name, doctor name
 //Richie Brace Form
-//eScan
 //Submit Form
 //Email PDF
 //Better Pictures
@@ -88,6 +89,15 @@
 
 
 //(TEST)Orthotics button label still off
+//(TEST)If heel cup height other type in, deselct UISwitches, vice versa, per left right
+//(TEST) Add left and right on all items in the Orthosis Specification form
+//(TEST)  deselect vertical if inverted or everted selected
+//(TEST)  deselect inverted if vertical or everted selected
+//(TEST)  deselect everted if vertical or inverted selected
+//(TEST) Add the word width after anterior width description
+//(TEST) Put inch sign on polypropelene
+//(TEST) Add white and naturl poly, make Natural the default (on top)
+//(TEST) On medial arch fill, only one selected per foot, and one must be selected, and standard is the default
 
 
 // (DONE) First name,  last name Practitioner Page
@@ -156,9 +166,13 @@ let orthoticMateriaPickerMap: [Int] =
 
 
 let anteriorWidthPickerData: [String] =
-    ["Extra Narrow","Narrow","Standard","Wide","Extra wide", "Full width"];
+    ["Extra Narrow width","Narrow width","Standard width","Wide width","Extra wide width", "Full width"];
 
+let postingRearfootPostTypePickerData: [String] =
+    ["No Post","Crepe","Bitkocork™","Acrylic","Polypropylene"];
 
+let orthosisMaterialColorLabels: [String] =
+    ["Natural","White"];
 
 let orthosisMaterialTypeLabels: [String] =
     ["Polypropylene","Graphite Composite (TL-2100)","Fiberglass Composite (TL-Silver)","Acrylic (Polydor)","High-Density Polyethylene (HDPE)"];
@@ -167,7 +181,7 @@ let orthosisPolypropyleneColorLabels: [String] =
     ["Natural","White"];
 
 let orthosisPolypropyleneLabels: [String] =
-    ["Per weight","1/8","5/32","3/16","1/4"];
+    ["Per weight","1/8\"","5/32\"","3/16\"","1/4\""];
 
 let orthosisGraphiteCompositeLabels: [String] =
     ["Per weight",".070 semi-flexible",".090 semi-rigid",".110 rigid",".110 ultra strength"];
@@ -184,6 +198,27 @@ let orthosisAcrylicLabels: [String] =
 let orthosisHighDensityPolyetheleneLabels: [String] =
     ["Per weight","2mm","3mm","4mm"];
 
+let topCoversAndExtensionsTopCoverLengthPickerData: [String] =
+    ["Orthosis only", "To sulcus", "Full length"];
+
+let topCoversAndExtensionsTopCoverMaterialPickerData: [[String]] =
+    [
+        ["Vinyl", "Black", "Forest", "Bronze"],
+        ["Leather", "Black", "Brown"],
+        ["EVA", "1/16\"", "1/8\""],
+        ["NCN™ (Nylon/Neoprene)", "1/16\"", "1/8\""],
+        ["Diabetic", "1/16\" poron", "1/8\" plastazote"],
+        ["Poron under topcover", "1/16\"", "1/8\""]
+    ];
+
+let topCoversAndExtensionsForefootExtensionMaterialPickerData: [String] =
+    ["Poron", "Korex", "EVA", "NCN™"];
+
+let topCoversAndExtensionsForefootExtensionThicknessPickerData: [String] =
+    ["1/16\"", "1/8\"", "3/16\"", "1/4\""];
+
+let topCoversAndExtensionsForefootExtensionExtensionLengthPickerData: [String] =
+    ["Sulcus", "Full length"];
 
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
@@ -208,6 +243,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if (pickerView == orthoticsFunctional) {
             return orthoticMateriaPickerData.count
         }
+        else if (pickerView == topCoversAndExtensionsTopCoverMaterialPicker) {
+            return topCoversAndExtensionsTopCoverMaterialPickerData.count
+        }
+       // toto here
         return 1
     }
     
@@ -221,8 +260,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             return practitioners.count;
         } else if (pickerView == orthoticSpecificationsAnteriorWidthLeftPicker) {
             return anteriorWidthPickerData.count;
+        } else if (pickerView == postingRearfootPostTypePicker) {
+            //TODO change here based on picked item
+            return postingRearfootPostTypePickerData.count
         } else if (pickerView == orthoticSpecificationsAnteriorWidthRightPicker) {
             return anteriorWidthPickerData.count;
+        } else if (pickerView == orthoticSpecificationsAnteriorWidthRightPicker) {
+            return anteriorWidthPickerData.count;
+        } else if (pickerView == orthoticMaterialColorPicker) {
+            return orthosisMaterialColorLabels.count;
         } else if (pickerView == orthoticMaterialPicker) {
             let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
             if (theMOI.orthoticsMaterialSelection == orthosisMaterialPolypropyleneIndex) {
@@ -256,51 +302,146 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
                 
-                orthosisCorrectionsAndModificationsSelectionLabel.text = "intrinsic forefoot, vertical heel bisection";
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+
                 orthosisPostingSelectionLabel.text = "4/4 firm crepe, 8mm elevator";
                 orthosisTopCoversAndExtensionsSelectionLabel.text = "orthosis length, vinyl";
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+                
+                
             } else if (row == 1 && component == 0) { //PolyMax
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+
+                postingRearfootPostTypePicker.selectRow(4, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 2 && component == 0) {//Graphite
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
             } else if (row == 3 && component == 0) {//Fiberglass
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
             } else if (row == 4 && component == 0) { //Acrylic
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
             } else if (row == 0 && component == 1) { //Multi Sport
 //                orthosisSpecificationsHeelCupHeight16mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight16mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 1 && component == 1) { //Multi Sport Plus
                 //TODO how do I do 16
 //                orthosisSpecificationsHeelCupHeight16mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight16mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 2 && component == 1) { //Soft Sport
 //                orthosisSpecificationsHeelCupHeight16mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight16mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 3 && component == 1) { //Soft Sport Flex
 //                orthosisSpecificationsHeelCupHeight16mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight16mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 4 && component == 1) { //SSC™
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
 
             } else if (row == 0 && component == 2) { //Men's Dress
                 //TODO 12?
@@ -308,29 +449,71 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 //                orthosisSpecificationsHeelCupHeight12mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 1 && component == 2) { //Women's Casual
                 orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
+                postingRearfootPostingElevatorOthermmLeft.text = "10"
+                postingRearfootPostingElevatorOthermmRight.text = "10"
             } else if (row == 2 && component == 2) { //Women's High-Heel
                 //TODO what is minimal heel cup?
 //                orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
+
             } else if (row == 3 && component == 2) { //Hole-Heel™
                 //TODO 10-12?
 //                orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
+
             } else if (row == 4 && component == 2) { //Cobra
                 //TODO 12?
 //                orthosisSpecificationsHeelCupHeight12mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight12mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
+
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
 
             } else if (row == 0 && component == 3) { //Blake 25
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
@@ -339,6 +522,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 orthosisSpecificationsOtherMedmmRight.text="23";
                 orthosisSpecificationsOtherLatmmLeft.text="21";
                 orthosisSpecificationsOtherLatmmRight.text="21";
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(2, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 1 && component == 3) { //Blake 35˚
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
@@ -346,6 +537,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 orthosisSpecificationsOtherMedmmRight.text="23";
                 orthosisSpecificationsOtherLatmmLeft.text="21";
                 orthosisSpecificationsOtherLatmmRight.text="21";
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(2, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 2 && component == 3) { //Blake 45˚
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
@@ -353,6 +552,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 orthosisSpecificationsOtherMedmmRight.text="23";
                 orthosisSpecificationsOtherLatmmLeft.text="21";
                 orthosisSpecificationsOtherLatmmRight.text="21";
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(2, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 3 && component == 3) { //Modified UCBL
                 //TODO 30?
                 //                orthosisSpecificationsHeelCupHeight12mmLeftUISwitch.isOn = true;
@@ -360,34 +567,74 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(3, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(3, inComponent: 0, animated: false)
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
             } else if (row == 4 && component == 3) { //Cusion-Flex™
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 0 && component == 4) { //Cushion-Flex-Control™
-                orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
-                orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
-                orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-                orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 1 && component == 4) { //Diaba-Flex™
+                
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+
+                //TODO EVA Post?
+                
+            } else if (row == 5 && component == 3) { //Cushion-Flex-Control™
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
                 
-            } else if (row == 2 && component == 4) { //Diaba-Flex-Control™
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isSelected = true;
+                correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
+            } else if (row == 6 && component == 3) { //Diaba-Flex™
                 orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
                 orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            } else if (row == 3 && component == 4) { //Accommodative
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+
+                //TODO EVA POST?
+            } else if (row == 7 && component == 3) { //Diaba-Flex-Control™
+                orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
+                orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
+                orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
+                orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+                correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = true;
+                correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = true;
+                
+                postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+                postingRearfootPostingElevator8mmLeftUISwitch.isSelected = true;
+                postingRearfootPostingElevator8mmRightUISwitch.isSelected = true;
+
+            } else if (row == 3 && component == 3) { //Accommodative
                 //TODO what is deep?
 //                orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn = true;
 //                orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn = true;
                 orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(5, inComponent: 0, animated: false)
                 orthoticSpecificationsAnteriorWidthRightPicker.selectRow(5, inComponent: 0, animated: false)
                 
+                postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
+
             }
             
             for i in 0...4 {
@@ -400,7 +647,28 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             readOrthosisSpecificationForm();
             let description = calculateOrthosisSpecificationDescriptionFromOrder();
             orthosisSpecificationsSelectionLabel.text = description;
+        } else if (pickerView == practitionerPicker) {
+            let theSelection = practitionerPicker.selectedRow(inComponent: 0);
+            if (theSelection == 0) {
+                practitionerNameInput.text = "";
+                practitionerLastNameInput.text = "";
+                practitionerBillingAddressInput.text = "";
+                practitionerShippingAddressInput.text = "";
+                practitionerPhoneInput.text = "";
+                practitionerEmailInput.text = "";
+            } else {
+                let thePractitioner = practitioners[theSelection];
+                practitionerNameInput.text = thePractitioner.firstName;
+                practitionerLastNameInput.text = thePractitioner.lastName;
+                practitionerBillingAddressInput.text = thePractitioner.billingAddress;
+                practitionerShippingAddressInput.text = thePractitioner.shippingAddress;
+                practitionerPhoneInput.text = thePractitioner.phone;
+                practitionerEmailInput.text = thePractitioner.email;
+            }
+            nextButton.isEnabled = !(practitionerNameInput.text?.isEmpty ?? false);
+            defaultPractitionerButton.isEnabled = !(practitionerNameInput.text?.isEmpty ?? false);
         }
+
         //TODO fill in xxx here
         //print(myPickerViewData[row])
     }
@@ -421,6 +689,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
             pickerLabel?.textAlignment = .center
         }
+        
+        
+        
         if (pickerView == orthoticsFunctional) {
             pickerLabel?.text = orthoticMateriaPickerData[component][row]
         } else if (pickerView == patientGender) {
@@ -431,6 +702,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             pickerLabel?.text = anteriorWidthPickerData[row]
         } else if (pickerView == orthoticSpecificationsAnteriorWidthRightPicker) {
             pickerLabel?.text = anteriorWidthPickerData[row]
+        } else if (pickerView == orthoticMaterialColorPicker) {
+            pickerLabel?.text = orthosisMaterialColorLabels[row]
+        } else if (pickerView == postingRearfootPostTypePicker) {
+            //TODO change here based on xx
+            pickerLabel?.text = postingRearfootPostTypePickerData[row]
         } else if (pickerView == orthoticMaterialPicker) {
             let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
             if (theMOI.orthoticsMaterialSelection == orthosisMaterialPolypropyleneIndex) {
@@ -460,7 +736,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         pages.append(openingPage)              // 0
         pages.append(orderManagement)          // 1
         pages.append(practitionerManagement)   // 2
-        pages.append(newPractitioner)          // 3
+        pages.append(practitionerManagement)          // 3
         pages.append(patientManagement)        // 4
 
         pages.append(newOrderTypeForm)         // 5
@@ -483,7 +759,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         orderManagement.isHidden = true;
         practitionerManagement.isHidden = true;
-        newPractitioner.isHidden = true;
         patientManagement.isHidden = true;
         newOrderTypeForm.isHidden = true;
         orthoticsForm.isHidden = true;
@@ -523,7 +798,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             backButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             orthoticsButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             richieBraceButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
-            editPractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             deletePractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             defaultPractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             orthosisMaterialButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
@@ -539,6 +813,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             practitionerLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             practitionerNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             practitionerLastNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerPhoneLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerEmailLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientLastNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
@@ -549,7 +825,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             submitLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthoticMaterialTypeLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
 
-            newPractitionerLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
             newPractitionerNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             newPractitionerShippingAddressLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             newPractitionerBillingAddressLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
@@ -581,12 +856,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
             
             
-            whichPractitionerLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
 
             practitionerNameInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             practitionerLastNameInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             practitionerBillingAddressInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             practitionerShippingAddressInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
+            practitionerEmailInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
+            practitionerPhoneInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientNameInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientLastNameInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientAgeInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
@@ -605,7 +881,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             patientGender.dataSource = self;
             practitionerPicker.delegate = self;
             practitionerPicker.dataSource = self;
+            postingRearfootPostTypePicker.delegate = self;
+            postingRearfootPostTypePicker.dataSource = self;
+            topCoversAndExtensionsTopCoverLengthPicker.delegate = self;
+            topCoversAndExtensionsTopCoverLengthPicker.dataSource = self;
+            topCoversAndExtensionsTopCoverMaterialPicker.delegate = self;
+            topCoversAndExtensionsTopCoverMaterialPicker.dataSource = self;
+            topCoversAndExtensionsForefootExtensionMaterialPicker.delegate = self;
+            topCoversAndExtensionsForefootExtensionMaterialPicker.dataSource = self;
+            topCoversAndExtensionsForefootExtensionThicknessPicker.delegate = self;
+            topCoversAndExtensionsForefootExtensionThicknessPicker.dataSource = self;
+            topCoversAndExtensionsForefootExtensionExtensionLengthPicker.delegate = self;
+            topCoversAndExtensionsForefootExtensionExtensionLengthPicker.dataSource = self;
 
+            
             //orthoticsMaterialPicker defined in storyboard
             
             for i in 0 ..<  orthoticsMaterialForm.subviews.count {
@@ -723,12 +1012,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
             
         practitionerNameInput.delegate = self
-        
-
-        practitionerNameInput.delegate = self
         practitionerLastNameInput.delegate = self
         practitionerBillingAddressInput.delegate = self
         practitionerShippingAddressInput.delegate = self
+        practitionerPhoneInput.delegate = self
+        practitionerEmailInput.delegate = self
         patientNameInput.delegate = self
         patientLastNameInput.delegate = self
         patientAgeInput.delegate = self
@@ -774,7 +1062,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var openingPage: UIView!
     @IBOutlet var orderManagement: UIView!
     @IBOutlet var practitionerManagement: UIView!
-    @IBOutlet var newPractitioner: UIView!
     @IBOutlet var patientManagement: UIView!
     @IBOutlet var newOrderTypeForm: UIView!
     @IBOutlet var orthoticsForm: UIView!
@@ -805,7 +1092,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var existingOrderButton: UIButton!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var backButton: UIButton!
-    @IBOutlet var editPractitionerButton: UIButton!
     @IBOutlet var defaultPractitionerButton: UIButton!
     @IBOutlet var deletePractitionerButton: UIButton!
     @IBOutlet var orthoticsButton: UIButton!
@@ -827,8 +1113,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var practitionerLabel: UILabel!
     @IBOutlet var practitionerNameLabel: UILabel!
     @IBOutlet var practitionerLastNameLabel: UILabel!
-    @IBOutlet var whichPractitionerLabel: UILabel!
+    @IBOutlet var practitionerPhoneLabel: UILabel!
+    @IBOutlet var practitionerEmailLabel: UILabel!
     @IBOutlet var patientLabel: UILabel!
+    @IBOutlet var newPractitionerLabel: UILabel!
     @IBOutlet var patientNameLabel: UILabel!
     @IBOutlet var patientLastNameLabel: UILabel!
     @IBOutlet var materialLabel: UILabel!
@@ -836,7 +1124,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var eScanLabel: UILabel!
     @IBOutlet var eScanNameLabel: UILabel!
     @IBOutlet var submitLabel: UILabel!
-    @IBOutlet var newPractitionerLabel: UILabel!
     @IBOutlet var newPractitionerNameLabel: UILabel!
     @IBOutlet var newPractitionerShippingAddressLabel: UILabel!
     @IBOutlet var newPractitionerBillingAddressLabel: UILabel!
@@ -873,6 +1160,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var practitionerLastNameInput: UITextField!
     @IBOutlet var practitionerBillingAddressInput: UITextField!
     @IBOutlet var practitionerShippingAddressInput: UITextField!
+    @IBOutlet var practitionerPhoneInput: UITextField!
+    @IBOutlet var practitionerEmailInput: UITextField!
     @IBOutlet var patientNameInput: UITextField!
     @IBOutlet var patientLastNameInput: UITextField!
     @IBOutlet var patientAgeInput: UITextField!
@@ -894,6 +1183,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var correctionsAndModificationsAddLatHeelExpansionLeft: UITextField!
     @IBOutlet var correctionsAndModificationsMedialHeelSkiveRight: UITextField!
     @IBOutlet var correctionsAndModificationsMedialHeelSkiveLeft: UITextField!
+    @IBOutlet var correctionsAndModificationsIntrinsicMetatarsalPadMmRight: UITextField!
+    @IBOutlet var correctionsAndModificationsIntrinsicMetatarsalPadMmLeft: UITextField!
     @IBOutlet var orthosisSpecificationsOtherMedmmLeft: UITextField!
     @IBOutlet var orthosisSpecificationsOtherMedmmRight: UITextField!
     @IBOutlet var orthosisSpecificationsOtherLatmmLeft: UITextField!
@@ -913,8 +1204,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var orthoticsFunctional: UIPickerView!
     @IBOutlet var practitionerPicker: UIPickerView!
     @IBOutlet var orthoticMaterialPicker: UIPickerView!
+    @IBOutlet var orthoticMaterialColorPicker: UIPickerView!
     @IBOutlet var orthoticSpecificationsAnteriorWidthLeftPicker: UIPickerView!
     @IBOutlet var orthoticSpecificationsAnteriorWidthRightPicker: UIPickerView!
+    @IBOutlet var postingRearfootPostTypePicker: UIPickerView!
+    @IBOutlet var topCoversAndExtensionsTopCoverLengthPicker: UIPickerView!
+    @IBOutlet var topCoversAndExtensionsTopCoverMaterialPicker: UIPickerView!
+    @IBOutlet var topCoversAndExtensionsForefootExtensionMaterialPicker: UIPickerView!
+    @IBOutlet var topCoversAndExtensionsForefootExtensionThicknessPicker: UIPickerView!
+    @IBOutlet var topCoversAndExtensionsForefootExtensionExtensionLengthPicker: UIPickerView!
 
     @IBOutlet var correctionsAndModificationsCastOrientationVerticalLeftUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsCastOrientationVerticalRightUISwitch: UISwitch!
@@ -922,8 +1220,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsForefootCorrectionTypeExtrinsicRightUISwitch: UISwitch!
-    @IBOutlet var correctionsAndModificationsNoFillerLeftUISwitch: UISwitch!
-    @IBOutlet var correctionsAndModificationsNoFillerRightUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsMedialArchFillIncreasedRightUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsMedialArchFillStandardLeftUISwitch: UISwitch!
@@ -1005,9 +1301,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func NewOrderAction(sender: UIButton){
         if (defaultPractitioner != nil) {
             practitionerNameLabel.text = (defaultPractitioner!.firstName)! + " " + (defaultPractitioner!.lastName)!;
+            practitionerFinishedUIImageView.image = UIImage(named: "checked.png");
+
             changePageTo(pageTo: patientManagementPageIndex);
-        } else if (practitioners.count < 2) {
-            changePageTo(pageTo: newPractitionerPageIndex);
         } else {
             changePageTo(pageTo: practitionerManagementPageIndex);
         }
@@ -1019,34 +1315,50 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func ClickBackAction(sender: UIButton){
         changePageTo(pageTo: (backStack.popLast())!);
     }
+    
+    func savePractitionerFromPage(setAsDefault: Bool) {
+        var thePractitioner :(Practitioner);
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        if (practitionerPicker.selectedRow(inComponent: 0) == 0) {
+            if (practitionerNameInput.text!.isEmpty) {
+                return;
+            }
+            thePractitioner = Practitioner.init(entity: NSEntityDescription.entity(forEntityName: "Practitioner", in:context)!, insertInto: context);
+            practitioners.append(thePractitioner);
+            
+        } else {
+            thePractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
+        }
+        thePractitioner.firstName = practitionerNameInput.text;
+        thePractitioner.lastName = practitionerLastNameInput.text;
+        thePractitioner.shippingAddress = practitionerShippingAddressInput.text;
+        thePractitioner.billingAddress = practitionerBillingAddressInput.text;
+        thePractitioner.phone = practitionerPhoneInput.text;
+        thePractitioner.email = practitionerEmailInput.text;
+        
+        
+        practitionerFinishedUIImageView.image = UIImage(named: "checked.png");
+        practitionerNameLabel.text = thePractitioner.firstName! + " " + thePractitioner.lastName!;
+        practitionerPicker.reloadAllComponents();
+
+        if (practitionerPicker.selectedRow(inComponent: 0) == 0) {
+            practitionerPicker.selectRow(practitioners.count - 1, inComponent: 0, animated: false)
+        }
+        
+        if (setAsDefault) {
+            defaultPractitioner = thePractitioner;
+            defaults?.defaultPractitioner = Int16(practitionerPicker.selectedRow(inComponent: 0));
+        }
+        
+        appDelegate.saveContext()
+        changePageTo(pageTo: patientManagementPageIndex);
+    }
+    
     @IBAction func ClickNextAction(sender: UIButton){
         if (screenViewing == practitionerManagementPageIndex) {
-            if (practitionerPicker.selectedRow(inComponent: 0) == 0) {
-                changePageTo(pageTo: newPractitionerPageIndex);
-            } else {
-                practitionerFinishedUIImageView.image = UIImage(named: "checked.png");
-                changePageTo(pageTo: patientManagementPageIndex);
-                let thePractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
-                practitionerNameLabel.text = thePractitioner.firstName! + " " + thePractitioner.lastName!;
-            }
-        } else if (screenViewing == newPractitionerPageIndex) {
-            changePageTo(pageTo: patientManagementPageIndex);
-            practitionerNameLabel.text = practitionerNameInput.text! + " " + practitionerLastNameInput.text!;
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let thePractitioner = Practitioner.init(entity: NSEntityDescription.entity(forEntityName: "Practitioner", in:context)!, insertInto: context);
-
-            thePractitioner.firstName = practitionerNameInput.text;
-            thePractitioner.lastName = practitionerLastNameInput.text;
-            thePractitioner.shippingAddress = practitionerShippingAddressInput.text;
-            thePractitioner.billingAddress = practitionerBillingAddressInput.text;
-            appDelegate.saveContext()
-
-            practitioners.append(thePractitioner);
-            practitionerPicker.reloadAllComponents();
-            
-            practitionerFinishedUIImageView.image = UIImage(named: "checked.png");
-
+            savePractitionerFromPage(setAsDefault: false);
         } else if (screenViewing == patientManagementPageIndex) {
             let firstName = patientNameInput.text;
             let lastName = patientLastNameInput.text;
@@ -1113,6 +1425,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             practitionerNameInput.text = "";
             practitionerBillingAddressInput.text = "";
             practitionerShippingAddressInput.text = "";
+            practitionerPhoneInput.text = "";
+            practitionerEmailInput.text = "";
             patientNameInput.text = "";
             patientAgeInput.text = "";
             patientHeightInput.text = "";
@@ -1146,33 +1460,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     }
 
-    @IBAction func ClickEditPractitioner(sender: UIButton){
-        changePageTo(pageTo: newPractitionerPageIndex);
-        practitionerNameInput.text = practitionerNameInput.text;
-        practitionerBillingAddressInput.text = practitionerShippingAddressInput.text;
-        practitionerShippingAddressInput.text = practitionerBillingAddressInput.text;
-        
-    }
-
     @IBAction func ClickDeletePractitioner(sender: UIButton){
         
     }
 
     @IBAction func ClickDefaultPractitioner(sender: UIButton){
-        practitionerNameLabel.text = (defaultPractitioner!.firstName)! + " " + (defaultPractitioner!.lastName)!;
-        changePageTo(pageTo: patientManagementPageIndex);
-        defaults?.defaultPractitioner = Int16(practitionerPicker.selectedRow(inComponent: 0));
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-
-        do {
-            try context.save();
-            appDelegate.saveContext();
-        } catch let error as NSError {
-            //TODO Cannot save, fail startup
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        defaultPractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
+        savePractitionerFromPage(setAsDefault: true);
     }
 
     @IBAction func ClickOrthoticsForm(sender: UIButton){
@@ -1188,6 +1481,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func ClickOrthosisMaterial(sender: UIButton){
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
         orthoticMaterialTypeLabel.text = orthosisMaterialTypeLabels[Int(theMOI.orthoticsMaterialSelection)];
+        orthoticMaterialColorPicker.isHidden = (Int(theMOI.orthoticsMaterialSelection) != 0)
         orthoticMaterialPicker.reloadAllComponents();
         changePageTo(pageTo: orthoticsMaterialFormPageIndex)
     }
@@ -1254,7 +1548,26 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         areYouSureView.isHidden = true;
     }
 
+    @IBAction func ClickCorrectionsAndModificationsCastOrientationVerticalLeft(sender: UIButton){
+        if (correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected) {
+            correctionsAndModificationsCastOrientationInvertedLeft.text = "";
+            correctionsAndModificationsCastOrientationEvertedLeft.text = "";
+        }
+    }
+    @IBAction func ClickCorrectionsAndModificationsCastOrientationVerticalRight(sender: UIButton){
+        if (correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected) {
+            correctionsAndModificationsCastOrientationInvertedRight.text = "";
+            correctionsAndModificationsCastOrientationEvertedRight.text = "";
+        }
+    }
 
+    @IBAction func ClickEditPractitioner(sender: UIButton){
+        
+    }
+
+
+
+    
     func changePageTo(pageTo: Int?) {
         clearAllCarrotsFromLables();
         pages[screenViewing].isHidden = true;
@@ -1265,6 +1578,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         menuView.isHidden = screenViewing == 0;
         nextButton.isHidden = screenViewing == newOrderTypePageIndex;
         backNextView.isHidden = screenViewing == 0;
+        if (pageTo == practitionerManagementPageIndex) {
+            nextButton.isEnabled = !(practitionerNameInput.text?.isEmpty ?? false);
+            defaultPractitionerButton.isEnabled = !(practitionerNameInput.text?.isEmpty ?? false);
+        } else if (pageTo == patientManagementPageIndex) {
+            nextButton.isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
+                    !(patientLastNameInput.text?.isEmpty ?? false);
+        }
         setCarrot();
     }
 
@@ -1416,10 +1736,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func readCorrectionsAndModificationsForm() {
-        order.correctionsAndModificationsNoFillerLeft =
-            correctionsAndModificationsNoFillerLeftUISwitch.isOn;
-        order.correctionsAndModificationsNoFillerRight =
-            correctionsAndModificationsNoFillerRightUISwitch.isOn;
         order.correctionsAndModificationsMedialArchFillMinimalLeft =
             correctionsAndModificationsMedialArchFillMinimalLeftUISwitch.isOn;
         order.correctionsAndModificationsMedialArchFillMinimalRight =
@@ -1542,10 +1858,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
 
     func setCorrectionsAndModificationsFromOrder() {
-        correctionsAndModificationsNoFillerLeftUISwitch.isOn =
-        order.correctionsAndModificationsNoFillerLeft;
-            correctionsAndModificationsNoFillerRightUISwitch.isOn =
-        order.correctionsAndModificationsNoFillerRight;
             correctionsAndModificationsMedialArchFillMinimalLeftUISwitch.isOn =
         order.correctionsAndModificationsMedialArchFillMinimalLeft;
             correctionsAndModificationsMedialArchFillMinimalRightUISwitch.isOn =
@@ -1909,10 +2221,62 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             correctionsAndModificationsCastOrientationEvertedLeft.text = "";
             correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = false;
         }
-        if (textField == correctionsAndModificationsCastOrientationEvertedLeft) {
+        else if (textField == correctionsAndModificationsCastOrientationEvertedLeft) {
             correctionsAndModificationsCastOrientationInvertedLeft.text = "";
             correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = false;
         }
+        else if (textField == orthosisSpecificationsOtherMedmmLeft && orthosisSpecificationsOtherMedmmLeft.text?.isEmpty ?? false) {
+                orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isSelected = false;
+                orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isSelected = false;
+                orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isSelected = false;
+        }
+        else if (textField == orthosisSpecificationsOtherLatmmLeft && orthosisSpecificationsOtherLatmmLeft.text?.isEmpty ?? false) {
+            orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isSelected = false;
+        }
+        else if (textField == orthosisSpecificationsOtherMedmmRight && orthosisSpecificationsOtherMedmmRight.text?.isEmpty ?? false) {
+            orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isSelected = false;
+        }
+        else if (textField == orthosisSpecificationsOtherLatmmRight && orthosisSpecificationsOtherLatmmRight.text?.isEmpty ?? false) {
+            orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isSelected = false;
+        }
+        else if (textField == correctionsAndModificationsCastOrientationInvertedLeft && correctionsAndModificationsCastOrientationInvertedLeft.text?.isEmpty ?? false) {
+            correctionsAndModificationsCastOrientationEvertedLeft.text = "";
+            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = false;
+        }
+        else if (textField == correctionsAndModificationsCastOrientationInvertedRight && correctionsAndModificationsCastOrientationInvertedRight.text?.isEmpty ?? false) {
+            correctionsAndModificationsCastOrientationEvertedRight.text = "";
+            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = false;
+        }
+        else if (textField == correctionsAndModificationsCastOrientationEvertedLeft && correctionsAndModificationsCastOrientationEvertedLeft.text?.isEmpty ?? false) {
+            correctionsAndModificationsCastOrientationInvertedLeft.text = "";
+            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isSelected = false;
+        }
+        else if (textField == correctionsAndModificationsCastOrientationEvertedRight && correctionsAndModificationsCastOrientationEvertedRight.text?.isEmpty ?? false) {
+            correctionsAndModificationsCastOrientationInvertedRight.text = "";
+            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isSelected = false;
+        } else if (textField == practitionerNameInput) {
+            nextButton.isEnabled = !(practitionerNameInput.text?.isEmpty ?? false);
+            defaultPractitionerButton.isEnabled = !(practitionerNameInput.text?.isEmpty ?? false);
+        } else if (textField == practitionerBillingAddressInput) {
+            if (practitionerShippingAddressInput.text!.isEmpty) {
+                practitionerShippingAddressInput.text = practitionerBillingAddressInput.text!;
+            }
+        } else if (textField == patientNameInput) {
+            nextButton.isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
+                !(patientLastNameInput.text?.isEmpty ?? false);
+            //todo add scan button here
+        } else if (textField == patientLastNameInput) {
+            nextButton.isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
+                !(patientLastNameInput.text?.isEmpty ?? false);
+        }
+
+
     }
     
     @objc func switchChanged(mySwitch: UISwitch) {
@@ -1946,38 +2310,51 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if (orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isSelected) {
             orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isSelected = false;
             orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isSelected = false;
+            orthosisSpecificationsOtherLatmmLeft.text = "";
+            orthosisSpecificationsOtherMedmmLeft.text = "";
         }
     }
     @IBAction func clickHeelCupHeight18Left(sender: UIButton) {
         if (orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isSelected) {
             orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isSelected = false;
             orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isSelected = false;
+            orthosisSpecificationsOtherLatmmLeft.text = "";
+            orthosisSpecificationsOtherMedmmLeft.text = "";
         }
     }
     @IBAction func clickHeelCupHeight14Left(sender: UIButton) {
         if (orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isSelected) {
             orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isSelected = false;
             orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isSelected = false;
+            orthosisSpecificationsOtherLatmmLeft.text = "";
+            orthosisSpecificationsOtherMedmmLeft.text = "";
         }
     }
     @IBAction func clickHeelCupHeight10Right(sender: UIButton) {
         if (orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isSelected) {
             orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isSelected = false;
             orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsOtherLatmmRight.text = "";
+            orthosisSpecificationsOtherMedmmRight.text = "";
         }
     }
     @IBAction func clickHeelCupHeight18Right(sender: UIButton) {
         if (orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isSelected) {
             orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isSelected = false;
             orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsOtherLatmmRight.text = "";
+            orthosisSpecificationsOtherMedmmRight.text = "";
         }
     }
     @IBAction func clickHeelCupHeight14Right(sender: UIButton) {
         if (orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isSelected) {
             orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isSelected = false;
             orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isSelected = false;
+            orthosisSpecificationsOtherLatmmRight.text = "";
+            orthosisSpecificationsOtherMedmmRight.text = "";
         }
     }
+
 
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
@@ -2006,6 +2383,71 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         viewDidLoad()
         
         
+    }
+    
+    @IBAction func clickCorrectionsAndModificationsMedialArchFillIncreasedLeftUISwitch(sender: UIButton) {
+        if (correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.isSelected) {
+            correctionsAndModificationsMedialArchFillMinimalLeftUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillStandardLeftUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillDecreasedLeftUISwitch.isSelected = false;
+        }
+    }
+    
+    @IBAction func clickCorrectionsAndModificationsMedialArchFillStandardLeftUISwitch(sender: UIButton) {
+        if (correctionsAndModificationsMedialArchFillStandardLeftUISwitch.isSelected) {
+            correctionsAndModificationsMedialArchFillMinimalLeftUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillDecreasedLeftUISwitch.isSelected = false;
+        }
+    }
+    
+    @IBAction func clickCorrectionsAndModificationsMedialArchFillDecreasedLeftUISwitch(sender: UIButton) {
+        if (correctionsAndModificationsMedialArchFillDecreasedLeftUISwitch.isSelected) {
+            correctionsAndModificationsMedialArchFillMinimalLeftUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillStandardLeftUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.isSelected = false;
+        }
+    }
+    
+    @IBAction func clickCorrectionsAndModificationsMedialArchFillMinimalLeftUISwitch(sender: UIButton) {
+        if (correctionsAndModificationsMedialArchFillMinimalLeftUISwitch.isSelected) {
+            correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillStandardLeftUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillDecreasedLeftUISwitch.isSelected = false;
+        }
+    }
+
+    
+    @IBAction func clickCorrectionsAndModificationsMedialArchFillIncreasedRightUISwitch(sender: UIButton) {
+        if (correctionsAndModificationsMedialArchFillIncreasedRightUISwitch.isSelected) {
+            correctionsAndModificationsMedialArchFillMinimalRightUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillStandardRightUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillDecreasedRightUISwitch.isSelected = false;
+        }
+    }
+    
+    @IBAction func clickCorrectionsAndModificationsMedialArchFillStandardRightUISwitch(sender: UIButton) {
+        if (correctionsAndModificationsMedialArchFillStandardRightUISwitch.isSelected) {
+            correctionsAndModificationsMedialArchFillMinimalRightUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillIncreasedRightUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillDecreasedRightUISwitch.isSelected = false;
+        }
+    }
+    
+    @IBAction func clickCorrectionsAndModificationsMedialArchFillDecreasedRightUISwitch(sender: UIButton) {
+        if (correctionsAndModificationsMedialArchFillDecreasedRightUISwitch.isSelected) {
+            correctionsAndModificationsMedialArchFillMinimalRightUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillStandardRightUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillIncreasedRightUISwitch.isSelected = false;
+        }
+    }
+    
+    @IBAction func clickCorrectionsAndModificationsMedialArchFillMinimalRightUISwitch(sender: UIButton) {
+        if (correctionsAndModificationsMedialArchFillMinimalRightUISwitch.isSelected) {
+            correctionsAndModificationsMedialArchFillIncreasedRightUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillStandardRightUISwitch.isSelected = false;
+            correctionsAndModificationsMedialArchFillDecreasedRightUISwitch.isSelected = false;
+        }
     }
 //
 //    func drawPDFUsingPrintPageRenderer(printPageRenderer : CustomPrintPageRenderer) -> NSData! {

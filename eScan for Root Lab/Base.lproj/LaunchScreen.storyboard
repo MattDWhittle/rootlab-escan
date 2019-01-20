@@ -18,12 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="2048" height="1536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="escan.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ms-km-ouo">
-                                <rect key="frame" x="0.0" y="0.0" width="2048" height="1536"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fastcast3d.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ms-km-ouo">
+                                <rect key="frame" x="0.0" y="398" width="2048" height="689"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="tG3-hi-XmI">
-                                <rect key="frame" x="67" y="72" width="443" height="252"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rootlabwhitebackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="tG3-hi-XmI">
+                                <rect key="frame" x="67" y="72" width="437" height="251"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -38,7 +38,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="escan.png" width="739" height="401"/>
-        <image name="logo.png" width="182" height="99"/>
+        <image name="fastcast3d.png" width="687" height="203"/>
+        <image name="rootlabwhitebackground.png" width="232" height="153"/>
     </resources>
 </document>
