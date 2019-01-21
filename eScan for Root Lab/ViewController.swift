@@ -1324,16 +1324,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         correctionsAndModificationsCastOrientationVerticalLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         
-        depthView.isHidden = false;
+        depthView.isHidden = true;
         escanStatusLabel.isHidden = true;
-        eview.isHidden = false;
+        eview.isHidden = true;
 //        STSensorController.shared().delegate = self
         
-//        calibrationOverlay.alpha = 0
-//        calibrationOverlay.isHidden = true
-//        calibrationOverlay.isUserInteractionEnabled = false
-        calibrationOverlay.alpha = 1
-        calibrationOverlay.isHidden = false
+        calibrationOverlay.alpha = 0
+        calibrationOverlay.isHidden = true
         calibrationOverlay.isUserInteractionEnabled = false
 
         instructionOverlay.alpha = 0
@@ -1362,7 +1359,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         initializeDynamicOptions()
         syncUIfromDynamicOptions()
 
-        eaglviewDidAppear();
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -1914,11 +1910,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (pageTo == escanningPageIndex) {
             eview.isHidden = false;
             depthView.isHidden = false;
+
 //            escanStatusLabel.isHidden = false;
 //            if tryInitializeSensor() && STSensorController.shared().isConnected() {
 //                tryStartStreaming()
 //            }
             _slamState.scannerState = .cubePlacement
+            eaglviewDidAppear();
 
         } else {
             pages[screenViewing].isHidden = false;
@@ -3131,6 +3129,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if _useColorCamera {
             stopColorCamera()
         }
+        
+        changePageTo(pageTo: scanFormPageIndex)
         
         performSegue(withIdentifier: "segueMeshViewController", sender: self)
     }

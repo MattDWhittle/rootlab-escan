@@ -2630,10 +2630,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcH-P7-yHa">
-                                        <rect key="frame" x="828" y="535" width="392" height="76"/>
+                                        <rect key="frame" x="463" y="535" width="1135" height="147"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Scanner" translatesAutoresizingMaskIntoConstraints="NO" id="imn-QB-qIJ">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rootlabwhitebackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="imn-QB-qIJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2685,7 +2685,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcv-Ip-rl9" userLabel="Label - Tracking Lost">
-                                        <rect key="frame" x="766" y="966" width="517" height="110"/>
+                                        <rect key="frame" x="535" y="841" width="998" height="273"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.81960784310000001" blue="0.062745098040000002" alpha="0.75034466909999997" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2823,7 +2823,7 @@ Try to re-align or press reset.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1n4-rZ-Qda">
-                                        <rect key="frame" x="828" y="428" width="392" height="56"/>
+                                        <rect key="frame" x="463" y="428" width="1135" height="99"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Calibration" translatesAutoresizingMaskIntoConstraints="NO" id="MP6-V3-xeD">
@@ -3152,7 +3152,11 @@ Try to re-align or press reset.</string>
                         <action selector="pinchGesture:" destination="BYZ-38-t0r" id="K4c-4z-zR6"/>
                     </connections>
                 </pinchGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="0ae-Bn-L3X"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="0ae-Bn-L3X">
+                    <connections>
+                        <action selector="toggleNewTrackerVisibleWithSender:" destination="BYZ-38-t0r" id="cpI-DX-3aT"/>
+                    </connections>
+                </pongPressGestureRecognizer>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92.679355783308921" y="22.8515625"/>
@@ -3300,7 +3304,6 @@ Try to re-align or press reset.</string>
         <image name="DoneMask" width="100" height="100"/>
         <image name="ResetScanButton" width="85" height="85"/>
         <image name="ResetScanMask" width="85" height="85"/>
-        <image name="Scanner" width="90" height="90"/>
         <image name="StartScanButton" width="100" height="100"/>
         <image name="StartScanMask" width="100" height="100"/>
         <image name="fastcast3d.png" width="687" height="203"/>
