@@ -29,6 +29,15 @@
 		2D6A61E921F3DE450077A8B1 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E721F3DE3F0077A8B1 /* checked.png */; };
 		2D6A61EA21F3DE450077A8B1 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E821F3DE420077A8B1 /* unchecked.png */; };
 		2D6A61EC21F3DFAB0077A8B1 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61EB21F3DFA80077A8B1 /* Button.png */; };
+		2D6A61EE21F64A2B0077A8B1 /* MeshRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */; };
+		2D6A61F021F64A430077A8B1 /* CustomShaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61EF21F64A430077A8B1 /* CustomShaders.swift */; };
+		2D6A61F821F64A690077A8B1 /* ViewController+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F121F64A670077A8B1 /* ViewController+Camera.swift */; };
+		2D6A61F921F64A690077A8B1 /* MeshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F221F64A670077A8B1 /* MeshViewController.swift */; };
+		2D6A61FA21F64A690077A8B1 /* ViewpointController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F321F64A680077A8B1 /* ViewpointController.swift */; };
+		2D6A61FB21F64A690077A8B1 /* ViewController+SLAM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F421F64A680077A8B1 /* ViewController+SLAM.swift */; };
+		2D6A61FC21F64A690077A8B1 /* ViewController+OpenGL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F521F64A680077A8B1 /* ViewController+OpenGL.swift */; };
+		2D6A61FD21F64A690077A8B1 /* EAGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F621F64A680077A8B1 /* EAGLView.swift */; };
+		2D6A61FE21F64A690077A8B1 /* ScannerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F721F64A690077A8B1 /* ScannerExtensions.swift */; };
 		2D9B417521D2DF9C0022FE2D /* CustomPrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */; };
 		2D9B417721D3541D0022FE2D /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B417621D3541D0022FE2D /* Camera.png */; };
 		2D9B417A21D3559D0022FE2D /* RichieBrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B417921D3559D0022FE2D /* RichieBrace.storyboard */; };
@@ -94,6 +103,15 @@
 		2D6A61E721F3DE3F0077A8B1 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		2D6A61E821F3DE420077A8B1 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		2D6A61EB21F3DFA80077A8B1 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button.png; path = ../../../../Desktop/Button.png; sourceTree = "<group>"; };
+		2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshRenderer.swift; sourceTree = "<group>"; };
+		2D6A61EF21F64A430077A8B1 /* CustomShaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShaders.swift; sourceTree = "<group>"; };
+		2D6A61F121F64A670077A8B1 /* ViewController+Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Camera.swift"; sourceTree = "<group>"; };
+		2D6A61F221F64A670077A8B1 /* MeshViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshViewController.swift; sourceTree = "<group>"; };
+		2D6A61F321F64A680077A8B1 /* ViewpointController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewpointController.swift; sourceTree = "<group>"; };
+		2D6A61F421F64A680077A8B1 /* ViewController+SLAM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SLAM.swift"; sourceTree = "<group>"; };
+		2D6A61F521F64A680077A8B1 /* ViewController+OpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+OpenGL.swift"; sourceTree = "<group>"; };
+		2D6A61F621F64A680077A8B1 /* EAGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EAGLView.swift; sourceTree = "<group>"; };
+		2D6A61F721F64A690077A8B1 /* ScannerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerExtensions.swift; sourceTree = "<group>"; };
 		2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrintRenderer.swift; sourceTree = "<group>"; };
 		2D9B417621D3541D0022FE2D /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
 		2D9B417921D3559D0022FE2D /* RichieBrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RichieBrace.storyboard; sourceTree = "<group>"; };
@@ -177,6 +195,15 @@
 				2D9B417821D354280022FE2D /* images */,
 				2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */,
 				2D44BDB621B4BF9C009A1066 /* ViewController.swift */,
+				2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */,
+				2D6A61EF21F64A430077A8B1 /* CustomShaders.swift */,
+				2D6A61F621F64A680077A8B1 /* EAGLView.swift */,
+				2D6A61F221F64A670077A8B1 /* MeshViewController.swift */,
+				2D6A61F721F64A690077A8B1 /* ScannerExtensions.swift */,
+				2D6A61F121F64A670077A8B1 /* ViewController+Camera.swift */,
+				2D6A61F521F64A680077A8B1 /* ViewController+OpenGL.swift */,
+				2D6A61F421F64A680077A8B1 /* ViewController+SLAM.swift */,
+				2D6A61F321F64A680077A8B1 /* ViewpointController.swift */,
 				2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */,
 				2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */,
 				2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */,
@@ -399,11 +426,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D44BDB721B4BF9C009A1066 /* ViewController.swift in Sources */,
+				2D6A61F921F64A690077A8B1 /* MeshViewController.swift in Sources */,
 				2D9B41FE21E85E7F0022FE2D /* StructureScannerViewController.swift in Sources */,
+				2D6A61FD21F64A690077A8B1 /* EAGLView.swift in Sources */,
 				2D44BDBD21B4BF9C009A1066 /* eScan_for_Root_Lab.xcdatamodeld in Sources */,
+				2D6A61F021F64A430077A8B1 /* CustomShaders.swift in Sources */,
+				2D6A61F821F64A690077A8B1 /* ViewController+Camera.swift in Sources */,
+				2D6A61FC21F64A690077A8B1 /* ViewController+OpenGL.swift in Sources */,
 				2D44BDB521B4BF9C009A1066 /* AppDelegate.swift in Sources */,
 				2D9B41FA21E859E40022FE2D /* RichieBraceViewController.swift in Sources */,
+				2D6A61FA21F64A690077A8B1 /* ViewpointController.swift in Sources */,
+				2D6A61EE21F64A2B0077A8B1 /* MeshRenderer.swift in Sources */,
 				2D9B417521D2DF9C0022FE2D /* CustomPrintRenderer.swift in Sources */,
+				2D6A61FE21F64A690077A8B1 /* ScannerExtensions.swift in Sources */,
+				2D6A61FB21F64A690077A8B1 /* ViewController+SLAM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,15 +23,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A1A-yh-R6D" userLabel="BackNextView">
-                                <rect key="frame" x="376" y="1261" width="1672" height="275"/>
+                                <rect key="frame" x="371" y="1260" width="1677" height="276"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO2-KY-QmF">
-                                        <rect key="frame" x="141" y="26" width="246" height="149"/>
+                                        <rect key="frame" x="137" y="25" width="251" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
                                         <state key="normal" title=" Back " backgroundImage="Button.png">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                         </state>
                                         <connections>
@@ -39,11 +39,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbz-P7-jp3">
-                                        <rect key="frame" x="1371" y="26" width="252" height="149"/>
+                                        <rect key="frame" x="1371" y="25" width="257" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
                                         <state key="normal" title=" Next " backgroundImage="Button.png">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                         </state>
                                         <connections>
@@ -81,7 +81,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button.png" width="200" height="121"/>
+        <image name="Button.png" width="343" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5lg-x5-qtZ"/>

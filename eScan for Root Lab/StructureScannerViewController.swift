@@ -114,5 +114,7 @@ class StructureScannerViewController: UIViewController, STSensorControllerDelega
     }
     
     @IBOutlet var depthView: UIImageView!
+    @IBOutlet var nextButton: UIButton!
+    @IBOutlet var backButton: UIButton!
 
 }

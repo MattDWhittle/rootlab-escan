@@ -103,6 +103,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="heightInches" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shoeSize" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="shoeType" optional="YES" attributeType="String" syncable="YES"/>
@@ -123,7 +124,7 @@
         <element name="FootPhoto" positionX="117" positionY="153" width="128" height="90"/>
         <element name="MaterialOrderItem" positionX="305.16015625" positionY="67.2734375" width="128" height="90"/>
         <element name="Order" positionX="128.48828125" positionY="203.7109375" width="128" height="1290"/>
-        <element name="Patient" positionX="58.953125" positionY="-11.796875" width="128" height="180"/>
+        <element name="Patient" positionX="58.953125" positionY="-11.796875" width="128" height="195"/>
         <element name="Practitioner" positionX="-92.83203125" positionY="38.47265625" width="128" height="150"/>
     </elements>
 </model>
