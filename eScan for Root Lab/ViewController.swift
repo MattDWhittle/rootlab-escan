@@ -13,9 +13,8 @@
 //TODO
 
 //keyboard hides field
+//https://stackoverflow.com/questions/28813339/move-a-view-up-only-when-the-keyboard-covers-an-input-field
 
-//Button for Scan
-//Button for submit
 //Cannot next from chief complaint page
 //Cannot click accomodations page
 //text too small text view comments instructions
@@ -135,6 +134,15 @@ import PDFKit
 import Foundation
 import UIKit
 import GLKit
+import MessageUI
+import ImageIO
+
+protocol MeshViewDelegate: class {
+    
+    func meshViewWillDismiss()
+    func meshViewDidDismiss()
+    func meshViewDidRequestColorizing(_ mesh: STMesh,  previewCompletionHandler: @escaping () -> Void, enhancedCompletionHandler: @escaping () -> Void) -> Bool
+}
 
 let openingPageIndex = 0;
 let orderManagementPageIndex = 1;
@@ -148,8 +156,19 @@ let richieBraceFormPageIndex = 7;
 let scanFormPageIndex = 8;
 let reviewAndSubmitPageIndex = 9;
 
-let orthosisMaterialPageIndex = 10;
-let escanningPageIndex = 11;
+let orthoticsMaterialFormPageIndex = 10;
+let orthoticsCorrectionsFormPageIndex = 11;
+let orthoticsSpecificationsFormPageIndex = 12;
+let orthoticsPostingFormPageIndex = 13;
+let orthoticsTopCoversAndExtensionsFormPageIndex = 14;
+let orthoticsRushOrderFormPageIndex = 15;
+//    let orthoticsRushOrderFormPageIndex = 15;
+let orthoticsChiefComplaintFormPageIndex = 17;
+let orthoticsAccommodationsAndAdditionsFormPageIndex = 18;
+
+
+let escanningPageIndex = 19;
+let eViewingMeshPageIndex = 20;
 
 let orthosisMaterialPolypropyleneIndex = 0;
 let orthosisMaterialGraphiteCompositeIndex = 1;
@@ -412,7 +431,7 @@ struct DisplayData {
 }
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, STSensorControllerDelegate,
-STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
+STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var eview: EAGLView!
     
@@ -468,6 +487,47 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     var avCaptureSession: AVCaptureSession? = nil
     var videoDevice: AVCaptureDevice? = nil
     
+    
+    @IBOutlet weak var eviewMesh: EAGLView!
+    @IBOutlet weak var displayControl: UISegmentedControl!
+    @IBOutlet weak var meshViewerMessageLabel: UILabel!
+    
+    weak var delegate : MeshViewDelegate?
+    
+    var contextMesh: EAGLContext? = nil
+    var projectionMatrixMesh: GLKMatrix4 = GLKMatrix4Identity
+    var volumeCenter = GLKVector3Make(0,0,0)
+    var displayLink: CADisplayLink?
+    var rendererMesh: MeshRenderer!
+    var viewpointControllerMesh: ViewpointController!
+    var viewportMesh = [GLfloat](repeating: 0, count: 4)
+    var modelViewMatrixBeforeUserInteractions: GLKMatrix4?
+    var projectionMatrixBeforeUserInteractions: GLKMatrix4?
+    
+    var mailViewController: MFMailComposeViewController?
+    
+    // force the view to redraw.
+    var needsDisplay: Bool = false
+    
+    var _mesh: STMesh? = nil
+    
+    var mesh: STMesh?
+    {
+        get {
+            return _mesh
+        }
+        set {
+            _mesh = newValue
+            
+            if _mesh != nil {
+                
+                self.rendererMesh!.uploadMesh(_mesh!)
+                self.trySwitchToColorRenderingMode()
+                self.needsDisplay = true
+            }
+        }
+    }
+
     
     deinit {
         avCaptureSession!.stopRunning()
@@ -1327,38 +1387,16 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         depthView.isHidden = true;
         escanStatusLabel.isHidden = true;
         eview.isHidden = true;
+        eviewMesh.isHidden = true;
 //        STSensorController.shared().delegate = self
         
-        calibrationOverlay.alpha = 0
-        calibrationOverlay.isHidden = true
-        calibrationOverlay.isUserInteractionEnabled = false
 
-        instructionOverlay.alpha = 0
-        instructionOverlay.isHidden = true
-        instructionOverlay.isUserInteractionEnabled = false
         
-        // Do any additional setup after loading the view.
-        _slamState.initialized = false
-        _enhancedColorizeTask = nil
-        _naiveColorizeTask = nil
+        rendererMesh = MeshRenderer.init()
         
-        setupGL()
+        viewpointControllerMesh = ViewpointController.init(screenSizeX: Float(self.eviewMesh.frame.size.width), screenSizeY: Float(self.eviewMesh.frame.size.height))
         
-        setupUserInterface()
         
-        setupStructureSensor()
-        
-        setupIMU()
-        
-        // Later, we’ll set this true if we have a device-specific calibration
-        _useColorCamera = STSensorController.approximateCalibrationGuaranteedForDevice()
-        
-        // Make sure we get notified when the app becomes active to start/restore the sensor state if necessary.
-         NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { _ in self.appDidBecomeActive()}
-        
-        initializeDynamicOptions()
-        syncUIfromDynamicOptions()
-
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -1416,6 +1454,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var okDeletePractitioner: UIButton!
     @IBOutlet var cancelDeletePractitioner: UIButton!
     @IBOutlet var prescriptionButton: UIButton!
+    @IBOutlet var escanFormButton: UIButton!
+    @IBOutlet var submitFormButton: UIButton!
 
     
     @IBOutlet var welcomeLabel: UILabel!
@@ -1594,27 +1634,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
     
     
-    let openingPageIndex = 0;
-    let orderManagementPageIndex = 1;
-    let practitionerManagementPageIndex = 2;
-    let newPractitionerPageIndex = 3;
-    let patientManagementPageIndex = 4;
-    
-    let newOrderTypePageIndex = 5;
-    let orthoticsFormPageIndex = 6;
-    let richieBraceFormPageIndex = 7;
-    let scanFormPageIndex = 8;
-    let reviewAndSubmitPageIndex = 9;
 
-    let orthoticsMaterialFormPageIndex = 10;
-    let orthoticsCorrectionsFormPageIndex = 11;
-    let orthoticsSpecificationsFormPageIndex = 12;
-    let orthoticsPostingFormPageIndex = 13;
-    let orthoticsTopCoversAndExtensionsFormPageIndex = 14;
-    let orthoticsRushOrderFormPageIndex = 15;
-//    let orthoticsRushOrderFormPageIndex = 15;
-    let orthoticsChiefComplaintFormPageIndex = 17;
-    let orthoticsAccommodationsAndAdditionsFormPageIndex = 18;
 
     @IBAction func NewOrderAction(sender: UIButton){
         if (defaultPractitioner != nil) {
@@ -1631,7 +1651,17 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         changePageTo(pageTo: orderManagementPageIndex);
     }
     @IBAction func ClickBackAction(sender: UIButton){
-        changePageTo(pageTo: (backStack.popLast())!);
+        if (screenViewing == escanningPageIndex) {
+            changePageTo(pageTo: scanFormPageIndex)
+        } else if (screenViewing == eViewingMeshPageIndex) {
+            eviewMesh.isHidden = true;
+            dismissEViewMesh();
+            changePageTo(pageTo: scanFormPageIndex)
+            changePageTo(pageTo: escanningPageIndex)
+
+        } else {
+            changePageTo(pageTo: (backStack.popLast())!);
+        }
     }
     
     func savePractitionerFromPage(setAsDefault: Bool) {
@@ -1677,7 +1707,20 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBAction func ClickNextAction(sender: UIButton){
         if (screenViewing == practitionerManagementPageIndex) {
             savePractitionerFromPage(setAsDefault: false);
+        } else if (screenViewing == escanningPageIndex) {
+            screenViewing = eViewingMeshPageIndex;
+            if trackerShowingScanStart {
+                toggleTracker(show: true)
+            }
+            enterViewingState()
+        } else if (screenViewing == eViewingMeshPageIndex) {
+
+            eviewMesh.isHidden = true;
+            dismissEViewMesh();
+            changePageTo(pageTo: scanFormPageIndex)
+
         } else if (screenViewing == patientManagementPageIndex) {
+
             let firstName = patientNameInput.text;
             let lastName = patientLastNameInput.text;
             
@@ -1856,6 +1899,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         changePageTo(pageTo: patientManagementPageIndex)
     }
     
+    @IBAction func ClickSubmitButton(sender: UIButton){
+        changePageTo(pageTo: reviewAndSubmitPageIndex)
+    }
+    
+    @IBAction func ClickEscanButton(sender: UIButton){
+        changePageTo(pageTo: scanFormPageIndex)
+    }
+    
     @IBAction func ClickOrderManagementButton(sender: UIButton){
         changePageTo(pageTo: newOrderTypePageIndex)
     }
@@ -1894,7 +1945,38 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
 
-
+    func escanViewDidLoad() {
+        
+        calibrationOverlay.alpha = 0
+        calibrationOverlay.isHidden = true
+        calibrationOverlay.isUserInteractionEnabled = false
+        
+        instructionOverlay.alpha = 0
+        instructionOverlay.isHidden = true
+        instructionOverlay.isUserInteractionEnabled = false
+        
+        // Do any additional setup after loading the view.
+        _slamState.initialized = false
+        _enhancedColorizeTask = nil
+        _naiveColorizeTask = nil
+        
+        setupGL()
+        
+        setupUserInterface()
+        
+        setupStructureSensor()
+        
+        setupIMU()
+        
+        // Later, we’ll set this true if we have a device-specific calibration
+        _useColorCamera = STSensorController.approximateCalibrationGuaranteedForDevice()
+        
+        // Make sure we get notified when the app becomes active to start/restore the sensor state if necessary.
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { _ in self.appDidBecomeActive()}
+        
+        initializeDynamicOptions()
+        syncUIfromDynamicOptions()
+    }
     
     func changePageTo(pageTo: Int?) {
         clearAllCarrotsFromLables();
@@ -1902,14 +1984,19 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             depthView.isHidden = true;
             escanStatusLabel.isHidden = true;
             eview.isHidden = true;
+        } else if (screenViewing == eViewingMeshPageIndex) {
         } else {
             pages[screenViewing].isHidden = true;
+            backStack.append(screenViewing);
         }
-        backStack.append(screenViewing);
         screenViewing = pageTo!;
         if (pageTo == escanningPageIndex) {
+            escanViewDidLoad()
+            let _ = connectToStructureSensorAndStartStreaming()
+
             eview.isHidden = false;
-            depthView.isHidden = false;
+            depthView.isHidden = true;
+            nextButton.isHidden = true;
 
 //            escanStatusLabel.isHidden = false;
 //            if tryInitializeSensor() && STSensorController.shared().isConnected() {
@@ -1920,10 +2007,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         } else {
             pages[screenViewing].isHidden = false;
+            nextButton.isHidden = screenViewing == newOrderTypePageIndex;
         }
 
         menuView.isHidden = screenViewing == 0;
-        nextButton.isHidden = screenViewing == newOrderTypePageIndex;
         backNextView.isHidden = screenViewing == 0;
         if (pageTo == practitionerManagementPageIndex) {
             nextButton.isEnabled = !(practitionerNameInput.text?.isEmpty ?? false);
@@ -1933,6 +2020,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 !(patientLastNameInput.text?.isEmpty ?? false);
             nextButton.isEnabled = isEnabled;
             prescriptionButton.isEnabled = isEnabled;
+            escanFormButton.isEnabled = isEnabled;
+            submitFormButton.isEnabled = isEnabled;
         }
         setCarrot();
     }
@@ -1947,22 +2036,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         let defaults = UserDefaults.standard
         
-        if !defaults.bool(forKey: "instructionOverlay") {
-            
-            let _ = Timer.schedule(10.0, handler: {_ in
-                self.instructionOverlay.isHidden = false
-                self.instructionOverlay.isUserInteractionEnabled = true
-                self.instructionOverlay.alpha = 1
-                let _ = Timer.schedule(15.0, handler: { _ in
-                    UIView.animate(withDuration: 0.3, animations: {
-                        
-                        self.instructionOverlay.alpha = 0
-                        self.instructionOverlay.isHidden = true
-                        self.instructionOverlay.isUserInteractionEnabled = false
-                    })
-                })
-            })
-        }
+//        if !defaults.bool(forKey: "instructionOverlay") {
+//
+//            let _ = Timer.schedule(10.0, handler: {_ in
+//                self.instructionOverlay.isHidden = false
+//                self.instructionOverlay.isUserInteractionEnabled = true
+//                self.instructionOverlay.alpha = 1
+//                let _ = Timer.schedule(15.0, handler: { _ in
+//                    UIView.animate(withDuration: 0.3, animations: {
+//
+//                        self.instructionOverlay.alpha = 0
+//                        self.instructionOverlay.isHidden = true
+//                        self.instructionOverlay.isUserInteractionEnabled = false
+//                    })
+//                })
+//            })
+//        }
     }
 
     
@@ -2669,13 +2758,17 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 !(patientLastNameInput.text?.isEmpty ?? false);
             nextButton.isEnabled = isEnabled;
             prescriptionButton.isEnabled = isEnabled;
-            
+            escanFormButton.isEnabled = isEnabled;
+            submitFormButton.isEnabled = isEnabled;
+
             //todo add scan button here
         } else if (textField == patientLastNameInput) {
             let isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
                 !(patientLastNameInput.text?.isEmpty ?? false);
             nextButton.isEnabled = isEnabled;
             prescriptionButton.isEnabled = isEnabled;
+            escanFormButton.isEnabled = isEnabled;
+            submitFormButton.isEnabled = isEnabled;
         }
 
 
@@ -3000,44 +3093,29 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         return true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueMeshViewController" {
-            meshViewController = segue.destination as! MeshViewController
-            _slamState.mapper!.finalizeTriangleMesh()
-            
-            let mesh = _slamState.scene!.lockAndGetMesh()
-            
-            presentMeshViewer(mesh!)
-            
-            _slamState.scene!.unlockMesh()
-            
-            _slamState.scannerState = .viewing
-            
-            updateIdleTimer()
-            
-        }
-    }
-    
-    func presentMeshViewer(_ mesh: STMesh) {
+    func presentMeshViewer() {
+        _slamState.mapper!.finalizeTriangleMesh()
         
-        meshViewController.context = _display!.context!
-        meshViewController._mesh = mesh
-        meshViewController.projectionMatrix = _display!.depthCameraGLProjectionMatrix
+        let inmesh = _slamState.scene!.lockAndGetMesh()
+
+        contextMesh = _display!.context!
+        projectionMatrixMesh = _display!.depthCameraGLProjectionMatrix
+        
         
         // Sample a few points to estimate the volume center
         var totalNumVertices: Int32 = 0
         
-        for  i in 0..<mesh.numberOfMeshes() {
-            totalNumVertices += mesh.number(ofMeshVertices: Int32(i))
+        for  i in 0..<inmesh!.numberOfMeshes() {
+            totalNumVertices += inmesh!.number(ofMeshVertices: Int32(i))
         }
         
         let sampleStep = Int(max(1, totalNumVertices / 1000))
         var sampleCount: Int32 = 0
         var volumeCenter = GLKVector3Make(0, 0,0)
         
-        for i in 0..<mesh.numberOfMeshes() {
-            let numVertices = Int(mesh.number(ofMeshVertices: i))
-            let vertex = mesh.meshVertices(Int32(i))
+        for i in 0..<inmesh!.numberOfMeshes() {
+            let numVertices = Int(inmesh!.number(ofMeshVertices: i))
+            let vertex = inmesh!.meshVertices(Int32(i))
             
             for j in stride(from: 0, to: numVertices, by: sampleStep) {
                 volumeCenter = GLKVector3Add(volumeCenter, (vertex?[Int(j)])!)
@@ -3051,11 +3129,32 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             volumeCenter = GLKVector3MultiplyScalar(_slamState.volumeSizeInMeters, 0.5)
         }
         
-        meshViewController.volumeCenter = volumeCenter
-        meshViewController.delegate = self
-        
+        delegate = self;
         scanButton.isHidden = false
         resetButton.isHidden = true
+        
+        _slamState.scene!.unlockMesh()
+        
+        _slamState.scannerState = .viewing
+        
+        updateIdleTimer()
+        
+        _mesh = inmesh;
+        
+        setupGLMesh(contextMesh!)
+        mesh = _mesh;
+
+        setCameraProjectionMatrix(projectionMatrixMesh)
+        resetMeshCenter(volumeCenter)
+
+        let font = UIFont.boldSystemFont(ofSize: 14)
+        let attributes: [AnyHashable: Any] = [NSAttributedString.Key.font : font]
+        
+        displayControl.setTitleTextAttributes(attributes as! [NSAttributedString.Key : Any], for: UIControl.State())
+        rendererMesh.setRenderingMode(.lightedGray)
+
+
+        showEviewMesh()
     }
     
     func enterCubePlacementState() {
@@ -3064,7 +3163,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         scanButton.isHidden = false
         resetButton.isHidden = true
         doneButton.isHidden = true
-        
+        nextButton.isHidden = true;
+
         // We'll enable the button only after we get some initial pose.
         scanButton.isEnabled = true
         
@@ -3091,7 +3191,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         // Switch to the Done button.
         scanButton.isHidden = true
-        doneButton.isHidden = false
+        //doneButton.isHidden = false
+        nextButton.isHidden = false
         resetButton.isHidden = false
         
         // Prepare the mapper for the new scan.
@@ -3122,6 +3223,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         // Hide the Scan/Done/Reset button.
         scanButton.isHidden = true
         doneButton.isHidden = true
+
         resetButton.isHidden = true
         
         _sensorController.stopStreaming()
@@ -3130,9 +3232,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             stopColorCamera()
         }
         
-        changePageTo(pageTo: scanFormPageIndex)
         
-        performSegue(withIdentifier: "segueMeshViewController", sender: self)
+        eview.isHidden = true;
+        eviewMesh.isHidden = false;
+        presentMeshViewer();
     }
     
     //MARK: -  Structure Sensor Management
@@ -3200,12 +3303,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBAction func instructionButtonClicked(button: UIButton) {
         
-        let defaults = UserDefaults.standard
-        defaults.set(true, forKey: "instructionOverlay")
+//        let defaults = UserDefaults.standard
+//        defaults.set(true, forKey: "instructionOverlay")
         
-        instructionOverlay.alpha = 0
-        instructionOverlay.isHidden = true
-        instructionOverlay.isUserInteractionEnabled = false
+//        instructionOverlay.alpha = 0
+//        instructionOverlay.isHidden = true
+//        instructionOverlay.isUserInteractionEnabled = false
     }
     
     @IBAction func newTrackerSwitchChanged(sender: UISwitch) {
@@ -3296,11 +3399,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         // restore window after scanning
-        if trackerShowingScanStart {
-            toggleTracker(show: true)
-        }
-        
-        enterViewingState()
     }
     
     // Manages whether we can let the application sleep.
@@ -3400,37 +3498,50 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBAction func pinchGesture(_ sender: UIPinchGestureRecognizer) {
         
-        if sender.state == .began {
-            if _slamState.scannerState == .cubePlacement {
-                _volumeScale.initialPinchScale = _volumeScale.currentScale / sender.scale
-            }
-        } else if sender.state == .changed {
-            
-            if _slamState.scannerState == .cubePlacement {
-                
-                // In some special conditions the gesture recognizer can send a zero initial scale.
-                if !_volumeScale.initialPinchScale.isNaN {
-                    
-                    _volumeScale.currentScale = sender.scale * _volumeScale.initialPinchScale
-                    
-                    // Don't let our scale multiplier become absurd
-                    _volumeScale.currentScale = CGFloat(keepInRange(Float(_volumeScale.currentScale), minValue: 0.01, maxValue: 1000))
-                    
-                    let newVolumeSize: GLKVector3 = GLKVector3MultiplyScalar(_options.initVolumeSizeInMeters, Float(_volumeScale.currentScale))
-                    
-                    adjustVolumeSize( volumeSize: newVolumeSize)
-                    
+        if (screenViewing == escanningPageIndex) {
+
+            if sender.state == .began {
+                if _slamState.scannerState == .cubePlacement {
+                    _volumeScale.initialPinchScale = _volumeScale.currentScale / sender.scale
                 }
+            } else if sender.state == .changed {
+                
+                if _slamState.scannerState == .cubePlacement {
+                    
+                    // In some special conditions the gesture recognizer can send a zero initial scale.
+                    if !_volumeScale.initialPinchScale.isNaN {
+                        
+                        _volumeScale.currentScale = sender.scale * _volumeScale.initialPinchScale
+                        
+                        // Don't let our scale multiplier become absurd
+                        _volumeScale.currentScale = CGFloat(keepInRange(Float(_volumeScale.currentScale), minValue: 0.01, maxValue: 1000))
+                        
+                        let newVolumeSize: GLKVector3 = GLKVector3MultiplyScalar(_options.initVolumeSizeInMeters, Float(_volumeScale.currentScale))
+                        
+                        adjustVolumeSize( volumeSize: newVolumeSize)
+                        
+                    }
+                }
+            }
+        }
+        
+        if (screenViewing == eViewingMeshPageIndex) {
+            // Forward to the ViewpointController.
+            if sender.state == .began {
+                viewpointControllerMesh.onPinchGestureBegan(Float(sender.scale))
+            }
+            else if sender.state == .changed {
+                viewpointControllerMesh.onPinchGestureChanged(Float(sender.scale))
             }
         }
     }
     
     @IBAction func toggleNewTrackerVisible(sender: UILongPressGestureRecognizer) {
         
-        if (sender.state == .began) {
-            
-            toggleTracker(show: enableNewTrackerView.isHidden)
-        }
+//        if (sender.state == .began) {
+//
+//            toggleTracker(show: enableNewTrackerView.isHidden)
+//        }
     }
     
     func toggleTracker(show: Bool) {
@@ -3470,7 +3581,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             _enhancedColorizeTask = nil
         }
         
-        self.meshViewController.hideMeshViewerMessage()
+        self.hideMeshViewerMessage()
     }
     
     func meshViewDidDismiss() {
@@ -3487,12 +3598,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         if sender == _naiveColorizeTask {
             DispatchQueue.main.async(execute: {
-                self.meshViewController.showMeshViewerMessage(String.init(format: "Processing: % 3d%%", Int(progress*20)))
+                self.showMeshViewerMessage(String.init(format: "Processing: % 3d%%", Int(progress*20)))
             })
         } else if sender == _enhancedColorizeTask {
             
             DispatchQueue.main.async(execute: {
-                self.meshViewController.showMeshViewerMessage(String.init(format: "Processing: % 3d%%", Int(progress*80)+20))
+                self.showMeshViewerMessage(String.init(format: "Processing: % 3d%%", Int(progress*80)+20))
             })
         }
     }
@@ -3514,7 +3625,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                                                                 } else {
                                                                     DispatchQueue.main.async(execute: {
                                                                         previewCompletionHandler()
-                                                                        self.meshViewController.mesh = mesh
+                                                                        self.mesh = mesh
                                                                         
                                                                         self.performEnhancedColorize(mesh, enhancedCompletionHandler:enhancedCompletionHandler)
                                                                     })
@@ -3548,7 +3659,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 DispatchQueue.main.async(execute: {
                     enhancedCompletionHandler()
                     
-                    self.meshViewController.mesh = mesh
+                    self.mesh = mesh
                 })
                 
                 self._enhancedColorizeTask = nil
@@ -3581,7 +3692,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 _enhancedColorizeTask = nil
                 
                 // hide progress bar
-                self.meshViewController.hideMeshViewerMessage()
+                self.hideMeshViewerMessage()
                 
                 let alertCtrl = UIAlertController(
                     title: "Memory Low",
@@ -3630,6 +3741,463 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             break
         }
     }
+    
+    func setupGLMesh (_ context: EAGLContext) {
+        
+        (self.eviewMesh as EAGLView).context = context
+        
+        EAGLContext.setCurrent(context)
+        
+        rendererMesh.initializeGL( GLenum(GL_TEXTURE3))
+        
+        self.eviewMesh.setFramebuffer()
+        
+        let framebufferSize: CGSize = self.eviewMesh.getFramebufferSize()
+        
+        viewportMesh[0] = 0
+        viewportMesh[1] = 0
+        viewportMesh[2] = Float(framebufferSize.width)
+        viewportMesh[3] = Float(framebufferSize.height)
+    }
+    
+    
+    func setCameraProjectionMatrix (_ projection: GLKMatrix4) {
+        
+        viewpointControllerMesh.setCameraProjection(projection)
+        projectionMatrixBeforeUserInteractions = projection
+    }
+    
+    func resetMeshCenter (_ center: GLKVector3) {
+        
+        viewpointControllerMesh.reset()
+        viewpointControllerMesh.setMeshCenter(center)
+        modelViewMatrixBeforeUserInteractions = viewpointControllerMesh.currentGLModelViewMatrix()
+    }
+    
+    func saveJpegFromRGBABuffer( _ filename: String, src_buffer: UnsafeMutableRawPointer, width: Int, height: Int)
+    {
+        let file: UnsafeMutablePointer<FILE>? = fopen(filename, "w")
+        if file == nil {
+            return
+        }
+        
+        var colorSpace: CGColorSpace?
+        var alphaInfo: CGImageAlphaInfo!
+        var bmcontext: CGContext?
+        colorSpace = CGColorSpaceCreateDeviceRGB()
+        alphaInfo = .noneSkipLast
+        
+        bmcontext = CGContext(data: src_buffer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width * 4, space: colorSpace!, bitmapInfo: alphaInfo.rawValue)!
+        var rgbImage: CGImage? = bmcontext!.makeImage()
+        
+        bmcontext = nil
+        colorSpace = nil
+        
+        var jpgData: CFMutableData? = CFDataCreateMutable(nil, 0)
+        var imageDest: CGImageDestination? = CGImageDestinationCreateWithData(jpgData!, "public.jpeg" as CFString, 1, nil)
+        
+        var kcb = kCFTypeDictionaryKeyCallBacks
+        var vcb = kCFTypeDictionaryValueCallBacks
+        
+        // Our empty IOSurface properties dictionary
+        var options: CFDictionary? = CFDictionaryCreate(kCFAllocatorDefault, nil, nil, 0, &kcb, &vcb)
+        
+        CGImageDestinationAddImage(imageDest!, rgbImage!, options!)
+        CGImageDestinationFinalize(imageDest!)
+        
+        imageDest = nil
+        rgbImage = nil
+        options = nil
+        
+        fwrite(CFDataGetBytePtr(jpgData!), 1, CFDataGetLength(jpgData!), file!)
+        fclose(file!)
+        
+        jpgData = nil
+    }
+    
+    // create preview image from current viewpoint
+    
+    func prepareScreenShotCurrentViewpoint (screenshotPath: String) {
+        
+        let framebufferSize: CGSize = self.eviewMesh.getFramebufferSize()
+        let width: Int32 = Int32.init(framebufferSize.width)
+        let height: Int32 = Int32.init(framebufferSize.height)
+        
+        var screenShotRgbaBuffer = [UInt32](repeating: 0, count: Int(width*height))
+        
+        var screenTopRowBuffer = [UInt32](repeating: 0, count: Int(width))
+        
+        var screenBottomRowBuffer = [UInt32](repeating: 0, count: Int(width))
+        
+        // tell glReadPixels to read from front buffer
+        glReadBuffer(GLuint(GL_FRONT))
+        glReadPixels(0, 0, width, height, GLenum(GL_RGBA), GLenum(GL_UNSIGNED_BYTE), &screenShotRgbaBuffer)
+        
+        // flip the buffer
+        for h in 0..<height/2 {
+            
+            glReadPixels(0, h, width, 1, UInt32(GL_RGBA), UInt32(GL_UNSIGNED_BYTE), &screenTopRowBuffer)
+            
+            glReadPixels(0, (height - h - 1), width, 1, UInt32(GL_RGBA), UInt32(GL_UNSIGNED_BYTE), &screenBottomRowBuffer)
+            
+            let topIdx = Int(width * h)
+            let bottomIdx = Int(width * (height - h - 1))
+            
+            withUnsafeMutablePointer(to: &screenShotRgbaBuffer[topIdx]) { (one) -> () in
+                withUnsafePointer(to: &screenBottomRowBuffer[0], { (two) -> () in
+                    
+                    one.withMemoryRebound(to: UInt32.self, capacity: Int(width), { (onePtr) -> () in
+                        two.withMemoryRebound(to: UInt32.self, capacity: Int(width), { (twoPtr) -> () in
+                            
+                            memcpy(onePtr, twoPtr, Int(width) * Int(MemoryLayout<UInt32>.size))
+                        })
+                    })
+                })
+            }
+            
+            withUnsafeMutablePointer(to: &screenShotRgbaBuffer[bottomIdx]) { (one) -> () in
+                withUnsafePointer(to: &screenTopRowBuffer[0], { (two) -> () in
+                    
+                    one.withMemoryRebound(to: UInt32.self, capacity: Int(width), { (onePtr) -> () in
+                        two.withMemoryRebound(to: UInt32.self, capacity: Int(width), { (twoPtr) -> () in
+                            
+                            memcpy(onePtr, twoPtr, Int(width) * Int(MemoryLayout<UInt32>.size))
+                        })
+                    })
+                })
+            }
+        }
+        
+        
+        saveJpegFromRGBABuffer(screenshotPath, src_buffer: &screenShotRgbaBuffer, width: Int(width), height: Int(height))
+        
+    }
+    
+    @IBAction func emailMesh(sender: AnyObject) {
+        
+        mailViewController = MFMailComposeViewController.init()
+        
+        if mailViewController == nil {
+            let alert = UIAlertController.init(title: "The email could not be sent.", message: "Please make sure an email account is properly setup on this device.", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            
+            alert.addAction(defaultAction)
+            
+            present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        mailViewController!.mailComposeDelegate = self
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            mailViewController!.modalPresentationStyle = .formSheet
+        }
+        
+        // Setup paths and filenames.
+        
+        let zipFilename = "Model.zip"
+        let screenshotFilename = "Preview.jpg"
+        
+        let fullPathFilename = FileMgr.sharedInstance.full(screenshotFilename)
+        
+        FileMgr.sharedInstance.del(screenshotFilename)
+        
+        // Take a screenshot and save it to disk.
+        
+        prepareScreenShotCurrentViewpoint(screenshotPath: fullPathFilename)
+        
+        // since file is save in prepareScreenShot() need to getData() here
+        
+        if let sshot = NSData(contentsOfFile: fullPathFilename) {
+            
+            mailViewController?.addAttachmentData(sshot as Data, mimeType: "image/jpeg", fileName: screenshotFilename)
+        }
+        else {
+            let alert = UIAlertController.init(title: "Error", message: "no pic", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            
+            alert.addAction(defaultAction)
+            
+            present(alert, animated: true, completion: nil)
+        }
+        
+        mailViewController!.setSubject("3D Model")
+        
+        let messageBody = "3D model attached";
+        
+        mailViewController?.setMessageBody(messageBody, isHTML: false)
+        
+        if let meshToSend = _mesh {
+            let zipfile = FileMgr.sharedInstance.saveMesh(zipFilename, data: meshToSend)
+            
+            if zipfile != nil {
+                mailViewController?.addAttachmentData(zipfile!, mimeType: "application/zip", fileName: zipFilename)
+            }
+        }
+        else {
+            
+            mailViewController = nil
+            
+            let alert = UIAlertController.init(title: "The email could not be sent", message: "Exporting the mesh failed", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            
+            alert.addAction(defaultAction)
+            
+            present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        present(mailViewController!, animated: true, completion: nil)
+    }
+    
+    //MARK: Mail Delegate
+    
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        mailViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Rendering
+    
+    @objc func draw () {
+        
+        self.eviewMesh.setFramebuffer()
+        
+        glViewport(GLint(viewportMesh[0]), GLint(viewportMesh[1]), GLint(viewportMesh[2]), GLint(viewportMesh[3]))
+        
+        let viewpointChanged = viewpointControllerMesh.update()
+        
+        // If nothing changed, do not waste time and resources rendering.
+        if !needsDisplay && !viewpointChanged {
+            return
+        }
+        
+        var currentModelView = viewpointControllerMesh.currentGLModelViewMatrix()
+        var currentProjection = viewpointControllerMesh.currentGLProjectionMatrix()
+        
+        rendererMesh!.clear()
+        
+        withUnsafePointer(to: &currentProjection) { (one) -> () in
+            withUnsafePointer(to: &currentModelView, { (two) -> () in
+                
+                one.withMemoryRebound(to: GLfloat.self, capacity: 16, { (onePtr) -> () in
+                    two.withMemoryRebound(to: GLfloat.self, capacity: 16, { (twoPtr) -> () in
+                        
+                        rendererMesh!.render(onePtr,modelViewMatrix: twoPtr)
+                    })
+                })
+            })
+        }
+        
+        needsDisplay = false
+        
+        let _ = self.eviewMesh.presentFramebuffer()
+        
+    }
+    
+    //MARK: Touch & Gesture Control
+    
+    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            viewpointControllerMesh.onTouchBegan()
+        }
+    }
+    
+    @IBAction func pinchScaleGesture(_ sender: UIPinchGestureRecognizer) {
+        
+
+    }
+    
+    @IBAction func oneFingerPanGesture(_ sender: UIPanGestureRecognizer) {
+        
+        let touchPos = sender.location(in: view)
+        let touchVel = sender.velocity(in: view)
+        let touchPosVec = GLKVector2Make(Float(touchPos.x), Float(touchPos.y))
+        let touchVelVec = GLKVector2Make(Float(touchVel.x), Float(touchVel.y))
+        
+        if sender.state == .began {
+            viewpointControllerMesh.onOneFingerPanBegan(touchPosVec)
+        }
+        else if sender.state == .changed {
+            viewpointControllerMesh.onOneFingerPanChanged(touchPosVec)
+        }
+        else if sender.state == .ended {
+            viewpointControllerMesh.onOneFingerPanEnded(touchVelVec)
+        }
+    }
+    
+    @IBAction func twoFingersPanGesture(_ sender: AnyObject) {
+        
+        if sender.numberOfTouches != 2 {
+            return
+        }
+        
+        let touchPos = sender.location(in: view)
+        let touchVel = sender.velocity(in: view)
+        let touchPosVec = GLKVector2Make(Float(touchPos.x), Float(touchPos.y))
+        let touchVelVec = GLKVector2Make(Float(touchVel.x), Float(touchVel.y))
+        
+        if sender.state == .began {
+            viewpointControllerMesh.onTwoFingersPanBegan(touchPosVec)
+        }
+        else if sender.state == .changed {
+            viewpointControllerMesh.onTwoFingersPanChanged(touchPosVec)
+        }
+        else if sender.state == .ended {
+            viewpointControllerMesh.onTwoFingersPanEnded(touchVelVec)
+        }
+    }
+    
+    //MARK: UI Control
+    
+    func trySwitchToColorRenderingMode() {
+        
+        // Choose the best available color render mode, falling back to LightedGray
+        // This method may be called when colorize operations complete, and will
+        // switch the render mode to color, as long as the user has not changed
+        // the selector.
+        
+        if displayControl.selectedSegmentIndex == 2 {
+            
+            if    mesh!.hasPerVertexUVTextureCoords() {
+                
+                rendererMesh.setRenderingMode(.textured)
+            }
+            else if mesh!.hasPerVertexColors() {
+                
+                rendererMesh.setRenderingMode(.perVertexColor)
+            }
+            else {
+                
+                rendererMesh.setRenderingMode(.lightedGray)
+            }
+        }
+        else if displayControl.selectedSegmentIndex == 3 {
+            
+            if    mesh!.hasPerVertexUVTextureCoords() {
+                
+                rendererMesh.setRenderingMode(.textured)
+            }
+            else if mesh!.hasPerVertexColors() {
+                
+                rendererMesh.setRenderingMode(.perVertexColor)
+            }
+            else {
+                
+                rendererMesh.setRenderingMode(.lightedGray)
+            }
+        }
+    }
+    
+    @IBAction func displayControlChanged(_ sender: AnyObject) {
+        
+        switch displayControl.selectedSegmentIndex {
+        case 0: // x-ray
+            
+            rendererMesh.setRenderingMode(.xRay)
+            
+        case 1: // lighted-gray
+            
+            rendererMesh.setRenderingMode(.lightedGray)
+            
+        case 2: // color
+            
+            trySwitchToColorRenderingMode()
+            
+            let meshIsColorized: Bool = mesh!.hasPerVertexColors() || mesh!.hasPerVertexUVTextureCoords()
+            
+            if !meshIsColorized {
+                
+                colorizeMesh()
+            }
+            
+        default:
+            break
+        }
+        
+        needsDisplay = true
+    }
+    
+    func colorizeMesh() {
+        
+        let _ = delegate?.meshViewDidRequestColorizing(self.mesh!, previewCompletionHandler: {
+        }, enhancedCompletionHandler: {
+            
+            // Hide progress bar.
+            self.hideMeshViewerMessage()
+        })
+    }
+    
+    func hideMeshViewerMessage() {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.meshViewerMessageLabel.alpha = 0.0
+        }, completion: { _ in
+            self.meshViewerMessageLabel.isHidden = true
+        })
+    }
+    
+    func showMeshViewerMessage(_ msg: String) {
+        
+        meshViewerMessageLabel.text = msg
+        
+        if meshViewerMessageLabel.isHidden == true {
+            
+            meshViewerMessageLabel.alpha = 0.0
+            meshViewerMessageLabel.isHidden = false
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.meshViewerMessageLabel.alpha = 1.0
+            })
+        }
+    }
+    
+    @IBAction func ClickDone(sender: UIButton){
+        
+    }
+    
+    func showEviewMesh() {
+        if displayLink != nil {
+            displayLink!.invalidate()
+            displayLink = nil
+        }
+        
+        displayLink = CADisplayLink(target: self, selector: #selector(self.draw))
+        displayLink!.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
+        
+        viewpointControllerMesh.reset()
+    }
+    
+    func dismissEViewMesh() {
+        
+        displayControl.selectedSegmentIndex = 1
+        rendererMesh.setRenderingMode(.lightedGray)
+        
+        if delegate?.meshViewWillDismiss != nil {
+            delegate?.meshViewWillDismiss()
+        }
+        
+        rendererMesh.releaseGLBuffers()
+        rendererMesh.releaseGLTextures()
+        
+        displayLink!.invalidate()
+        displayLink = nil
+        
+        mesh = nil
+        
+        self.eviewMesh.context = nil
+        
+        dismiss(animated: true, completion: {
+            if self.delegate?.meshViewDidDismiss != nil {
+                self.delegate?.meshViewDidDismiss()
+            }
+        })
+    }
+    
 //
 //    func drawPDFUsingPrintPageRenderer(printPageRenderer : CustomPrintPageRenderer) -> NSData! {
 //        let data = NSMutableData()

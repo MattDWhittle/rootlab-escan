@@ -40,7 +40,6 @@
 		2D6A61FE21F64A690077A8B1 /* ScannerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F721F64A690077A8B1 /* ScannerExtensions.swift */; };
 		2D9B417521D2DF9C0022FE2D /* CustomPrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */; };
 		2D9B417721D3541D0022FE2D /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B417621D3541D0022FE2D /* Camera.png */; };
-		2D9B417A21D3559D0022FE2D /* RichieBrace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B417921D3559D0022FE2D /* RichieBrace.storyboard */; };
 		2D9B417D21D874730022FE2D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B417C21D874720022FE2D /* CFNetwork.framework */; };
 		2D9B417F21D8747E0022FE2D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B417E21D8747E0022FE2D /* Security.framework */; };
 		2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B418021D87F0D0022FE2D /* mailcore2-ios.podspec.json */; };
@@ -52,7 +51,6 @@
 		2D9B41F421E714D20022FE2D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41F321E714D10022FE2D /* ImageIO.framework */; };
 		2D9B41F621E714DC0022FE2D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41F521E714DC0022FE2D /* Accelerate.framework */; };
 		2D9B41FA21E859E40022FE2D /* RichieBraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */; };
-		2D9B41FC21E85E3A0022FE2D /* StructureScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B41FB21E85E390022FE2D /* StructureScanner.storyboard */; };
 		2D9B41FE21E85E7F0022FE2D /* StructureScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */; };
 		2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5599121BC6D8B005F99BA /* structure scanner image.png */; };
 /* End PBXBuildFile section */
@@ -114,7 +112,6 @@
 		2D6A61F721F64A690077A8B1 /* ScannerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerExtensions.swift; sourceTree = "<group>"; };
 		2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrintRenderer.swift; sourceTree = "<group>"; };
 		2D9B417621D3541D0022FE2D /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
-		2D9B417921D3559D0022FE2D /* RichieBrace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RichieBrace.storyboard; sourceTree = "<group>"; };
 		2D9B417C21D874720022FE2D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2D9B417E21D8747E0022FE2D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2D9B418021D87F0D0022FE2D /* mailcore2-ios.podspec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mailcore2-ios.podspec.json"; sourceTree = "<group>"; };
@@ -127,7 +124,6 @@
 		2D9B41F321E714D10022FE2D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		2D9B41F521E714DC0022FE2D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichieBraceViewController.swift; sourceTree = "<group>"; };
-		2D9B41FB21E85E390022FE2D /* StructureScanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StructureScanner.storyboard; sourceTree = "<group>"; };
 		2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureScannerViewController.swift; sourceTree = "<group>"; };
 		2DC5599121BC6D8B005F99BA /* structure scanner image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structure scanner image.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,8 +204,6 @@
 				2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */,
 				2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */,
 				2D44BDB821B4BF9C009A1066 /* Main.storyboard */,
-				2D9B417921D3559D0022FE2D /* RichieBrace.storyboard */,
-				2D9B41FB21E85E390022FE2D /* StructureScanner.storyboard */,
 				2D44BDBE21B4BFA0009A1066 /* Assets.xcassets */,
 				2D44BDC021B4BFA0009A1066 /* LaunchScreen.storyboard */,
 				2D44BDC321B4BFA0009A1066 /* Info.plist */,
@@ -381,7 +375,6 @@
 			files = (
 				2D44BDE621B56024009A1066 /* logo.png in Resources */,
 				2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */,
-				2D9B417A21D3559D0022FE2D /* RichieBrace.storyboard in Resources */,
 				2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */,
 				2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */,
 				2D9B417721D3541D0022FE2D /* Camera.png in Resources */,
@@ -392,7 +385,6 @@
 				2D6A61E921F3DE450077A8B1 /* checked.png in Resources */,
 				2D44BDBF21B4BFA0009A1066 /* Assets.xcassets in Resources */,
 				2D6663A521C8C90D007B5316 /* left-foot-md.png in Resources */,
-				2D9B41FC21E85E3A0022FE2D /* StructureScanner.storyboard in Resources */,
 				2D6A61EA21F3DE450077A8B1 /* unchecked.png in Resources */,
 				2D52F7C421BC713D00AC60F5 /* patient.png in Resources */,
 				2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */,
