@@ -510,7 +510,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     var needsDisplay: Bool = false
     
     var _mesh: STMesh? = nil
-    
+
+    var _meshToSave: STMesh? = nil
+
     var mesh: STMesh?
     {
         get {
@@ -2010,7 +2012,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             nextButton.isHidden = screenViewing == newOrderTypePageIndex;
         }
 
-        menuView.isHidden = screenViewing == 0;
+        menuView.isHidden = screenViewing == 0 || screenViewing == escanningPageIndex
+            || screenViewing == eViewingMeshPageIndex;
         backNextView.isHidden = screenViewing == 0;
         if (pageTo == practitionerManagementPageIndex) {
             nextButton.isEnabled = !(practitionerNameInput.text?.isEmpty ?? false);
@@ -3143,6 +3146,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         setupGLMesh(contextMesh!)
         mesh = _mesh;
+        _meshToSave = _mesh;
 
         setCameraProjectionMatrix(projectionMatrixMesh)
         resetMeshCenter(volumeCenter)
@@ -3930,7 +3934,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         mailViewController?.setMessageBody(messageBody, isHTML: false)
         
-        if let meshToSend = _mesh {
+        if let meshToSend = _meshToSave {
             let zipfile = FileMgr.sharedInstance.saveMesh(zipFilename, data: meshToSend)
             
             if zipfile != nil {
