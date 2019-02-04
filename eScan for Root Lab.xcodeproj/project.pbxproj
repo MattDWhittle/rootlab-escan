@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2925E204A69DD5925EA10FAA /* Pods_eScan_for_Root_LabUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B650797FF63877B7AE439295 /* Pods_eScan_for_Root_LabUITests.framework */; };
+		2D2B241122054D130057F8C2 /* Root Lab transparent back PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */; };
 		2D44BDB521B4BF9C009A1066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */; };
 		2D44BDB721B4BF9C009A1066 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44BDB621B4BF9C009A1066 /* ViewController.swift */; };
 		2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDB821B4BF9C009A1066 /* Main.storyboard */; };
@@ -15,7 +17,6 @@
 		2D44BDC221B4BFA0009A1066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDC021B4BFA0009A1066 /* LaunchScreen.storyboard */; };
 		2D44BDCD21B4BFA1009A1066 /* eScan_for_Root_LabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44BDCC21B4BFA1009A1066 /* eScan_for_Root_LabTests.swift */; };
 		2D44BDD821B4BFA1009A1066 /* eScan_for_Root_LabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44BDD721B4BFA1009A1066 /* eScan_for_Root_LabUITests.swift */; };
-		2D44BDE621B56024009A1066 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDE521B56023009A1066 /* logo.png */; };
 		2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDEB21B56EF4009A1066 /* mid_bg.jpg */; };
 		2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDED21B57231009A1066 /* richieBrace.jpg */; };
 		2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDEF21B5728D009A1066 /* orthotics.jpg */; };
@@ -25,7 +26,6 @@
 		2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D6663A421C8C90C007B5316 /* right-foot-md.jpg */; };
 		2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E121F3DBA40077A8B1 /* fastcast3d.png */; };
 		2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E321F3DD210077A8B1 /* greybar.png */; };
-		2D6A61E621F3DD9D0077A8B1 /* rootlabwhitebackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E521F3DD9A0077A8B1 /* rootlabwhitebackground.png */; };
 		2D6A61E921F3DE450077A8B1 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E721F3DE3F0077A8B1 /* checked.png */; };
 		2D6A61EA21F3DE450077A8B1 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E821F3DE420077A8B1 /* unchecked.png */; };
 		2D6A61EC21F3DFAB0077A8B1 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61EB21F3DFA80077A8B1 /* Button.png */; };
@@ -53,6 +53,7 @@
 		2D9B41FA21E859E40022FE2D /* RichieBraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */; };
 		2D9B41FE21E85E7F0022FE2D /* StructureScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */; };
 		2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5599121BC6D8B005F99BA /* structure scanner image.png */; };
+		36E2C5A7BB2BC6382DE9628A /* Pods_eScan_for_Root_LabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Root Lab transparent back PNG.png"; sourceTree = "<group>"; };
 		2D44BDB121B4BF9C009A1066 /* eScan for Root Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eScan for Root Lab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D44BDB621B4BF9C009A1066 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +89,6 @@
 		2D44BDD321B4BFA1009A1066 /* eScan for Root LabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eScan for Root LabUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D44BDD721B4BFA1009A1066 /* eScan_for_Root_LabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eScan_for_Root_LabUITests.swift; sourceTree = "<group>"; };
 		2D44BDD921B4BFA1009A1066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2D44BDE521B56023009A1066 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		2D44BDEB21B56EF4009A1066 /* mid_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mid_bg.jpg; sourceTree = "<group>"; };
 		2D44BDED21B57231009A1066 /* richieBrace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = richieBrace.jpg; sourceTree = "<group>"; };
 		2D44BDEF21B5728D009A1066 /* orthotics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = orthotics.jpg; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		2D6663A421C8C90C007B5316 /* right-foot-md.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "right-foot-md.jpg"; sourceTree = "<group>"; };
 		2D6A61E121F3DBA40077A8B1 /* fastcast3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fastcast3d.png; sourceTree = "<group>"; };
 		2D6A61E321F3DD210077A8B1 /* greybar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greybar.png; sourceTree = "<group>"; };
-		2D6A61E521F3DD9A0077A8B1 /* rootlabwhitebackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rootlabwhitebackground.png; sourceTree = "<group>"; };
 		2D6A61E721F3DE3F0077A8B1 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		2D6A61E821F3DE420077A8B1 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		2D6A61EB21F3DFA80077A8B1 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button.png; path = ../../../../Desktop/Button.png; sourceTree = "<group>"; };
@@ -126,6 +126,9 @@
 		2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichieBraceViewController.swift; sourceTree = "<group>"; };
 		2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureScannerViewController.swift; sourceTree = "<group>"; };
 		2DC5599121BC6D8B005F99BA /* structure scanner image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structure scanner image.png"; sourceTree = "<group>"; };
+		7FA3BEDC51D1570FBCFAACDD /* Pods_eScan_for_Root_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B650797FF63877B7AE439295 /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E2C5A7BB2BC6382DE9628A /* Pods_eScan_for_Root_LabTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2925E204A69DD5925EA10FAA /* Pods_eScan_for_Root_LabUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,10 +238,10 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */,
 				2D6A61EB21F3DFA80077A8B1 /* Button.png */,
 				2D6A61E721F3DE3F0077A8B1 /* checked.png */,
 				2D6A61E821F3DE420077A8B1 /* unchecked.png */,
-				2D6A61E521F3DD9A0077A8B1 /* rootlabwhitebackground.png */,
 				2D6A61E321F3DD210077A8B1 /* greybar.png */,
 				2D6A61E121F3DBA40077A8B1 /* fastcast3d.png */,
 				2D9B417621D3541D0022FE2D /* Camera.png */,
@@ -246,7 +251,6 @@
 				2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */,
 				2DC5599121BC6D8B005F99BA /* structure scanner image.png */,
 				2D44BDEB21B56EF4009A1066 /* mid_bg.jpg */,
-				2D44BDE521B56023009A1066 /* logo.png */,
 				2D44BDED21B57231009A1066 /* richieBrace.jpg */,
 				2D44BDEF21B5728D009A1066 /* orthotics.jpg */,
 			);
@@ -265,6 +269,9 @@
 				2D9B41A221D88B2F0022FE2D /* QuartzCore.framework */,
 				2D9B417E21D8747E0022FE2D /* Security.framework */,
 				2D9B417C21D874720022FE2D /* CFNetwork.framework */,
+				7FA3BEDC51D1570FBCFAACDD /* Pods_eScan_for_Root_Lab.framework */,
+				C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */,
+				B650797FF63877B7AE439295 /* Pods_eScan_for_Root_LabUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -293,6 +300,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D44BDDF21B4BFA1009A1066 /* Build configuration list for PBXNativeTarget "eScan for Root LabTests" */;
 			buildPhases = (
+				BE13606FF5B2B5E2D58F65D4 /* [CP] Check Pods Manifest.lock */,
 				2D44BDC421B4BFA1009A1066 /* Sources */,
 				2D44BDC521B4BFA1009A1066 /* Frameworks */,
 				2D44BDC621B4BFA1009A1066 /* Resources */,
@@ -311,6 +319,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D44BDE221B4BFA1009A1066 /* Build configuration list for PBXNativeTarget "eScan for Root LabUITests" */;
 			buildPhases = (
+				6751AC957B025E3941CC3B65 /* [CP] Check Pods Manifest.lock */,
 				2D44BDCF21B4BFA1009A1066 /* Sources */,
 				2D44BDD021B4BFA1009A1066 /* Frameworks */,
 				2D44BDD121B4BFA1009A1066 /* Resources */,
@@ -373,7 +382,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D44BDE621B56024009A1066 /* logo.png in Resources */,
 				2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */,
 				2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */,
 				2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */,
@@ -386,11 +394,11 @@
 				2D44BDBF21B4BFA0009A1066 /* Assets.xcassets in Resources */,
 				2D6663A521C8C90D007B5316 /* left-foot-md.png in Resources */,
 				2D6A61EA21F3DE450077A8B1 /* unchecked.png in Resources */,
+				2D2B241122054D130057F8C2 /* Root Lab transparent back PNG.png in Resources */,
 				2D52F7C421BC713D00AC60F5 /* patient.png in Resources */,
 				2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */,
 				2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */,
 				2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */,
-				2D6A61E621F3DD9D0077A8B1 /* rootlabwhitebackground.png in Resources */,
 				2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
 			);
@@ -411,6 +419,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6751AC957B025E3941CC3B65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eScan for Root LabUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE13606FF5B2B5E2D58F65D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eScan for Root LabTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D44BDAD21B4BF9C009A1066 /* Sources */ = {
