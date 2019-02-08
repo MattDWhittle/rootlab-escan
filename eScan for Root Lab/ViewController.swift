@@ -12,39 +12,32 @@
 
 //TODO
 
-// (DONE) Need a areScansDone() for green dot
 // (TEST - failure) Scans place images over foot buttons - loading image not working
-// Pinch gesture not working both eview and eview mesh
+// (TEST) take of spell check from uitext views
+// (TEST) keyboard hides field
+// (TEST) Rush order shows 0,1,2 for scroll view
+// (TEST) Green light turns green right when field modified, not when next clicked
+// (TEST) Patient/Practitioner data changes right when field edited, not when next clicked
+// (TEST) PolyMax only can have a posting of Polypropylene
+// (TEST) Nothing else can have a posting of Polypropylene
+// (TEST) posting form - rearfoot post motion, one has to be selected, only one selected
+// (TEST) Rearfoot posting elevator, only one allowed to be selected, one must be selected, 8mm default normally
+// (TEST) Rearfoot post options, cannot do a long and a short
+// (TEST) Non corrective forefoot post, if full width selected, others are not, and vice versa
 
 
-// change other label on heel cup height to "Other heel cup Height"
-// take of spell check from uitext views
-
-//keyboard hides field
-
-//Rush order shows 0,1,2 for scroll view
-//Green light turns green right when field modified, not when next clicked
-//Patient/Practitioner data changes right when field edited, not when next clicked
-// UITextViews are not delegating after finish editing
-
-//PolyMax only can have a posting of Polypropylene
-//Nothing else can have a posting of Polypropylene
-
-// default (and don't allow to change) to this email:  scans@root-lab.com,
-// CC them, don't allow to change
-
-
-//posting form - rearfoot post motion, one has to be selected, only one selected, 4degree usually default, but from form
 // (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
-//Rearfoot posting elevator, only one allowed to be selected, one must be selected, 8mm default normally
-//Rearfoot post options, cannot do a long and a short
-//Non corrective forefoot post, if full width selected, others are not, and vice versa
+
 //Accomodative EVA - grey out edit button on orthosis material
 //Accomodations go on the top covers and extensions
 //Top covers and extensions - the Top Cover Material goes to the right of Top Cover Lengths
 //...then Forefoot Extensions 3 options
 //...then poron
 //...then bottom cover
+
+
+// UITextViews are not delegating after finish editing (why do they need to?)
+
 
 //Logo link to website
 
@@ -101,6 +94,10 @@
 //Bronze is for functional, forest is for sports, Black is for dress
 
 
+// default (and don't allow to change) to this email:  scans@root-lab.com,
+// CC them, don't allow to change
+
+
 // add field for intrinsic metatarsal pad in mm left and right
 //read forms to stored stuff, picker views and text
 //"Extension Material" instead of "Material", Top Covers and Extensions
@@ -154,7 +151,9 @@
 
 
 
-
+// (DONE) change other label on heel cup height to "Other heel cup Height"
+// (DONE) Need a areScansDone() for green dot
+// (DONE) Pinch gesture not working both eview and eview mesh
 // (DONE) Make sure that spellcheck is turned off
 // (DONE) orthosis specifications label too big
 // (DONE) Have practitioner page automatically turn green
@@ -299,7 +298,7 @@ let anteriorWidthPickerData: [String] =
     ["Extra Narrow width","Narrow width","Standard width","Wide width","Extra wide width", "Full width"];
 
 let postingRearfootPostTypePickerData: [String] =
-    ["No Post","Crepe","Bitkocork™","Acrylic","Polypropylene"];
+    ["No Post","Crepe","Bitkocork™","Acrylic"];
 
 let orthosisSpecificationHeelCupLeftPickerData: [String] =
     ["Left", "10", "12", "14", "16", "18", "20", "22"];
@@ -358,6 +357,9 @@ let topCoversAndExtensionsForefootExtensionThicknessPickerData: [String] =
 
 let topCoversAndExtensionsForefootExtensionExtensionLengthPickerData: [String] =
     ["None", "Sulcus", "Full length"];
+
+let rushOrderExpressShippingPickerData: [String] =
+    ["Express Shipping", "3 day select", "2nd day air", "Next day air"];
 
 
 struct DynamicOptions {
@@ -703,12 +705,18 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if (pickerView == orthoticSpecificationsAnteriorWidthLeftPicker) {
             return anteriorWidthPickerData.count;
         } else if (pickerView == postingRearfootPostTypePicker) {
-            //TODO change here based on picked item
-            return postingRearfootPostTypePickerData.count
+            if (orthoticsFunctional.selectedRow(inComponent: 0) == 1) {
+                return 1;
+            } else {
+                return postingRearfootPostTypePickerData.count
+            }
+
         } else if (pickerView == orthoticSpecificationsAnteriorWidthRightPicker) {
             return anteriorWidthPickerData.count;
         } else if (pickerView == orthoticSpecificationsAnteriorWidthRightPicker) {
             return anteriorWidthPickerData.count;
+        } else if (pickerView == rushOrderExpressShippingPicker) {
+            return rushOrderExpressShippingPickerData.count;
         } else if (pickerView == orthoticMaterialColorPicker) {
             return orthosisMaterialColorLabels.count;
         } else if (pickerView == orthoticMaterialPicker) {
@@ -727,6 +735,85 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
 
         return 3;
+    }
+    
+    
+    // The data to return fopr the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        let isWeightSupplied = Int((order.orderPatient?.weight) ?? 0) > 0;
+        
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            let multiplier : CGFloat = 1 - ((1 - (screenSize.width / 2048)) / 2);
+            if (row == 0) {
+                pickerLabel?.font = UIFont(name: "Gil Sans-Bold", size: 24 * multiplier)
+            } else {
+                pickerLabel?.font = UIFont(name: "Gil Sans", size: 18 * multiplier)
+            }
+            pickerLabel?.textAlignment = .center
+        }
+        
+        
+        
+        if (pickerView == orthoticsFunctional) {
+            pickerLabel?.text = orthoticMateriaPickerData[component][row]
+        } else if (pickerView == patientGender) {
+            pickerLabel?.text = genderPickerViewValues[row]
+        } else if (pickerView == practitionerPicker) {
+            pickerLabel?.text = practitioners[row].firstName! + " " + practitioners[row].lastName!
+        } else if (pickerView == patientShoeTypePicker) {
+            pickerLabel?.text = patientShoeTypeLabels[row]
+        } else if (pickerView == orthoticSpecificationsAnteriorWidthLeftPicker) {
+            pickerLabel?.text = anteriorWidthPickerData[row]
+        } else if (pickerView == orthoticSpecificationsAnteriorWidthRightPicker) {
+            pickerLabel?.text = anteriorWidthPickerData[row]
+        } else if (pickerView == topCoversAndExtensionsTopCoverLengthPicker) {
+            pickerLabel?.text = topCoversAndExtensionsTopCoverLengthPickerData[row];
+        } else if (pickerView == topCoversAndExtensionsTopCoverMaterialPicker) {
+            pickerLabel?.text = topCoversAndExtensionsTopCoverMaterialPickerData[component][row];
+        } else if (pickerView == topCoversAndExtensionsForefootExtensionMaterialPicker) {
+            pickerLabel?.text = topCoversAndExtensionsForefootExtensionMaterialPickerData[row];
+        } else if (pickerView == topCoversAndExtensionsForefootExtensionThicknessPicker) {
+            pickerLabel?.text = topCoversAndExtensionsForefootExtensionThicknessPickerData[row];
+        } else if (pickerView == topCoversAndExtensionsForefootExtensionExtensionLengthPicker) {
+            pickerLabel?.text = topCoversAndExtensionsForefootExtensionExtensionLengthPickerData[row];
+        } else if (pickerView == orthoticMaterialColorPicker) {
+            pickerLabel?.text = orthosisMaterialColorLabels[row]
+        } else if (pickerView == postingRearfootPostTypePicker) {
+            if (orthoticsFunctional.selectedRow(inComponent: 0) == 1) {
+                pickerLabel?.text = "Polypropylene";
+            } else {
+                pickerLabel?.text = postingRearfootPostTypePickerData[row]
+            }
+            
+        } else if (pickerView == orthoticMaterialPicker) {
+            let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+            if (theMOI.orthoticsMaterialSelection == orthosisMaterialPolypropyleneIndex) {
+                
+                pickerLabel?.text = isWeightSupplied || row > 0 ? orthosisPolypropyleneLabels[row] : "Choose one";
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialGraphiteCompositeIndex) {
+                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisGraphiteCompositeLabels[row] : "Choose one";
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialFiberglassCompositeIndex) {
+                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisFiberglassCompositeLabels[row] : "Choose one";
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialAcrylicIndex) {
+                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisAcrylicLabels[row] : "Choose one";
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialHighDensityProlyetheleneIndex) {
+                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisHighDensityPolyetheleneLabels[row] : "Choose one";
+            }
+        } else if (pickerView == orthoticSpecificationsHeelCupHeightLeftPicker) {
+            pickerLabel?.text = orthosisSpecificationHeelCupLeftPickerData[row]
+        } else if (pickerView == orthoticSpecificationsHeelCupHeightRightPicker) {
+            pickerLabel?.text = orthosisSpecificationHeelCupRightPickerData[row]
+        } else if (pickerView == rushOrderExpressShippingPicker) {
+            pickerLabel?.text = rushOrderExpressShippingPickerData[row]
+        } else {
+            pickerLabel?.text = String(row);
+        }
+        
+        
+        return pickerLabel!
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -1212,79 +1299,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         //print(myPickerViewData[row])
     }
     
-    // The data to return fopr the row and component (column) that's being passed in
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        
-        let isWeightSupplied = Int((order.orderPatient?.weight) ?? 0) > 0;
-        
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil {
-            pickerLabel = UILabel()
-            let multiplier : CGFloat = 1 - ((1 - (screenSize.width / 2048)) / 2);
-            if (row == 0) {
-                pickerLabel?.font = UIFont(name: "Gil Sans-Bold", size: 24 * multiplier)
-            } else {
-                pickerLabel?.font = UIFont(name: "Gil Sans", size: 18 * multiplier)
-            }
-            pickerLabel?.textAlignment = .center
-        }
-        
-        
-        
-        if (pickerView == orthoticsFunctional) {
-            pickerLabel?.text = orthoticMateriaPickerData[component][row]
-        } else if (pickerView == patientGender) {
-            pickerLabel?.text = genderPickerViewValues[row]
-        } else if (pickerView == practitionerPicker) {
-            pickerLabel?.text = practitioners[row].firstName! + " " + practitioners[row].lastName!
-        } else if (pickerView == patientShoeTypePicker) {
-            pickerLabel?.text = patientShoeTypeLabels[row]
-        } else if (pickerView == orthoticSpecificationsAnteriorWidthLeftPicker) {
-            pickerLabel?.text = anteriorWidthPickerData[row]
-        } else if (pickerView == orthoticSpecificationsAnteriorWidthRightPicker) {
-            pickerLabel?.text = anteriorWidthPickerData[row]
-        } else if (pickerView == topCoversAndExtensionsTopCoverLengthPicker) {
-            pickerLabel?.text = topCoversAndExtensionsTopCoverLengthPickerData[row];
-        } else if (pickerView == topCoversAndExtensionsTopCoverMaterialPicker) {
-            pickerLabel?.text = topCoversAndExtensionsTopCoverMaterialPickerData[component][row];
-        } else if (pickerView == topCoversAndExtensionsForefootExtensionMaterialPicker) {
-            pickerLabel?.text = topCoversAndExtensionsForefootExtensionMaterialPickerData[row];
-        } else if (pickerView == topCoversAndExtensionsForefootExtensionThicknessPicker) {
-            pickerLabel?.text = topCoversAndExtensionsForefootExtensionThicknessPickerData[row];
-        } else if (pickerView == topCoversAndExtensionsForefootExtensionExtensionLengthPicker) {
-            pickerLabel?.text = topCoversAndExtensionsForefootExtensionExtensionLengthPickerData[row];
-        } else if (pickerView == orthoticMaterialColorPicker) {
-            pickerLabel?.text = orthosisMaterialColorLabels[row]
-        } else if (pickerView == postingRearfootPostTypePicker) {
-            //TODO change here based on xx
-            pickerLabel?.text = postingRearfootPostTypePickerData[row]
-        } else if (pickerView == orthoticMaterialPicker) {
-            let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
-            if (theMOI.orthoticsMaterialSelection == orthosisMaterialPolypropyleneIndex) {
-                
-                pickerLabel?.text = isWeightSupplied || row > 0 ? orthosisPolypropyleneLabels[row] : "Choose one";
-            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialGraphiteCompositeIndex) {
-                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisGraphiteCompositeLabels[row] : "Choose one";
-            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialFiberglassCompositeIndex) {
-                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisFiberglassCompositeLabels[row] : "Choose one";
-            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialAcrylicIndex) {
-                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisAcrylicLabels[row] : "Choose one";
-            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialHighDensityProlyetheleneIndex) {
-                pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisHighDensityPolyetheleneLabels[row] : "Choose one";
-            }
-        } else if (pickerView == orthoticSpecificationsHeelCupHeightLeftPicker) {
-            pickerLabel?.text = orthosisSpecificationHeelCupLeftPickerData[row]
-        } else if (pickerView == orthoticSpecificationsHeelCupHeightRightPicker) {
-            pickerLabel?.text = orthosisSpecificationHeelCupRightPickerData[row]
-
-        } else {
-            pickerLabel?.text = String(row);
-        }
-
-        
-        return pickerLabel!
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -1573,6 +1587,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             defaults = (persistedDataDefaults[0] as! Defaults);
             if (defaults!.defaultPractitioner != -1) {
                 defaultPractitioner = practitioners[Int(defaults!.defaultPractitioner)];
+                practitionerNameInput.text = defaultPractitioner?.firstName;
+                practitionerLastNameInput.text = defaultPractitioner?.lastName;
+                practitionerBillingAddressInput.text = defaultPractitioner?.billingAddress;
+                practitionerShippingAddressInput.text = defaultPractitioner?.shippingAddress;
+                practitionerEmailInput.text = defaultPractitioner?.email;
+                practitionerPhoneInput.text = defaultPractitioner?.phone;
+
             }
 
         }
@@ -1660,6 +1681,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         postingRearfootPostMotionOtherDegreesRight.autocorrectionType = UITextAutocorrectionType.no;
         postingRearfootPostingElevatorOthermmLeft.autocorrectionType = UITextAutocorrectionType.no;
         postingRearfootPostingElevatorOthermmRight.autocorrectionType = UITextAutocorrectionType.no;
+        
+        commentsTextArea.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerBillingAddressInput.autocorrectionType = UITextAutocorrectionType.no;
+       practitionerShippingAddressInput.autocorrectionType = UITextAutocorrectionType.no;
+       
         
         correctionsAndModificationsCastOrientationVerticalLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
 
@@ -1871,6 +1897,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var topCoversAndExtensionsForefootExtensionThicknessPicker: UIPickerView!
     @IBOutlet var topCoversAndExtensionsForefootExtensionExtensionLengthPicker: UIPickerView!
     @IBOutlet var patientShoeTypePicker: UIPickerView!
+    @IBOutlet var rushOrderExpressShippingPicker: UIPickerView!
 
     @IBOutlet var correctionsAndModificationsCastOrientationVerticalLeftUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsCastOrientationVerticalRightUISwitch: UISwitch!
@@ -1934,9 +1961,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
     @IBAction func NewOrderAction(sender: UIButton){
         if (defaultPractitioner != nil) {
-            practitionerNameLabel.text = (defaultPractitioner!.firstName)! + " " + (defaultPractitioner!.lastName)!;
-            practitionerFinishedUIImageView.image = UIImage(named: "checked.png");
-
             changePageTo(pageTo: patientManagementPageIndex);
         } else {
             changePageTo(pageTo: practitionerManagementPageIndex);
@@ -1983,7 +2007,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         thePractitioner.email = practitionerEmailInput.text;
         
         
-        practitionerFinishedUIImageView.image = UIImage(named: "checked.png");
         practitionerNameLabel.text = thePractitioner.firstName! + " " + thePractitioner.lastName!;
         practitionerPicker.reloadAllComponents();
 
@@ -2029,9 +2052,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 let image = prepareScreenShotCurrentViewpointForUIImage();
                 escanRightFootUIButton.setImage(image, for: UIControl.State.normal);
 
-            }
-            if (escanFormValid()) {
-                eScanFinishedUIImageView.image = UIImage(named: "checked.png");
             }
 
             changePageTo(pageTo: scanFormPageIndex)
@@ -2083,8 +2103,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 order.orderPatient?.weight = Int16(weight!) ?? 0;
                 order.orderPatient?.shoeSize = Int16(patientShoeSizeInput!.text!) ?? 0;
 //                order.orderPatient?.shoeType = patientShoeTypeInput.text;
-                //TODO replace
-                patientNameLabel.text = patientNameInput.text! + " " + patientLastNameInput.text!;
             }
 
         } else if (screenViewing == orthoticsFormPageIndex) {
@@ -2099,8 +2117,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             //makePdf2();
 
             changePageTo(pageTo: openingPageIndex);
-            practitionerNameLabel.text = "No Name";
-            patientNameLabel.text = "No Name";
+            practitionerNameLabel.text = "";
+            patientNameLabel.text = "";
             practitionerNameInput.text = "";
             practitionerBillingAddressInput.text = "";
             practitionerShippingAddressInput.text = "";
@@ -2387,21 +2405,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         menuView.isHidden = screenViewing == 0 || screenViewing == escanningPageIndex
             || screenViewing == eViewingMeshPageIndex;
         backNextView.isHidden = screenViewing == 0;
-        if (pageTo == practitionerManagementPageIndex) {
-            let isValid = isPractitionerPageValid();
-            nextButton.isEnabled = isValid;
-            defaultPractitionerButton.isEnabled = isValid;
-            practitionerFinishedUIImageView.image = isValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
-        } else if (pageTo == patientManagementPageIndex) {
-            let isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
-                !(patientLastNameInput.text?.isEmpty ?? false);
-            nextButton.isEnabled = isEnabled;
-            prescriptionButton.isEnabled = isEnabled;
-            escanFormButton.isEnabled = isEnabled;
-            submitFormButton.isEnabled = isEnabled;
-        } else if (pageTo == orthoticsFormPageIndex) {
-            updateImagesForValidOrthoticsForm()
-        }
         
         setCarrot();
     }
@@ -3188,6 +3191,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         return theReturn;
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField,
                                          reason: UITextField.DidEndEditingReason) {
         if (textField == correctionsAndModificationsCastOrientationInvertedLeft && !(correctionsAndModificationsCastOrientationInvertedLeft.text?.isEmpty ?? true)) {
@@ -3217,6 +3228,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         else if (textField == correctionsAndModificationsCastOrientationEvertedRight && !(correctionsAndModificationsCastOrientationEvertedRight.text?.isEmpty ?? true)) {
             correctionsAndModificationsCastOrientationInvertedRight.text = "";
             correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = false;
+        }
+        else if (textField == postingRearfootPostMotionOtherDegreesLeft && !(postingRearfootPostMotionOtherDegreesLeft.text?.isEmpty ?? true)) {
+                postingRearfootPostMotion0DegreesMotionLeftUISwitch.isOn = false;
+                postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn = false;
+        }
+        else if (textField == postingRearfootPostMotionOtherDegreesRight && !(postingRearfootPostMotionOtherDegreesRight.text?.isEmpty ?? true)) {
+            postingRearfootPostMotion0DegreesMotionRightUISwitch.isOn = false;
+            postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn = false;
+        }
+        else if (textField == postingRearfootPostingElevatorOthermmLeft && !(postingRearfootPostingElevatorOthermmLeft.text?.isEmpty ?? true)) {
+            postingRearfootPostingElevator4mmLeftUISwitch.isOn = false;
+            postingRearfootPostingElevator8mmLeftUISwitch.isOn = false;
+        }
+        else if (textField == postingRearfootPostingElevatorOthermmRight && !(postingRearfootPostingElevatorOthermmRight.text?.isEmpty ?? true)) {
+            postingRearfootPostingElevator4mmRightUISwitch.isOn = false;
+            postingRearfootPostingElevator8mmRightUISwitch.isOn = false;
         } else if (textField == practitionerNameInput) {
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerLastNameInput) {
@@ -3246,6 +3273,29 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setValuesBasedOnPatientPageValid();
         }
 
+        
+        
+        if (escanFormValid()) {
+            eScanFinishedUIImageView.image = UIImage(named: "checked.png");
+        }
+        
+        let isValid = isPractitionerPageValid();
+        nextButton.isEnabled = isValid;
+        defaultPractitionerButton.isEnabled = isValid;
+        practitionerFinishedUIImageView.image = isValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+
+        let isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
+            !(patientLastNameInput.text?.isEmpty ?? false);
+        nextButton.isEnabled = isEnabled;
+        prescriptionButton.isEnabled = isEnabled;
+        escanFormButton.isEnabled = isEnabled;
+        submitFormButton.isEnabled = isEnabled;
+
+        updateImagesForValidOrthoticsForm()
+
+        practitionerNameLabel.text = practitionerNameInput.text! + " " + practitionerLastNameInput.text!;
+
+        patientNameLabel.text = patientNameInput.text! + " " + patientLastNameInput.text!;
 
     }
     
@@ -3383,6 +3433,130 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
     }
     
+    @IBAction func clickPostingRearfootPostMotion0DegreesMotionLeftUISwitch(sender: UIButton) {
+        if (postingRearfootPostMotion0DegreesMotionLeftUISwitch.isOn) {
+            postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn = false;
+            postingRearfootPostMotionOtherDegreesLeft.text = "";
+        }
+    }
+
+    @IBAction func clickPostingRearfootPostMotion4DegreesMotionLeftUISwitch(sender: UIButton) {
+        if (postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn) {
+            postingRearfootPostMotion0DegreesMotionLeftUISwitch.isOn = false;
+            postingRearfootPostMotionOtherDegreesLeft.text = "";
+        }
+    }
+
+    @IBAction func clickPostingRearfootPostMotion0DegreesMotionRightUISwitch(sender: UIButton) {
+        if (postingRearfootPostMotion0DegreesMotionRightUISwitch.isOn) {
+            postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn = false;
+            postingRearfootPostMotionOtherDegreesRight.text = "";
+        }
+    }
+    
+    @IBAction func clickPostingRearfootPostMotion4DegreesMotionRightUISwitch(sender: UIButton) {
+        if (postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn) {
+            postingRearfootPostMotion0DegreesMotionRightUISwitch.isOn = false;
+            postingRearfootPostMotionOtherDegreesRight.text = "";
+        }
+    }
+    
+    
+    @IBAction func clickPostingRearfootPostingElevator4mmLeftUISwitch(sender: UIButton) {
+        if (postingRearfootPostingElevator4mmLeftUISwitch.isOn) {
+            postingRearfootPostingElevator8mmLeftUISwitch.isOn = false;
+            postingRearfootPostingElevatorOthermmLeft.text = "";
+        }
+    }
+    
+    @IBAction func clickPostingRearfootPostingElevator8mmLeftUISwitch(sender: UIButton) {
+        if (postingRearfootPostingElevator8mmLeftUISwitch.isOn) {
+            postingRearfootPostingElevator4mmLeftUISwitch.isOn = false;
+            postingRearfootPostingElevatorOthermmLeft.text = "";
+        }
+    }
+    
+    @IBAction func clickPostingRearfootPostingElevator4mmRightUISwitch(sender: UIButton) {
+        if (postingRearfootPostingElevator4mmRightUISwitch.isOn) {
+            postingRearfootPostingElevator8mmRightUISwitch.isOn = false;
+            postingRearfootPostingElevatorOthermmRight.text = "";
+        }
+    }
+    
+    @IBAction func clickPostingRearfootPostingElevator8mmRightUISwitch(sender: UIButton) {
+        if (postingRearfootPostingElevator8mmRightUISwitch.isOn) {
+            postingRearfootPostingElevator4mmRightUISwitch.isOn = false;
+            postingRearfootPostingElevatorOthermmRight.text = "";
+        }
+    }
+    
+    @IBAction func clickPostingRearfootPostOptionsLongPostFlangeLeftUISwitch(sender: UIButton) {
+        if (postingRearfootPostOptionsLongPostFlangeLeftUISwitch.isOn) {
+            postingRearfootPostOptionsShortPostFlangeLeftUISwitch.isOn = false;
+        }
+    }
+    
+    @IBAction func clickPostingRearfootPostOptionsLongPostFlangeRightUISwitch(sender: UIButton) {
+        if (postingRearfootPostOptionsLongPostFlangeRightUISwitch.isOn) {
+            postingRearfootPostOptionsShortPostFlangeRightUISwitch.isOn = false;
+        }
+    }
+    
+    @IBAction func clickPostingRearfootPostOptionsShortPostFlangeLeftUISwitch(sender: UIButton) {
+        if (postingRearfootPostOptionsShortPostFlangeLeftUISwitch.isOn) {
+            postingRearfootPostOptionsLongPostFlangeLeftUISwitch.isOn = false;
+        }
+    }
+    
+    @IBAction func clickPostingRearfootPostOptionsShortPostFlangeRightUISwitch(sender: UIButton) {
+        if (postingRearfootPostOptionsShortPostFlangeRightUISwitch.isOn) {
+            postingRearfootPostOptionsLongPostFlangeRightUISwitch.isOn = false;
+        }
+    }
+    
+    @IBAction func clickPostingNonCorrectiveForefootPostFullWidthLeftUISwitch(sender: UIButton) {
+        if (postingNonCorrectiveForefootPostFullWidthLeftUISwitch.isOn) {
+            postingNonCorrectiveForefootPostLateralCornerWidthLeftUISwitch.isOn = false;
+            postingNonCorrectiveForefootPostMedialCornerLeftUISwitch.isOn = false;
+        }
+    }
+    
+    @IBAction func clickPostingNonCorrectiveForefootPostMedialCornerLeftUISwitch(sender: UIButton) {
+        if (postingNonCorrectiveForefootPostMedialCornerLeftUISwitch.isOn) {
+            postingNonCorrectiveForefootPostFullWidthLeftUISwitch.isOn = false;
+            postingNonCorrectiveForefootPostLateralCornerWidthLeftUISwitch.isOn = false;
+        }
+    }
+    
+    @IBAction func clickPostingNonCorrectiveForefootPostLateralCornerWidthLeftUISwitch(sender: UIButton) {
+        if (postingNonCorrectiveForefootPostLateralCornerWidthLeftUISwitch.isOn) {
+            postingNonCorrectiveForefootPostFullWidthLeftUISwitch.isOn = false;
+            postingNonCorrectiveForefootPostMedialCornerLeftUISwitch.isOn = false;
+        }
+    }
+
+    @IBAction func clickPostingNonCorrectiveForefootPostFullWidthRightUISwitch(sender: UIButton) {
+        if (postingNonCorrectiveForefootPostFullWidthRightUISwitch.isOn) {
+            postingNonCorrectiveForefootPostLateralCornerRightUISwitch.isOn = false;
+            postingNonCorrectiveForefootPostMedialCornerRightUISwitch.isOn = false;
+        }
+    }
+    
+    @IBAction func clickPostingNonCorrectiveForefootPostMedialCornerRightUISwitch(sender: UIButton) {
+        if (postingNonCorrectiveForefootPostMedialCornerRightUISwitch.isOn) {
+            postingNonCorrectiveForefootPostFullWidthRightUISwitch.isOn = false;
+            postingNonCorrectiveForefootPostLateralCornerRightUISwitch.isOn = false;
+        }
+    }
+    
+    @IBAction func clickPostingNonCorrectiveForefootPostLateralCornerWidthRightUISwitch(sender: UIButton) {
+        if (postingNonCorrectiveForefootPostLateralCornerRightUISwitch.isOn) {
+            postingNonCorrectiveForefootPostFullWidthRightUISwitch.isOn = false;
+            postingNonCorrectiveForefootPostMedialCornerRightUISwitch.isOn = false;
+        }
+    }
+    
+
     
     func imageFromPixels(_ pixels : UnsafeMutablePointer<UInt8>, width: Int, height: Int) -> UIImage? {
         let colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -3428,6 +3602,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             if patientShoeSizeInput.isEditing{
+                self.view.window?.frame.origin.y = -1 * keyboardHeight
+            }
+            else if practitionerBillingAddressInput.isFirstResponder {
+                self.view.window?.frame.origin.y = -1 * keyboardHeight
+            }
+            else if practitionerShippingAddressInput.isFirstResponder {
                 self.view.window?.frame.origin.y = -1 * keyboardHeight
             }
         }
@@ -3901,41 +4081,27 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func pinchGesture(_ sender: UIPinchGestureRecognizer) {
-        
-        if (screenViewing == escanningPageIndex) {
-
-            if sender.state == .began {
-                if _slamState.scannerState == .cubePlacement {
-                    _volumeScale.initialPinchScale = _volumeScale.currentScale / sender.scale
-                }
-            } else if sender.state == .changed {
+        if sender.state == .began {
+            if _slamState.scannerState == .cubePlacement {
+                _volumeScale.initialPinchScale = _volumeScale.currentScale / sender.scale
+            }
+        } else if sender.state == .changed {
+            
+            if _slamState.scannerState == .cubePlacement {
                 
-                if _slamState.scannerState == .cubePlacement {
+                // In some special conditions the gesture recognizer can send a zero initial scale.
+                if !_volumeScale.initialPinchScale.isNaN {
                     
-                    // In some special conditions the gesture recognizer can send a zero initial scale.
-                    if !_volumeScale.initialPinchScale.isNaN {
-                        
-                        _volumeScale.currentScale = sender.scale * _volumeScale.initialPinchScale
-                        
-                        // Don't let our scale multiplier become absurd
-                        _volumeScale.currentScale = CGFloat(keepInRange(Float(_volumeScale.currentScale), minValue: 0.01, maxValue: 1000))
-                        
-                        let newVolumeSize: GLKVector3 = GLKVector3MultiplyScalar(_options.initVolumeSizeInMeters, Float(_volumeScale.currentScale))
-                        
-                        adjustVolumeSize( volumeSize: newVolumeSize)
-                        
-                    }
+                    _volumeScale.currentScale = sender.scale * _volumeScale.initialPinchScale
+                    
+                    // Don't let our scale multiplier become absurd
+                    _volumeScale.currentScale = CGFloat(keepInRange(Float(_volumeScale.currentScale), minValue: 0.01, maxValue: 1000))
+                    
+                    let newVolumeSize: GLKVector3 = GLKVector3MultiplyScalar(_options.initVolumeSizeInMeters, Float(_volumeScale.currentScale))
+                    
+                    adjustVolumeSize( volumeSize: newVolumeSize)
+                    
                 }
-            }
-        }
-        
-        if (screenViewing == eViewingMeshPageIndex) {
-            // Forward to the ViewpointController.
-            if sender.state == .began {
-                viewpointControllerMesh.onPinchGestureBegan(Float(sender.scale))
-            }
-            else if sender.state == .changed {
-                viewpointControllerMesh.onPinchGestureChanged(Float(sender.scale))
             }
         }
     }
@@ -4499,7 +4665,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func pinchScaleGesture(_ sender: UIPinchGestureRecognizer) {
-        
+        if sender.state == .began {
+            viewpointControllerMesh.onPinchGestureBegan(Float(sender.scale))
+        }
+        else if sender.state == .changed {
+            viewpointControllerMesh.onPinchGestureChanged(Float(sender.scale))
+        }
 
     }
     
