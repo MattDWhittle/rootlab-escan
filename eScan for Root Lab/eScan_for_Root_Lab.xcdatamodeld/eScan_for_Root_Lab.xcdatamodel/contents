@@ -111,12 +111,26 @@
         <relationship name="parentOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="orderPatient" inverseEntity="Order" syncable="YES"/>
     </entity>
     <entity name="Practitioner" representedClassName="Practitioner" syncable="YES" codeGenerationType="class">
-        <attribute name="billingAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingAddress1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingAddress2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingAddressCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingAddressCountry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingAddressFacilityName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingAddressState" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="billingAddressZip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="shippingAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shippingAddress1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shippingAddress2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shippingAddressCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shippingAddressCountry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shippingAddressFacilityName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shippingAddressState" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shippingAddressZip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="useEmailForCC" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="useShippingAddressForBillingAddress" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="parentOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="orderPractitioner" inverseEntity="Order" syncable="YES"/>
     </entity>
     <elements>
@@ -125,6 +139,6 @@
         <element name="MaterialOrderItem" positionX="305.16015625" positionY="67.2734375" width="128" height="90"/>
         <element name="Order" positionX="128.48828125" positionY="203.7109375" width="128" height="1290"/>
         <element name="Patient" positionX="58.953125" positionY="-11.796875" width="128" height="195"/>
-        <element name="Practitioner" positionX="-92.83203125" positionY="38.47265625" width="128" height="150"/>
+        <element name="Practitioner" positionX="-92.83203125" positionY="38.47265625" width="128" height="360"/>
     </elements>
 </model>

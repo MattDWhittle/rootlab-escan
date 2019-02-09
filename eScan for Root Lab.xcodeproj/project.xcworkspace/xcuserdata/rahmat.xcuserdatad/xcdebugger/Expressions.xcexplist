@@ -6,10 +6,26 @@
          contextName = "ViewController.pickerView(_:viewForRow:forComponent:reusing:):ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "order.orderPatient">
+               value = "order.orderPatient?.weight">
             </PersistentString>
             <PersistentString
-               value = "order.orderPatient?.weight">
+               value = "order.orderPatient">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.isNotEmptyAndIsNot(thisString:stringToTest:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "!stringToTest.isEmpty &amp;&amp; stringToTest != thisString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.isPractitionerPageValid():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "practitionerBillingAddressZip.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

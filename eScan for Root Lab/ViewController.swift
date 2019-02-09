@@ -13,18 +13,23 @@
 //TODO
 
 // (TEST - failure) Scans place images over foot buttons - loading image not working
-// (TEST) take of spell check from uitext views
-// (TEST) keyboard hides field
-// (TEST) Rush order shows 0,1,2 for scroll view
-// (TEST) Green light turns green right when field modified, not when next clicked
-// (TEST) Patient/Practitioner data changes right when field edited, not when next clicked
-// (TEST) PolyMax only can have a posting of Polypropylene
-// (TEST) Nothing else can have a posting of Polypropylene
-// (TEST) posting form - rearfoot post motion, one has to be selected, only one selected
-// (TEST) Rearfoot posting elevator, only one allowed to be selected, one must be selected, 8mm default normally
-// (TEST) Rearfoot post options, cannot do a long and a short
-// (TEST) Non corrective forefoot post, if full width selected, others are not, and vice versa
+// (TEST - fail) PolyMax only can have a posting of Polypropylene
+// (TEST - fail) Non corrective forefoot post, if full width selected, others are not, and vice versa
 
+// Change address to broken out by piece boxes
+// Remove Practitioner Labels
+// Editing a box wipes out label in box
+// Add a checkbox for send confirmation
+// 4. Orthosis specifications page:  Remove Fit to Enclosed Shoe
+//After “Styloid Accommodation” and “As marked on foot (include picture)” please add “Fill with Poron” and a yes/no toggle to each.
+//Posting Page: Birkocork is spelled wrong.
+//posting form - rearfoot post motion, one has to be selected,
+// Rearfoot posting elevator, one must be selected
+
+// Prescription Page:
+// Change to 3 line text views
+// Remove Edit Button, have the label be the button
+// Next button should take you to the next category, not to the main prescription page
 
 // (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
 
@@ -78,6 +83,7 @@
 //Need to read 4 other forms in readAllForms()
 //Need to update 4 other labels not xxxxx
 
+// Add stuff to My Devices - click on name
 
 //Add a title box to practitioner page (Hold on this one)
 
@@ -150,6 +156,16 @@
 //(IN PROGRESS, need INT validation) make age wieght height gender required
 
 
+//Wednesday's push
+// (DONE) take of spell check from uitext views
+// (DONE) keyboard hides field
+// (DONE) Rush order shows 0,1,2 for scroll view
+// (DONE) Green light turns green right when field modified, not when next clicked
+// (DONE) Patient/Practitioner data changes right when field edited, not when next clicked
+// (DONE) Nothing else can have a posting of Polypropylene
+// (DONE) posting form - rearfoot post motion, only one selected
+// (DONE) Rearfoot posting elevator, only one allowed to be selected 8mm default normally
+// (DONE) Rearfoot post options, cannot do a long and a short
 
 // (DONE) change other label on heel cup height to "Other heel cup Height"
 // (DONE) Need a areScansDone() for green dot
@@ -1258,20 +1274,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if (pickerView == practitionerPicker) {
             let theSelection = practitionerPicker.selectedRow(inComponent: 0);
             if (theSelection == 0) {
-                practitionerNameInput.text = "";
-                practitionerLastNameInput.text = "";
-                practitionerBillingAddressInput.text = "";
-                practitionerShippingAddressInput.text = "";
-                practitionerPhoneInput.text = "";
-                practitionerEmailInput.text = "";
+                clearPractitionerForm();
             } else {
                 let thePractitioner = practitioners[theSelection];
-                practitionerNameInput.text = thePractitioner.firstName;
-                practitionerLastNameInput.text = thePractitioner.lastName;
-                practitionerBillingAddressInput.text = thePractitioner.billingAddress;
-                practitionerShippingAddressInput.text = thePractitioner.shippingAddress;
-                practitionerPhoneInput.text = thePractitioner.phone;
-                practitionerEmailInput.text = thePractitioner.email;
+                readPractitionerToForm(thePractitioner: thePractitioner);
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (pickerView == topCoversAndExtensionsTopCoverMaterialPicker) {
@@ -1297,6 +1303,103 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         //TODO fill in xxx here
         //print(myPickerViewData[row])
+    }
+
+    func clearPractitionerForm() {
+        practitionerNameInput.text = "*First Name";
+        practitionerLastNameInput.text = "*Last Name";
+        practitionerBillingAddress1.text = "*Address 1";
+        practitionerBillingAddress2.text = "Address 2";
+        practitionerBillingAddressCity.text = "*City";
+        practitionerBillingAddressState.text = "*State";
+        practitionerBillingAddressZip.text = "*Zip";
+        practitionerBillingAddressCountry.text = "*Country";
+        practitionerBillingAddressFacilityName.text = "Business or Facility Name";
+        
+
+        practitionerShippingAddress1.text = "*Address 1";
+        practitionerShippingAddress2.text = "Address 2";
+        practitionerShippingAddressCity.text = "*City";
+        practitionerShippingAddressState.text = "*State";
+        practitionerShippingAddressZip.text = "*Zip";
+        practitionerShippingAddressCountry.text = "*Country";
+        practitionerShippingAddressFacilityName.text = "Business or Facility Name";
+        practitionerPhoneInput.text = "*Phone";
+        practitionerEmailInput.text = "*Email";
+        newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
+        newPractitionerUseEmailForCC.isOn = true;
+        
+
+        practitionerNameInput.textColor = .gray;
+        practitionerLastNameInput.textColor = .gray;
+        practitionerBillingAddress1.textColor = .gray;
+        practitionerBillingAddress2.textColor = .gray;
+        practitionerBillingAddressCity.textColor = .gray;
+        practitionerBillingAddressState.textColor = .gray;
+        practitionerBillingAddressZip.textColor = .gray;
+        practitionerBillingAddressCountry.textColor = .gray;
+        practitionerBillingAddressFacilityName.textColor = .gray;
+        practitionerShippingAddress1.textColor = .gray;
+        practitionerShippingAddress2.textColor = .gray;
+        practitionerShippingAddressCity.textColor = .gray;
+        practitionerShippingAddressState.textColor = .gray;
+        practitionerShippingAddressZip.textColor = .gray;
+        practitionerShippingAddressCountry.textColor = .gray;
+        practitionerShippingAddressFacilityName.textColor = .gray;
+        practitionerPhoneInput.textColor = .gray;
+        practitionerEmailInput.textColor = .gray;
+
+
+
+
+        refreshPractitionerNameLabel();
+
+    }
+
+    
+    func readPractitionerToForm(thePractitioner: Practitioner!) {
+        practitionerNameInput.text = thePractitioner.firstName;
+        practitionerLastNameInput.text = thePractitioner.lastName;
+        
+        practitionerBillingAddress1.text = thePractitioner.billingAddress1;
+        practitionerBillingAddress2.text = thePractitioner.billingAddress2;
+        practitionerBillingAddressCity.text = thePractitioner.billingAddressCity;
+        practitionerBillingAddressState.text = thePractitioner.billingAddressState;
+        practitionerBillingAddressZip.text = thePractitioner.billingAddressZip;
+        practitionerBillingAddressCountry.text = thePractitioner.billingAddressCountry;
+        practitionerBillingAddressFacilityName.text = thePractitioner.billingAddressFacilityName;
+        practitionerShippingAddress1.text = thePractitioner.shippingAddress1;
+        practitionerShippingAddress2.text = thePractitioner.shippingAddress2;
+        practitionerShippingAddressCity.text = thePractitioner.shippingAddressCity;
+        practitionerShippingAddressState.text = thePractitioner.shippingAddressState;
+        practitionerShippingAddressZip.text = thePractitioner.shippingAddressZip;
+        practitionerShippingAddressCountry.text = thePractitioner.shippingAddressCountry;
+        practitionerShippingAddressFacilityName.text = thePractitioner.shippingAddressFacilityName;
+        newPractitionerSameAsBillingAddressUiSwitch.isOn = thePractitioner.useShippingAddressForBillingAddress;
+        newPractitionerUseEmailForCC.isOn = thePractitioner.useEmailForCC;
+        
+        
+        practitionerBillingAddress1.textColor = practitionerBillingAddress1.text == "*Address 1" ? .gray : .black
+        practitionerBillingAddress2.textColor = practitionerBillingAddress2.text == "Address 2" ? .gray : .black
+        practitionerBillingAddressCity.textColor = practitionerBillingAddressCity.text == "*City" ? .gray : .black
+        practitionerBillingAddressState.textColor = practitionerBillingAddressState.text == "*State" ? .gray : .black
+        practitionerBillingAddressZip.textColor = practitionerBillingAddressZip.text == "*Zip" ? .gray : .black
+        practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "*Country" ? .gray : .black
+        practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
+        
+        practitionerShippingAddress1.textColor = practitionerShippingAddress1.text == "*Address 1" ? .gray : .black
+        practitionerShippingAddress2.textColor = practitionerShippingAddress2.text == "Address 2" ? .gray : .black
+        practitionerShippingAddressCity.textColor = practitionerShippingAddressCity.text == "*City" ? .gray : .black
+        practitionerShippingAddressState.textColor = practitionerShippingAddressState.text == "*State" ? .gray : .black
+        practitionerShippingAddressZip.textColor = practitionerShippingAddressZip.text == "*Zip" ? .gray : .black
+        practitionerShippingAddressCountry.textColor = practitionerShippingAddressCountry.text == "*Country" ? .gray : .black
+        practitionerShippingAddressFacilityName.textColor = practitionerShippingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
+        
+        practitionerPhoneInput.text = thePractitioner.phone;
+        practitionerEmailInput.text = thePractitioner.email;
+        
+        refreshPractitionerNameLabel();
+
     }
     
     override func viewDidLoad() {
@@ -1385,9 +1488,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             newOrderLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             practitionerLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             practitionerNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
-            practitionerLastNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
-            practitionerPhoneLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
-            practitionerEmailLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientLastNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
@@ -1398,9 +1498,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             submitLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthoticMaterialTypeLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
 
-            newPractitionerNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
-            newPractitionerShippingAddressLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
-            newPractitionerBillingAddressLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             newPractitionerSameAsBillingAddressLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
 
             patientDetailsLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
@@ -1437,12 +1534,24 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             
             
 
-            practitionerNameInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
-            practitionerLastNameInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
-            practitionerBillingAddressInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
-            practitionerShippingAddressInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
-            practitionerEmailInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
-            practitionerPhoneInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
+            practitionerNameInput.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerLastNameInput.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerEmailInput.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerPhoneInput.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerBillingAddressFacilityName.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerBillingAddress1.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerBillingAddress2.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerBillingAddressCity.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerBillingAddressState.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerBillingAddressZip.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerBillingAddressCountry.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerShippingAddressFacilityName.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerShippingAddress1.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerShippingAddress2.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerShippingAddressCity.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerShippingAddressState.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerShippingAddressZip.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            practitionerShippingAddressCountry.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientNameInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientLastNameInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientAgeInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
@@ -1562,6 +1671,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         }
         
+        clearPractitionerForm();
         
         let fetchRequestDefaults =
             NSFetchRequest<NSManagedObject>(entityName: "Defaults")
@@ -1587,13 +1697,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             defaults = (persistedDataDefaults[0] as! Defaults);
             if (defaults!.defaultPractitioner != -1) {
                 defaultPractitioner = practitioners[Int(defaults!.defaultPractitioner)];
-                practitionerNameInput.text = defaultPractitioner?.firstName;
-                practitionerLastNameInput.text = defaultPractitioner?.lastName;
-                practitionerBillingAddressInput.text = defaultPractitioner?.billingAddress;
-                practitionerShippingAddressInput.text = defaultPractitioner?.shippingAddress;
-                practitionerEmailInput.text = defaultPractitioner?.email;
-                practitionerPhoneInput.text = defaultPractitioner?.phone;
-
+                readPractitionerToForm(thePractitioner: defaultPractitioner)
             }
 
         }
@@ -1610,6 +1714,20 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerLastNameInput.delegate = self
         practitionerPhoneInput.delegate = self
         practitionerEmailInput.delegate = self
+        practitionerBillingAddress1.delegate = self
+        practitionerBillingAddress2.delegate = self
+        practitionerBillingAddressCity.delegate = self
+        practitionerBillingAddressState.delegate = self
+        practitionerBillingAddressZip.delegate = self
+        practitionerBillingAddressCountry.delegate = self
+        practitionerBillingAddressFacilityName.delegate = self
+        practitionerShippingAddress1.delegate = self
+        practitionerShippingAddress2.delegate = self
+        practitionerShippingAddressCity.delegate = self
+        practitionerShippingAddressState.delegate = self
+        practitionerShippingAddressZip.delegate = self
+        practitionerShippingAddressCountry.delegate = self
+        practitionerShippingAddressFacilityName.delegate = self
         patientNameInput.delegate = self
         patientLastNameInput.delegate = self
         patientAgeInput.delegate = self
@@ -1645,8 +1763,20 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         practitionerNameInput.autocorrectionType = UITextAutocorrectionType.no;
         practitionerLastNameInput.autocorrectionType = UITextAutocorrectionType.no;
-        practitionerBillingAddressInput.autocorrectionType = UITextAutocorrectionType.no;
-        practitionerShippingAddressInput.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerBillingAddressFacilityName.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerBillingAddressCountry.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerBillingAddressCity.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerBillingAddress1.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerBillingAddress2.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerBillingAddressState.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerBillingAddressZip.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerShippingAddressFacilityName.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerShippingAddressCountry.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerShippingAddressCity.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerShippingAddress1.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerShippingAddress2.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerShippingAddressState.autocorrectionType = UITextAutocorrectionType.no;
+        practitionerShippingAddressZip.autocorrectionType = UITextAutocorrectionType.no;
         practitionerPhoneInput.autocorrectionType = UITextAutocorrectionType.no;
         practitionerEmailInput.autocorrectionType = UITextAutocorrectionType.no;
         patientNameInput.autocorrectionType = UITextAutocorrectionType.no;
@@ -1683,8 +1813,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         postingRearfootPostingElevatorOthermmRight.autocorrectionType = UITextAutocorrectionType.no;
         
         commentsTextArea.autocorrectionType = UITextAutocorrectionType.no;
-        practitionerBillingAddressInput.autocorrectionType = UITextAutocorrectionType.no;
-       practitionerShippingAddressInput.autocorrectionType = UITextAutocorrectionType.no;
        
         
         correctionsAndModificationsCastOrientationVerticalLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -1784,9 +1912,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var newOrderLabel: UILabel!
     @IBOutlet var practitionerLabel: UILabel!
     @IBOutlet var practitionerNameLabel: UILabel!
-    @IBOutlet var practitionerLastNameLabel: UILabel!
-    @IBOutlet var practitionerPhoneLabel: UILabel!
-    @IBOutlet var practitionerEmailLabel: UILabel!
     @IBOutlet var patientLabel: UILabel!
     @IBOutlet var newPractitionerLabel: UILabel!
     @IBOutlet var patientNameLabel: UILabel!
@@ -1796,9 +1921,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var eScanLabel: UILabel!
     @IBOutlet var eScanNameLabel: UILabel!
     @IBOutlet var submitLabel: UILabel!
-    @IBOutlet var newPractitionerNameLabel: UILabel!
-    @IBOutlet var newPractitionerShippingAddressLabel: UILabel!
-    @IBOutlet var newPractitionerBillingAddressLabel: UILabel!
     @IBOutlet var newPractitionerSameAsBillingAddressLabel: UILabel!
     @IBOutlet var patientDetailsLabel: UILabel!
     @IBOutlet var patientDetailsNameLabel: UILabel!
@@ -1837,8 +1959,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBOutlet var practitionerNameInput: UITextField!
     @IBOutlet var practitionerLastNameInput: UITextField!
-    @IBOutlet var practitionerBillingAddressInput: UITextView!
-    @IBOutlet var practitionerShippingAddressInput: UITextView!
     @IBOutlet var practitionerPhoneInput: UITextField!
     @IBOutlet var practitionerEmailInput: UITextField!
     @IBOutlet var patientNameInput: UITextField!
@@ -1849,6 +1969,20 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var patientWeightInput: UITextField!
     @IBOutlet var patientShoeSizeInput: UITextField!
     @IBOutlet var patientShoeTypeInput: UITextField!
+    @IBOutlet var practitionerBillingAddressFacilityName: UITextField!
+    @IBOutlet var practitionerBillingAddress1: UITextField!
+    @IBOutlet var practitionerBillingAddress2: UITextField!
+    @IBOutlet var practitionerBillingAddressCity: UITextField!
+    @IBOutlet var practitionerBillingAddressState: UITextField!
+    @IBOutlet var practitionerBillingAddressZip: UITextField!
+    @IBOutlet var practitionerBillingAddressCountry: UITextField!
+    @IBOutlet var practitionerShippingAddressFacilityName: UITextField!
+    @IBOutlet var practitionerShippingAddress1: UITextField!
+    @IBOutlet var practitionerShippingAddress2: UITextField!
+    @IBOutlet var practitionerShippingAddressCity: UITextField!
+    @IBOutlet var practitionerShippingAddressState: UITextField!
+    @IBOutlet var practitionerShippingAddressZip: UITextField!
+    @IBOutlet var practitionerShippingAddressCountry: UITextField!
     @IBOutlet var correctionsAndModificationsCastOrientationInvertedLeft: UITextField!
     @IBOutlet var correctionsAndModificationsCastOrientationInvertedRight: UITextField!
     @IBOutlet var correctionsAndModificationsCastOrientationEvertedLeft: UITextField!
@@ -1926,6 +2060,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeftUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeftUISwitch: UISwitch!
     @IBOutlet var newPractitionerSameAsBillingAddressUiSwitch: UISwitch!
+    @IBOutlet var newPractitionerUseEmailForCC: UISwitch!
 
     @IBOutlet var postingRearfootPostMotion4DegreesMotionLeftUISwitch: UISwitch!
     @IBOutlet var postingRearfootPostMotion4DegreesMotionRightUISwitch: UISwitch!
@@ -1999,15 +2134,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else {
             thePractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
         }
-        thePractitioner.firstName = practitionerNameInput.text;
-        thePractitioner.lastName = practitionerLastNameInput.text;
-        thePractitioner.shippingAddress = practitionerShippingAddressInput.text;
-        thePractitioner.billingAddress = practitionerBillingAddressInput.text;
-        thePractitioner.phone = practitionerPhoneInput.text;
-        thePractitioner.email = practitionerEmailInput.text;
         
         
-        practitionerNameLabel.text = thePractitioner.firstName! + " " + thePractitioner.lastName!;
+        fromFormToPractitioner(thePractitioner: thePractitioner);
+        
+        
         practitionerPicker.reloadAllComponents();
 
         if (practitionerPicker.selectedRow(inComponent: 0) == 0) {
@@ -2021,6 +2152,28 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         appDelegate.saveContext()
         changePageTo(pageTo: patientManagementPageIndex);
+    }
+    
+    func fromFormToPractitioner(thePractitioner: Practitioner!) {
+        
+        thePractitioner.firstName = practitionerNameInput.text;
+        thePractitioner.lastName = practitionerLastNameInput.text;
+        thePractitioner.billingAddress1 = practitionerBillingAddress1.text;
+        thePractitioner.billingAddress2 = practitionerBillingAddress2.text;
+        thePractitioner.billingAddressCity = practitionerBillingAddressCity.text;
+        thePractitioner.billingAddressState = practitionerBillingAddressState.text;
+        thePractitioner.billingAddressZip = practitionerBillingAddressZip.text;
+        thePractitioner.billingAddressCountry = practitionerBillingAddressCountry.text;
+        thePractitioner.billingAddressFacilityName = practitionerBillingAddressFacilityName.text;
+        thePractitioner.shippingAddress1 = practitionerShippingAddress1.text;
+        thePractitioner.shippingAddress2 = practitionerShippingAddress2.text;
+        thePractitioner.shippingAddressCity = practitionerShippingAddressCity.text;
+        thePractitioner.shippingAddressState = practitionerShippingAddressState.text;
+        thePractitioner.shippingAddressZip = practitionerShippingAddressZip.text;
+        thePractitioner.shippingAddressCountry = practitionerShippingAddressCountry.text;
+        thePractitioner.shippingAddressFacilityName = practitionerShippingAddressFacilityName.text;
+        thePractitioner.phone = practitionerPhoneInput.text;
+        thePractitioner.email = practitionerEmailInput.text;
     }
     
     @IBAction func ClickNextAction(sender: UIButton){
@@ -2115,21 +2268,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             changePageTo(pageTo: reviewAndSubmitPageIndex);
         } else if (screenViewing == reviewAndSubmitPageIndex) {
             //makePdf2();
-
             changePageTo(pageTo: openingPageIndex);
-            practitionerNameLabel.text = "";
-            patientNameLabel.text = "";
-            practitionerNameInput.text = "";
-            practitionerBillingAddressInput.text = "";
-            practitionerShippingAddressInput.text = "";
-            practitionerPhoneInput.text = "";
-            practitionerEmailInput.text = "";
-            patientNameInput.text = "";
-            patientAgeInput.text = "";
-            patientHeightInput.text = "";
-            patientHeightInchesInput.text = "";
-            patientWeightInput.text = "";
-            patientShoeSizeInput.text = "";
+            resetEverything();
+
         } else if (screenViewing == orthoticsMaterialFormPageIndex) {
             changePageTo(pageTo: orthoticsFormPageIndex);
         } else if (screenViewing == orthoticsCorrectionsFormPageIndex) {
@@ -2161,6 +2302,19 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
     }
 
+    func resetEverything() {
+        clearPractitionerForm();
+        patientNameLabel.text = "";
+        patientNameInput.text = "";
+        patientAgeInput.text = "";
+        patientHeightInput.text = "";
+        patientHeightInchesInput.text = "";
+        patientWeightInput.text = "";
+        patientShoeSizeInput.text = "";
+        refreshPractitionerNameLabel();
+
+    }
+    
     @IBAction func ClickDeletePractitioner(sender: UIButton){
         
     }
@@ -2382,7 +2536,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             pages[screenViewing].isHidden = true;
             backStack.append(screenViewing);
         }
-        screenViewing = pageTo!;
+        screenViewing = pageTo!
+        if (pageTo == practitionerManagementPageIndex) {
+            setValuesBasedOnPractitionerPageValid();
+        }
         if (pageTo == escanningPageIndex) {
             escanViewDidLoad()
             let _ = connectToStructureSensorAndStartStreaming()
@@ -2414,19 +2571,33 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         nextButton.isEnabled = isValid;
         defaultPractitionerButton.isEnabled = isValid;
         practitionerFinishedUIImageView.image = isValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+        deletePractitionerButton.isEnabled = practitionerPicker.selectedRow(inComponent: 0) != 0;
     }
 
     func isPractitionerPageValid() -> Bool {
-        return !(
-            (practitionerNameInput.text?.isEmpty ?? true) ||
-            (practitionerLastNameInput.text?.isEmpty ?? true) ||
-            (practitionerPhoneInput.text?.isEmpty ?? true) ||
-            (practitionerShippingAddressInput.text?.isEmpty ?? true) ||
-            (practitionerBillingAddressInput.text?.isEmpty ?? true) ||
-            (practitionerEmailInput.text?.isEmpty ?? true)
-        );
+        return
+            isNotEmptyAndIsNot(thisString: "*First Name", stringToTest: practitionerNameInput.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Last Name", stringToTest: practitionerLastNameInput.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Phone", stringToTest: practitionerPhoneInput.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Address 1", stringToTest: practitionerShippingAddress1.text!) &&
+            isNotEmptyAndIsNot(thisString: "*City", stringToTest: practitionerShippingAddressCity.text!) &&
+            isNotEmptyAndIsNot(thisString: "*State", stringToTest: practitionerShippingAddressState.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Zip", stringToTest: practitionerShippingAddressZip.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Country", stringToTest: practitionerShippingAddressCountry.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Address 1", stringToTest: practitionerBillingAddress1.text!) &&
+            isNotEmptyAndIsNot(thisString: "*City", stringToTest: practitionerBillingAddressCity.text!) &&
+            isNotEmptyAndIsNot(thisString: "*State", stringToTest: practitionerBillingAddressState.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Zip", stringToTest: practitionerBillingAddressZip.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Country", stringToTest: practitionerBillingAddressCountry.text!) &&
+            isNotEmptyAndIsNot(thisString: "*Email", stringToTest: practitionerEmailInput.text!)
+
+        
     }
 
+    func isNotEmptyAndIsNot(thisString: String, stringToTest: String)-> Bool {
+        return !stringToTest.isEmpty && stringToTest != thisString;
+    }
+    
     func setValuesBasedOnPatientPageValid() {
         let isValid = isPatientPageValid();
         nextButton.isEnabled = isValid;
@@ -3191,12 +3362,101 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         return theReturn;
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (textField == practitionerBillingAddress1) {
+            if (practitionerBillingAddress1.text == "*Address 1") {
+                practitionerBillingAddress1.text = "";
+                practitionerBillingAddress1.textColor = .black;
+            }
+        } else if (textField == practitionerBillingAddress2) {
+            if (practitionerBillingAddress2.text == "Address 2") {
+                practitionerBillingAddress2.text = "";
+                practitionerBillingAddress2.textColor = .black;
+            }
+        } else if (textField == practitionerBillingAddressCity) {
+            if (practitionerBillingAddressCity.text == "*City") {
+                practitionerBillingAddressCity.text = "";
+                practitionerBillingAddressCity.textColor = .black;
+            }
+        } else if (textField == practitionerBillingAddressState) {
+            if (practitionerBillingAddressState.text == "*State") {
+                practitionerBillingAddressState.text = "";
+                practitionerBillingAddressState.textColor = .black;
+            }
+        } else if (textField == practitionerBillingAddressCountry) {
+            if (practitionerBillingAddressCountry.text == "*Country") {
+                practitionerBillingAddressCountry.text = "";
+                practitionerBillingAddressCountry.textColor = .black;
+            }
+        } else if (textField == practitionerBillingAddressZip) {
+            if (practitionerBillingAddressZip.text == "*Zip") {
+                practitionerBillingAddressZip.text = "";
+                practitionerBillingAddressZip.textColor = .black;
+            }
+        } else if (textField == practitionerBillingAddressFacilityName) {
+            if (practitionerBillingAddressFacilityName.text == "Business or Facility Name") {
+                practitionerBillingAddressFacilityName.text = "";
+                practitionerBillingAddressFacilityName.textColor = .black;
+            }
+        } else if (textField == practitionerShippingAddress1) {
+            if (practitionerShippingAddress1.text == "*Address 1") {
+                practitionerShippingAddress1.text = "";
+                practitionerShippingAddress1.textColor = .black;
+            }
+        } else if (textField == practitionerShippingAddress2) {
+            if (practitionerShippingAddress2.text == "Address 2") {
+                practitionerShippingAddress2.text = "";
+                practitionerShippingAddress2.textColor = .black;
+            }
+        } else if (textField == practitionerShippingAddressCity) {
+            if (practitionerShippingAddressCity.text == "*City") {
+                practitionerShippingAddressCity.text = "";
+                practitionerShippingAddressCity.textColor = .black;
+            }
+        } else if (textField == practitionerShippingAddressState) {
+            if (practitionerShippingAddressState.text == "*State") {
+                practitionerShippingAddressState.text = "";
+                practitionerShippingAddressState.textColor = .black;
+            }
+        } else if (textField == practitionerShippingAddressCountry) {
+            if (practitionerShippingAddressCountry.text == "*Country") {
+                practitionerShippingAddressCountry.text = "";
+                practitionerShippingAddressCountry.textColor = .black;
+            }
+        } else if (textField == practitionerShippingAddressZip) {
+            if (practitionerShippingAddressZip.text == "*Zip") {
+                practitionerShippingAddressZip.text = "";
+                practitionerShippingAddressZip.textColor = .black;
+            }
+        } else if (textField == practitionerShippingAddressFacilityName) {
+            if (practitionerShippingAddressFacilityName.text == "Business or Facility Name") {
+                practitionerShippingAddressFacilityName.text = "";
+                practitionerShippingAddressFacilityName.textColor = .black;
+            }
+        } else if (textField == practitionerPhoneInput) {
+            if (practitionerPhoneInput.text == "*Phone") {
+                practitionerPhoneInput.text = "";
+                practitionerPhoneInput.textColor = .black;
+            }
+        } else if (textField == practitionerNameInput) {
+            if (practitionerNameInput.text == "*First Name") {
+                practitionerNameInput.text = "";
+                practitionerNameInput.textColor = .black;
+            }
+        } else if (textField == practitionerLastNameInput) {
+            if (practitionerLastNameInput.text == "*Last Name") {
+                practitionerLastNameInput.text = "";
+                practitionerLastNameInput.textColor = .black;
+            }
+        } else if (textField == practitionerEmailInput) {
+            if (practitionerEmailInput.text == "*Email") {
+                practitionerEmailInput.text = "";
+                practitionerEmailInput.textColor = .black;
+            }
+        }
 
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        
+
+
     }
     
     func textFieldDidEndEditing(_ textField: UITextField,
@@ -3252,15 +3512,88 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerEmailInput) {
             setValuesBasedOnPractitionerPageValid();
-        } else if (textField == practitionerBillingAddressInput) {
+        } else if (textField == practitionerShippingAddress1) {
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
-                practitionerShippingAddressInput.text = practitionerBillingAddressInput.text!;
+                practitionerBillingAddress1.text = practitionerShippingAddress1.text!;
+                 practitionerBillingAddress1.textColor = practitionerBillingAddress1.text == "*Address 1" ? .gray : .black
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerShippingAddress2) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
+                practitionerBillingAddress2.text = practitionerShippingAddress2.text!;
+                practitionerBillingAddress2.textColor = practitionerBillingAddress2.text == "Address 2" ? .gray : .black
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerShippingAddressCity) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
+                practitionerBillingAddressCity.text = practitionerShippingAddressCity.text!;
+                practitionerBillingAddressCity.textColor = practitionerBillingAddressCity.text == "*City" ? .gray : .black
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerShippingAddressState) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
+                practitionerBillingAddressState.text = practitionerShippingAddressState.text!;
+                practitionerBillingAddressState.textColor = practitionerBillingAddressState.text == "*State" ? .gray : .black
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerShippingAddressZip) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
+                practitionerBillingAddressZip.text = practitionerShippingAddressZip.text!;
+                practitionerBillingAddressZip.textColor = practitionerBillingAddressZip.text == "*Zip" ? .gray : .black
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerShippingAddressCountry) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
+                practitionerBillingAddressCountry.text = practitionerShippingAddressCountry.text!;
+                practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "*Country" ? .gray : .black
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerShippingAddressFacilityName) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
+                practitionerBillingAddressFacilityName.text = practitionerShippingAddressFacilityName.text!;
+                practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
 
-        } else if (textField == practitionerShippingAddressInput) {
+        } else if (textField == practitionerBillingAddress1) {
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
-               !(practitionerShippingAddressInput.text == practitionerBillingAddressInput.text! )) {
+               !(practitionerShippingAddress1.text == practitionerBillingAddress1.text! )) {
+                newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerBillingAddress2) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
+                !(practitionerShippingAddress2.text == practitionerBillingAddress2.text! )) {
+                newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerBillingAddressCity) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
+                !(practitionerShippingAddressCity.text == practitionerBillingAddressCity.text! )) {
+                newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerBillingAddressState) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
+                !(practitionerShippingAddressState.text == practitionerBillingAddressState.text! )) {
+                newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerBillingAddressZip) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
+                !(practitionerShippingAddressZip.text == practitionerBillingAddressZip.text! )) {
+                newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerBillingAddressCountry) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
+                !(practitionerShippingAddressCountry.text == practitionerBillingAddressCountry.text! )) {
+                newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
+            }
+            setValuesBasedOnPractitionerPageValid();
+        } else if (textField == practitionerBillingAddressFacilityName) {
+            if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
+                !(practitionerShippingAddressFacilityName.text == practitionerBillingAddressFacilityName.text! )) {
                 newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
             }
             setValuesBasedOnPractitionerPageValid();
@@ -3279,24 +3612,31 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             eScanFinishedUIImageView.image = UIImage(named: "checked.png");
         }
         
-        let isValid = isPractitionerPageValid();
-        nextButton.isEnabled = isValid;
-        defaultPractitionerButton.isEnabled = isValid;
-        practitionerFinishedUIImageView.image = isValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+        if (screenViewing == newPractitionerPageIndex) {
+            setValuesBasedOnPractitionerPageValid();
+        }
+        if (screenViewing == patientManagementPageIndex) {
+            let isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
+                !(patientLastNameInput.text?.isEmpty ?? false);
+            nextButton.isEnabled = isEnabled;
+            prescriptionButton.isEnabled = isEnabled;
+            escanFormButton.isEnabled = isEnabled;
+            submitFormButton.isEnabled = isEnabled;
+        }
 
-        let isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
-            !(patientLastNameInput.text?.isEmpty ?? false);
-        nextButton.isEnabled = isEnabled;
-        prescriptionButton.isEnabled = isEnabled;
-        escanFormButton.isEnabled = isEnabled;
-        submitFormButton.isEnabled = isEnabled;
 
         updateImagesForValidOrthoticsForm()
 
-        practitionerNameLabel.text = practitionerNameInput.text! + " " + practitionerLastNameInput.text!;
-
+        refreshPractitionerNameLabel()
+        
         patientNameLabel.text = patientNameInput.text! + " " + patientLastNameInput.text!;
 
+    }
+    
+    func refreshPractitionerNameLabel() {
+        let firstName = practitionerNameInput.text! == "*First Name" ? "" : practitionerNameInput.text!
+        let lastName = practitionerLastNameInput.text! == "*Last Name" ? "" : practitionerLastNameInput.text!
+        practitionerNameLabel.text = firstName + " " + lastName;
     }
     
     @objc func switchChanged(mySwitch: UISwitch) {
@@ -3305,7 +3645,23 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             correctionsAndModificationsCastOrientationEvertedLeft.text = "";
         } else if (mySwitch == newPractitionerSameAsBillingAddressUiSwitch) {
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
-                practitionerShippingAddressInput.text = practitionerBillingAddressInput.text;
+                practitionerBillingAddress1.text = practitionerShippingAddress1.text;
+                practitionerBillingAddress2.text = practitionerShippingAddress2.text;
+                practitionerBillingAddressCity.text = practitionerShippingAddressCity.text;
+                practitionerBillingAddressState.text = practitionerShippingAddressState.text;
+                practitionerBillingAddressZip.text = practitionerShippingAddressZip.text;
+                practitionerBillingAddressCountry.text = practitionerShippingAddressCountry.text;
+                practitionerBillingAddressFacilityName.text = practitionerShippingAddressFacilityName.text;
+                
+                practitionerBillingAddress1.textColor = practitionerBillingAddress1.text == "*Address 1" ? .gray : .black
+                practitionerBillingAddress2.textColor = practitionerBillingAddress2.text == "Address 2" ? .gray : .black
+                practitionerBillingAddressCity.textColor = practitionerBillingAddressCity.text == "*City" ? .gray : .black
+                practitionerBillingAddressState.textColor = practitionerBillingAddressState.text == "*State" ? .gray : .black
+                practitionerBillingAddressZip.textColor = practitionerBillingAddressZip.text == "*Zip" ? .gray : .black
+                practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "*Country" ? .gray : .black
+                practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
+
+                setValuesBasedOnPractitionerPageValid();
             }
         } else if (mySwitch == correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch && correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn) {
             correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.isOn = false;
@@ -3603,11 +3959,19 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             let keyboardHeight = keyboardRectangle.height
             if patientShoeSizeInput.isEditing{
                 self.view.window?.frame.origin.y = -1 * keyboardHeight
-            }
-            else if practitionerBillingAddressInput.isFirstResponder {
+            } else if practitionerBillingAddress1.isEditing {
                 self.view.window?.frame.origin.y = -1 * keyboardHeight
-            }
-            else if practitionerShippingAddressInput.isFirstResponder {
+            } else if practitionerBillingAddress2.isEditing {
+                self.view.window?.frame.origin.y = -1 * keyboardHeight
+            } else if practitionerBillingAddressCity.isEditing {
+                self.view.window?.frame.origin.y = -1 * keyboardHeight
+            } else if practitionerBillingAddressState.isEditing {
+                self.view.window?.frame.origin.y = -1 * keyboardHeight
+            } else if practitionerBillingAddressZip.isEditing {
+                self.view.window?.frame.origin.y = -1 * keyboardHeight
+            } else if practitionerBillingAddressCountry.isEditing {
+                self.view.window?.frame.origin.y = -1 * keyboardHeight
+            } else if practitionerBillingAddressFacilityName.isEditing {
                 self.view.window?.frame.origin.y = -1 * keyboardHeight
             }
         }
