@@ -53,6 +53,10 @@
 		2D9B41FA21E859E40022FE2D /* RichieBraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */; };
 		2D9B41FE21E85E7F0022FE2D /* StructureScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */; };
 		2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5599121BC6D8B005F99BA /* structure scanner image.png */; };
+		2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307E1220F4AA2002795E7 /* Item Selection.png */; };
+		2DE307E4220F5CF9002795E7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E3220F5CF9002795E7 /* TableViewController.swift */; };
+		2DE307E6220F911F002795E7 /* OrthoticsPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */; };
+		2DE307E82210A8DF002795E7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E72210A8DF002795E7 /* GlobalVariables.swift */; };
 		36E2C5A7BB2BC6382DE9628A /* Pods_eScan_for_Root_LabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +130,10 @@
 		2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichieBraceViewController.swift; sourceTree = "<group>"; };
 		2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureScannerViewController.swift; sourceTree = "<group>"; };
 		2DC5599121BC6D8B005F99BA /* structure scanner image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structure scanner image.png"; sourceTree = "<group>"; };
+		2DE307E1220F4AA2002795E7 /* Item Selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Item Selection.png"; sourceTree = "<group>"; };
+		2DE307E3220F5CF9002795E7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthoticsPrescriptionViewController.swift; sourceTree = "<group>"; };
+		2DE307E72210A8DF002795E7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		7FA3BEDC51D1570FBCFAACDD /* Pods_eScan_for_Root_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650797FF63877B7AE439295 /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +204,8 @@
 				2D9B417821D354280022FE2D /* images */,
 				2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */,
 				2D44BDB621B4BF9C009A1066 /* ViewController.swift */,
+				2DE307E3220F5CF9002795E7 /* TableViewController.swift */,
+				2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */,
 				2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */,
 				2D6A61EF21F64A430077A8B1 /* CustomShaders.swift */,
 				2D6A61F621F64A680077A8B1 /* EAGLView.swift */,
@@ -208,6 +218,7 @@
 				2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */,
 				2D9B417421D2DF9C0022FE2D /* CustomPrintRenderer.swift */,
 				2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */,
+				2DE307E72210A8DF002795E7 /* GlobalVariables.swift */,
 				2D44BDB821B4BF9C009A1066 /* Main.storyboard */,
 				2D44BDBE21B4BFA0009A1066 /* Assets.xcassets */,
 				2D44BDC021B4BFA0009A1066 /* LaunchScreen.storyboard */,
@@ -238,6 +249,7 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DE307E1220F4AA2002795E7 /* Item Selection.png */,
 				2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */,
 				2D6A61EB21F3DFA80077A8B1 /* Button.png */,
 				2D6A61E721F3DE3F0077A8B1 /* checked.png */,
@@ -400,6 +412,7 @@
 				2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */,
 				2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */,
 				2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */,
+				2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,10 +492,13 @@
 				2D44BDBD21B4BF9C009A1066 /* eScan_for_Root_Lab.xcdatamodeld in Sources */,
 				2D6A61F021F64A430077A8B1 /* CustomShaders.swift in Sources */,
 				2D6A61F821F64A690077A8B1 /* ViewController+Camera.swift in Sources */,
+				2DE307E6220F911F002795E7 /* OrthoticsPrescriptionViewController.swift in Sources */,
 				2D6A61FC21F64A690077A8B1 /* ViewController+OpenGL.swift in Sources */,
 				2D44BDB521B4BF9C009A1066 /* AppDelegate.swift in Sources */,
 				2D9B41FA21E859E40022FE2D /* RichieBraceViewController.swift in Sources */,
 				2D6A61FA21F64A690077A8B1 /* ViewpointController.swift in Sources */,
+				2DE307E82210A8DF002795E7 /* GlobalVariables.swift in Sources */,
+				2DE307E4220F5CF9002795E7 /* TableViewController.swift in Sources */,
 				2D6A61EE21F64A2B0077A8B1 /* MeshRenderer.swift in Sources */,
 				2D9B417521D2DF9C0022FE2D /* CustomPrintRenderer.swift in Sources */,
 				2D6A61FE21F64A690077A8B1 /* ScannerExtensions.swift in Sources */,
