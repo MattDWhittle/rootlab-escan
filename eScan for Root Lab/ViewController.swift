@@ -12,6 +12,121 @@
 
 //TODO
 
+
+
+// (TEST - failure) Scans place images over foot buttons - loading image not working
+
+
+// (TODO) orthotic descriptions should update after UiSwitch edit (Check picker as well) (many are not delegating with target)
+// (TODO) if delete to blank on practitioner page, tell them what type of field it is
+// (TODO) when expand view, make sure it doesn't expand off screen, scoll it up
+// (TODO) if no email accounts set up on device, alert early
+// (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
+// (TODO) Accomodative EVA - grey out edit button on orthosis material
+// (TODO) Button says EDIT should say "Select and Modify"
+// (TODO) Top covers and extensions - the Top Cover Material goes to the right of Top Cover Lengths
+// (TODO) ...then Forefoot Extensions 3 options
+// (TODO) ...then poron
+// (TODO) ...then bottom cover
+// (TODO) Logo link to website
+//(TODO) Express shipping make it 3 day, 2 day, next day
+//(TODO) If choose next day turnaround, be first line of work order
+//(TODO) Rush order, cannot choose 2 2 day, next day
+//(TODO) "Order confirmation will be sent to this address" (next to email)
+//(TODO) Highlight the buttons where action needs to be taken - if weight not supplied and need to choose material thickness, let them know
+//(TODO) Change Orthotic Device Page to be like page 5
+// (TODO) what does no top cover mean - have None as the first top cover
+//(TODO) If none selected, all the other options are disabled
+//(TODO) Cannot click accomodations page
+// (TODO) Check to see if the Material Order Items still match the new orthotic device screen
+//(TODO) Change "Accommodations" to "Top Cover Additions and Accommodations" on the Orthotics Prescription Form
+//(TODO) Accommodations page, the additions are on the left, and each addition will have an image with where it goes
+//(TODO) Have Accommondations (feet on the right) with places you can check
+//(TODO) Accommondations - Under the feet, have a "Per Photo" and a "Per Comments" (If so, require comments or per photo) (can choose 1 and 5 and "see comments)
+//(TODO) Accommondations - If Neuroma pad selected, they have to select an interspace which is a dropdown 1,2,3,4
+//(TODO) Accommondations - If heel pad selected, they have to select 1/16 or 1/8
+//(TODO) Accommondations - make sure it says under heel pad  1/16 or 1/8 Poron
+//(TODO) remove Sweet spot from Accommodations
+//(TODO) 4 ft reinforcement something - under accommodations
+// (TODO) Update "Really Cool Description" with real words
+// (TODO) Update orthoitic device pictures with real pictures
+//  (TODO) cannot tell the button is disabled orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
+// (TODO) Clicking here will erase the device name and open the keyboard forcing user to rename. It will then save in the My Devices menu under the new name.
+//(TODO) Make a log in page
+//(TODO) Corrections and Modifications if they choose as marked on cast, option to fill with Poron or not fill.  Then when print form out, put it on Top Covers and Extensions
+//(TODO) transparent background on colors, buttons, and the logo
+//(TODO) Orthosis Material:  Have "Per Weight" always available, if choose, type a weight in on that page.  Weight is autofilled
+//(TODO) Add Poron under topcover, two buttons for 1/16 1/8, only one selected, not required
+//(TODO) Add a "Ship to Patient" and an address - address only enabled if "Ship to Patient" enabled
+//(TODO) Need to read 4 other forms in readAllForms()
+//(TODO) Need to update 4 other labels not blank
+//(TODO) Add stuff to My Devices - click on name
+//Add a title box to practitioner page (Hold on this one)
+// (TODO) what does  the 4/4 mean in posting - left and right 4 degree motion
+// (TODO) Finish Defaults to Form
+// (TODO) Add Save on Practitioner Page so it can turn light green
+// (TODO) Add a Save to My Devices on the orthotics prescription page, then rename device
+// (TODO) Diabetic default - If you have a medial heel cup 3/16 diabetic - just means diabetic
+// (TODO) if orthosis length vinyl top cover, what color default: Bronze is for functional, forest is for sports, Black is for dress
+// (TODO) if default practitioner selected, scroll wheel is still on New Practitioner if you navigate to that page
+// (TODO) add field for intrinsic metatarsal pad in mm left and right
+// (TODO) read forms to stored stuff, picker views and text
+// (TODO) "Extension Material" instead of "Material", Top Covers and Extensions
+// (TODO) Add red dots where things can be invald (isValid())
+// (TODO) Validation - posting form - rearfoot post motion, one has to be selected,
+// (TODO) Validation - Have to have heel cup both left and right
+// (TODO) Validation - Rearfoot posting elevator, one must be selected
+// (TODO) Corrections and modifications has to be the same if order two pairs - off same mold
+// (TODO) if email / sftp fails sending, then show order not sent
+// (TODO) make sure save patient data upon leaving screen even if next not
+// (TODO) Poron is not a top cover material, but it is an add on
+// (TODO) password protect
+// (TODO) The submit page - have some sort of signature and disclaimer
+// (TODO) Submit page has the work order
+// (TODO) (and don't allow to change) default email
+// (TODO) Complaiance language
+//(TODO) Finish Form to Order
+//(TODO) Finish Order to text
+//(TODO) Finish making a document to attach to the email
+// (TODO) reset picker views
+// (TODO) In order to save, need patient name, doctor name
+// (TODO) Richie Brace Form
+// (TODO) Submit Form
+// (TODO) Email created document
+// (TODO) Better Pictures
+// (TODO) Order a second pair, and reorder
+// (TODO) if left is checked anywhere, left scan is required
+// (TODO) if right is checked anywhere, right scan is required
+// (TODO) Add medical record number, not required, patient date.
+// (TODO) Make a left right or bilateral
+// (TODO) Default is left right
+// (TODO) Delete records after a year
+// (TODO) reorder button, if checked, scans aren't required, on scan page
+// (TODO) Accommodations - click and make dots - 5 spots, styloid,  - common spots, list spots accommodated, first med head, etc
+// (TODO) Pictures - picture of the foot, mark stuff
+// (TODO) Can take multiple pictures
+// (TODO) Show pictures on screen
+// (TODO) If Cannot save, fail startup
+// (TODO) finish ResetForm() - reset green dots
+// (TODO) Show escan images
+//(IN PROGRESS, need INT validation) make age wieght height gender are valid numbers
+// (TODO) Clean up warnings
+// (TODO) Clean up extra IBOutlets
+
+
+// (DONE) Save PAtient when leaving page, not only when clicking Next
+//(DONE) Rush order - remove requested on or before
+// (DONE) Non corrective forefoot post, if full width selected, others are not, and vice versa
+// (DONE) PolyMax only can have a posting of Polypropylene
+// (DONE) Add fill with Poron L/R to order object (Core Data)
+// (DONE) Pictures in the scroll view
+// (DONE) Posting Page: Birkocork is spelled wrong.
+// (DONE) After “Styloid Accommodation” and “As marked on foot (include picture)” please add “Fill with Poron” and a yes/no toggle to each
+// (DONE) default to this email:  scans@root-lab.com,
+// (DONE) CC them if selected, and if valid email
+// (DONE) 4. Orthosis specifications page:  Remove Fit to Enclosed Shoe
+// (DONE) Have Prescription, scan, and submit Grayed out till required fields in Practitioner and patient are saved.
+//Sunday's 2-10 push
 // (DONE) Create Orthotic Device Page
 // (DONE) Clicking a row expands it
 // (DONE) Select and modify a row goes to the normal orthotics page
@@ -25,169 +140,15 @@
 // (DONE) When you choose a category to edit the next button should take you to the next category
 // (DONE) Back button take you to the main prescription page
 
-// (TODO) Button says EDIT should say "Select and Modify"
-// (TODO)  Change “as marked on cast” to “As marked on foot (include picture)”
-// (TODO) After “Styloid Accommodation” and “As marked on foot (include picture)” please add “Fill with Poron” and a yes/no toggle to each
-// (TODO) 4. Orthosis specifications page:  Remove Fit to Enclosed Shoe
-// (TODO) Posting Page: Birkocork is spelled wrong.
-// (TODO) Clicking here will erase the device name and open the keyboard forcing user to rename. It will then save in the My Devices menu under the new name.
-// (TODO) Update "Really Cool Description" with real words
-// (TODO) Update orthoitic device pictures with real pictures
 
-
-// (TEST - failure) Scans place images over foot buttons - loading image not working
-// (TEST - fail) PolyMax only can have a posting of Polypropylene
-// (TEST - fail) Non corrective forefoot post, if full width selected, others are not, and vice versa
-
-// Check to see if the Material Order Items still match the new orthotic device screen
-
-//  cannot tell the button is disabled orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
-
-
-
-//posting form - rearfoot post motion, one has to be selected,
-// Rearfoot posting elevator, one must be selected
-
-// Prescription Page:
-// Change to 3 line text views
-// Remove Edit Button, have the label be the button
-// Next button should take you to the next category, not to the main prescription page
-
-// (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
-
-//Accomodative EVA - grey out edit button on orthosis material
-//Accomodations go on the top covers and extensions
-//Top covers and extensions - the Top Cover Material goes to the right of Top Cover Lengths
-//...then Forefoot Extensions 3 options
-//...then poron
-//...then bottom cover
-
-//Have Prescription, scan, and submit Grayed out till required fields in Practitioner and patient are saved.
-
-// UITextViews are not delegating after finish editing (why do they need to?)
-
-
-//Logo link to website
-
-//Rush order - remove requested on or before
-//Express shipping make it 3 day, 2 day, next day
-//If choose next day turnaround, be first line of work order
-//Rush order, cannot choose 2 2 day, next day
-//"Order confirmation will be sent to this address" (next to email)
-
-//Highlight the buttons where action needs to be taken - if weight not supplied and need to choose material thickness, let them know
-
-
-//Change Orthotic Device Page to be like page 5
-
-
-// what does no top cover mean - have None as the first top cover
-//If none selected, all the other options are disabled
-
-//Cannot click accomodations page
-//Change "Accommodations" to "Top Cover Additions and Accommodations" on the Orthotics Prescription Form
-//Accommodations page, the additions are on the left, and each addition will have an image with where it goes
-//Have Accommondations (feet on the right) with places you can check
-//Accommondations - Under the feet, have a "Per Photo" and a "Per Comments" (If so, require comments or per photo) (can choose 1 and 5 and "see comments)
-//Accommondations - If Neuroma pad selected, they have to select an interspace which is a dropdown 1,2,3,4
-//Accommondations - If heel pad selected, they have to select 1/16 or 1/8
-//Accommondations - make sure it says under heel pad  1/16 or 1/8 Poron
-//remove Sweet spot from Accommodations
-//4 ft reinforcement something - under accommodations
-
-//Make a log in page
-
-//Corrections and Modifications if they choose as marked on cast, option to fill with Poron or not fill.  Then when print form out, put it on Top Covers and Extensions
-//transparent background on colors, buttons, and the logo
-//Orthosis Material:  Have "Per Weight" always available, if choose, type a weight in on that page.  Weight is autofilled
-
-//Add Poron under topcover, two buttons for 1/16 1/8, only one selected, not required
-
-//Add a "Ship to Patient" and an address - address only enabled if "Ship to Patient" enabled
-
-//Need to read 4 other forms in readAllForms()
-//Need to update 4 other labels not xxxxx
-
-// Add stuff to My Devices - click on name
-
-//Add a title box to practitioner page (Hold on this one)
-
-//what does  the 4/4 mean in posting - left and right 4 degree motion
-
-//Finish Defaults to Form
-
-//Add Save on Practitioner Page so it can turn light green
-//Add a Save to My Devices on the orthotics prescription page, then rename device
-
-//Diabetic default - If you have a medial heel cup 3/16 diabetic - just means diabetic
-
-//if orthosis length vinyl top cover, what color default
-//Bronze is for functional, forest is for sports, Black is for dress
-
-//if default practitioner selected, scroll wheel is still on New Practitioner if you navigate to that page
-
-// default (and don't allow to change) to this email:  scans@root-lab.com,
-// CC them, don't allow to change
-
-
-// add field for intrinsic metatarsal pad in mm left and right
-//read forms to stored stuff, picker views and text
-//"Extension Material" instead of "Material", Top Covers and Extensions
-
-//Validation - Have to have heel cup both left and right
-//Corrections and modifications has to be the same if order two pairs - off same mold
-
-//if email / sftp fails sending, then show order not sent
-//make sure save patient data upon leaving screen even if next not
-//Patient name needs to be there before allowed to proceed to orthotics
-//If rush order, say it in the subject of the email
-
-
-
-//Poron is not a top cover material, but it is an add on
-
-//TODO password protect
-
-
-//The submit page - have some sort of signature and disclaimer
-//Submit page has the work order
-//Complaiance language
-
-
-//TODO
-//Finish Form to Order
-//Finish Order to text
-//Finish making a PDF
-//reset picker views
-//In order to save, need patient name, doctor name
-//Richie Brace Form
-//Submit Form
-//Email PDF
-//Better Pictures
-//Defaults
-//Order a second pair, and reorder
-//if left is checked anywhere, left scan is required
-//if right is checked anywhere, right scan is required
-//Add medical record number, not required, patient date.
-//Default is left right
-//Make a left right or bilateral
-//Delete records after a year
-//reorder button, if checked, scans aren't required, on scan page
-//Accommodations - click and make dots - 5 spots, styloid,  - common spots, list spots accommodated, first med head, etc
-//Pictures - picture of the foot, mark stuff
-//Can take multiple pictures
-//TODO Cannot save, fail startup
-//finish ResetForm() - reset green dots
-
-//(IN PROGRESS, need INT validation) make age wieght height gender required
-
-
+//Saturday's 2-9 push
 // (DONE) Change address to broken out by piece boxes
 // (DONE) Remove Practitioner Labels
 // (DONE) Editing a box wipes out label in box
 // (DONE) Add a checkbox for send confirmation
 // (DONE) Change Gray to Black
 //Wednesday's push
+// (DONE) Patient name needs to be there before allowed to proceed to orthotics
 // (DONE) take of spell check from uitext views
 // (DONE) keyboard hides field
 // (DONE) Rush order shows 0,1,2 for scroll view
@@ -304,6 +265,7 @@ let eViewingMeshPageIndex = 20;
 
 let orthoticsDeviceFormPageIndex = 21;
 
+var setImagePictureHeight = CGFloat(0);
 
 let orthosisMaterialPolypropyleneIndex = 0;
 let orthosisMaterialGraphiteCompositeIndex = 1;
@@ -367,7 +329,10 @@ let anteriorWidthPickerData: [String] =
     ["Extra Narrow width","Narrow width","Standard width","Wide width","Extra wide width", "Full width"];
 
 let postingRearfootPostTypePickerData: [String] =
-    ["No Post","Crepe","Bitkocork™","Acrylic"];
+    ["No Post","Crepe","Birkocork™","Acrylic"];
+
+let postingRearfootPostPolypropeleneTypePickerData: [String] =
+    ["No Post","Polypropelene"];
 
 let orthosisSpecificationHeelCupLeftPickerData: [String] =
     ["Left", "10", "12", "14", "16", "18", "20", "22"];
@@ -430,6 +395,11 @@ let topCoversAndExtensionsForefootExtensionExtensionLengthPickerData: [String] =
 let rushOrderExpressShippingPickerData: [String] =
     ["Express Shipping", "3 day select", "2nd day air", "Next day air"];
 
+var imagePicker: UIImagePickerController!
+enum ImageSource {
+    case photoLibrary
+    case camera
+}
 
 struct DynamicOptions {
     var newTrackerIsOn = true
@@ -598,7 +568,7 @@ struct DisplayData {
 }
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, STSensorControllerDelegate,
-STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, MFMailComposeViewControllerDelegate {
+STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var eview: EAGLView!
     
@@ -776,7 +746,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             return anteriorWidthPickerData.count;
         } else if (pickerView == postingRearfootPostTypePicker) {
             if (orthoticDeviceSelected == 1) {
-                return 1;
+                return postingRearfootPostPolypropeleneTypePickerData.count;
             } else {
                 return postingRearfootPostTypePickerData.count
             }
@@ -838,7 +808,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             pickerLabel?.text = orthosisMaterialColorLabels[row]
         } else if (pickerView == postingRearfootPostTypePicker) {
             if (orthoticDeviceSelected == 1) {
-                pickerLabel?.text = "Polypropylene";
+                pickerLabel?.text = postingRearfootPostPolypropeleneTypePickerData[row];
             } else {
                 pickerLabel?.text = postingRearfootPostTypePickerData[row]
             }
@@ -1097,7 +1067,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             eScanNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             submitLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthoticMaterialTypeLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
-
+            reorderLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            
             newPractitionerSameAsBillingAddressLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
 
             patientDetailsLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
@@ -1280,6 +1251,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             if (defaults!.defaultPractitioner != -1) {
                 defaultPractitioner = practitioners[Int(defaults!.defaultPractitioner)];
                 readPractitionerToForm(thePractitioner: defaultPractitioner)
+                practitionerPicker.selectRow(Int(defaults!.defaultPractitioner), inComponent: 0, animated: false);
             }
 
         }
@@ -1397,15 +1369,39 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         commentsTextArea.autocorrectionType = UITextAutocorrectionType.no;
        
         
-        correctionsAndModificationsCastOrientationVerticalLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-
-        newPractitionerSameAsBillingAddressUiSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-
-    correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-    correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+       
         
+        correctionsAndModificationsFillWIthPoronLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsFillWIthPoronRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsCastOrientationVerticalLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsCastOrientationVerticalRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsForefootCorrectionTypeExtrinsicRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillIncreasedRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillStandardLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillStandardRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillDecreasedLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillDecreasedRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillMinimalLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillMinimalRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsLateralFlangeRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsWideArchProfileRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        newPractitionerSameAsBillingAddressUiSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        newPractitionerUseEmailForCC.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+
         
         depthView.isHidden = true;
         eview.isHidden = true;
@@ -1539,6 +1535,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var orthoticMaterialTypeLabel: UILabel!
     @IBOutlet var areYouSureLabel: UILabel!
     @IBOutlet var areYouSureDeletePractitioner: UILabel!
+    @IBOutlet var reorderLabel: UILabel!
+
+    
+    @IBOutlet var reorderScrollView: UIScrollView!
 
     
     @IBOutlet var practitionerNameInput: UITextField!
@@ -1617,6 +1617,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var patientShoeTypePicker: UIPickerView!
     @IBOutlet var rushOrderExpressShippingPicker: UIPickerView!
 
+    @IBOutlet var correctionsAndModificationsFillWIthPoronLeftUISwitch: UISwitch!
+    @IBOutlet var correctionsAndModificationsFillWIthPoronRightUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsCastOrientationVerticalLeftUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsCastOrientationVerticalRightUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch: UISwitch!
@@ -1672,8 +1674,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var rushOrder2DayTurnaroundUISwitch: UISwitch!
     @IBOutlet var rushOrderNextDayTurnaroundUISwitch: UISwitch!
     @IBOutlet var rushOrderRequestedOnOrBeforeUISwitch: UISwitch!
+    @IBOutlet var reorderUISwitch: UISwitch!
 
     @IBOutlet var commentsTextArea: UITextView!
+
+    @IBOutlet weak var imageTake: UIImageView!
 
 
     func orthoticDeviceClickEdit() {
@@ -1726,7 +1731,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
             correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
             
-            postingRearfootPostTypePicker.selectRow(4, inComponent: 0, animated: false)
+            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
             postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
             postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
             
@@ -2118,6 +2123,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
     @IBAction func NewOrderAction(sender: UIButton){
+        changeValuesBasedOnChangedInput(force: true);
         if (defaultPractitioner != nil) {
             readPractitionerToForm(thePractitioner: defaultPractitioner);
             setValuesBasedOnPractitionerPageValid();
@@ -2253,49 +2259,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             let firstName = patientNameInput.text;
             let lastName = patientLastNameInput.text;
             
-            //TODO make these 4 required
-            let age = patientAgeInput.text;
-            let height = patientHeightInput.text;
-            let heightInches = patientHeightInput.text;
-            let weight = patientWeightInput.text;
+            
             setValuesBasedOnPatientPageValid();
             changePageTo(pageTo: newOrderTypePageIndex);
             
-            if (!((firstName?.isEmpty)!) && !((lastName?.isEmpty)!)) {
-                if (order.orderPatient == nil) {
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    let context = appDelegate.persistentContainer.viewContext
-                    
-                    let newPatient = Patient.init(entity: NSEntityDescription.entity(forEntityName: "Patient", in:context)!, insertInto: context);
-                    newPatient.firstName = firstName;
-                    newPatient.lastName = lastName;
-                    newPatient.age = Int16(age!) ?? 0;
-                    newPatient.height = Int16(height!) ?? 0;
-                    newPatient.heightInches = Int16(heightInches!) ?? 0;
-                    newPatient.weight = Int16(weight!) ?? 0;
-                    newPatient.shoeSize = Int16(patientShoeSizeInput!.text!) ?? 0;
-                    //TODO replace
-//                    newPatient.shoeType = patientShoeTypeInput.text;
-
-                    order.orderPatient = newPatient
-                    do {
-                        try context.save();
-                        patients.append(newPatient);
-                        appDelegate.saveContext();
-                    } catch let error as NSError {
-                        //TODO Cannot save, fail startup
-                        print("Could not save. \(error), \(error.userInfo)")
-                    }
-                }
-                order.orderPatient?.firstName = firstName;
-                order.orderPatient?.lastName = lastName;
-                order.orderPatient?.age = Int16(age!) ?? 0;
-                order.orderPatient?.height = Int16(height!) ?? 0;
-                order.orderPatient?.heightInches = Int16(heightInches!) ?? 0;
-                order.orderPatient?.weight = Int16(weight!) ?? 0;
-                order.orderPatient?.shoeSize = Int16(patientShoeSizeInput!.text!) ?? 0;
-//                order.orderPatient?.shoeType = patientShoeTypeInput.text;
-            }
+            
+            readPatientForm();
 
         } else if (screenViewing == orthoticsFormPageIndex) {
             changePageTo(pageTo: orthoticsDeviceFormPageIndex);
@@ -2336,6 +2305,51 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
     }
 
+    func readPatientForm() {
+        let firstName = patientNameInput.text;
+        let lastName = patientLastNameInput.text;
+        if (!((firstName?.isEmpty)!) && !((lastName?.isEmpty)!)) {
+            let age = patientAgeInput.text;
+            let height = patientHeightInput.text;
+            let heightInches = patientHeightInput.text;
+            let weight = patientWeightInput.text;
+            if (order.orderPatient == nil) {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let context = appDelegate.persistentContainer.viewContext
+                
+                let newPatient = Patient.init(entity: NSEntityDescription.entity(forEntityName: "Patient", in:context)!, insertInto: context);
+                newPatient.firstName = firstName;
+                newPatient.lastName = lastName;
+                newPatient.age = Int16(age!) ?? 0;
+                newPatient.height = Int16(height!) ?? 0;
+                newPatient.heightInches = Int16(heightInches!) ?? 0;
+                newPatient.weight = Int16(weight!) ?? 0;
+                newPatient.shoeSize = Int16(patientShoeSizeInput!.text!) ?? 0;
+                //TODO replace
+                //                    newPatient.shoeType = patientShoeTypeInput.text;
+                
+                order.orderPatient = newPatient
+                do {
+                    try context.save();
+                    patients.append(newPatient);
+                    appDelegate.saveContext();
+                } catch let error as NSError {
+                    //TODO Cannot save, fail startup
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+            }
+            order.orderPatient?.firstName = firstName;
+            order.orderPatient?.lastName = lastName;
+            order.orderPatient?.age = Int16(age!) ?? 0;
+            order.orderPatient?.height = Int16(height!) ?? 0;
+            order.orderPatient?.heightInches = Int16(heightInches!) ?? 0;
+            order.orderPatient?.weight = Int16(weight!) ?? 0;
+            order.orderPatient?.shoeSize = Int16(patientShoeSizeInput!.text!) ?? 0;
+            order.orderPatient?.shoeType = patientShoeTypeLabels[patientShoeTypePicker.selectedRow(inComponent: 0)];
+
+        }
+    }
+    
     func resetEverything() {
         clearPractitionerForm();
         patientNameLabel.text = "";
@@ -2397,7 +2411,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         enabled;
         postingRearfootPostingElevator8mmLeftUISwitch.isEnabled =
         enabled;
-        postingRearfootPostingElevator8mmRightUISwitch.isEnabled =
+        postingRearfootPostingElevator4mmRightUISwitch.isEnabled =
         enabled;
         postingRearfootPostingElevator8mmRightUISwitch.isEnabled =
         enabled;
@@ -2470,6 +2484,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBAction func ClickNewOrderButton(sender: UIButton){
         resetValuesForNewOrder();
+        changeValuesBasedOnChangedInput(force: true);
         changePageTo(pageTo: orderManagementPageIndex)
     }
     
@@ -2646,6 +2661,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         submitFormButton.isEnabled = isValid;
         patientFinishedUIImageView.image = isValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
 
+        materialLabel.textColor = isValid ? .white : .darkGray;
+        materialNameLabel.textColor = isValid ? .white : .darkGray;
+        eScanLabel.textColor = isValid ? .white : .darkGray;
+        eScanNameLabel.textColor = isValid ? .white : .darkGray;
+        submitLabel.textColor = isValid ? .white : .darkGray;
+        
+        patientNameLabel.text = patientNameInput.text! + " " + patientLastNameInput.text!;
     }
     
     func isPatientPageValid() -> Bool {
@@ -2764,7 +2786,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         return true;
     }
     func escanFormValid()  -> Bool{
-        return leftFootEscanDone && rightFootEscanDone;
+        return (leftFootEscanDone && rightFootEscanDone) || reorderUISwitch.isOn;
+    }
+    func everythingValid() -> Bool {
+        return escanFormValid() && isPractitionerPageValid() &&
+            isPatientPageValid() && orthosisFormValid();
     }
     
     func readPostingForm() {
@@ -2874,8 +2900,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             rushOrder2DayTurnaroundUISwitch.isOn;
         order.rushOrderNextDayTurnaround =
             rushOrderNextDayTurnaroundUISwitch.isOn;
-        order.rushOrderRequestedOnOrBefore =
-            rushOrderRequestedOnOrBeforeUISwitch.isOn;
     }
 
     func setRushOrderFormFromOrder() {
@@ -2883,8 +2907,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             order.rushOrder2DayTurnaround;
         rushOrderNextDayTurnaroundUISwitch.isOn =
             order.rushOrderNextDayTurnaround;
-        rushOrderRequestedOnOrBeforeUISwitch.isOn =
-            order.rushOrderRequestedOnOrBefore;
     }
     
     func readCorrectionsAndModificationsForm() {
@@ -2908,6 +2930,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn;
         order.correctionsAndModificationsCastOrientationVerticalRight =
             correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn;
+        order.correctionsAndModificationsFillWithPoronLeft =
+            correctionsAndModificationsFillWIthPoronLeftUISwitch.isOn;
+        order.correctionsAndModificationsFillWithPoronRight =
+            correctionsAndModificationsFillWIthPoronRightUISwitch.isOn;
         order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft =
             correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.isOn;
         order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight =
@@ -2923,6 +2949,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         readPostingForm()
         readRushOrderForm()
         readCorrectionsAndModificationsForm()
+        readPatientForm()
     }
     
     func updateOrthosisScreenFromModel() {
@@ -2935,6 +2962,20 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             orthoticsPrescriptionViewController?.postingTextView.text = postingDescription;
             let correctionsAndModificationsDescription = calculateCorrectionsAndModificationsDescriptionFromOrder();
             orthoticsPrescriptionViewController?.correctionsAndModificationsTextView.text = correctionsAndModificationsDescription;
+            
+            let accommodationsDescription = calculateAccommodationsOrderDescriptionFromOrder();
+            orthoticsPrescriptionViewController?.accommodationsTextView.text = accommodationsDescription;
+
+            let topCoversAndExtensionsDescription = calculateTopCoversAndExtensionsOrderDescriptionFromOrder();
+            orthoticsPrescriptionViewController?.topCoversAndExtensionsTextView.text = topCoversAndExtensionsDescription;
+
+            let commentsInstructionsDescription = calculateCommentsInstructionsOrderDescriptionFromOrder();
+            orthoticsPrescriptionViewController?.chiefComplaintDiagnosisTextView.text = commentsInstructionsDescription;
+            
+            let orthosisMaterialDescription = calculateOrthosisMaterialOrderDescriptionFromOrder();
+            orthoticsPrescriptionViewController?.orthosisMaterialTextView.text = orthosisMaterialDescription;
+            
+
             
             updateImagesForValidOrthoticsForm()
         }
@@ -2957,8 +2998,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //            orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn;
 //        order.orthosisSpecificationsHeelCupHeight18mmRight =
 //            orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isOn;
-        order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoe =
-            orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeUISwitch.isOn;
+        
         order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft =
             orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeftUISwitch.isOn;
         order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight =
@@ -2997,8 +3037,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //        order.orthosisSpecificationsHeelCupHeight14mmRight;
 //            orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isOn =
 //        order.orthosisSpecificationsHeelCupHeight18mmRight;
-            orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeUISwitch.isOn =
-        order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoe;
+        
             orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeftUISwitch.isOn = 
         order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft;
             orthosisSpecificationsOtherShellConfigurationsLateralFlangeRightUISwitch.isOn = 
@@ -3056,7 +3095,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order.correctionsAndModificationsCastOrientationVerticalLeft;
             correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn =
         order.correctionsAndModificationsCastOrientationVerticalRight;
-            correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.isOn =
+        correctionsAndModificationsFillWIthPoronLeftUISwitch.isOn =
+            order.correctionsAndModificationsFillWithPoronLeft;
+        correctionsAndModificationsFillWIthPoronRightUISwitch.isOn =
+            order.correctionsAndModificationsFillWithPoronRight;
+        correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.isOn =
         order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft;
             correctionsAndModificationsForefootCorrectionTypeExtrinsicRightUISwitch.isOn =
         order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight;
@@ -3130,6 +3173,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         setRushOrderFormFromOrder()
         setCorrectionsAndModificationsFromOrder()
         setOrthosisSpecificationFormFromOrder()
+        
+        postingRearfootPostTypePicker.reloadAllComponents();
     }
 
     
@@ -3170,6 +3215,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         if (order.correctionsAndModificationsCastOrientationVerticalRight) {
             theReturn += "Cast Orientation Vertical Right, "
+        }
+        if (order.correctionsAndModificationsFillWithPoronLeft) {
+            theReturn += "Fill with Poron Left, "
+        }
+        if (order.correctionsAndModificationsFillWithPoronRight) {
+            theReturn += "Fill with Poron Right, "
         }
         if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft) {
             theReturn += "Forefoot Correction Type Extrinsic Left, "
@@ -3383,16 +3434,62 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.rushOrderNextDayTurnaround) {
             theReturn += "Next Day Turnaround, "
         }
-        if (order.rushOrderRequestedOnOrBefore) {
-            theReturn += "Requested on or before" + "" + ", "
-        }
 
         if (theReturn.hasSuffix(", ")) {
             theReturn = String(theReturn.dropLast(2));
         }
         return theReturn;
     }
-    
+
+    func calculateAccommodationsOrderDescriptionFromOrder() -> String{
+        var theReturn = "still working on completing this feature...";
+        
+        return theReturn;
+    }
+
+    func calculateOrthosisMaterialOrderDescriptionFromOrder() -> String{
+        let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+        let theReturn = orthosisMaterialTypeLabels[Int(theMOI.orthoticsMaterialSelection)];
+        
+        //TODO add more here
+        
+        return theReturn;
+    }
+
+    func calculateCommentsInstructionsOrderDescriptionFromOrder() -> String{
+        let theReturn = orthosisChiefComplaintDiagnosisInput.text;
+        return theReturn!;
+    }
+
+    func calculateTopCoversAndExtensionsOrderDescriptionFromOrder() -> String{
+        var theReturn = "";
+        
+        let theLengthIndex = topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0)
+        if (theLengthIndex > 0) {
+            theReturn += "Length: " + topCoversAndExtensionsTopCoverLengthPickerData[theLengthIndex] + ", ";
+        }
+
+//        let theMaterialIndex = topCoversAndExtensionsTopCoverMaterialPicker.selectedRow(inComponent: 0)
+//        if (theMaterialIndex > 0) {
+//            theReturn += "Material: " + topCoversAndExtensionsTopCoverMaterialPickerData[theMaterialIndex] + ", ";
+//        }
+
+        let theExtensionThicknessIndex = topCoversAndExtensionsForefootExtensionThicknessPicker.selectedRow(inComponent: 0)
+        if (theExtensionThicknessIndex > 0) {
+            theReturn += "Extension Thickness: " + topCoversAndExtensionsForefootExtensionThicknessPickerData[theExtensionThicknessIndex] + ", ";
+        }
+
+        let theExtensionMaterialIndex = topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0)
+        if (theExtensionMaterialIndex > 0) {
+            theReturn += "Extension Material: " + topCoversAndExtensionsForefootExtensionMaterialPickerData[theExtensionMaterialIndex] + ", ";
+        }
+        
+        
+        //TODO add more here
+        
+        return theReturn;
+    }
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if (textField == practitionerBillingAddress1) {
             if (practitionerBillingAddress1.text == "*Address 1") {
@@ -3641,23 +3738,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
     func changeValuesBasedOnChangedInput() {
+        changeValuesBasedOnChangedInput(force: false)
+    }
+    func changeValuesBasedOnChangedInput(force: Bool) {
+
         if (escanFormValid()) {
             eScanFinishedUIImageView.image = UIImage(named: "checked.png");
         }
         
-        if (screenViewing == newPractitionerPageIndex) {
+        if (screenViewing == newPractitionerPageIndex || force) {
             setValuesBasedOnPractitionerPageValid();
             refreshPractitionerNameLabel()
             patientNameLabel.text = patientNameInput.text! + " " + patientLastNameInput.text!;
             
         }
-        if (screenViewing == patientManagementPageIndex) {
-            let isEnabled = !(patientNameInput.text?.isEmpty ?? false) &&
-                !(patientLastNameInput.text?.isEmpty ?? false);
-            nextButton.isEnabled = isEnabled;
-            prescriptionButton.isEnabled = isEnabled;
-            escanFormButton.isEnabled = isEnabled;
-            submitFormButton.isEnabled = isEnabled;
+        if (screenViewing == patientManagementPageIndex || force) {
+            setValuesBasedOnPatientPageValid();
         }
         
         if (screenViewing == orthoticsFormPageIndex ||
@@ -3670,33 +3766,53 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             screenViewing == orthoticsTopCoversAndExtensionsFormPageIndex ||
             screenViewing == orthoticsPostingFormPageIndex ||
             screenViewing == orthoticsChiefComplaintFormPageIndex
-            ) {
+            || force) {
             updateImagesForValidOrthoticsForm()
         }
         
-        if (screenViewing == orthoticsDeviceFormPageIndex) {
-            orthoticsPrescriptionViewController?.orthosisHeadingLabel.text =  orthoticMaterialDescriptionMap[orthoticDeviceSelected];
+        if (screenViewing == orthoticsDeviceFormPageIndex || force) {
+            if (orthoticDeviceSelected > -1) {
+                orthoticsPrescriptionViewController?.orthosisHeadingLabel.text =  orthoticMaterialDescriptionMap[orthoticDeviceSelected];
+            }
+            
         }
 
-        
-        if (screenViewing == orthoticsCorrectionsFormPageIndex) {
+        var needToUpdateScreen = false;
+        if (screenViewing == orthoticsCorrectionsFormPageIndex || force) {
             readCorrectionsAndModificationsForm();
-            updateOrthosisScreenFromModel()
-        } else if (screenViewing == orthoticsSpecificationsFormPageIndex) {
+            needToUpdateScreen = true;
+        }
+        if (screenViewing == orthoticsSpecificationsFormPageIndex || force) {
             readOrthosisSpecificationForm();
-            updateOrthosisScreenFromModel()
-        } else if (screenViewing == orthoticsPostingFormPageIndex) {
+            needToUpdateScreen = true;
+        }
+        if (screenViewing == orthoticsPostingFormPageIndex || force) {
             readPostingForm();
-            updateOrthosisScreenFromModel()
-        } else if (screenViewing == orthoticsTopCoversAndExtensionsFormPageIndex) {
+            needToUpdateScreen = true;
+        }
+        if (screenViewing == orthoticsTopCoversAndExtensionsFormPageIndex || force) {
+            needToUpdateScreen = true;
 
-        } else if (screenViewing == orthoticsRushOrderFormPageIndex) {
+        } else if (screenViewing == orthoticsRushOrderFormPageIndex || force) {
+            needToUpdateScreen = true;
 
-        } else if (screenViewing == orthoticsChiefComplaintFormPageIndex) {
+        } else if (screenViewing == orthoticsChiefComplaintFormPageIndex || force) {
+            needToUpdateScreen = true;
 
-        } else if (screenViewing == orthoticsAccommodationsAndAdditionsFormPageIndex) {
+        } else if (screenViewing == orthoticsAccommodationsAndAdditionsFormPageIndex || force) {
+            needToUpdateScreen = true;
 
         }
+
+        if (needToUpdateScreen || force) {
+            updateOrthosisScreenFromModel()
+        }
+        
+        let isEverythingValid = everythingValid();
+        submitFormButton.isEnabled = isEverythingValid;
+        submitFinishedUIImageView.image = isEverythingValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+        
+        readAllForms();
     }
     
     func refreshPractitionerNameLabel() {
@@ -3743,14 +3859,56 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func CameraAction(sender: UIButton) {
-        let picker = UIImagePickerController()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-        picker.delegate = appDelegate as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        picker.sourceType = .camera
-        picker.allowsEditing = true
-        self.present(picker, animated: true, completion: nil)
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            selectImageFrom(.photoLibrary)
+            return
+        }
+        selectImageFrom(.camera)
+        
+//        imagePicker = UIImagePickerController()
+//
+//        imagePicker.delegate = self;
+//        imagePicker.sourceType = .camera
+//        imagePicker.allowsEditing = true
+//        self.present(imagePicker, animated: true, completion: nil)
     }
+    
+    @IBAction func save(_ sender: AnyObject) {
+        guard let selectedImage = imageTake.image else {
+            print("Image not found!")
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(selectedImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            showAlertWith(title: "Save error", message: error.localizedDescription)
+        } else {
+            showAlertWith(title: "Saved!", message: "Your image has been saved to your photos.")
+        }
+    }
+    
+    func showAlertWith(title: String, message: String){
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
+    func selectImageFrom(_ source: ImageSource){
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        switch source {
+        case .camera:
+            imagePicker.sourceType = .camera
+        case .photoLibrary:
+            imagePicker.sourceType = .photoLibrary
+        }
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+
     
     @IBAction func ScanLeftFoot(sender: UIButton) {
         amScanningLeftFoot = true;
@@ -4962,7 +5120,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func emailMesh(sender: AnyObject) {
+        order.orderPractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
         
+            
         mailViewController = MFMailComposeViewController.init()
         
         if mailViewController == nil {
@@ -4983,6 +5143,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             mailViewController!.modalPresentationStyle = .formSheet
         }
         
+        mailViewController!.setToRecipients(["scans@root-lab.com"]);
+        mailViewController!.setCcRecipients([(order.orderPractitioner?.email)!]);
+        
         // Setup paths and filenames.
         
         let zipFilename = "Model.zip"
@@ -4994,52 +5157,84 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         // Take a screenshot and save it to disk.
         
-        prepareScreenShotCurrentViewpoint(screenshotPath: fullPathFilename)
-        
-        // since file is save in prepareScreenShot() need to getData() here
-        
-        if let sshot = NSData(contentsOfFile: fullPathFilename) {
+        if (!reorderUISwitch.isOn) {
+            prepareScreenShotCurrentViewpoint(screenshotPath: fullPathFilename)
             
-            mailViewController?.addAttachmentData(sshot as Data, mimeType: "image/jpeg", fileName: screenshotFilename)
+            // since file is save in prepareScreenShot() need to getData() here
+            
+            if let sshot = NSData(contentsOfFile: fullPathFilename) {
+                
+                mailViewController?.addAttachmentData(sshot as Data, mimeType: "image/jpeg", fileName: screenshotFilename)
+            }
+            else {
+                let alert = UIAlertController.init(title: "Error", message: "no pic", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+                
+                alert.addAction(defaultAction)
+                
+                present(alert, animated: true, completion: nil)
+            }
+
         }
-        else {
-            let alert = UIAlertController.init(title: "Error", message: "no pic", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-            
-            alert.addAction(defaultAction)
-            
-            present(alert, animated: true, completion: nil)
+        
+        var i = 0;
+        for iUiImageView in reorderScrollView.subviews {
+            let theImageView = (iUiImageView as! UIImageView);
+            let theImage = theImageView.image;
+            //Only get the images we put in, not the scrollbars
+            if (theImageView.bounds.size.height == setImagePictureHeight) {
+                let imageData = theImage!.pngData()!
+                mailViewController!.addAttachmentData(imageData, mimeType: "image/png", fileName: "photo" + String(i) + ".png")
+            }
+            i = i + 1;
         }
         
-        mailViewController!.setSubject("3D Model")
+        let thePractitionerName = (order.orderPractitioner?.firstName)! + " " + (order.orderPractitioner?.lastName)!;
+        let thePatientName = (order.orderPatient?.firstName)! + " " + (order.orderPatient?.lastName)!;
+        let theStandardSubject = "Prescription from " + thePractitionerName + " for " + thePatientName;
+        let theSubject = (order.rushOrder2DayTurnaround ||
+            order.rushOrderNextDayTurnaround) ? "RUSH ORDER: " + theStandardSubject : theStandardSubject;
         
-        let messageBody = "3D model attached";
+        mailViewController!.setSubject(theSubject)
+        
+        let messageBody = calculateOrthosisSpecificationDescriptionFromOrder() + "; " + calculateRushOrderDescriptionFromOrder() + "; " +
+            calculatePostingDescriptionFromOrder() + "; " +
+            calculateCorrectionsAndModificationsDescriptionFromOrder() +
+            calculateAccommodationsOrderDescriptionFromOrder() +
+            calculateTopCoversAndExtensionsOrderDescriptionFromOrder() +
+            calculateCommentsInstructionsOrderDescriptionFromOrder() +
+            calculateOrthosisMaterialOrderDescriptionFromOrder()
+        ;
+        
+        
         
         mailViewController?.setMessageBody(messageBody, isHTML: false)
         
-        if let meshToSend = _meshToSave {
-            let zipfile = FileMgr.sharedInstance.saveMesh(zipFilename, data: meshToSend)
-            
-            if zipfile != nil {
-                mailViewController?.addAttachmentData(zipfile!, mimeType: "application/zip", fileName: zipFilename)
+        if (!reorderUISwitch.isOn) {
+
+            if let meshToSend = _meshToSave {
+                let zipfile = FileMgr.sharedInstance.saveMesh(zipFilename, data: meshToSend)
+                
+                if zipfile != nil {
+                    mailViewController?.addAttachmentData(zipfile!, mimeType: "application/zip", fileName: zipFilename)
+                }
+            }
+            else {
+                
+                mailViewController = nil
+                
+                let alert = UIAlertController.init(title: "The email could not be sent", message: "Exporting the mesh failed", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+                
+                alert.addAction(defaultAction)
+                
+                present(alert, animated: true, completion: nil)
+                
+                return
             }
         }
-        else {
-            
-            mailViewController = nil
-            
-            let alert = UIAlertController.init(title: "The email could not be sent", message: "Exporting the mesh failed", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-            
-            alert.addAction(defaultAction)
-            
-            present(alert, animated: true, completion: nil)
-            
-            return
-        }
-        
         present(mailViewController!, animated: true, completion: nil)
     }
     
@@ -5434,3 +5629,29 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
 
 
+extension ViewController: UIImagePickerControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        imagePicker.dismiss(animated: true, completion: nil)
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            print("Image not found!")
+            return
+        }
+        //imageTake.image = selectedImage
+        let imageView = UIImageView(image: selectedImage)
+        let theNumberOfAlreadyTakenPictures = reorderScrollView.subviews.count - 2;
+        let thePictureHeight = reorderScrollView.bounds.size.height * 0.9;
+        
+        setImagePictureHeight = thePictureHeight;
+        
+        let theAspectRatio = selectedImage.size.height / selectedImage.size.width;
+        let thePictureWidth = thePictureHeight / theAspectRatio;
+        let theX = thePictureWidth * CGFloat(1.1) * CGFloat(theNumberOfAlreadyTakenPictures);
+        imageView.frame = CGRect(x: theX, y: CGFloat(0), width: thePictureWidth, height: thePictureHeight)
+        reorderScrollView.addSubview(imageView)
+        reorderScrollView.contentSize = CGSize(width: CGFloat(theX + thePictureWidth), height: CGFloat(thePictureHeight));
+        reorderScrollView.showsHorizontalScrollIndicator = false;
+        reorderScrollView.showsHorizontalScrollIndicator = true;
+
+    }
+}

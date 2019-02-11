@@ -28,7 +28,6 @@
 		2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E321F3DD210077A8B1 /* greybar.png */; };
 		2D6A61E921F3DE450077A8B1 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E721F3DE3F0077A8B1 /* checked.png */; };
 		2D6A61EA21F3DE450077A8B1 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E821F3DE420077A8B1 /* unchecked.png */; };
-		2D6A61EC21F3DFAB0077A8B1 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61EB21F3DFA80077A8B1 /* Button.png */; };
 		2D6A61EE21F64A2B0077A8B1 /* MeshRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */; };
 		2D6A61F021F64A430077A8B1 /* CustomShaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61EF21F64A430077A8B1 /* CustomShaders.swift */; };
 		2D6A61F821F64A690077A8B1 /* ViewController+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61F121F64A670077A8B1 /* ViewController+Camera.swift */; };
@@ -57,6 +56,16 @@
 		2DE307E4220F5CF9002795E7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E3220F5CF9002795E7 /* TableViewController.swift */; };
 		2DE307E6220F911F002795E7 /* OrthoticsPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */; };
 		2DE307E82210A8DF002795E7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E72210A8DF002795E7 /* GlobalVariables.swift */; };
+		2DE307F22210DF56002795E7 /* Neuroma Pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307E92210DF3D002795E7 /* Neuroma Pad.png */; };
+		2DE307F32210DF56002795E7 /* Kinetic Wedge.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307EA2210DF42002795E7 /* Kinetic Wedge.png */; };
+		2DE307F42210DF56002795E7 /* Metatarsal Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307EB2210DF48002795E7 /* Metatarsal Bar.png */; };
+		2DE307FC2210DFF2002795E7 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307FB2210DFF2002795E7 /* Button.png */; };
+		2DE307FE2210E055002795E7 /* Heel Pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307FD2210E055002795E7 /* Heel Pad.png */; };
+		2DE308002210E073002795E7 /* Horeshoe Pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307FF2210E073002795E7 /* Horeshoe Pad.png */; };
+		2DE308022210E084002795E7 /* Dancers Pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE308012210E084002795E7 /* Dancers Pad.png */; };
+		2DE308042210E093002795E7 /* Metatarsal Pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE308032210E093002795E7 /* Metatarsal Pad.png */; };
+		2DE308062210E09D002795E7 /* Reverse mortons extension.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE308052210E09C002795E7 /* Reverse mortons extension.png */; };
+		2DE308082210E0A5002795E7 /* Mortons Extension.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE308072210E0A4002795E7 /* Mortons Extension.png */; };
 		36E2C5A7BB2BC6382DE9628A /* Pods_eScan_for_Root_LabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,7 +113,6 @@
 		2D6A61E321F3DD210077A8B1 /* greybar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greybar.png; sourceTree = "<group>"; };
 		2D6A61E721F3DE3F0077A8B1 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		2D6A61E821F3DE420077A8B1 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
-		2D6A61EB21F3DFA80077A8B1 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button.png; path = ../../../../Desktop/Button.png; sourceTree = "<group>"; };
 		2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshRenderer.swift; sourceTree = "<group>"; };
 		2D6A61EF21F64A430077A8B1 /* CustomShaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShaders.swift; sourceTree = "<group>"; };
 		2D6A61F121F64A670077A8B1 /* ViewController+Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Camera.swift"; sourceTree = "<group>"; };
@@ -134,6 +142,16 @@
 		2DE307E3220F5CF9002795E7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthoticsPrescriptionViewController.swift; sourceTree = "<group>"; };
 		2DE307E72210A8DF002795E7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		2DE307E92210DF3D002795E7 /* Neuroma Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Neuroma Pad.png"; sourceTree = "<group>"; };
+		2DE307EA2210DF42002795E7 /* Kinetic Wedge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kinetic Wedge.png"; sourceTree = "<group>"; };
+		2DE307EB2210DF48002795E7 /* Metatarsal Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Metatarsal Bar.png"; sourceTree = "<group>"; };
+		2DE307FB2210DFF2002795E7 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		2DE307FD2210E055002795E7 /* Heel Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heel Pad.png"; sourceTree = "<group>"; };
+		2DE307FF2210E073002795E7 /* Horeshoe Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Horeshoe Pad.png"; sourceTree = "<group>"; };
+		2DE308012210E084002795E7 /* Dancers Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dancers Pad.png"; sourceTree = "<group>"; };
+		2DE308032210E093002795E7 /* Metatarsal Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Metatarsal Pad.png"; sourceTree = "<group>"; };
+		2DE308052210E09C002795E7 /* Reverse mortons extension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reverse mortons extension.png"; sourceTree = "<group>"; };
+		2DE308072210E0A4002795E7 /* Mortons Extension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mortons Extension.png"; sourceTree = "<group>"; };
 		7FA3BEDC51D1570FBCFAACDD /* Pods_eScan_for_Root_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650797FF63877B7AE439295 /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,9 +267,18 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DE307FB2210DFF2002795E7 /* Button.png */,
+				2DE307FD2210E055002795E7 /* Heel Pad.png */,
+				2DE307FF2210E073002795E7 /* Horeshoe Pad.png */,
+				2DE307EA2210DF42002795E7 /* Kinetic Wedge.png */,
+				2DE307EB2210DF48002795E7 /* Metatarsal Bar.png */,
+				2DE308012210E084002795E7 /* Dancers Pad.png */,
+				2DE308032210E093002795E7 /* Metatarsal Pad.png */,
+				2DE308052210E09C002795E7 /* Reverse mortons extension.png */,
+				2DE308072210E0A4002795E7 /* Mortons Extension.png */,
+				2DE307E92210DF3D002795E7 /* Neuroma Pad.png */,
 				2DE307E1220F4AA2002795E7 /* Item Selection.png */,
 				2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */,
-				2D6A61EB21F3DFA80077A8B1 /* Button.png */,
 				2D6A61E721F3DE3F0077A8B1 /* checked.png */,
 				2D6A61E821F3DE420077A8B1 /* unchecked.png */,
 				2D6A61E321F3DD210077A8B1 /* greybar.png */,
@@ -398,21 +425,30 @@
 				2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */,
 				2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */,
 				2D9B417721D3541D0022FE2D /* Camera.png in Resources */,
-				2D6A61EC21F3DFAB0077A8B1 /* Button.png in Resources */,
 				2D44BDC221B4BFA0009A1066 /* LaunchScreen.storyboard in Resources */,
+				2DE308082210E0A5002795E7 /* Mortons Extension.png in Resources */,
 				2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */,
+				2DE307FC2210DFF2002795E7 /* Button.png in Resources */,
 				2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */,
 				2D6A61E921F3DE450077A8B1 /* checked.png in Resources */,
 				2D44BDBF21B4BFA0009A1066 /* Assets.xcassets in Resources */,
+				2DE307FE2210E055002795E7 /* Heel Pad.png in Resources */,
+				2DE308022210E084002795E7 /* Dancers Pad.png in Resources */,
 				2D6663A521C8C90D007B5316 /* left-foot-md.png in Resources */,
+				2DE307F32210DF56002795E7 /* Kinetic Wedge.png in Resources */,
 				2D6A61EA21F3DE450077A8B1 /* unchecked.png in Resources */,
+				2DE308042210E093002795E7 /* Metatarsal Pad.png in Resources */,
 				2D2B241122054D130057F8C2 /* Root Lab transparent back PNG.png in Resources */,
 				2D52F7C421BC713D00AC60F5 /* patient.png in Resources */,
+				2DE308002210E073002795E7 /* Horeshoe Pad.png in Resources */,
+				2DE308062210E09D002795E7 /* Reverse mortons extension.png in Resources */,
 				2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */,
 				2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */,
 				2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */,
 				2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */,
 				2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */,
+				2DE307F22210DF56002795E7 /* Neuroma Pad.png in Resources */,
+				2DE307F42210DF56002795E7 /* Metatarsal Bar.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
