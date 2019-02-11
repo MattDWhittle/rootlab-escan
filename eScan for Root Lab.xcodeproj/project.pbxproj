@@ -62,6 +62,13 @@
 		2DE308042210E093002795E7 /* Metatarsal Pad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE308032210E093002795E7 /* Metatarsal Pad.png */; };
 		2DE308062210E09D002795E7 /* Reverse mortons extension.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE308052210E09C002795E7 /* Reverse mortons extension.png */; };
 		2DE308082210E0A5002795E7 /* Mortons Extension.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE308072210E0A4002795E7 /* Mortons Extension.png */; };
+		2DE3081622122E43002795E7 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3080F22122E42002795E7 /* checked.png */; };
+		2DE3081722122E43002795E7 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081022122E42002795E7 /* Camera.png */; };
+		2DE3081822122E43002795E7 /* buttonMD.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081122122E42002795E7 /* buttonMD.png */; };
+		2DE3081922122E43002795E7 /* buttonLong.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081222122E43002795E7 /* buttonLong.png */; };
+		2DE3081A22122E43002795E7 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081322122E43002795E7 /* unchecked.png */; };
+		2DE3081C22122E43002795E7 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081522122E43002795E7 /* Button.png */; };
+		2DE3081E22122E58002795E7 /* ScanNowbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081D22122E57002795E7 /* ScanNowbutton.png */; };
 		36E2C5A7BB2BC6382DE9628A /* Pods_eScan_for_Root_LabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +151,13 @@
 		2DE308032210E093002795E7 /* Metatarsal Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Metatarsal Pad.png"; sourceTree = "<group>"; };
 		2DE308052210E09C002795E7 /* Reverse mortons extension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reverse mortons extension.png"; sourceTree = "<group>"; };
 		2DE308072210E0A4002795E7 /* Mortons Extension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mortons Extension.png"; sourceTree = "<group>"; };
+		2DE3080F22122E42002795E7 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		2DE3081022122E42002795E7 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
+		2DE3081122122E42002795E7 /* buttonMD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonMD.png; sourceTree = "<group>"; };
+		2DE3081222122E43002795E7 /* buttonLong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonLong.png; sourceTree = "<group>"; };
+		2DE3081322122E43002795E7 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		2DE3081522122E43002795E7 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		2DE3081D22122E57002795E7 /* ScanNowbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ScanNowbutton.png; path = "../../../rootlab images/ScanNowbutton.png"; sourceTree = "<group>"; };
 		7FA3BEDC51D1570FBCFAACDD /* Pods_eScan_for_Root_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650797FF63877B7AE439295 /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +273,13 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DE3081D22122E57002795E7 /* ScanNowbutton.png */,
+				2DE3081522122E43002795E7 /* Button.png */,
+				2DE3081222122E43002795E7 /* buttonLong.png */,
+				2DE3081122122E42002795E7 /* buttonMD.png */,
+				2DE3081022122E42002795E7 /* Camera.png */,
+				2DE3080F22122E42002795E7 /* checked.png */,
+				2DE3081322122E43002795E7 /* unchecked.png */,
 				2DE307FD2210E055002795E7 /* Heel Pad.png */,
 				2DE307FF2210E073002795E7 /* Horeshoe Pad.png */,
 				2DE307EA2210DF42002795E7 /* Kinetic Wedge.png */,
@@ -409,9 +430,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE3081822122E43002795E7 /* buttonMD.png in Resources */,
 				2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */,
 				2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */,
 				2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */,
+				2DE3081A22122E43002795E7 /* unchecked.png in Resources */,
+				2DE3081622122E43002795E7 /* checked.png in Resources */,
 				2D44BDC221B4BFA0009A1066 /* LaunchScreen.storyboard in Resources */,
 				2DE308082210E0A5002795E7 /* Mortons Extension.png in Resources */,
 				2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */,
@@ -430,8 +454,12 @@
 				2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */,
 				2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */,
 				2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */,
+				2DE3081C22122E43002795E7 /* Button.png in Resources */,
+				2DE3081E22122E58002795E7 /* ScanNowbutton.png in Resources */,
+				2DE3081722122E43002795E7 /* Camera.png in Resources */,
 				2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */,
 				2DE307F22210DF56002795E7 /* Neuroma Pad.png in Resources */,
+				2DE3081922122E43002795E7 /* buttonLong.png in Resources */,
 				2DE307F42210DF56002795E7 /* Metatarsal Bar.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
 			);
