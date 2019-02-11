@@ -15,10 +15,9 @@
 
 
 // (TEST - failure) Scans place images over foot buttons - loading image not working
-// (DONE) orthotic descriptions should update after UiSwitch edit (Check picker as well) (many are not delegating with target)
-
-
 // (TEST) if delete to blank on practitioner page, tell them what type of field it is
+
+// (TODO) orthotic descriptions should update after UiPicker edit
 // (TODO) when expand view, make sure it doesn't expand off screen, scoll it up
 // (TODO) if no email accounts set up on device, alert early
 // (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
@@ -114,6 +113,8 @@
 // (TODO) Clean up warnings
 // (TODO) Clean up extra IBOutlets
 
+//Monday 2-11 push3
+// (DONE) New images
 //Monday 2-11 push2
 // (DONE) orthotic descriptions should update after UiSwitch edit  (many are not delegating with target)
 //Monday 2-11 push
@@ -3663,30 +3664,30 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setValuesBasedOnPractitionerPageValid();
             if (practitionerNameInput.text!.isEmpty) {
                 practitionerNameInput.text = "*First Name";
-                practitionerBillingAddress1.textColor = .gray;
+                practitionerNameInput.textColor = .gray;
             }
         } else if (textField == practitionerLastNameInput) {
             setValuesBasedOnPractitionerPageValid();
             if (practitionerLastNameInput.text!.isEmpty) {
                 practitionerLastNameInput.text = "*Last Name";
-                practitionerBillingAddress1.textColor = .gray;
+                practitionerLastNameInput.textColor = .gray;
             }
         } else if (textField == practitionerPhoneInput) {
             setValuesBasedOnPractitionerPageValid();
-            if (practitionerLastNameInput.text!.isEmpty) {
-                practitionerLastNameInput.text = "*Phone";
-                practitionerBillingAddress1.textColor = .gray;
+            if (practitionerPhoneInput.text!.isEmpty) {
+                practitionerPhoneInput.text = "*Phone";
+                practitionerPhoneInput.textColor = .gray;
             }
         } else if (textField == practitionerEmailInput) {
             setValuesBasedOnPractitionerPageValid();
-            if (practitionerLastNameInput.text!.isEmpty) {
-                practitionerLastNameInput.text = "*Email";
-                practitionerBillingAddress1.textColor = .gray;
+            if (practitionerEmailInput.text!.isEmpty) {
+                practitionerEmailInput.text = "*Email";
+                practitionerEmailInput.textColor = .gray;
             }
         } else if (textField == practitionerShippingAddress1) {
             if (practitionerShippingAddress1.text!.isEmpty) {
                 practitionerShippingAddress1.text = "*Address";
-                practitionerBillingAddress1.textColor = .gray;
+                practitionerShippingAddress1.textColor = .gray;
             }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddress1.text = practitionerShippingAddress1.text!;
