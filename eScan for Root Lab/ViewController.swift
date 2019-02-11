@@ -18,7 +18,7 @@
 // (DONE) orthotic descriptions should update after UiSwitch edit (Check picker as well) (many are not delegating with target)
 
 
-// (TODO) if delete to blank on practitioner page, tell them what type of field it is
+// (TEST) if delete to blank on practitioner page, tell them what type of field it is
 // (TODO) when expand view, make sure it doesn't expand off screen, scoll it up
 // (TODO) if no email accounts set up on device, alert early
 // (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
@@ -3632,49 +3632,93 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostingElevator8mmRightUISwitch.isOn = false;
         } else if (textField == practitionerNameInput) {
             setValuesBasedOnPractitionerPageValid();
+            if (practitionerNameInput.text!.isEmpty) {
+                practitionerNameInput.text = "*First Name";
+                practitionerBillingAddress1.textColor = .gray;
+            }
         } else if (textField == practitionerLastNameInput) {
             setValuesBasedOnPractitionerPageValid();
+            if (practitionerLastNameInput.text!.isEmpty) {
+                practitionerLastNameInput.text = "*Last Name";
+                practitionerBillingAddress1.textColor = .gray;
+            }
         } else if (textField == practitionerPhoneInput) {
             setValuesBasedOnPractitionerPageValid();
+            if (practitionerLastNameInput.text!.isEmpty) {
+                practitionerLastNameInput.text = "*Phone";
+                practitionerBillingAddress1.textColor = .gray;
+            }
         } else if (textField == practitionerEmailInput) {
             setValuesBasedOnPractitionerPageValid();
+            if (practitionerLastNameInput.text!.isEmpty) {
+                practitionerLastNameInput.text = "*Email";
+                practitionerBillingAddress1.textColor = .gray;
+            }
         } else if (textField == practitionerShippingAddress1) {
+            if (practitionerShippingAddress1.text!.isEmpty) {
+                practitionerShippingAddress1.text = "*Address";
+                practitionerBillingAddress1.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddress1.text = practitionerShippingAddress1.text!;
                  practitionerBillingAddress1.textColor = practitionerBillingAddress1.text == "*Address 1" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddress2) {
+            if (practitionerShippingAddress2.text!.isEmpty) {
+                practitionerShippingAddress2.text = "Address 2";
+                practitionerShippingAddress2.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddress2.text = practitionerShippingAddress2.text!;
                 practitionerBillingAddress2.textColor = practitionerBillingAddress2.text == "Address 2" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddressCity) {
+            if (practitionerShippingAddressCity.text!.isEmpty) {
+                practitionerShippingAddressCity.text = "*City";
+                practitionerShippingAddressCity.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddressCity.text = practitionerShippingAddressCity.text!;
                 practitionerBillingAddressCity.textColor = practitionerBillingAddressCity.text == "*City" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddressState) {
+            if (practitionerShippingAddressState.text!.isEmpty) {
+                practitionerShippingAddressState.text = "*State";
+                practitionerShippingAddressState.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddressState.text = practitionerShippingAddressState.text!;
                 practitionerBillingAddressState.textColor = practitionerBillingAddressState.text == "*State" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddressZip) {
+            if (practitionerShippingAddressZip.text!.isEmpty) {
+                practitionerShippingAddressZip.text = "*Zip";
+                practitionerShippingAddressZip.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddressZip.text = practitionerShippingAddressZip.text!;
                 practitionerBillingAddressZip.textColor = practitionerBillingAddressZip.text == "*Zip" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddressCountry) {
+            if (practitionerShippingAddressCountry.text!.isEmpty) {
+                practitionerShippingAddressCountry.text = "*Country";
+                practitionerShippingAddressCountry.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddressCountry.text = practitionerShippingAddressCountry.text!;
                 practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "*Country" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddressFacilityName) {
+            if (practitionerShippingAddressFacilityName.text!.isEmpty) {
+                practitionerShippingAddressFacilityName.text = "*Business or Facility Name";
+                practitionerShippingAddressFacilityName.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddressFacilityName.text = practitionerShippingAddressFacilityName.text!;
                 practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
@@ -3682,42 +3726,70 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setValuesBasedOnPractitionerPageValid();
 
         } else if (textField == practitionerBillingAddress1) {
+            if (practitionerBillingAddress1.text!.isEmpty) {
+                practitionerBillingAddress1.text = "*Address 1";
+                practitionerBillingAddress1.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
                !(practitionerShippingAddress1.text == practitionerBillingAddress1.text! )) {
                 newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerBillingAddress2) {
+            if (practitionerBillingAddress2.text!.isEmpty) {
+                practitionerBillingAddress2.text = "Address 2";
+                practitionerBillingAddress2.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
                 !(practitionerShippingAddress2.text == practitionerBillingAddress2.text! )) {
                 newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerBillingAddressCity) {
+            if (practitionerBillingAddressCity.text!.isEmpty) {
+                practitionerBillingAddressCity.text = "*City";
+                practitionerBillingAddressCity.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
                 !(practitionerShippingAddressCity.text == practitionerBillingAddressCity.text! )) {
                 newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerBillingAddressState) {
+            if (practitionerBillingAddressState.text!.isEmpty) {
+                practitionerBillingAddressState.text = "*State";
+                practitionerBillingAddressState.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
                 !(practitionerShippingAddressState.text == practitionerBillingAddressState.text! )) {
                 newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerBillingAddressZip) {
+            if (practitionerBillingAddressZip.text!.isEmpty) {
+                practitionerBillingAddressZip.text = "*Zip";
+                practitionerBillingAddressZip.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
                 !(practitionerShippingAddressZip.text == practitionerBillingAddressZip.text! )) {
                 newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerBillingAddressCountry) {
+            if (practitionerBillingAddressCountry.text!.isEmpty) {
+                practitionerBillingAddressCountry.text = "*Country";
+                practitionerBillingAddressCountry.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
                 !(practitionerShippingAddressCountry.text == practitionerBillingAddressCountry.text! )) {
                 newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerBillingAddressFacilityName) {
+            if (practitionerBillingAddressFacilityName.text!.isEmpty) {
+                practitionerBillingAddressFacilityName.text = "*Business or Facility Name";
+                practitionerBillingAddressFacilityName.textColor = .gray;
+            }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
                 !(practitionerShippingAddressFacilityName.text == practitionerBillingAddressFacilityName.text! )) {
                 newPractitionerSameAsBillingAddressUiSwitch.isOn = false;
@@ -3726,20 +3798,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         } else if (textField == patientNameInput) {
             setValuesBasedOnPatientPageValid();
-            if (patientNameInput.text!.isEmpty) {
-                patientNameInput.text = "*First Name";
-            }
             //todo add scan button here
         } else if (textField == patientLastNameInput) {
             setValuesBasedOnPatientPageValid();
-            if (patientLastNameInput.text!.isEmpty) {
-                patientLastNameInput.text = "*Last Name";
-            }
-//        } else if (textField == patientLastNameInput) {
-//            setValuesBasedOnPatientPageValid();
-//            if (patientLastNameInput.isEmpty) {
-//                patientLastNameInput = "*First Name";
-//            }
         }
         changeValuesBasedOnChangedInput();
         
