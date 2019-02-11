@@ -15,9 +15,9 @@
 
 
 // (TEST - failure) Scans place images over foot buttons - loading image not working
+// (DONE) orthotic descriptions should update after UiSwitch edit (Check picker as well) (many are not delegating with target)
 
 
-// (TODO) orthotic descriptions should update after UiSwitch edit (Check picker as well) (many are not delegating with target)
 // (TODO) if delete to blank on practitioner page, tell them what type of field it is
 // (TODO) when expand view, make sure it doesn't expand off screen, scoll it up
 // (TODO) if no email accounts set up on device, alert early
@@ -28,6 +28,7 @@
 // (TODO) ...then Forefoot Extensions 3 options
 // (TODO) ...then poron
 // (TODO) ...then bottom cover
+// (TODO) UISwitches are smashed up on each other in small resolutions
 // (TODO) Logo link to website
 //(TODO) Express shipping make it 3 day, 2 day, next day
 //(TODO) If choose next day turnaround, be first line of work order
@@ -113,8 +114,10 @@
 // (TODO) Clean up warnings
 // (TODO) Clean up extra IBOutlets
 
-
-// (DONE) Save PAtient when leaving page, not only when clicking Next
+//Monday 2-11 push2
+// (DONE) orthotic descriptions should update after UiSwitch edit  (many are not delegating with target)
+//Monday 2-11 push
+// (DONE) Save Patient when leaving page, not only when clicking Next
 //(DONE) Rush order - remove requested on or before
 // (DONE) Non corrective forefoot post, if full width selected, others are not, and vice versa
 // (DONE) PolyMax only can have a posting of Polypropylene
@@ -1392,11 +1395,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         orthosisSpecificationsOtherShellConfigurationsWideArchProfileRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         newPractitionerSameAsBillingAddressUiSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -1638,11 +1639,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeftUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsWideArchProfileRightUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactUISwitch: UISwitch!
-    @IBOutlet var orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeftUISwitch: UISwitch!
-    @IBOutlet var orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeftUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeftUISwitch: UISwitch!
     @IBOutlet var orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeftUISwitch: UISwitch!
     @IBOutlet var newPractitionerSameAsBillingAddressUiSwitch: UISwitch!
@@ -1673,7 +1672,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var topCoversAndExtensionsBottomCoverMaterialEVA116UISwitch: UISwitch!
     @IBOutlet var rushOrder2DayTurnaroundUISwitch: UISwitch!
     @IBOutlet var rushOrderNextDayTurnaroundUISwitch: UISwitch!
-    @IBOutlet var rushOrderRequestedOnOrBeforeUISwitch: UISwitch!
     @IBOutlet var reorderUISwitch: UISwitch!
 
     @IBOutlet var commentsTextArea: UITextView!
@@ -3728,10 +3726,20 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         } else if (textField == patientNameInput) {
             setValuesBasedOnPatientPageValid();
-            
+            if (patientNameInput.text!.isEmpty) {
+                patientNameInput.text = "*First Name";
+            }
             //todo add scan button here
         } else if (textField == patientLastNameInput) {
             setValuesBasedOnPatientPageValid();
+            if (patientLastNameInput.text!.isEmpty) {
+                patientLastNameInput.text = "*Last Name";
+            }
+//        } else if (textField == patientLastNameInput) {
+//            setValuesBasedOnPatientPageValid();
+//            if (patientLastNameInput.isEmpty) {
+//                patientLastNameInput = "*First Name";
+//            }
         }
         changeValuesBasedOnChangedInput();
         
