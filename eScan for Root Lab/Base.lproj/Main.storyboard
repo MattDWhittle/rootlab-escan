@@ -851,7 +851,7 @@
                                         <rect key="frame" x="513" y="836" width="1093" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
-                                        <state key="normal" title=" Start New Order " backgroundImage="Button.png">
+                                        <state key="normal" title=" Start New Order " backgroundImage="buttonLong.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                         </state>
@@ -870,7 +870,7 @@
                                         <rect key="frame" x="513" y="1025" width="1093" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
-                                        <state key="normal" title="Retrieve Existing Order" backgroundImage="Button.png">
+                                        <state key="normal" title="Retrieve Existing Order" backgroundImage="buttonLong.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                         </state>
@@ -1020,7 +1020,7 @@ Try to re-align or press reset.</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
                                         <color key="tintColor" red="0.37018367817687292" green="0.38929563615287499" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="SCAN" backgroundImage="Button.png">
+                                        <state key="normal" backgroundImage="ScanNowbutton.png">
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -1419,7 +1419,7 @@ Try to re-align or press reset.</string>
                                                 <rect key="frame" x="393" y="1119" width="823" height="105"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
-                                                <state key="normal" title="  Save as Default  " backgroundImage="Button.png">
+                                                <state key="normal" title="  Save as Default  " backgroundImage="buttonMD.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </state>
@@ -1431,7 +1431,7 @@ Try to re-align or press reset.</string>
                                                 <rect key="frame" x="393" y="992" width="865" height="93"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
-                                                <state key="normal" title="  Delete Practitioner  " backgroundImage="Button.png">
+                                                <state key="normal" title="  Delete Practitioner  " backgroundImage="buttonMD.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </state>
@@ -4896,11 +4896,14 @@ Try to re-align or press reset.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Button.png" width="343" height="64"/>
+        <image name="Button.png" width="468" height="269"/>
         <image name="Calibration" width="76" height="76"/>
-        <image name="Camera.png" width="512" height="512"/>
+        <image name="Camera.png" width="683" height="683"/>
         <image name="Item Selection.png" width="95" height="73"/>
         <image name="Root Lab transparent back PNG.png" width="425" height="228"/>
+        <image name="ScanNowbutton.png" width="425" height="228"/>
+        <image name="buttonLong.png" width="1245" height="220"/>
+        <image name="buttonMD.png" width="956" height="269"/>
         <image name="fastcast3d.png" width="687" height="203"/>
         <image name="greybar.png" width="50" height="94"/>
         <image name="left-foot-md.png" width="234" height="297"/>
@@ -4910,6 +4913,6 @@ Try to re-align or press reset.</string>
         <image name="right-foot-md.jpg" width="400" height="420"/>
         <image name="rootlabwhitebackground.png" width="232" height="153"/>
         <image name="structure scanner image.png" width="493" height="124"/>
-        <image name="unchecked.png" width="135" height="136"/>
+        <image name="unchecked.png" width="19" height="19"/>
     </resources>
 </document>

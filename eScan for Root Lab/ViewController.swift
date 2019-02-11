@@ -1404,6 +1404,35 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         newPractitionerUseEmailForCC.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
 
         
+        
+         postingRearfootPostMotion4DegreesMotionLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+         postingRearfootPostMotion4DegreesMotionRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostMotion0DegreesMotionLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostMotion0DegreesMotionRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostingElevator4mmRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostingElevator4mmLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostingElevator8mmRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostingElevator8mmLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostOptionsMedialPostFlangeRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostOptionsMedialPostFlangeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostOptionsLateralPostFlangeRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostOptionsLateralPostFlangeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostOptionsLongPostFlangeRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostOptionsLongPostFlangeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostOptionsShortPostFlangeRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingRearfootPostOptionsShortPostFlangeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingNonCorrectiveForefootPostFullWidthRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingNonCorrectiveForefootPostFullWidthLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingNonCorrectiveForefootPostMedialCornerRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingNonCorrectiveForefootPostMedialCornerLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingNonCorrectiveForefootPostLateralCornerRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        postingNonCorrectiveForefootPostLateralCornerWidthLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsBottomCoverMaterialEVA116UISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        rushOrder2DayTurnaroundUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        rushOrderNextDayTurnaroundUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        reorderUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+
+        
         depthView.isHidden = true;
         eview.isHidden = true;
         eviewMesh.isHidden = true;
