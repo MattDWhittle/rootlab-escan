@@ -48,6 +48,9 @@
 		2D9B41F621E714DC0022FE2D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41F521E714DC0022FE2D /* Accelerate.framework */; };
 		2D9B41FA21E859E40022FE2D /* RichieBraceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */; };
 		2D9B41FE21E85E7F0022FE2D /* StructureScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */; };
+		2DA5914A2218748900D79518 /* PolyChart.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DA591492218748900D79518 /* PolyChart.png */; };
+		2DA5914C2218B77000D79518 /* TopCoversViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5914B2218B77000D79518 /* TopCoversViewController.swift */; };
+		2DBCBF85221904BE004E3AC9 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBCBF84221904B2004E3AC9 /* Circle.png */; };
 		2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5599121BC6D8B005F99BA /* structure scanner image.png */; };
 		2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307E1220F4AA2002795E7 /* Item Selection.png */; };
 		2DE307E4220F5CF9002795E7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E3220F5CF9002795E7 /* TableViewController.swift */; };
@@ -69,6 +72,7 @@
 		2DE3081A22122E43002795E7 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081322122E43002795E7 /* unchecked.png */; };
 		2DE3081C22122E43002795E7 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081522122E43002795E7 /* Button.png */; };
 		2DE3081E22122E58002795E7 /* ScanNowbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081D22122E57002795E7 /* ScanNowbutton.png */; };
+		2DE3082022186839002795E7 /* Donebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081F22186839002795E7 /* Donebutton.png */; };
 		36E2C5A7BB2BC6382DE9628A /* Pods_eScan_for_Root_LabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +141,9 @@
 		2D9B41F521E714DC0022FE2D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		2D9B41F921E859E40022FE2D /* RichieBraceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichieBraceViewController.swift; sourceTree = "<group>"; };
 		2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureScannerViewController.swift; sourceTree = "<group>"; };
+		2DA591492218748900D79518 /* PolyChart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PolyChart.png; sourceTree = "<group>"; };
+		2DA5914B2218B77000D79518 /* TopCoversViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCoversViewController.swift; sourceTree = "<group>"; };
+		2DBCBF84221904B2004E3AC9 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		2DC5599121BC6D8B005F99BA /* structure scanner image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structure scanner image.png"; sourceTree = "<group>"; };
 		2DE307E1220F4AA2002795E7 /* Item Selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Item Selection.png"; sourceTree = "<group>"; };
 		2DE307E3220F5CF9002795E7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +165,7 @@
 		2DE3081322122E43002795E7 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		2DE3081522122E43002795E7 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
 		2DE3081D22122E57002795E7 /* ScanNowbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ScanNowbutton.png; path = "../../../rootlab images/ScanNowbutton.png"; sourceTree = "<group>"; };
+		2DE3081F22186839002795E7 /* Donebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donebutton.png; sourceTree = "<group>"; };
 		7FA3BEDC51D1570FBCFAACDD /* Pods_eScan_for_Root_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650797FF63877B7AE439295 /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41FD98439E3B07FEFEDD4C3 /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +237,7 @@
 				2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */,
 				2D44BDB621B4BF9C009A1066 /* ViewController.swift */,
 				2DE307E3220F5CF9002795E7 /* TableViewController.swift */,
+				2DA5914B2218B77000D79518 /* TopCoversViewController.swift */,
 				2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */,
 				2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */,
 				2D6A61EF21F64A430077A8B1 /* CustomShaders.swift */,
@@ -273,6 +282,9 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DBCBF84221904B2004E3AC9 /* Circle.png */,
+				2DA591492218748900D79518 /* PolyChart.png */,
+				2DE3081F22186839002795E7 /* Donebutton.png */,
 				2DE3081D22122E57002795E7 /* ScanNowbutton.png */,
 				2DE3081522122E43002795E7 /* Button.png */,
 				2DE3081222122E43002795E7 /* buttonLong.png */,
@@ -431,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DE3081822122E43002795E7 /* buttonMD.png in Resources */,
+				2DBCBF85221904BE004E3AC9 /* Circle.png in Resources */,
 				2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */,
 				2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */,
 				2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */,
@@ -448,6 +461,7 @@
 				2DE308042210E093002795E7 /* Metatarsal Pad.png in Resources */,
 				2D2B241122054D130057F8C2 /* Root Lab transparent back PNG.png in Resources */,
 				2D52F7C421BC713D00AC60F5 /* patient.png in Resources */,
+				2DA5914A2218748900D79518 /* PolyChart.png in Resources */,
 				2DE308002210E073002795E7 /* Horeshoe Pad.png in Resources */,
 				2DE308062210E09D002795E7 /* Reverse mortons extension.png in Resources */,
 				2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */,
@@ -460,6 +474,7 @@
 				2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */,
 				2DE307F22210DF56002795E7 /* Neuroma Pad.png in Resources */,
 				2DE3081922122E43002795E7 /* buttonLong.png in Resources */,
+				2DE3082022186839002795E7 /* Donebutton.png in Resources */,
 				2DE307F42210DF56002795E7 /* Metatarsal Bar.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
 			);
@@ -537,6 +552,7 @@
 				2D6A61F921F64A690077A8B1 /* MeshViewController.swift in Sources */,
 				2D9B41FE21E85E7F0022FE2D /* StructureScannerViewController.swift in Sources */,
 				2D6A61FD21F64A690077A8B1 /* EAGLView.swift in Sources */,
+				2DA5914C2218B77000D79518 /* TopCoversViewController.swift in Sources */,
 				2D44BDBD21B4BF9C009A1066 /* eScan_for_Root_Lab.xcdatamodeld in Sources */,
 				2D6A61F021F64A430077A8B1 /* CustomShaders.swift in Sources */,
 				2D6A61F821F64A690077A8B1 /* ViewController+Camera.swift in Sources */,

@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eScan for Root Lab/ViewController.swift"
-            timestampString = "571617577.4912241"
+            timestampString = "572044710.6456881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4145"
-            endingLineNumber = "4145"
-            landmarkName = "clickPostingRearfootPostingElevator4mmLeftUISwitch(sender:)"
-            landmarkType = "7">
+            startingLineNumber = "4244"
+            endingLineNumber = "4244"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
