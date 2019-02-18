@@ -15,7 +15,6 @@ class OrthoticsPrescriptionViewController: UIViewController {
     @IBOutlet var orthosisSpecificationsFinishedUIImageView: UIImageView!
     @IBOutlet var postingFinishedUIImageView: UIImageView!
     @IBOutlet var topCoversAndExtensionsFinishedUIImageView: UIImageView!
-    @IBOutlet var accommodationsFinishedUIImageView: UIImageView!
     @IBOutlet var rushOrderFinishedUIImageView: UIImageView!
     @IBOutlet var chiefComplaintDiagnosisFinishedUIImageView: UIImageView!
 
@@ -24,7 +23,6 @@ class OrthoticsPrescriptionViewController: UIViewController {
     @IBOutlet var orthosisSpecificationsTextView: UITextView!
     @IBOutlet var postingTextView: UITextView!
     @IBOutlet var topCoversAndExtensionsTextView: UITextView!
-    @IBOutlet var accommodationsTextView: UITextView!
     @IBOutlet var rushOrderTextView: UITextView!
     @IBOutlet var chiefComplaintDiagnosisTextView: UITextView!
 
@@ -57,11 +55,6 @@ class OrthoticsPrescriptionViewController: UIViewController {
         let parent = self.parent! as! ViewController;
         
         parent.ClickOrthosisTopCoversAndExtensions()
-    }
-    @IBAction func clickAccommodations() {
-        let parent = self.parent! as! ViewController;
-        
-        parent.ClickOrthosisAccommodationsAndAdditions()
     }
     @IBAction func clickRushOrder() {
         let parent = self.parent! as! ViewController;
@@ -98,7 +91,6 @@ class OrthoticsPrescriptionViewController: UIViewController {
             postingTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             topCoversAndExtensionsTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             rushOrderTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
-            accommodationsTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             chiefComplaintDiagnosisTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
         }
 
@@ -110,11 +102,10 @@ class OrthoticsPrescriptionViewController: UIViewController {
         parent.prescriptionFinishedUIImageView.image =  parent.orthosisFormValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
         
         postingFinishedUIImageView.image = parent.postingValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
-        accommodationsFinishedUIImageView.image = parent.accommodationsValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
         rushOrderFinishedUIImageView.image = parent.rushOrderValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
         orthosisMaterialFinishedUIImageView.image = parent.orthosisMaterialValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
         orthosisSpecificationsFinishedUIImageView.image = parent.orthosisSpecificationsValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
-        topCoversAndExtensionsFinishedUIImageView.image = parent.topCoversAndExtensionsValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+        topCoversAndExtensionsFinishedUIImageView.image = topCoversViewController?.topCoversAndExtensionsValid() ?? false ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
         chiefComplaintDiagnosisFinishedUIImageView.image = parent.chiefComplaintDiagnosisValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
         correctionsAndModificationsFinishedUIImageView.image = parent.correctionsAndModificationsValid() ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
     }

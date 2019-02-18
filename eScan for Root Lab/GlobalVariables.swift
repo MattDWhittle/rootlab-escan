@@ -9,3 +9,4 @@
 import Foundation
 
 var orthoticsPrescriptionViewController : OrthoticsPrescriptionViewController? = nil;
+var topCoversViewController : TopCoversViewController? = nil;
