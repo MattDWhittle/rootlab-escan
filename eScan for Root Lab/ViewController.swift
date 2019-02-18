@@ -7,14 +7,17 @@
 //
 
 //(TEST) Update Scan Page
-//(TEST) All Poly Chart to Poly Page
-
+// (TEST) EVA should default on when L or R is selected.
+//(TEST - failed) All Poly Chart to Poly Page
 
 //TO ASK:
 //Competition stealing work - CC practitioner, puts the other companies address
 
 //TODO
-//(TODO) Corrections and modifications Pg.
+//(TODO)  Fix scrolling - This area will be too large and will have to scroll to fit on one page.
+//(TODO)  When L or R is selected EVA or Korex must be selected,
+
+
 //(TODO) Need to read 4 other forms in readAllForms()
 //(TODO) Need to update 4 other labels not blank
 // Inverted and EVerted cast orientation, modifications text fields
@@ -22,8 +25,6 @@
 // Posting rearfoot post, heel lift, text fields under rearfoot post elevator and motion
 
 // (TODO) Top Covers ( Get rid of “and Extensions”, combine Top covers and Accomidations pages into one called Top covers)
-// Remove Accommodations Button
-// Revamp Top Covers Page
 
 // (TEST - failure) Scans place images over foot buttons - loading image not working
 
@@ -121,7 +122,15 @@
 
 
 
-
+//(DONE) When “Orthosis only” is selected no Forefoot Extension categories are available.
+//(DONE) When “To Sulcus” is chosen, all Material and Thickness are available, but only Sulcus in the Length category.
+//(DONE)When “Full Length” is chosen all categories open.
+//(DONE)For thickness 1/8” is default.
+//(DONE)For Length “Sulcus” should be default for Sulcus length top cover selection. Full Length should be default for Full Length Top Cover selection.
+//(DONE) Click circles turn green
+// (DONE) Only one can be chosen in this area (Material)
+// (DONE) Revamp Top Covers Page
+// (DONE) Remove Accommodations Button
 //(DONE) Under cast Orientation remove the Line Vertical and the toggles that accompany it.
 //(DONE) Remove “Forefoot Correction type” and “Intrinsic (balance cast)” and the toggles that accompany it.
 //(DONE) Change to “Extrinsic Forefoot Correction (forefoot post)” with L & R toggles.
@@ -3935,6 +3944,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let isEverythingValid = everythingValid();
         submitFormButton.isEnabled = isEverythingValid;
         submitFinishedUIImageView.image = isEverythingValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+        
+        topCoversViewController?.changeBasedOnValues();
         
         readAllForms();
         updateOrthosisScreenFromModel();

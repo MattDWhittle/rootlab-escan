@@ -3,6 +3,28 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ViewController.emailMesh(sender:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "order.orderPractitioner">
+            </PersistentString>
+            <PersistentString
+               value = "order.orderPatient">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.pickerView(_:viewForRow:forComponent:reusing:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "order.orderPatient">
+            </PersistentString>
+            <PersistentString
+               value = "order.orderPatient?.weight">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ViewController.readRushOrderForm():ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -22,21 +44,59 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.pickerView(_:viewForRow:forComponent:reusing:):ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "order.orderPatient?.weight">
-            </PersistentString>
-            <PersistentString
-               value = "order.orderPatient">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "OrthoticsPrescriptionViewController.viewDidLoad():OrthoticsPrescriptionViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.parent">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.isPractitionerPageValid():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "practitionerBillingAddressZip.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "OrthoticsDeviceViewController.tableView(_:didSelectRowAt:):TableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.readOrthosisSpecificationForm():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeUISwitch">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TopCoversViewController.pickerView(_:viewForRow:forComponent:reusing:):TopCoversViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.calculateOrthosisMaterialOrderDescriptionFromOrder():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "order">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TopCoversViewController.clickCircle(button:):TopCoversViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button.accessibilityLabel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "reorderScrollView.subviews.count">
+            </PersistentString>
+            <PersistentString
+               value = "imageTake">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -53,55 +113,6 @@
                value = "orthoticDeviceSelected">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.readOrthosisSpecificationForm():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeUISwitch">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.emailMesh(sender:):ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "order.orderPractitioner">
-            </PersistentString>
-            <PersistentString
-               value = "order.orderPatient">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.calculateOrthosisMaterialOrderDescriptionFromOrder():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "order">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.isPractitionerPageValid():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "practitionerBillingAddressZip.text">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "reorderScrollView.subviews.count">
-            </PersistentString>
-            <PersistentString
-               value = "imageTake">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "OrthoticsDeviceViewController.tableView(_:didSelectRowAt:):TableViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
