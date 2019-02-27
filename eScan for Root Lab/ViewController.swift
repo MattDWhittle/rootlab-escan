@@ -12,9 +12,9 @@
 // (DONE) Need to read 4 other forms in readAllForms()
 // (DONE) Finish Form to Order
 // (DONE) what does  the 4/4 mean in posting - left and right 4 degree motion
+// (DONE) Update Scan Page
 
 
-//(TEST) Update Scan Page
 //(TEST - failed) All Poly Chart to Poly Page
 // (TEST - failed) EVA should default on when L or R is selected.
 
@@ -29,6 +29,16 @@
 // (TODO) Submit Form
 // (TODO) finish ResetForm() - reset green dots
 
+// (TODO) remove Extrinsic (forefoot post)
+// (TODO) Have My Devices know which device it was built from so it knows wether to use a medium firm crepe post or a firm crepe post
+// (TODO) In our defaults the extension length will always be the same as the top cover length. I.E. a full length top cover would have a full length extension and a sulcus length top cover would have a sulcus length extension.
+// (TODO) Under SSC it says "Width and Heel cup per shoe gear" and "elevator per shoe gear" - should be: Width standard, Heel cup 12, Elevator 8mm
+// (TODO) rename “EVA Arch Fill” should read “EVA Bottom Fill”
+// (TODO) make default "EVA bottom filter" work per above
+// (TODO) Women High Heel What is miminal heel cup?  You can call it 0
+// (TODO) WOmens Hole Heel : it says 10-12mm heel cup.  Do we want the default to be 10 or 12?  12
+// (TODO) In Blake limited intrinsic forefoot correction You can just erase Limited
+// (TODO) Under cushion flex How do I do an EVA post? It is basically no post options selected or available.
 
 //(TODO) Need to update 4 other labels not blank
 //(TODO) If choose next day turnaround, be first line of work order
