@@ -6,20 +6,34 @@
 //  Copyright © 2018 rootlab. All rights reserved.
 //
 
-//(TEST) Update Scan Page
-// (TEST) EVA should default on when L or R is selected.
-//(TEST - failed) All Poly Chart to Poly Page
+// (IN PROGRESS) Finish Order to text
+// (DONE) Finish Defaults to Form (except outstanding questions)
+// (DONE) saving orders to device all fields mapped on object
+// (DONE) Need to read 4 other forms in readAllForms()
+// (DONE) Finish Form to Order
+// (DONE) what does  the 4/4 mean in posting - left and right 4 degree motion
 
-//TO ASK:
-//Competition stealing work - CC practitioner, puts the other companies address
+
+//(TEST) Update Scan Page
+//(TEST - failed) All Poly Chart to Poly Page
+// (TEST - failed) EVA should default on when L or R is selected.
+
+//TO ASK
+//What do I do to set integrated polypropylene post for PolyMax
 
 //TODO
-//(TODO)  Fix scrolling - This area will be too large and will have to scroll to fit on one page.
-//(TODO)  When L or R is selected EVA or Korex must be selected,
+// (TODO) read forms to stored stuff, picker views and text
+//(TODO) Finish making a document to attach to the email
+// (TODO) Email created document
+// (TODO) Better Pictures
+// (TODO) Submit Form
+// (TODO) finish ResetForm() - reset green dots
 
 
-//(TODO) Need to read 4 other forms in readAllForms()
 //(TODO) Need to update 4 other labels not blank
+//(TODO) If choose next day turnaround, be first line of work order
+//(TODO) Complete work order
+
 // Inverted and EVerted cast orientation, modifications text fields
 // Heel cup height on orthosis specifications
 // Posting rearfoot post, heel lift, text fields under rearfoot post elevator and motion
@@ -27,8 +41,22 @@
 // (TODO) Top Covers ( Get rid of “and Extensions”, combine Top covers and Accomidations pages into one called Top covers)
 
 // (TEST - failure) Scans place images over foot buttons - loading image not working
-
 // (TODO) orthotic descriptions should update after UiPicker edit
+
+//(TODO) Orthosis Material:  Have "Per Weight" always available, if choose, type a weight in on that page.  Weight is autofilled
+
+
+
+//MINIMUM VIABLE
+
+
+//TO ASK:
+//Competition stealing work - CC practitioner, puts the other companies address
+
+
+//(TODO)  Fix scrolling - This area will be too large and will have to scroll to fit on one page.
+//(TODO) Validation- When L or R is selected EVA or Korex must be selected,
+
 // (TODO) when expand view, make sure it doesn't expand off screen, scoll it up
 // (TODO) if no email accounts set up on device, alert early
 // (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
@@ -39,13 +67,11 @@
 // (TODO) ...then poron
 // (TODO) ...then bottom cover
 // (TODO) UISwitches are smashed up on each other in small resolutions
-//(TODO) If choose next day turnaround, be first line of work order
 //(TODO) "Order confirmation will be sent to this address" (next to email)
 //(TODO) Highlight the buttons where action needs to be taken - if weight not supplied and need to choose material thickness, let them know
 //(TODO) Change Orthotic Device Page to be like page 5
 // (TODO) what does no top cover mean - have None as the first top cover
 //(TODO) If none selected, all the other options are disabled
-//(TODO) Cannot click accomodations page
 // (TODO) When change pactitioners, reset all grey/black fields
 // (TODO) Check to see if the Material Order Items still match the new orthotic device screen
 //(TODO) Change "Accommodations" to "Top Cover Additions and Accommodations" on the Orthotics Prescription Form
@@ -63,20 +89,16 @@
 //(TODO) Make a log in page
 //(TODO) Corrections and Modifications if they choose as marked on cast, option to fill with Poron or not fill.  Then when print form out, put it on Top Covers and Extensions
 //(TODO) transparent background on colors, buttons, and the logo
-//(TODO) Orthosis Material:  Have "Per Weight" always available, if choose, type a weight in on that page.  Weight is autofilled
 //(TODO) Add Poron under topcover, two buttons for 1/16 1/8, only one selected, not required
 //(TODO) Add a "Ship to Patient" and an address - address only enabled if "Ship to Patient" enabled
 //(TODO) Add stuff to My Devices - click on name
 //Add a title box to practitioner page (Hold on this one)
-// (TODO) what does  the 4/4 mean in posting - left and right 4 degree motion
-// (TODO) Finish Defaults to Form
 // (TODO) Add Save on Practitioner Page so it can turn light green
 // (TODO) Add a Save to My Devices on the orthotics prescription page, then rename device
 // (TODO) Diabetic default - If you have a medial heel cup 3/16 diabetic - just means diabetic
 // (TODO) if orthosis length vinyl top cover, what color default: Bronze is for functional, forest is for sports, Black is for dress
 // (TODO) if default practitioner selected, scroll wheel is still on New Practitioner if you navigate to that page
 // (TODO) add field for intrinsic metatarsal pad in mm left and right
-// (TODO) read forms to stored stuff, picker views and text
 // (TODO) "Extension Material" instead of "Material", Top Covers and Extensions
 // (TODO) Add red dots where things can be invald (isValid())
 // (TODO) Validation - posting form - rearfoot post motion, one has to be selected,
@@ -91,15 +113,9 @@
 // (TODO) Submit page has the work order
 // (TODO) (and don't allow to change) default email
 // (TODO) Complaiance language
-//(TODO) Finish Form to Order
-//(TODO) Finish Order to text
-//(TODO) Finish making a document to attach to the email
 // (TODO) reset picker views
 // (TODO) In order to save, need patient name, doctor name
 // (TODO) Richie Brace Form
-// (TODO) Submit Form
-// (TODO) Email created document
-// (TODO) Better Pictures
 // (TODO) Order a second pair, and reorder
 // (TODO) if left is checked anywhere, left scan is required
 // (TODO) if right is checked anywhere, right scan is required
@@ -113,7 +129,6 @@
 // (TODO) Can take multiple pictures
 // (TODO) Show pictures on screen
 // (TODO) If Cannot save, fail startup
-// (TODO) finish ResetForm() - reset green dots
 // (TODO) Show escan images
 //(IN PROGRESS, need INT validation) make age wieght height gender are valid numbers
 // (TODO) Clean up warnings
@@ -368,10 +383,10 @@ let postingRearfootPostPolypropeleneTypePickerData: [String] =
     ["No Post","Polypropelene"];
 
 let orthosisSpecificationHeelCupLeftPickerData: [String] =
-    ["Left", "10", "12", "14", "16", "18", "20", "22"];
+    ["Left", "10", "12", "14", "16", "18", "20", "22", "30"];
 
 let orthosisSpecificationHeelCupRightPickerData: [String] =
-    ["Right", "10", "12", "14", "16", "18", "20", "22"];
+    ["Right", "10", "12", "14", "16", "18", "20", "22", "30"];
 
 let orthosisMaterialColorLabels: [String] =
     ["Natural","White"];
@@ -386,7 +401,15 @@ let orthosisPolypropyleneColorLabels: [String] =
     ["Natural","White"];
 
 let orthosisPolypropyleneLabels: [String] =
-    ["Per weight","1/8\"","5/32\"","3/16\"","1/4\""];
+    [
+//    "Extremely Flexible Per weight",
+//     "Very Flexible Per weight",
+//     "Flexible Per weight",
+//     "Semi Rigid Per weight",
+//     "Rigid Per weight",
+//     "Very Rigid Per weight",
+//     "Extremely Rigid Per weight",
+     "Per weight","1/8\"","5/32\"","3/16\"","1/4\""];
 
 let orthosisGraphiteCompositeLabels: [String] =
     ["Per weight",".070 semi-flexible",".090 semi-rigid",".110 rigid",".110 ultra strength"];
@@ -1547,6 +1570,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var correctionsAndModificationsPlantarFaciaAccomLeft: UITextField!
     @IBOutlet var correctionsAndModificationsStyloidAccomRight: UITextField!
     @IBOutlet var correctionsAndModificationsStyloidAccomLeft: UITextField!
+    @IBOutlet var correctionsAndModificationsNavicularAccomRight: UITextField!
+    @IBOutlet var correctionsAndModificationsNavicularAccomLeft: UITextField!
     @IBOutlet var correctionsAndModificationsAsMarkedOnCastRight: UITextField!
     @IBOutlet var correctionsAndModificationsAsMarkedOnCastLeft: UITextField!
     @IBOutlet var correctionsAndModificationsAddLatHeelExpansionRight: UITextField!
@@ -1586,6 +1611,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
     @IBOutlet var correctionsAndModificationsFillWIthPoronLeftUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsFillWIthPoronRightUISwitch: UISwitch!
+    @IBOutlet var correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch: UISwitch!
+    @IBOutlet var correctionsAndModificationsNavicularFillWIthPoronRightUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsCastOrientationVerticalLeftUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsCastOrientationVerticalRightUISwitch: UISwitch!
     @IBOutlet var correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch: UISwitch!
@@ -1654,7 +1681,274 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthoticDeviceClickEditOrSelect();
         changePageTo(pageTo: scanFormPageIndex)
     }
+    
+    func setDefaultsSemiRigidPolypropyleneShell() {
+        orthoticMaterialPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
+    func setDefaults1_8thInchPolypropyleneShell() {
+        orthoticMaterialPicker.selectRow(1, inComponent: 0, animated: false)
+    }
+    
+    func setDefaults2mmHdpeShell() {
+        orthoticMaterialPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsSemiRigidGraphiteCompositeShell() {
+        orthoticMaterialPicker.selectRow(1, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsRigidGraphiteCompositeShell() {
+        orthoticMaterialPicker.selectRow(2, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsSemiRigidFiberglassCompositeShell() {
+        orthoticMaterialPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsSemiRigidAcrylicCompositeShell() {
+        orthoticMaterialPicker.selectRow(0, inComponent: 0, animated: false)
+    }
 
+    func setDefaultsAnteriorWidthStandard() {
+        //standard width
+        orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
+        orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
+    }
+
+    func setDefaultsAnteriorWidthNarrow() {
+        //standard width
+        orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
+        orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsAnteriorWidthExtraWide() {
+        orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
+        orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsAnteriorWidthWide() {
+        orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(3, inComponent: 0, animated: false)
+        orthoticSpecificationsAnteriorWidthRightPicker.selectRow(3, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsAnteriorWidthFull() {
+        orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(5, inComponent: 0, animated: false)
+        orthoticSpecificationsAnteriorWidthRightPicker.selectRow(5, inComponent: 0, animated: false)
+    }
+
+    func setDefaultsMinimalHeelCup() {
+        //TODO what is minimal heel cup?
+
+//        orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(1, inComponent: 0, animated: false)
+//        orthoticSpecificationsHeelCupHeightRightPicker.selectRow(1, inComponent: 0, animated: false)
+    }
+    
+    func setDefaults10mmHeelCup() {
+        orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(1, inComponent: 0, animated: false)
+        orthoticSpecificationsHeelCupHeightRightPicker.selectRow(1, inComponent: 0, animated: false)
+    }
+
+    func setDefaults12mmHeelCup() {
+        orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(2, inComponent: 0, animated: false)
+        orthoticSpecificationsHeelCupHeightRightPicker.selectRow(2, inComponent: 0, animated: false)
+    }
+
+    func setDefaults14mmHeelCup() {
+        orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
+        orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
+    }
+    
+    func setDefaults16mmHeelCup() {
+        orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(4, inComponent: 0, animated: false)
+        orthoticSpecificationsHeelCupHeightRightPicker.selectRow(4, inComponent: 0, animated: false)
+    }
+
+    func setDefaults30mmHeelCup() {
+        orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(8, inComponent: 0, animated: false)
+        orthoticSpecificationsHeelCupHeightRightPicker.selectRow(8, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsDeepHeelCup() {
+        //TODO what is deep?
+
+    }
+    
+    func setDefaultsIntrinsicForefootCorrection() {
+        //            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
+        //            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
+        
+    }
+
+    func setDefaultsLimitedIntrinsicForefootCorrection() {
+        //            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
+        //            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
+        
+    }
+    
+    func setDefaultsVerticalHeelBisection() {
+        //            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
+        //            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
+    }
+    
+    func setDefaults44FirmCrepePost() {
+        //4/4 firm crepe post
+        postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn = true;
+        postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn = true;
+        postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+        
+        //TODO how to say firm?
+    }
+    
+    func setDefaults44MediumCrepePost() {
+        //4/4 medium crepe post
+        postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn = true;
+        postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn = true;
+        postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+        
+        //TODO how to say medium?
+
+    }
+
+    func setDefaults00FirmCrepePost() {
+        postingRearfootPostMotion0DegreesMotionLeftUISwitch.isOn = true;
+        postingRearfootPostMotion0DegreesMotionRightUISwitch.isOn = true;
+        postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+
+    }
+    
+    func setDefaultsEvaPost() {
+        
+    }
+    
+    func setDefaultsShort44FirmCrepePost() {
+        postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn = true;
+        postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn = true;
+        postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+        postingRearfootPostOptionsShortPostFlangeLeftUISwitch.isOn = true;
+        postingRearfootPostOptionsShortPostFlangeRightUISwitch.isOn = true;
+    }
+    
+    func setDefaults44IntegratedPolypropylenePost() {
+        postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn = true;
+        postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn = true;
+//        postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsNoRearfootPost() {
+        postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
+
+    }
+    
+    func setDefaults00BirkocorkPost() {
+        postingRearfootPostTypePicker.selectRow(2, inComponent: 0, animated: false)
+        postingRearfootPostMotion0DegreesMotionLeftUISwitch.isOn = true;
+        postingRearfootPostMotion0DegreesMotionRightUISwitch.isOn = true;
+
+    }
+
+    func setDefaults8mmPostElevator() {
+        //8mm post elevator
+        postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
+        postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
+    }
+
+    func setDefaults10mmPostElevator() {
+        //10mm post elevator
+        postingRearfootPostingElevatorOthermmLeft.text = "10";
+        postingRearfootPostingElevatorOthermmRight.text = "10";
+    }
+
+    func setDefaultsOthosisLengthVinylTopCoverFunctional() {
+        //orthosis length vinyl top cover
+        topCoversViewController?.topCoversAndExtensionsMaterialVinylBronzeUISwitch.isOn = true; topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(1, inComponent: 0, animated: false)
+        
+    }
+    
+    func setDefaultsOthosisLengthVinylTopCoverSport() {
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(1, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsMaterialVinylForestUISwitch.isOn = true;
+        
+    }
+    
+    func setDefaultsFullLengthVinylTopCoverSport() {
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsMaterialVinylForestUISwitch.isOn = true;
+    }
+    
+    func setDefaults1_8thInchFullLengthEvaTopCover() {
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsMaterialEva18UISwitch.isOn = true;
+    }
+    
+    func setDefaultsSulcusLengthVinylTopCoverDress() {
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(2, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn = true;
+        
+
+    }
+    
+    func setDefaults1_16thInchFullLengthNcnTopCover() {
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsMaterialNcn116UISwitch.isOn = true;
+        
+    }
+    
+    func setDefaults316FullLengthDiabeticTopCover() {
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isOn = true;
+
+    }
+    
+    func setDefaults1_8thInchFullLengthNcnTopCover() {
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsMaterialNcn18UISwitch.isOn = true;
+        
+    }
+
+    func setDefaults1_8thInchEvaExtensionUnderForefoot() {
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(2, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(1, inComponent: 0, animated: false)
+       //TODO check to see if should be to Sulcus
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
+    func setDefaults1_16thInchEvaExtensionUnderForefoot() {
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(2, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(0, inComponent: 0, animated: false)
+        //TODO check to see if should be to Sulcus
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
+    func setDefaults1_16thInchPoronExtensionUnderForefoot() {
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(0, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(0, inComponent: 0, animated: false)
+        //TODO check to see if should be to Sulcus
+        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
+    func setEvaBottomFiller() {
+        //TODO how?
+    }
+    
+    func setDefaultsFullEvaBottomFiller() {
+        //TODO how?
+    }
+    
+    func setWidthAndHeelCupPerShoeGear() {
+        
+    }
+    func setDefaults1_16thInchEvaBottomCover() {
+        //how?
+    }
+    
+    func set23mmMed21mmLatHeelCup() {
+        orthosisSpecificationsOtherMedmmLeft.text="23";
+        orthosisSpecificationsOtherMedmmRight.text="23";
+        orthosisSpecificationsOtherLatmmLeft.text="21";
+        orthosisSpecificationsOtherLatmmRight.text="21";
+    }
+    
     func orthoticDeviceClickEditOrSelect() {
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
         theMOI.orthoticsMaterialPickerSelection = Int16(orthoticDeviceSelected);
@@ -1662,421 +1956,226 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
         resetDueToOrthosisTypeChange();
         if (orthoticDeviceSelected == 0) { //Polypropylene
-            
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBronzeUISwitch.isOn = true; topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(1, inComponent: 0, animated: false)
-            
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44FirmCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaultsOthosisLengthVinylTopCoverFunctional();
         } else if (orthoticDeviceSelected == 1) { //PolyMax
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(1, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBronzeUISwitch.isOn = true;
-            
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44IntegratedPolypropylenePost()
+            setDefaults8mmPostElevator();
+            setDefaultsOthosisLengthVinylTopCoverFunctional();
         } else if (orthoticDeviceSelected == 2) {//Graphite
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(1, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBronzeUISwitch.isOn = true;
+            setDefaultsSemiRigidGraphiteCompositeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44FirmCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaultsOthosisLengthVinylTopCoverFunctional();
         } else if (orthoticDeviceSelected == 3) {//Fiberglass
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(1, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBronzeUISwitch.isOn = true;
-            
+            setDefaultsSemiRigidFiberglassCompositeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44FirmCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaultsOthosisLengthVinylTopCoverFunctional();
         } else if (orthoticDeviceSelected == 4) { //Acrylic
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(1, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBronzeUISwitch.isOn = true;
-            
+            setDefaultsSemiRigidAcrylicCompositeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44FirmCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaultsOthosisLengthVinylTopCoverFunctional();
         } else if (orthoticDeviceSelected == 5) { //Multi Sport
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(4, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(4, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(1, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylForestUISwitch.isOn = true;
-            
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults16mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44MediumCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaultsOthosisLengthVinylTopCoverSport();
         } else if (orthoticDeviceSelected == 6) { //Multi Sport Plus
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(4, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(4, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylForestUISwitch.isOn = true;
-            
-            
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults16mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44MediumCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaultsFullLengthVinylTopCoverSport();
+            setDefaults1_8thInchEvaExtensionUnderForefoot();
         } else if (orthoticDeviceSelected == 7) { //Soft Sport
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(4, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(4, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialEva18UISwitch.isOn = true;
-            
-            
+            setDefaults1_8thInchPolypropyleneShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults16mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44MediumCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaults1_8thInchFullLengthEvaTopCover();
+            setEvaBottomFiller();
         } else if (orthoticDeviceSelected == 8) { //Soft Sport Flex
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(4, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(4, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialEva18UISwitch.isOn = true;
-            
+            setDefaults2mmHdpeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults16mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44MediumCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaults1_8thInchFullLengthEvaTopCover();
+            setEvaBottomFiller();
         } else if (orthoticDeviceSelected == 9) { //SSC™
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialNcn116UISwitch.isOn = true;
-            
-            
+            setDefaultsRigidGraphiteCompositeShell();
+            setWidthAndHeelCupPerShoeGear();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults00FirmCrepePost();
+            setDefaults1_16thInchFullLengthNcnTopCover();
+            setDefaults1_16thInchEvaExtensionUnderForefoot();
         } else if (orthoticDeviceSelected == 10) { //Men's Dress
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(2, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn = true;
-            
-            
+            setDefaultsSemiRigidGraphiteCompositeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults12mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaultsShort44FirmCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaultsSulcusLengthVinylTopCoverDress();
+            setDefaults1_16thInchPoronExtensionUnderForefoot();
         } else if (orthoticDeviceSelected == 11) { //Women's Casual
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(1, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(1, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
-            postingRearfootPostingElevatorOthermmLeft.text = "10"
-            postingRearfootPostingElevatorOthermmRight.text = "10"
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(2, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn = true;
-            
+            setDefaultsSemiRigidGraphiteCompositeShell();
+            setDefaultsAnteriorWidthNarrow();
+            setDefaults10mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaultsShort44FirmCrepePost();
+            setDefaults10mmPostElevator();
+            setDefaultsSulcusLengthVinylTopCoverDress();
+            setDefaults1_16thInchPoronExtensionUnderForefoot();
         } else if (orthoticDeviceSelected == 12) { //Women's High-Heel
-            //TODO what is minimal heel cup?
-            //                orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn = true;
-            //                orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn = true;
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(2, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn = true;
-            
-        } else if (orthoticDeviceSelected == 13) { //Hole-Heel™
+            setDefaultsSemiRigidGraphiteCompositeShell();
+            setDefaultsAnteriorWidthNarrow();
+            setDefaultsMinimalHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaultsNoRearfootPost();
+            setDefaultsSulcusLengthVinylTopCoverDress();
+            setDefaults1_16thInchPoronExtensionUnderForefoot();
+        } else if (orthoticDeviceSelected == 13) { //Women's Hole-Heel™
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthNarrow();
             //TODO 10-12?
-            //                orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn = true;
-            //                orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn = true;
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(2, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn = true;
-            
+            setDefaults10mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaultsNoRearfootPost();
+            //TODO hole cut in heel?
+            setDefaultsSulcusLengthVinylTopCoverDress();
+            setDefaults1_16thInchPoronExtensionUnderForefoot();
         } else if (orthoticDeviceSelected == 14) { //Cobra
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(1, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(1, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(2, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn = true;
-            
+            setDefaults1_8thInchPolypropyleneShell();
+            setDefaultsAnteriorWidthNarrow();
+            setDefaults12mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaultsNoRearfootPost();
+            setDefaultsSulcusLengthVinylTopCoverDress();
+            setDefaults1_16thInchPoronExtensionUnderForefoot();
+            setDefaultsFullEvaBottomFiller();
         } else if (orthoticDeviceSelected == 15) { //Blake 25
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
-            orthosisSpecificationsOtherMedmmLeft.text="23";
-            orthosisSpecificationsOtherMedmmRight.text="23";
-            orthosisSpecificationsOtherLatmmLeft.text="21";
-            orthosisSpecificationsOtherLatmmRight.text="21";
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthExtraWide();
+            set23mmMed21mmLatHeelCup();
+            setDefaultsLimitedIntrinsicForefootCorrection();
             
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(2, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
+            setDefaults00BirkocorkPost();
+            setDefaults8mmPostElevator();
+            //no top cover
         } else if (orthoticDeviceSelected == 16) { //Blake 35˚
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
-            orthosisSpecificationsOtherMedmmLeft.text="23";
-            orthosisSpecificationsOtherMedmmRight.text="23";
-            orthosisSpecificationsOtherLatmmLeft.text="21";
-            orthosisSpecificationsOtherLatmmRight.text="21";
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthExtraWide();
+            set23mmMed21mmLatHeelCup();
+            setDefaultsLimitedIntrinsicForefootCorrection();
             
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(2, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
+            setDefaults00BirkocorkPost();
+            setDefaults8mmPostElevator();
+            //no top cover
         } else if (orthoticDeviceSelected == 17) { //Blake 45˚
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(4, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(4, inComponent: 0, animated: false)
-            orthosisSpecificationsOtherMedmmLeft.text="23";
-            orthosisSpecificationsOtherMedmmRight.text="23";
-            orthosisSpecificationsOtherLatmmLeft.text="21";
-            orthosisSpecificationsOtherLatmmRight.text="21";
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthExtraWide();
+            set23mmMed21mmLatHeelCup();
+            setDefaultsLimitedIntrinsicForefootCorrection();
             
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(2, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
+            setDefaults00BirkocorkPost();
+            setDefaults8mmPostElevator();
+            //no top cover
         } else if (orthoticDeviceSelected == 18) { //Modified UCBL
-            //TODO 30?
-            //                orthosisSpecificationsHeelCupHeight12mmLeftUISwitch.isOn = true;
-            //                orthosisSpecificationsHeelCupHeight12mmRightUISwitch.isOn = true;
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
+            setDefaultsSemiRigidPolypropyleneShell();
+            setDefaultsAnteriorWidthWide();
+            setDefaults30mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44FirmCrepePost();
+            setDefaults8mmPostElevator();
         } else if (orthoticDeviceSelected == 19) { //Cusion-Flex™
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            //TODO EVA Post?
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialNcn18UISwitch.isOn = true;
-            
+            setDefaults2mmHdpeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaultsEvaPost();
+            setDefaults1_8thInchFullLengthNcnTopCover();
+            setEvaBottomFiller();
         } else if (orthoticDeviceSelected == 20) { //Cushion-Flex-Control™
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-            
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = true;
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsMaterialNcn18UISwitch.isOn = true;
-
+            setDefaults2mmHdpeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44MediumCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaults1_8thInchFullLengthNcnTopCover();
+            setEvaBottomFiller();
         } else if (orthoticDeviceSelected == 21) { //Diaba-Flex™
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isOn = true;
-
-            //TODO EVA POST?
+            setDefaults2mmHdpeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaultsEvaPost();
+            setDefaults316FullLengthDiabeticTopCover();
+            setEvaBottomFiller();
         } else if (orthoticDeviceSelected == 22) { //Diaba-Flex-Control™
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(2, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(2, inComponent: 0, animated: false)
-//            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = true;
-//            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn = true;
-            
-            postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
-            postingRearfootPostingElevator8mmLeftUISwitch.isOn = true;
-            postingRearfootPostingElevator8mmRightUISwitch.isOn = true;
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isOn = true;
-
+            setDefaults2mmHdpeShell();
+            setDefaultsAnteriorWidthStandard();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
+            setDefaults44MediumCrepePost();
+            setDefaults8mmPostElevator();
+            setDefaults316FullLengthDiabeticTopCover();
+            setEvaBottomFiller();
         } else if (orthoticDeviceSelected == 23) { //Accommodative
-            //TODO what is deep?
-            orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(3, inComponent: 0, animated: false)
-            orthoticSpecificationsHeelCupHeightRightPicker.selectRow(3, inComponent: 0, animated: false)
-            
-            orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(5, inComponent: 0, animated: false)
-            orthoticSpecificationsAnteriorWidthRightPicker.selectRow(5, inComponent: 0, animated: false)
-            
-            postingRearfootPostTypePicker.selectRow(0, inComponent: 0, animated: false)
-            
-            topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(3, inComponent: 0, animated: false)
-            topCoversViewController?.topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isOn = true;
+            setDefaultsAnteriorWidthFull();
+            setDefaults316FullLengthDiabeticTopCover();
+            setDefaultsDeepHeelCup();
+            setDefaultsNoRearfootPost();
+            setDefaults1_16thInchEvaBottomCover();
 
         }
         
@@ -2760,6 +2859,15 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func readPostingForm() {
+        order.postingRearfootPostMaterial = Int16(postingRearfootPostTypePicker.selectedRow(inComponent: 0));
+        
+        order.postingHeelLiftLeft = Int16(postingHeelLiftLeft.text!) ?? Int16(0);
+        order.postingHeelLiftRight = Int16(postingHeelLiftRight.text!) ?? Int16(0);
+        order.postingRearfootPostMotionOtherMotionDegreesLeft = Int16(postingRearfootPostingElevatorOthermmLeft.text!) ?? 0;
+        order.postingRearfootPostMotionOtherMotionDegreesRight = Int16(postingRearfootPostingElevatorOthermmRight.text!) ?? 0;
+        order.postingRearfootPostingElevatorOtherMmLeft = Int16(postingRearfootPostingElevatorOthermmLeft.text!) ?? 0;
+        order.postingRearfootPostingElevatorOtherMmRight = Int16(postingRearfootPostingElevatorOthermmRight.text!) ?? 0;
+
         order.postingRearfootPostingElevator4mmLeft = postingRearfootPostingElevator4mmLeftUISwitch.isOn;
         order.postingRearfootPostingElevator8mmLeft = postingRearfootPostingElevator8mmLeftUISwitch.isOn;
         order.postingRearfootPostingElevator4mmRight = postingRearfootPostingElevator8mmRightUISwitch.isOn;
@@ -2865,19 +2973,112 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (topCoversViewController == nil) {
             return;
         }
-        let theView = self.pickerView(topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker, viewForRow: topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
-        order.topCoversAndExtensionsTopCoverLength = (theView as! UILabel).text;
+        
+        order.topCoversAndExtensionsTopCoverLength = Int16(topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0));
 
-        let theView2 = self.pickerView(topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker, viewForRow: topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
-        order.topCoversAndExtensionsForefootExtensionsMaterial = (theView2 as! UILabel).text;
+        order.topCoversAndExtensionsForefootExtensionsMaterial = Int16(topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0));
+        
+        order.topCoversAndExtensionsForefootExtensionsThickness = Int16(topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker.selectedRow(inComponent: 0));
+        
+        order.topCoversAndExtensionsForefootExtensionsExtensionLength = Int16(topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectedRow(inComponent: 0));
+        
+        order.topCoversAndExtensionsBottomCoverMaterialVinylBlack = topCoversViewController!.topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialVinylBronze = topCoversViewController!.topCoversAndExtensionsMaterialVinylBronzeUISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialVinylForest = topCoversViewController!.topCoversAndExtensionsMaterialVinylForestUISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialLeatherBlack = topCoversViewController!.topCoversAndExtensionsMaterialLeatherBlackUISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialLeatherBrown = topCoversViewController!.topCoversAndExtensionsMaterialLeatherBrownUISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialEVA116 = topCoversViewController!.topCoversAndExtensionsMaterialEva116UISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialEva18 = topCoversViewController!.topCoversAndExtensionsMaterialEva18UISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialNcn116 = topCoversViewController!.topCoversAndExtensionsMaterialNcn116UISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialNcn18 = topCoversViewController!.topCoversAndExtensionsMaterialNcn18UISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialDiabetic = topCoversViewController!.topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isOn;
 
-        let theView3 = self.pickerView(topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker, viewForRow: topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
-        order.topCoversAndExtensionsForefootExtensionsThickness = (theView3 as! UILabel).text;
+        
+        
+//        let theView = self.pickerView(topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker, viewForRow: topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
+//        order.topCoversAndExtensionsTopCoverLength = (theView as! UILabel).text;
+        
+        
+//        let theView2 = self.pickerView(topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker, viewForRow: topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
+//        order.topCoversAndExtensionsForefootExtensionsMaterial = (theView2 as! UILabel).text;
 
-        let theView4 = self.pickerView(topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker, viewForRow: topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
-        order.topCoversAndExtensionsForefootExtensionsExtensionLength = (theView4 as! UILabel).text;
+//        let theView3 = self.pickerView(topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker, viewForRow: topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
+//        order.topCoversAndExtensionsForefootExtensionsThickness = (theView3 as! UILabel).text;
+
+//        let theView4 = self.pickerView(topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker, viewForRow: topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
+//        order.topCoversAndExtensionsForefootExtensionsExtensionLength = (theView4 as! UILabel).text;
 
         order.topCoversAndExtensionsBottomCoverMaterialEVA116 = topCoversViewController!.topCoversAndExtensionsBottomCoverMaterialEVA116UISwitch.isOn;
+
+        order.topCoversAndExtensionsBottomCoverForefootReinforcement = topCoversViewController!.topCoversAndExtensionsBottomCoverForefootReinforcementUISwitch.isOn;
+        
+        
+        order.topCoversAndExtensionsPoronUnderTopcover18 = topCoversViewController!.topCoversAndExtensionsPoronUnderTopcover18.isOn;
+        order.topCoversAndExtensionsPoronUnderTopcover116 = topCoversViewController!.topCoversAndExtensionsPoronUnderTopcover116.isOn;
+        
+        order.accommodationsMortonsExtensionLeft = topCoversViewController!.topCoversAndExtensionsMortonsExtensionLeftUISwitch.isOn;
+        order.accommodationsMortonsExtensionRight = topCoversViewController!.topCoversAndExtensionsMortonsExtensionRightUISwitch.isOn;
+
+        order.accommodationsReverseMortonsExtensionLeft = topCoversViewController!.topCoversAndExtensionsReverseMortonsExtensionLeftUISwitch.isOn;
+        order.accommodationsReverseMortonsExtensionRight = topCoversViewController!.topCoversAndExtensionsReverseMortonsExtensionRightUISwitch.isOn;
+        
+        order.accommodationsMetatarsalPadLeft = topCoversViewController!.topCoversAndExtensionsMetatarsalPadLeftUISwitch.isOn;
+        order.accommodationsMetatarsalPadRight = topCoversViewController!.topCoversAndExtensionsMetatarsalPadRightUISwitch.isOn;
+        
+        order.accommodationsMetatarsalBarLeft = topCoversViewController!.topCoversAndExtensionsMetatarsalBarLeftUISwitch.isOn;
+        order.accommodationsMetatarsalBarRight = topCoversViewController!.topCoversAndExtensionsMetatarsalBarRightUISwitch.isOn;
+        
+        order.accommodationsHeelPadLEft = topCoversViewController!.topCoversAndExtensionsHeelPadLeftUISwitch.isOn;
+        order.accommodationsHeelPadRight = topCoversViewController!.topCoversAndExtensionsHeelPadRightUISwitch.isOn;
+        
+        order.accommodationsHorseshoePadLeft = topCoversViewController!.topCoversAndExtensionsHorseshoePadLeftUISwitch.isOn;
+        order.accommodationsHorseshoePadRight = topCoversViewController!.topCoversAndExtensionsHorseshoePadRightUISwitch.isOn;
+        
+        order.accommodationsDancersPadLeft = topCoversViewController!.topCoversAndExtensionsDancersPadLeftUISwitch.isOn;
+        order.accommodationsDancersPadRight = topCoversViewController!.topCoversAndExtensionsDancersPadRightUISwitch.isOn;
+        
+        order.accommodationsKineticWedgeLeft = topCoversViewController!.topCoversAndExtensionsKineticWedgeLeftUISwitch.isOn;
+        order.accommodationsKineticWedgeRight = topCoversViewController!.topCoversAndExtensionsKineticWedgeRightUISwitch.isOn;
+
+        order.accommodationsEva = topCoversViewController!.topCoversAndExtensionsEVAUISwitch.isOn;
+        order.accommodationsKorex = topCoversViewController!.topCoversAndExtensionsKorexUISwitch.isOn;
+        
+        order.accommodationsMedialArchReinforceLeft = topCoversViewController!.topCoversAndExtensionsMedialArchReinforceLeftUISwitch.isOn;
+        order.accommodationsMedialArchReinforceRight = topCoversViewController!.topCoversAndExtensionsMedialArchReinformceRightUISwitch.isOn;
+        
+        order.accommodationsEvaArchFillLeft = topCoversViewController!.topCoversAndExtensionsEvaArchFillLeftUISwitch.isOn;
+        order.accommodationsEvaArchFillRight = topCoversViewController!.topCoversAndExtensionsEvaArchFillRightUISwitch.isOn;
+        
+        order.accommodationsMetHeadAccommodationsLeft = (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL1.accessibilityLabel == " " ? 1 : 0) +
+        (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL2.accessibilityLabel == " " ? 2 : 0) +
+        (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL3.accessibilityLabel == " " ? 4 : 0) +
+        (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL4.accessibilityLabel == " " ? 8 : 0) +
+        (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL5.accessibilityLabel == " " ? 16 : 0)
+        
+        ;
+
+        order.accommodationsMetHeadAccommodationsRight = (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR1.accessibilityLabel == " " ? 1 : 0) +
+            (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR2.accessibilityLabel == " " ? 2 : 0) +
+            (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR3.accessibilityLabel == " " ? 4 : 0) +
+            (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR4.accessibilityLabel == " " ? 8 : 0) +
+            (topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR5.accessibilityLabel == " " ? 16 : 0)
+        
+        ;
+        
+        order.accommodationsNeuromaPadLeft = (topCoversViewController!.topCoversAndExtensionsNeuromaPadL1.accessibilityLabel == " " ? 1 : 0) +
+            (topCoversViewController!.topCoversAndExtensionsNeuromaPadL2.accessibilityLabel == " " ? 2 : 0) +
+            (topCoversViewController!.topCoversAndExtensionsNeuromaPadL3.accessibilityLabel == " " ? 4 : 0) +
+            (topCoversViewController!.topCoversAndExtensionsNeuromaPadL4.accessibilityLabel == " " ? 8 : 0)
+        
+        ;
+
+        order.accommodationsNeuromaPadRight = (topCoversViewController!.topCoversAndExtensionsNeuromaPadR1.accessibilityLabel == " " ? 1 : 0) +
+        (topCoversViewController!.topCoversAndExtensionsNeuromaPadR2.accessibilityLabel == " " ? 2 : 0) +
+        (topCoversViewController!.topCoversAndExtensionsNeuromaPadR3.accessibilityLabel == " " ? 4 : 0) +
+        (topCoversViewController!.topCoversAndExtensionsNeuromaPadR4.accessibilityLabel == " " ? 8 : 0)
+        
+        ;
+
         
     }
     
@@ -2886,11 +3087,16 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             return;
         }
         topCoversViewController!.topCoversAndExtensionsBottomCoverMaterialEVA116UISwitch.isOn = order.topCoversAndExtensionsBottomCoverMaterialEVA116;
+       topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectRow(Int(order.topCoversAndExtensionsTopCoverLength), inComponent: 0, animated: false)
         
-        topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectRow(topCoversViewController!.topCoversAndExtensionsTopCoverLengthPickerData.index(of: order.topCoversAndExtensionsTopCoverLength!) ?? 0, inComponent: 0, animated: false)
-        topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPickerData.index(of: order.topCoversAndExtensionsForefootExtensionsMaterial!) ?? 0, inComponent: 0, animated: false)
-        topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPickerData.index(of: order.topCoversAndExtensionsForefootExtensionsThickness!) ?? 0, inComponent: 0, animated: false)
-        topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPickerData.index(of: order.topCoversAndExtensionsForefootExtensionsExtensionLength!) ?? 0, inComponent: 0, animated: false)
+        topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(Int(order.topCoversAndExtensionsForefootExtensionsMaterial), inComponent: 0, animated: false)
+        
+        
+       
+//        topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectRow(topCoversViewController!.topCoversAndExtensionsTopCoverLengthPickerData.index(of: order.topCoversAndExtensionsTopCoverLength!) ?? 0, inComponent: 0, animated: false)
+//        topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPickerData.index(of: order.topCoversAndExtensionsForefootExtensionsMaterial!) ?? 0, inComponent: 0, animated: false)
+        topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(Int(order.topCoversAndExtensionsForefootExtensionsThickness), inComponent: 0, animated: false)
+        topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(Int(order.topCoversAndExtensionsForefootExtensionsExtensionLength), inComponent: 0, animated: false)
        
         
         
@@ -2904,8 +3110,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         let theSelectedRow = rushOrderExpressShippingPicker.selectedRow(inComponent: 0);
         if (theSelectedRow > 0) {
-            let theView = self.pickerView(rushOrderExpressShippingPicker, viewForRow: theSelectedRow, forComponent: 0, reusing: nil)
-            order.rushOrderExpressShiping = (theView as! UILabel).text;
+            order.rushOrderExpressShiping = Int16(rushOrderExpressShippingPicker.selectedRow(inComponent: 0));
         }
 
     }
@@ -2916,7 +3121,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         rushOrderNextDayTurnaroundUISwitch.isOn =
             order.rushOrderNextDayTurnaround;
         
-        rushOrderExpressShippingPicker.selectRow(rushOrderExpressShippingPickerData.index(of: order.rushOrderExpressShiping ?? "") ?? 0, inComponent: 0, animated: false)
+        rushOrderExpressShippingPicker.selectRow(Int( order.rushOrderExpressShiping), inComponent: 0, animated: false)
     }
     
     func readCorrectionsAndModificationsForm() {
@@ -2944,6 +3149,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             correctionsAndModificationsFillWIthPoronLeftUISwitch.isOn;
         order.correctionsAndModificationsFillWithPoronRight =
             correctionsAndModificationsFillWIthPoronRightUISwitch.isOn;
+        order.correctionsAndModificationsNavicularFillWithPoronLeft =
+            correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.isOn;
+        order.correctionsAndModificationsNavicularFillWithPoronRight =
+            correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.isOn;
         order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft =
             correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.isOn;
         order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight =
@@ -2952,6 +3161,25 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn;
 //        order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight =
 //            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn;
+        
+        order.correctionsAndModificationsCastOrientationInvertedLeft = correctionsAndModificationsCastOrientationInvertedLeft.text!;
+        order.correctionsAndModificationsCastOrientationInvertedRight = correctionsAndModificationsCastOrientationInvertedRight.text!;
+        order.correctionsAndModificationsCastOrientationEvertedLeft = correctionsAndModificationsCastOrientationEvertedLeft.text!;
+        order.correctionsAndModificationsCastOrientationInvertedRight = correctionsAndModificationsCastOrientationInvertedRight.text!;
+        order.correctionsAndModificationsPlantarFaciaAccommodationLeft = correctionsAndModificationsPlantarFaciaAccomLeft.text!;
+        order.correctionsAndModificationsPlantarFaciaAccommodationRight = correctionsAndModificationsPlantarFaciaAccomRight.text!;
+        order.correctionsAndModificationsStyloidAccommodationLeft = correctionsAndModificationsStyloidAccomLeft.text!;
+        order.correctionsAndModificationsStyloidAccommodationRight = correctionsAndModificationsStyloidAccomRight.text!;
+        order.correctionsAndModificationsNavicularAccommodationLeft = correctionsAndModificationsNavicularAccomLeft.text!;
+        order.correctionsAndModificationsNavicularAccommodationRight = correctionsAndModificationsNavicularAccomRight.text!;
+        order.correctionsAndModificationsAddLateralHeelExpansionLeft = correctionsAndModificationsAddLatHeelExpansionLeft.text!;
+        order.correctionsAndModificationsAddLateralHeelExpansionRight = correctionsAndModificationsAddLatHeelExpansionRight.text!;
+        order.correctionsAndModificationsMedialHeelSkiveLeft = correctionsAndModificationsMedialHeelSkiveLeft.text!;
+        order.correctionsAndModificationsMedialHeelSkiveRight = correctionsAndModificationsMedialHeelSkiveRight.text!;
+        order.correctionsAndModificationsintrinsicMetatarsalPadLeft = correctionsAndModificationsIntrinsicMetatarsalPadMmLeft.text!;
+        order.correctionsAndModificationsintrinsicMetatarsalPadRight = correctionsAndModificationsIntrinsicMetatarsalPadMmRight.text!;
+
+
     }
 
     func readAllForms() {
@@ -3025,19 +3253,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func readOrthosisSpecificationForm() {
-//        order.orthosisSpecificationsHeelCupHeight10mmLeft =
-//            orthosisSpecificationsHeelCupHeight10mmLeftUISwitch.isOn;
-//        order.orthosisSpecificationsHeelCupHeight14mmLeft =
-//            orthosisSpecificationsHeelCupHeight14mmLeftUISwitch.isOn;
-//        order.orthosisSpecificationsHeelCupHeight18mmLeft =
-//            orthosisSpecificationsHeelCupHeight18mmLeftUISwitch.isOn;
-//        order.orthosisSpecificationsHeelCupHeight10mmRight =
-//            orthosisSpecificationsHeelCupHeight10mmRightUISwitch.isOn;
-//        order.orthosisSpecificationsHeelCupHeight14mmRight =
-//            orthosisSpecificationsHeelCupHeight14mmRightUISwitch.isOn;
-//        order.orthosisSpecificationsHeelCupHeight18mmRight =
-//            orthosisSpecificationsHeelCupHeight18mmRightUISwitch.isOn;
-        
         order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft =
             orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeftUISwitch.isOn;
         order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight =
@@ -3046,16 +3261,25 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeftUISwitch.isOn;
         order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight =
             orthosisSpecificationsOtherShellConfigurationsWideArchProfileRightUISwitch.isOn;
-        order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContact =
+        order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft =
+            orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeftUISwitch.isOn;
+        order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight =
             orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactUISwitch.isOn;
-        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHead =
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft =
+            orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeftUISwitch.isOn;
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight =
             orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadUISwitch.isOn;
-        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHead =
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft =
         orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadUISwitch.isOn;
-     
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight =
+            orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadUISwitch.isOn;
+        
         order.orthosisSpecificationsAnteriorWidthLeft =                 Int16(orthoticSpecificationsAnteriorWidthLeftPicker.selectedRow(inComponent: 0))
         order.orthosisSpecificationsAnteriorWidthRight =                 Int16(orthoticSpecificationsAnteriorWidthRightPicker.selectedRow(inComponent: 0))
 
+        order.orthosisSpecificationsHeelCupHeightLeft =                 Int16(orthoticSpecificationsHeelCupHeightLeftPicker.selectedRow(inComponent: 0))
+        order.orthosisSpecificationsHeelCupHeightRight =                 Int16(orthoticSpecificationsHeelCupHeightRightPicker.selectedRow(inComponent: 0))
+        
         order.orthosisSpecificationsOtherMedmmLeft = Int16(orthosisSpecificationsOtherMedmmLeft.text ?? "0") ?? 0;
         order.orthosisSpecificationsOtherMedmmRight = Int16(orthosisSpecificationsOtherMedmmRight.text ?? "0") ?? 0;
         order.orthosisSpecificationsOtherLatmmLeft = Int16(orthosisSpecificationsOtherLatmmLeft.text ?? "0") ?? 0;
@@ -3085,13 +3309,19 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft;
             orthosisSpecificationsOtherShellConfigurationsWideArchProfileRightUISwitch.isOn = 
         order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight;
-            orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactUISwitch.isOn = 
-        order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContact;
-            orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadUISwitch.isOn = 
-        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHead;
+            orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeftUISwitch.isOn =
+        order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft;
+        orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactUISwitch.isOn =
+            order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight;
+            orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeftUISwitch.isOn =
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft;
+        orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadUISwitch.isOn =
+            order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight;
 
-            orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadUISwitch.isOn =
-        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHead;
+            orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeftUISwitch.isOn =
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft;
+        orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadUISwitch.isOn =
+            order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight;
 
         
         orthoticSpecificationsAnteriorWidthLeftPicker.selectRow(
@@ -3100,15 +3330,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             Int(order.orthosisSpecificationsAnteriorWidthRight), inComponent: 0, animated: false)
         
         
+        if (order.orthosisSpecificationsOtherMedmmLeft > 0) {
+            orthosisSpecificationsOtherMedmmLeft.text =
+                String(order.orthosisSpecificationsOtherMedmmLeft);
+        }
+        if (order.orthosisSpecificationsOtherMedmmRight > 0) {
+            orthosisSpecificationsOtherMedmmRight.text =
+                String(order.orthosisSpecificationsOtherMedmmRight);
+        }
         
-        orthosisSpecificationsOtherMedmmLeft.text =
-            String(order.orthosisSpecificationsOtherMedmmLeft);
-        orthosisSpecificationsOtherMedmmRight.text =
-            String(order.orthosisSpecificationsOtherMedmmRight);
-        
-        orthosisSpecificationsOtherLatmmLeft.text = String(order.orthosisSpecificationsOtherLatmmLeft);
-        orthosisSpecificationsOtherLatmmRight.text =  String(order.orthosisSpecificationsOtherLatmmRight);
-        
+
+        if (order.orthosisSpecificationsOtherLatmmLeft > 0) {
+            orthosisSpecificationsOtherLatmmLeft.text = String(order.orthosisSpecificationsOtherLatmmLeft);
+        }
+        if (order.orthosisSpecificationsOtherLatmmRight > 0) {
+            orthosisSpecificationsOtherLatmmRight.text =  String(order.orthosisSpecificationsOtherLatmmRight);
+        }
 
         
     }
@@ -3172,18 +3409,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //        order.orthosisSpecificationsHeelCupHeight10mmRight = false;
 //        order.orthosisSpecificationsHeelCupHeight14mmRight = false;
 //        order.orthosisSpecificationsHeelCupHeight18mmRight = false;
-        order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoe = false;
+        order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft = false;
+        order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeRight = false;
         order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft = false;
         order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight = false;
         order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft = false;
         order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight = false;
-        order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContact = false;
-        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHead = false;
-        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHead = false;
-    
+        order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft = false;
+        order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight = false;
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft = false;
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight = false;
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft = false;
+        order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight = false;
+        
         order.rushOrder2DayTurnaround = false;
         order.rushOrderNextDayTurnaround = false;
-        order.rushOrderRequestedOnOrBefore = false;
     
         order.postingRearfootPostingElevator4mmLeft = false;
         order.postingRearfootPostingElevator8mmLeft = false;
@@ -3222,60 +3462,153 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func calculateCorrectionsAndModificationsDescriptionFromOrder() -> String {
         var theReturn = "";
-        if (order.correctionsAndModificationsNoFillerLeft) {
-            theReturn += "No Filler Left, "
+        if (order.correctionsAndModificationsCastOrientationInvertedLeft != "") {
+            theReturn += (order.correctionsAndModificationsCastOrientationInvertedLeft ?? "") + " Inverted Left, "
         }
-        if (order.correctionsAndModificationsNoFillerRight) {
-            theReturn += "No Filler Right, "
+        if (order.correctionsAndModificationsCastOrientationInvertedRight != "") {
+            theReturn += (order.correctionsAndModificationsCastOrientationInvertedRight ?? "") + " Inverted Right, "
         }
-        if (order.correctionsAndModificationsMedialArchFillMinimalLeft) {
-            theReturn += "Medial Arch Fill Minimal Left, "
+        if (order.correctionsAndModificationsCastOrientationEvertedLeft != "") {
+            theReturn += (order.correctionsAndModificationsCastOrientationEvertedLeft ?? "") + " Everted Left, "
         }
-        if (order.correctionsAndModificationsMedialArchFillMinimalRight) {
-            theReturn += "Medial Arch Fill Minimal Right, "
+        if (order.correctionsAndModificationsCastOrientationEvertedRight != "") {
+            theReturn += (order.correctionsAndModificationsCastOrientationEvertedRight ?? "") + " Everted Right, "
         }
-        if (order.correctionsAndModificationsMedialArchFillStandardLeft) {
-            theReturn += "Medial Arch Fill Standard Left, "
+        if (order.correctionsAndModificationsPlantarFaciaAccommodationLeft != "") {
+            theReturn += (order.correctionsAndModificationsPlantarFaciaAccommodationLeft ?? "") + "Plantar Facia Accommodation Left, "
         }
-        if (order.correctionsAndModificationsMedialArchFillStandardRight) {
-            theReturn += "Medial Arch Fill Standard Right, "
+        if (order.correctionsAndModificationsPlantarFaciaAccommodationRight != "") {
+            theReturn += (order.correctionsAndModificationsPlantarFaciaAccommodationRight ?? "") + "Plantar Facia Accommodation Right, "
         }
-        if (order.correctionsAndModificationsMedialArchFillDecreasedLeft) {
-            theReturn += "Medial Arch Fill Decreased Left, "
+        if (order.correctionsAndModificationsStyloidAccommodationLeft != "") {
+            theReturn += (order.correctionsAndModificationsStyloidAccommodationLeft ?? "") + "Styloid Accommodation Left, "
         }
-        if (order.correctionsAndModificationsMedialArchFillDecreasedRight) {
-            theReturn += "Medial Arch Fill Decreased Right, "
+        if (order.correctionsAndModificationsStyloidAccommodationRight != "") {
+            theReturn += (order.correctionsAndModificationsStyloidAccommodationRight ?? "") + "Styloid Accommodation Right, "
         }
-        if (order.correctionsAndModificationsMedialArchFillIncreasedLeft) {
-            theReturn += "Medial Arch Fill Increased Left, "
+        if (order.correctionsAndModificationsNavicularAccommodationLeft != "") {
+            theReturn += (order.correctionsAndModificationsNavicularAccommodationLeft ?? "") + "Navicular Accommodation Left, "
         }
-        if (order.correctionsAndModificationsMedialArchFillIncreasedRight) {
-            theReturn += "Medial Arch Fill Increased Right, "
+        if (order.correctionsAndModificationsNavicularAccommodationRight != "") {
+            theReturn += (order.correctionsAndModificationsNavicularAccommodationRight ?? "") + "Navicular Accommodation Right, "
         }
-//        if (order.correctionsAndModificationsCastOrientationVerticalLeft) {
-//            theReturn += "Cast Orientation Vertical Left, "
-//        }
-//        if (order.correctionsAndModificationsCastOrientationVerticalRight) {
-//            theReturn += "Cast Orientation Vertical Right, "
-//        }
-        if (order.correctionsAndModificationsFillWithPoronLeft) {
-            theReturn += "Fill with Poron Left, "
+        if (order.correctionsAndModificationsNavicularFillWithPoronLeft || order.correctionsAndModificationsNavicularFillWithPoronRight) {
+            theReturn += "Fill Navicular Accommodation with Poron"
+            if (order.correctionsAndModificationsNavicularFillWithPoronLeft && order.correctionsAndModificationsNavicularFillWithPoronRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsNavicularFillWithPoronLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
         }
-        if (order.correctionsAndModificationsFillWithPoronRight) {
-            theReturn += "Fill with Poron Right, "
+        if (order.correctionsAndModificationsAccommodatePerPhotoLeft != "") {
+            theReturn += (order.correctionsAndModificationsAccommodatePerPhotoLeft ?? "") + "Accommodate Per Photo Left, "
         }
-        if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft) {
-            theReturn += "Forefoot Correction Type Extrinsic Left, "
+        if (order.correctionsAndModificationsAccommodatePerPhotoRight != "") {
+            theReturn += (order.correctionsAndModificationsAccommodatePerPhotoRight ?? "") + "Accommodate Per Photo Right, "
         }
-        if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight) {
-            theReturn += "Forefoot Correction Type Extrinsic Right, "
+        if (order.correctionsAndModificationsFillWithPoronLeft || order.correctionsAndModificationsFillWithPoronRight) {
+            theReturn += "Fill with Poron per Photo"
+            if (order.correctionsAndModificationsFillWithPoronLeft && order.correctionsAndModificationsFillWithPoronRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsFillWithPoronLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
         }
-        if (order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft) {
-            theReturn += "Forefoot Correction Type Intrinsic Left, "
+        if (order.correctionsAndModificationsAddLateralHeelExpansionLeft != "") {
+            theReturn += (order.correctionsAndModificationsAddLateralHeelExpansionLeft ?? "") + "Add Lateral Heel Expansion Left, "
         }
-        if (order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight) {
-            theReturn += "Forefoot Correction Type Intrinsic Right, "
+        if (order.correctionsAndModificationsAddLateralHeelExpansionRight != "") {
+            theReturn += (order.correctionsAndModificationsAddLateralHeelExpansionRight ?? "") + "Add Lateral Heel Expansion Right, "
         }
+        if (order.correctionsAndModificationsMedialHeelSkiveLeft != "") {
+            theReturn += (order.correctionsAndModificationsMedialHeelSkiveLeft ?? "") + "Medial Heel Skive Left, "
+        }
+        if (order.correctionsAndModificationsMedialHeelSkiveRight != "") {
+            theReturn += (order.correctionsAndModificationsMedialHeelSkiveRight ?? "") + "Medial Heel Skive Right, "
+        }
+        if (order.correctionsAndModificationsintrinsicMetatarsalPadLeft != "") {
+            theReturn += (order.correctionsAndModificationsintrinsicMetatarsalPadLeft ?? "") + "Intrinsic Metatarsal Pad Left, "
+        }
+        if (order.correctionsAndModificationsintrinsicMetatarsalPadRight != "") {
+            theReturn += (order.correctionsAndModificationsintrinsicMetatarsalPadRight ?? "") + "Intrinsic Metatarsal Pad Right, "
+        }
+        if (order.correctionsAndModificationsNoFillerLeft || order.correctionsAndModificationsNoFillerRight) {
+            theReturn += "No Filler"
+            if (order.correctionsAndModificationsNoFillerLeft && order.correctionsAndModificationsNoFillerRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsNoFillerLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        if (order.correctionsAndModificationsMedialArchFillMinimalLeft || order.correctionsAndModificationsMedialArchFillMinimalRight) {
+            theReturn += "Medial Arch Fill Minimal"
+            if (order.correctionsAndModificationsMedialArchFillMinimalLeft && order.correctionsAndModificationsMedialArchFillMinimalRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsMedialArchFillMinimalLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        if (order.correctionsAndModificationsMedialArchFillStandardLeft || order.correctionsAndModificationsMedialArchFillStandardRight) {
+            theReturn += "Medial Arch Fill Standard"
+            if (order.correctionsAndModificationsMedialArchFillStandardLeft && order.correctionsAndModificationsMedialArchFillStandardRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsMedialArchFillStandardLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        if (order.correctionsAndModificationsMedialArchFillDecreasedLeft || order.correctionsAndModificationsMedialArchFillDecreasedRight) {
+            theReturn += "Medial Arch Fill Decreased"
+            if (order.correctionsAndModificationsMedialArchFillDecreasedLeft && order.correctionsAndModificationsMedialArchFillDecreasedRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsMedialArchFillDecreasedLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        if (order.correctionsAndModificationsMedialArchFillIncreasedLeft || order.correctionsAndModificationsMedialArchFillIncreasedRight) {
+            theReturn += "Medial Arch Fill Increased"
+            if (order.correctionsAndModificationsMedialArchFillIncreasedLeft && order.correctionsAndModificationsMedialArchFillIncreasedRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsMedialArchFillIncreasedLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+        if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft || order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight) {
+            theReturn += "Forefoot Correction Type Extrinsic"
+            if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft && order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        if (order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft || order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight) {
+            theReturn += "Forefoot Correction Type Intrinsic"
+            if (order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft && order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight) {
+                theReturn += ", "
+            } else if (order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+    
 
         if (theReturn.hasSuffix(", ")) {
             theReturn = String(theReturn.dropLast(2));
@@ -3285,17 +3618,25 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func calculatePostingDescriptionFromOrder() -> String{
         var theReturn = "";
-        if (order.postingRearfootPostingElevator4mmLeft) {
-            theReturn += "Rearfoot Posting Elevator 4mm Left, "
+        if (order.postingRearfootPostingElevator4mmLeft || order.postingRearfootPostingElevator4mmRight) {
+            theReturn += "Rearfoot Posting Elevator 4mm"
+            if (order.postingRearfootPostingElevator4mmLeft && order.postingRearfootPostingElevator4mmRight) {
+                theReturn += ", "
+            } else if (order.postingRearfootPostingElevator4mmLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
         }
-        if (order.postingRearfootPostingElevator8mmLeft) {
-            theReturn += "Rearfoot Posting Elevator 8mm Left, "
-        }
-        if (order.postingRearfootPostingElevator4mmRight) {
-            theReturn += "Rearfoot Posting Elevator 4mm Right, "
-        }
-        if (order.postingRearfootPostingElevator8mmRight) {
-            theReturn += "Rearfoot Posting Elevator 8mm Right, "
+        if (order.postingRearfootPostingElevator8mmLeft || order.postingRearfootPostingElevator8mmRight) {
+            theReturn += "Rearfoot Posting Elevator 8mm"
+            if (order.postingRearfootPostingElevator8mmLeft && order.postingRearfootPostingElevator8mmRight) {
+                theReturn += ", "
+            } else if (order.postingRearfootPostingElevator8mmLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
         }
         if (order.postingRearfootPostMotion0DegreesMotionLeft) {
             theReturn += "Rearfoot Posting Motion 0 Degrees Left, "
@@ -3411,19 +3752,47 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 theReturn += " R, "
             }
         }
-
-        if (order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoe) {
+        if (order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft || order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeRight) {
             theReturn += "Fit to enclosed shoe, "
+            if (order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft && order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeRight) {
+                theReturn += ", "
+            } else if (order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
         }
-        if (order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContact) {
+        if (order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft || order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight) {
             theReturn += "Thin material at heel contact, "
+            if (order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft && order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight) {
+                theReturn += ", "
+            } else if (order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
         }
-        if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHead) {
+        if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft || order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight) {
             theReturn += "Cut out proximinal to fifth met head, "
+            if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft && order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight) {
+                theReturn += ", "
+            } else if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
         }
-        if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHead) {
+        if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft || order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight) {
             theReturn += "Cut out proximinal to first met head, "
+            if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft && order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight) {
+                theReturn += ", "
+            } else if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
         }
+
         
         theReturn += anteriorWidthPickerData[orthoticSpecificationsAnteriorWidthLeftPicker.selectedRow(inComponent: 0)];
 
@@ -3476,8 +3845,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.rushOrderNextDayTurnaround) {
             theReturn += "Next Day Turnaround, "
         }
-        if (order.rushOrderExpressShiping != nil) {
-            theReturn += order.rushOrderExpressShiping!;
+        if (order.rushOrderExpressShiping > 0) {
+            let theView = self.pickerView(rushOrderExpressShippingPicker, viewForRow: Int(order.rushOrderExpressShiping), forComponent: 0, reusing: nil)
+            theReturn += (theView as! UILabel).text!;
         }
 
         if (theReturn.hasSuffix(", ")) {

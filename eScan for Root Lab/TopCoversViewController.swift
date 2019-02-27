@@ -137,6 +137,8 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet var topCoversAndExtensionsDiabetic116Plastazone18UISwitch: UISwitch!
     @IBOutlet var topCoversAndExtensionsEvaArchFillLeftUISwitch: UISwitch!
     @IBOutlet var topCoversAndExtensionsEvaArchFillRightUISwitch: UISwitch!
+    @IBOutlet var topCoversAndExtensionsPoronUnderTopcover18: UISwitch!
+    @IBOutlet var topCoversAndExtensionsPoronUnderTopcover116: UISwitch!
     @IBOutlet var topCoversAndExtensionsMedialArchReinforceLeftUISwitch: UISwitch!
     @IBOutlet var topCoversAndExtensionsMedialArchReinformceRightUISwitch: UISwitch!
     @IBOutlet var topCoversAndExtensionsMortonsExtensionLeftUISwitch: UISwitch!
@@ -158,6 +160,25 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet var topCoversAndExtensionsEVAUISwitch: UISwitch!
     @IBOutlet var topCoversAndExtensionsKorexUISwitch: UISwitch!
     
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsL1: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsL2: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsL3: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsL4: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsL5: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsR1: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsR2: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsR3: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsR4: UIButton!
+    @IBOutlet var topCoversAndExtensionsMetHeadAccommodationsR5: UIButton!
+    @IBOutlet var topCoversAndExtensionsNeuromaPadL1: UIButton!
+    @IBOutlet var topCoversAndExtensionsNeuromaPadL2: UIButton!
+    @IBOutlet var topCoversAndExtensionsNeuromaPadL3: UIButton!
+    @IBOutlet var topCoversAndExtensionsNeuromaPadL4: UIButton!
+    @IBOutlet var topCoversAndExtensionsNeuromaPadR1: UIButton!
+    @IBOutlet var topCoversAndExtensionsNeuromaPadR2: UIButton!
+    @IBOutlet var topCoversAndExtensionsNeuromaPadR3: UIButton!
+    @IBOutlet var topCoversAndExtensionsNeuromaPadR4: UIButton!
+
 
     func topCoversAndExtensionsValid()-> Bool {
         if (
