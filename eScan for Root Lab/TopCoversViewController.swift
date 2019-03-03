@@ -15,10 +15,10 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     
     let topCoversAndExtensionsForefootExtensionMaterialPickerData: [String] =
-        ["Material", "None", "Poron", "Korex", "EVA", "NCN™"];
+        ["Extension Material", "None", "Poron", "Korex", "EVA", "NCN™"];
     
     let topCoversAndExtensionsForefootExtensionThicknessPickerData: [String] =
-        ["Thickness", "None", "1/16\"", "1/8\"", "3/16\"", "1/4\""];
+        ["Extension Thickness", "None", "1/16\"", "1/8\"", "3/16\"", "1/4\""];
     
     let topCoversAndExtensionsForefootExtensionExtensionLengthPickerData: [String] =
         ["Extension Length", "None", "Sulcus", "Full length"];
@@ -29,6 +29,7 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewDidLoad() {
         topCoversViewController = self;
+        
         
         let multiplier : CGFloat = 1 - ((1 - (screenSize.width / 2048)) / 2);
         
@@ -55,17 +56,47 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         topCoversAndExtensionsForefootExtensionExtensionLengthPicker.delegate = self;
         topCoversAndExtensionsForefootExtensionExtensionLengthPicker.dataSource = self;
 
-         topCoversAndExtensionsMaterialVinylBlackUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsMaterialVinylBronzeUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsMaterialVinylForestUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsMaterialLeatherBlackUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsMaterialLeatherBrownUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsMaterialEva116UISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsMaterialEva18UISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsMaterialNcn116UISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsMaterialNcn18UISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-         topCoversAndExtensionsDiabetic116Plastazone18UISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialVinylBlackUISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialVinylBronzeUISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialVinylForestUISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialLeatherBlackUISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialLeatherBrownUISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialEva116UISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialEva18UISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialNcn116UISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsMaterialNcn18UISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
+         topCoversAndExtensionsDiabetic116Plastazone18UISwitch.addTarget(self, action: #selector(materialSwitchChanged), for: UIControl.Event.valueChanged)
         
+        topCoversAndExtensionsEVAUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsBottomCoverMaterialEVA116UISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsBottomCoverForefootReinforcementUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsEvaArchFillLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsEvaArchFillRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsKorexUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsMortonsExtensionLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsMortonsExtensionRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsReverseMortonsExtensionLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsReverseMortonsExtensionRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsMetatarsalPadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsMetatarsalPadRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsMetatarsalBarLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsMetatarsalBarRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsHeelPadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsHeelPadRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsHorseshoePadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsHorseshoePadRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsDancersPadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsDancersPadRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsKineticWedgeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsKineticWedgeRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+       
+        topCoversAndExtensionsPoronUnderTopcover116.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsPoronUnderTopcover18.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+
+        
+        topCoversAndExtensionsMedialArchReinforceLeftUISwitch.addTarget(self, action: #selector(clickLorRMedialArchRelief), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsMedialArchReinformceRightUISwitch.addTarget(self, action: #selector(clickLorRMedialArchRelief), for: UIControl.Event.valueChanged)
+
         
     }
     
@@ -261,12 +292,15 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             mySwitch.isOn) {
             topCoversAndExtensionsEVAUISwitch.isOn = true;
         }
-    }
-    
-    @objc func switchChanged(mySwitch: UISwitch) {
-//        if (mySwitch == newPractitionerSameAsBillingAddressUiSwitch) {
         let parent = self.parent! as! ViewController;
 
+        parent.changeValuesBasedOnChangedInput();
+
+    }
+    
+    @objc func materialSwitchChanged(mySwitch: UISwitch) {
+        let parent = self.parent! as! ViewController;
+        
         if (mySwitch.isOn) {
             if (mySwitch != topCoversAndExtensionsMaterialVinylBlackUISwitch) {
                 topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn = false;
@@ -299,7 +333,15 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isOn = false;
             }
         }
-        
+        parent.changeValuesBasedOnChangedInput();
+
+    }
+
+    
+    @objc func switchChanged(mySwitch: UISwitch) {
+//        if (mySwitch == newPractitionerSameAsBillingAddressUiSwitch) {
+        let parent = self.parent! as! ViewController;
+
         parent.changeValuesBasedOnChangedInput();
     }
     
@@ -311,7 +353,10 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             button.setBackgroundImage(UIImage(named: "Circle.png"), for: UIControl.State.normal);
             button.accessibilityLabel = "";
         }
-        
+        let parent = self.parent! as! ViewController;
+
+        parent.changeValuesBasedOnChangedInput();
+
     }
     
 

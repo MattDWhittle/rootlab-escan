@@ -7,75 +7,64 @@
 //
 
 
+// (TEST) use mailcore
 
-
-//(TEST - failed) All Poly Chart to Poly Page
-// (TEST - failed) EVA should default on when L or R is selected.
 // (TEST - failure) Scans place images over foot buttons - loading image not working
 
-//TO ASK
-//What do I do to set integrated polypropylene post for PolyMax
+
 
 //TODO
-//(TODO) Finish making a document to attach to the email
-// (TODO) Email created document
 // (TODO) Better Pictures
+// (TODO) get the mail working without the ipad email
+// (TODO) Complete work order pdf
+// (TODO) Email created document
 // (TODO) Submit Form - and review
-
-// (TODO) Have My Devices know which device it was built from so it knows wether to use a medium firm crepe post or a firm crepe post
-// (TODO) In our defaults the extension length will always be the same as the top cover length. I.E. a full length top cover would have a full length extension and a sulcus length top cover would have a sulcus length extension.
-// (TODO) Under cushion flex How do I do an EVA post? It is basically no post options selected or available.
-
-//(TODO) Complete work order
-
-// Inverted and EVerted cast orientation, modifications text fields
-// Heel cup height on orthosis specifications
-// Posting rearfoot post, heel lift, text fields under rearfoot post elevator and motion
-
+// (TODO) email practitioner a copy of the work order without the scan files - don't CC
+// (TODO) address needs to be required
+// (TODO) click again shrink back down - orthotic device page
+// (TODO) HDPE should be default for
+// (TODO) SOFT sport was wrong  - not graphite
+// (TODO) logo on opening page
+// (TODO) Remove back button from practitioner
+// (TODO) more room on the right side practitioner page
+// (TODO) add phone fax and website to bottom left corner
 
 
-//(TODO) Orthosis Material:  Have "Per Weight" always available, if choose, type a weight in on that page.  Weight is autofilled
+// (TODO) what does no top cover mean - have None as the first top cover
+// (TODO) If none selected, all the other options are disabled
+
+// (TODO) 2nd order, 2 dots are green and shouldn't be
+// (TODO) 2nd order, right foot scan picture is missing
 
 
 
 //MINIMUM VIABLE
 
-// (TODO) UISwitches are smashed up on each other in small resolutions
+// (TODO) Update orthoitic device pictures with real pictures
+
+//(TODO) Orthosis Material:  Have "Per Weight" always available, if choose, type a weight in on that page.  Weight is autofilled
 
 
 //TO ASK:
 //Competition stealing work - CC practitioner, puts the other companies address
 
+// (TODO) second scan only gets color working if goto wireframe first - only first
 
 //(TODO)  Fix scrolling - This area will be too large and will have to scroll to fit on one page.
-//(TODO) Validation- When L or R is selected EVA or Korex must be selected,
+// (TODO) Validation- When L or R is selected EVA or Korex must be selected,
 
 // (TODO) when expand view, make sure it doesn't expand off screen, scoll it up
 // (TODO) if no email accounts set up on device, alert early
 // (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
 // (TODO) Accomodative EVA - grey out edit button on orthosis material
 // (TODO) Button says EDIT should say "Select and Modify"
-// (TODO) Top covers and extensions - the Top Cover Material goes to the right of Top Cover Lengths
-// (TODO) ...then Forefoot Extensions 3 options
-// (TODO) ...then poron
-// (TODO) ...then bottom cover
 //(TODO) "Order confirmation will be sent to this address" (next to email)
 //(TODO) Highlight the buttons where action needs to be taken - if weight not supplied and need to choose material thickness, let them know
-//(TODO) Change Orthotic Device Page to be like page 5
-// (TODO) what does no top cover mean - have None as the first top cover
-//(TODO) If none selected, all the other options are disabled
 // (TODO) When change pactitioners, reset all grey/black fields
 // (TODO) Check to see if the Material Order Items still match the new orthotic device screen
-//(TODO) Change "Accommodations" to "Top Cover Additions and Accommodations" on the Orthotics Prescription Form
-//(TODO) Accommodations page, the additions are on the left, and each addition will have an image with where it goes
-//(TODO) Have Accommondations (feet on the right) with places you can check
-//(TODO) Accommondations - Under the feet, have a "Per Photo" and a "Per Comments" (If so, require comments or per photo) (can choose 1 and 5 and "see comments)
-//(TODO) Accommondations - If Neuroma pad selected, they have to select an interspace which is a dropdown 1,2,3,4
 //(TODO) Accommondations - If heel pad selected, they have to select 1/16 or 1/8
 //(TODO) Accommondations - make sure it says under heel pad  1/16 or 1/8 Poron
-//(TODO) remove Sweet spot from Accommodations
 //(TODO) 4 ft reinforcement something - under accommodations
-// (TODO) Update orthoitic device pictures with real pictures
 //  (TODO) cannot tell the button is disabled orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
 // (TODO) Clicking here will erase the device name and open the keyboard forcing user to rename. It will then save in the My Devices menu under the new name.
 //(TODO) Make a log in page
@@ -90,23 +79,17 @@
 // (TODO) Diabetic default - If you have a medial heel cup 3/16 diabetic - just means diabetic
 // (TODO) if orthosis length vinyl top cover, what color default: Bronze is for functional, forest is for sports, Black is for dress
 // (TODO) if default practitioner selected, scroll wheel is still on New Practitioner if you navigate to that page
-// (TODO) add field for intrinsic metatarsal pad in mm left and right
-// (TODO) "Extension Material" instead of "Material", Top Covers and Extensions
 // (TODO) Add red dots where things can be invald (isValid())
 // (TODO) Validation - posting form - rearfoot post motion, one has to be selected,
 // (TODO) Validation - Have to have heel cup both left and right
 // (TODO) Validation - Rearfoot posting elevator, one must be selected
 // (TODO) Corrections and modifications has to be the same if order two pairs - off same mold
 // (TODO) if email / sftp fails sending, then show order not sent
-// (TODO) make sure save patient data upon leaving screen even if next not
-// (TODO) Poron is not a top cover material, but it is an add on
 // (TODO) password protect
 // (TODO) The submit page - have some sort of signature and disclaimer
 // (TODO) Submit page has the work order
 // (TODO) (and don't allow to change) default email
 // (TODO) Complaiance language
-// (TODO) reset picker views
-// (TODO) In order to save, need patient name, doctor name
 // (TODO) Richie Brace Form
 // (TODO) Order a second pair, and reorder
 // (TODO) if left is checked anywhere, left scan is required
@@ -115,21 +98,35 @@
 // (TODO) Make a left right or bilateral
 // (TODO) Default is left right
 // (TODO) Delete records after a year
-// (TODO) reorder button, if checked, scans aren't required, on scan page
-// (TODO) Accommodations - click and make dots - 5 spots, styloid,  - common spots, list spots accommodated, first med head, etc
-// (TODO) Pictures - picture of the foot, mark stuff
-// (TODO) Can take multiple pictures
-// (TODO) Show pictures on screen
 // (TODO) If Cannot save, fail startup
-// (TODO) Show escan images
 //(IN PROGRESS, need INT validation) make age wieght height gender are valid numbers
 // (TODO) Clean up warnings
 // (TODO) Clean up extra IBOutlets
 
 
 
+//Thursday Feb 28 Push
 
-//Thursday Feb 27 Push2
+// (DONE) UISwitches are smashed up on each other in small resolutions
+// (DONE) All Poly Chart to Poly Page
+// (DONE) EVA should default on when L or R is selected.
+// (DONE) Under cushion flex How do I do an EVA post? It is basically no post options selected.
+// (DONE) Disable submit button if everything isn't valid
+// (DONE) include patient and practitioner information in order
+// (DONE) Finish collecting data to send to document
+// (DONE) update defaults from latest RX
+// (DONE) In our defaults the extension length will always be the same as the top cover length. I.E. a full length top cover would have a full length extension and a sulcus length top cover would have a sulcus length extension.
+// (DONE) take two scans should show that .... green dot
+// (DONE) don't erase work on re-edit
+// (DONE) make sure save patient data upon leaving screen even if next not
+// (DONE) reset picker views
+// (DONE) reorder button, if checked, scans aren't required, on scan page
+// (DONE) Have My Devices know which device it was built from so it knows wether to use a medium firm crepe post or a firm crepe post
+// (DONE) Patient page Next Button available when just arrive
+// (DONE) "Extension Material" instead of "Material", Top Covers and Extensions
+// (DONE) Add medical record # to patient
+// (DONE) Make Delete practitioner work
+//Wednesday Feb 27 Push2
 // (DONE) Finish Order to text
 // (DONE) remove Extrinsic (forefoot post)
 // (DONE) read forms to stored stuff, picker views and text
@@ -144,7 +141,7 @@
 // (DONE) If choose next day turnaround, be first line of work order
 // (DONE) Top Covers ( Get rid of “and Extensions”, combine Top covers and Accomidations pages into one called Top covers)
 // (DONE) orthotic descriptions should update after UiPicker edit
-//Thursday Feb 27 Push
+//Wednesday Feb 27 Push
 // (DONE) Finish Defaults to Form (except outstanding questions)
 // (DONE) saving orders to device all fields mapped on object
 // (DONE) Need to read 4 other forms in readAllForms()
@@ -367,16 +364,19 @@ let orthoticMaterialDescriptionMap: [String] =
     "Graphite",
     "Fiberglass",
     "Acrylic",
+    
     "Multi-Sport™",
     "Multi-Sport-Plus™",
     "Soft-Sport™",
     "Soft-Sport-Flex™",
     "SSC™",
+    
     "Men's Dress",
     "Women's Casual",
     "Women's High-Heel",
     "Hole-Heel™",
     "Cobra",
+    
     "Blake 25º",
     "Blake 35º",
     "Blake 45º",
@@ -772,6 +772,19 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             return 3;
         } else if (pickerView == practitionerPicker) {
             return practitioners.count;
+        } else if (pickerView == orthoticMaterialPicker) {
+            let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+            if (theMOI.orthoticsMaterialSelection == orthosisMaterialPolypropyleneIndex) {
+                return orthosisPolypropyleneLabels.count;
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialGraphiteCompositeIndex) {
+                return orthosisGraphiteCompositeLabels.count;
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialFiberglassCompositeIndex) {
+                return orthosisFiberglassCompositeLabels.count;
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialAcrylicIndex) {
+                return orthosisAcrylicLabels.count;
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialHighDensityProlyetheleneIndex) {
+                return orthosisHighDensityPolyetheleneLabels.count;
+           }
         } else if (pickerView == patientShoeTypePicker) {
             return patientShoeTypeLabels.count;
         } else if (pickerView == orthoticSpecificationsHeelCupHeightLeftPicker) {
@@ -952,6 +965,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         patientHeightInchesInput.text = "";
         patientWeightInput.text = "";
         patientShoeSizeInput.text = "";
+        patientMedicalRecordNumberInput.text = "";
         patientGender.selectRow(0, inComponent: 0, animated: false);
         patientShoeTypePicker.selectRow(0, inComponent: 0, animated: false);
     }
@@ -1049,6 +1063,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerPhoneInput.text = thePractitioner.phone;
         practitionerEmailInput.text = thePractitioner.email;
         
+        newPractitionerUseEmailForCC.isOn = thePractitioner.useEmailForCC;
+        newPractitionerSameAsBillingAddressUiSwitch.isOn = thePractitioner.useShippingAddressForBillingAddress;
+
         refreshPractitionerNameLabel();
 
     }
@@ -1107,6 +1124,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         menuView.isHidden = true;
         backNextView.isHidden = true;
         
+        emailErrorLabel.text = "";
+
         
         self.preferredContentSize.width = screenSize.width;
         self.preferredContentSize.height = screenSize.height;
@@ -1130,6 +1149,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             richieBraceButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             deletePractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             defaultPractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            okDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            cancelDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
 
             commentsTextArea.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             
@@ -1146,6 +1167,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             eScanNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             submitLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthoticMaterialTypeLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            areYouSureLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            areYouSureDeletePractitioner.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             reorderLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisMaterialColorLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             commentsInstructionsLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
@@ -1163,7 +1186,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             patientDetailsHeightFeetLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientDetailsWeightLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientDetailsShoeSizeLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
-            
+            patientDetailsMedicalRecordNumberLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
+
 
 
             
@@ -1197,6 +1221,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             patientHeightInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientHeightInchesInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientShoeSizeInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
+            patientMedicalRecordNumberInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
 
             orthoticsPrescriptionLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
             orthoticDeviceLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
@@ -1322,9 +1347,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else {
             defaults = (persistedDataDefaults[0] as! Defaults);
             if (defaults!.defaultPractitioner != -1) {
-                defaultPractitioner = practitioners[Int(defaults!.defaultPractitioner)];
-                readPractitionerToForm(thePractitioner: defaultPractitioner)
-                practitionerPicker.selectRow(Int(defaults!.defaultPractitioner), inComponent: 0, animated: false);
+                if (practitioners.count <= defaults!.defaultPractitioner ) {
+                    //The default practitioner was deleted, ignore
+                    defaults!.defaultPractitioner = -1;
+                } else {
+                    defaultPractitioner =  practitioners[Int(defaults!.defaultPractitioner)];
+                    readPractitionerToForm(thePractitioner: defaultPractitioner)
+                    practitionerPicker.selectRow(Int(defaults!.defaultPractitioner), inComponent: 0, animated: false);
+                }
             }
 
         }
@@ -1363,6 +1393,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         patientWeightInput.delegate = self
         orthosisChiefComplaintDiagnosisInput.delegate = self
         patientShoeSizeInput.delegate = self
+        patientMedicalRecordNumberInput.delegate = self
         correctionsAndModificationsCastOrientationInvertedLeft.delegate = self
         correctionsAndModificationsCastOrientationInvertedRight.delegate = self
         correctionsAndModificationsCastOrientationEvertedLeft.delegate = self
@@ -1414,6 +1445,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         patientWeightInput.autocorrectionType = UITextAutocorrectionType.no;
         orthosisChiefComplaintDiagnosisInput.autocorrectionType = UITextAutocorrectionType.no;
         patientShoeSizeInput.autocorrectionType = UITextAutocorrectionType.no;
+        patientMedicalRecordNumberInput.autocorrectionType = UITextAutocorrectionType.no;
         correctionsAndModificationsCastOrientationInvertedLeft.autocorrectionType = UITextAutocorrectionType.no;
         correctionsAndModificationsCastOrientationInvertedRight.autocorrectionType = UITextAutocorrectionType.no;
         correctionsAndModificationsCastOrientationEvertedLeft.autocorrectionType = UITextAutocorrectionType.no;
@@ -1446,13 +1478,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         correctionsAndModificationsFillWIthPoronLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsFillWIthPoronRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-//        correctionsAndModificationsCastOrientationVerticalLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-//        correctionsAndModificationsCastOrientationVerticalRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-//        correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-//        correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-//        correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-//        correctionsAndModificationsForefootCorrectionTypeExtrinsicRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+ correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsMedialArchFillIncreasedRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsMedialArchFillStandardLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsMedialArchFillStandardRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -1472,7 +1498,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         newPractitionerSameAsBillingAddressUiSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         newPractitionerUseEmailForCC.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-
+        
         
         
          postingRearfootPostMotion4DegreesMotionLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -1515,6 +1541,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         viewpointControllerMesh = ViewpointController.init(screenSizeX: Float(self.eviewMesh.frame.size.width), screenSizeY: Float(self.eviewMesh.frame.size.height))
         
         registerForKeyboardNotifications()
+        
+        
+        //TODO remove these to enable features
+        existingOrderButton.isHidden = true;
+        
+        
+//        sendEmailWithMailcore();
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -1571,6 +1604,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var escanLeftFootUIButton: UIButton!
     @IBOutlet var escanRightFootUIButton: UIButton!
     @IBOutlet var submitFormButton: UIButton!
+    @IBOutlet var submitEmailButton: UIButton!
 
     
     @IBOutlet var welcomeLabel: UILabel!
@@ -1596,6 +1630,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var patientDetailsHeightInchesLabel: UILabel!
     @IBOutlet var patientDetailsHeightFeetLabel: UILabel!
     @IBOutlet var patientDetailsShoeSizeLabel: UILabel!
+    @IBOutlet var patientDetailsMedicalRecordNumberLabel: UILabel!
     @IBOutlet var orthoticsPrescriptionLabel: UILabel!
     @IBOutlet var orthoticDeviceLabel: UILabel!
     @IBOutlet var orthosisChiefComplaintDiagnosisLabel: UILabel!
@@ -1605,6 +1640,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var reorderLabel: UILabel!
     @IBOutlet var orthosisMaterialColorLabel: UILabel!
     @IBOutlet var commentsInstructionsLabel: UILabel!
+    @IBOutlet var emailErrorLabel: UILabel!
 
     
     @IBOutlet var reorderScrollView: UIScrollView!
@@ -1621,6 +1657,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var patientHeightInchesInput: UITextField!
     @IBOutlet var patientWeightInput: UITextField!
     @IBOutlet var patientShoeSizeInput: UITextField!
+    @IBOutlet var patientMedicalRecordNumberInput: UITextField!
     @IBOutlet var practitionerBillingAddressFacilityName: UITextField!
     @IBOutlet var practitionerBillingAddress1: UITextField!
     @IBOutlet var practitionerBillingAddress2: UITextField!
@@ -1882,11 +1919,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         postingRearfootPostTypePicker.selectRow(1, inComponent: 0, animated: false)
 
     }
-    
-    func setDefaultsEvaPost() {
-        
-    }
-    
+
     func setDefaultsShort44FirmCrepePost() {
         postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn = true;
         postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn = true;
@@ -2021,10 +2054,20 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func orthoticDeviceClickEditOrSelect() {
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+        
+        if (theMOI.orthoticsMaterialPickerSelection == Int16(orthoticDeviceSelected)) {
+            //No change, do not update things
+            return;
+        }
+        
         theMOI.orthoticsMaterialPickerSelection = Int16(orthoticDeviceSelected);
         theMOI.orthoticsMaterialSelection = Int16(orthoticMateriaPickerMap[Int(theMOI.orthoticsMaterialPickerSelection)]);
         orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
+        
+        
         resetDueToOrthosisTypeChange();
+        
+        
         if (orthoticDeviceSelected == 0) { //Polypropylene
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthStandard();
@@ -2153,7 +2196,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsIntrinsicForefootCorrection();
             setDefaultsVerticalHeelBisection();
             setDefaultsNoRearfootPost();
-            //TODO hole cut in heel?
             setDefaultsSulcusLengthVinylTopCoverDress();
             setDefaults1_16thInchPoronExtensionUnderForefoot();
         } else if (orthoticDeviceSelected == 14) { //Cobra
@@ -2201,13 +2243,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsVerticalHeelBisection();
             setDefaults44FirmCrepePost();
             setDefaults8mmPostElevator();
-        } else if (orthoticDeviceSelected == 19) { //Cusion-Flex™
+        } else if (orthoticDeviceSelected == 19) { //Cushion-Flex™
             setDefaults2mmHdpeShell();
             setDefaultsAnteriorWidthStandard();
             setDefaults14mmHeelCup();
             setDefaultsIntrinsicForefootCorrection();
             setDefaultsVerticalHeelBisection();
-            setDefaultsEvaPost();
             setDefaults1_8thInchFullLengthNcnTopCover();
             setEvaBottomFiller();
         } else if (orthoticDeviceSelected == 20) { //Cushion-Flex-Control™
@@ -2226,7 +2267,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults14mmHeelCup();
             setDefaultsIntrinsicForefootCorrection();
             setDefaultsVerticalHeelBisection();
-            setDefaultsEvaPost();
             setDefaults316FullLengthDiabeticTopCover();
             setEvaBottomFiller();
         } else if (orthoticDeviceSelected == 22) { //Diaba-Flex-Control™
@@ -2242,8 +2282,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if (orthoticDeviceSelected == 23) { //Accommodative
             setDefaultsAnteriorWidthFull();
             setDefaults316FullLengthDiabeticTopCover();
-            setDefaultsDeepHeelCup();
+            setDefaults14mmHeelCup();
+            setDefaultsIntrinsicForefootCorrection();
+            setDefaultsVerticalHeelBisection();
             setDefaultsNoRearfootPost();
+            setDefaults316FullLengthDiabeticTopCover();
             setDefaults1_16thInchEvaBottomCover();
 
         }
@@ -2266,13 +2309,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             readPractitionerToForm(thePractitioner: defaultPractitioner);
             setValuesBasedOnPractitionerPageValid();
             changePageTo(pageTo: patientManagementPageIndex);
+            setValuesBasedOnPatientPageValid();
         } else {
             changePageTo(pageTo: practitionerManagementPageIndex);
         }
     }
     
     @IBAction func ExistingOrderAction(sender: UIButton){
-        changePageTo(pageTo: orderManagementPageIndex);
+        //changePageTo(pageTo: orderManagementPageIndex);
     }
     @IBAction func ClickBackAction(sender: UIButton){
         if (screenViewing == escanningPageIndex) {
@@ -2337,6 +2381,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         appDelegate.saveContext()
         changePageTo(pageTo: patientManagementPageIndex);
+        setValuesBasedOnPatientPageValid();
     }
     
     func fromFormToPractitioner(thePractitioner: Practitioner!) {
@@ -2364,6 +2409,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBAction func ClickNextAction(sender: UIButton){
         if (screenViewing == practitionerManagementPageIndex) {
             savePractitionerFromPage(setAsDefault: false);
+            refreshPractitionerNameLabel();
         } else if (screenViewing == eViewingMeshPageIndex) {
             nextButton.titleLabel?.text = "Next";
             backButton.titleLabel?.text = "   Back   ";
@@ -2380,19 +2426,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 
                 
                 leftFootEscanDone = true;
+                changeValuesBasedOnChangedInput();
             } else {
                 rightFootEscanDone = true;
                 
                 let image = prepareScreenShotCurrentViewpointForUIImage();
                 escanRightFootUIButton.setImage(image, for: UIControl.State.normal);
 
+                changeValuesBasedOnChangedInput();
             }
 
             changePageTo(pageTo: scanFormPageIndex)
 
         } else if (screenViewing == patientManagementPageIndex) {
             setValuesBasedOnPatientPageValid();
-            changePageTo(pageTo: newOrderTypePageIndex);
+            changePageTo(pageTo: orthoticsDeviceFormPageIndex);
             readPatientForm();
         } else if (screenViewing == orthoticsFormPageIndex) {
             changePageTo(pageTo: orthoticsDeviceFormPageIndex);
@@ -2451,6 +2499,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 newPatient.heightInches = Int16(heightInches!) ?? 0;
                 newPatient.weight = Int16(weight!) ?? 0;
                 newPatient.shoeSize = Int16(patientShoeSizeInput!.text!) ?? 0;
+                newPatient.medicalRecordNumber = patientMedicalRecordNumberInput!.text ?? "";
                 //TODO replace
                 //                    newPatient.shoeType = patientShoeTypeInput.text;
                 
@@ -2471,6 +2520,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             order.orderPatient?.heightInches = Int16(heightInches!) ?? 0;
             order.orderPatient?.weight = Int16(weight!) ?? 0;
             order.orderPatient?.shoeSize = Int16(patientShoeSizeInput!.text!) ?? 0;
+            order.orderPatient?.medicalRecordNumber = patientMedicalRecordNumberInput!.text ?? "";
             order.orderPatient?.shoeType = patientShoeTypeLabels[patientShoeTypePicker.selectedRow(inComponent: 0)];
 
         }
@@ -2495,10 +2545,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         readPatientForm();
         
+        emailErrorLabel.text = "";
     }
     
     @IBAction func ClickDeletePractitioner(sender: UIButton){
-        
+        areYouSureView.isHidden = false;
     }
 
     @IBAction func ClickDefaultPractitioner(sender: UIButton){
@@ -2619,9 +2670,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func ClickNewOrderButton(sender: UIButton){
-        resetValuesForNewOrder();
-        changeValuesBasedOnChangedInput(force: true);
-        changePageTo(pageTo: orderManagementPageIndex)
+        //resetValuesForNewOrder();
+        //changeValuesBasedOnChangedInput(force: true);
+        //changePageTo(pageTo: orderManagementPageIndex)
     }
     
     @IBAction func ClickPractitionerManagementButton(sender: UIButton){
@@ -2630,6 +2681,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBAction func ClickPatientManagementButton(sender: UIButton){
         changePageTo(pageTo: patientManagementPageIndex)
+        setValuesBasedOnPatientPageValid();
     }
     
     @IBAction func ClickSubmitButton(sender: UIButton){
@@ -2646,7 +2698,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if (richieBraceHasBeenSelected) {
             
         } else {
-            changePageTo(pageTo: newOrderTypePageIndex)
+            changePageTo(pageTo: orthoticsDeviceFormPageIndex)
         }
     }
 
@@ -2654,11 +2706,24 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         areYouSureView.isHidden = true;
         let selectedRow = practitionerPicker.selectedRow(inComponent: 0);
         if (selectedRow > 0) {
-            //TODO add a practitioner equals here
-//            if (defaultPractitioner! == practitioners[selectedRow]) {
-//                defaultPractitioner = nil;
-//            }
+            let thePractitionerToDelete = practitioners[selectedRow];
             practitioners.remove(at: practitionerPicker.selectedRow(inComponent: 0));
+            practitionerPicker.reloadAllComponents();
+            practitionerPicker.selectRow(0, inComponent: 0, animated: true);
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            do {
+                context.delete(thePractitionerToDelete);
+                try context.save();
+                appDelegate.saveContext();
+            } catch let error as NSError {
+                //TODO Cannot save, fail startup
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            clearPractitionerForm();
+            setValuesBasedOnPractitionerPageValid();
+            changeValuesBasedOnChangedInput();
         }
     }
 
@@ -3230,27 +3295,27 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         
         setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0001 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL1);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0002 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL2);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0004 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL3);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0008 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL4);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0010 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL5);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0002 == 2, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL2);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0004 == 4, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL3);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0008 == 8, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL4);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0010 == 16, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL5);
 
         
         setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0001 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR1);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0002 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR2);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0004 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR3);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0008 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR4);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0010 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR5);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0002 == 2, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR2);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0004 == 4, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR3);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0008 == 8, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR4);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsRight & 0x0010 == 16, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsR5);
         
         setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadLeft & 0x0001 == 1, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadL1);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadLeft & 0x0002 == 1, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadL2);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadLeft & 0x0004 == 1, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadL3);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadLeft & 0x0008 == 1, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadL4);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadLeft & 0x0002 == 2, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadL2);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadLeft & 0x0004 == 4, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadL3);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadLeft & 0x0008 == 8, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadL4);
         
         setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadRight & 0x0001 == 1, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadR1);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadRight & 0x0002 == 1, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadR2);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadRight & 0x0004 == 1, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadR3);
-        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadRight & 0x0008 == 1, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadR4);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadRight & 0x0002 == 2, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadR2);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadRight & 0x0004 == 4, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadR3);
+        setAccessibilityLabelAndBackgroundImage(on: order.accommodationsNeuromaPadRight & 0x0008 == 8, button: topCoversViewController!.topCoversAndExtensionsNeuromaPadR4);
 
         
         
@@ -3326,7 +3391,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order.correctionsAndModificationsCastOrientationInvertedLeft = correctionsAndModificationsCastOrientationInvertedLeft.text!;
         order.correctionsAndModificationsCastOrientationInvertedRight = correctionsAndModificationsCastOrientationInvertedRight.text!;
         order.correctionsAndModificationsCastOrientationEvertedLeft = correctionsAndModificationsCastOrientationEvertedLeft.text!;
-        order.correctionsAndModificationsCastOrientationInvertedRight = correctionsAndModificationsCastOrientationInvertedRight.text!;
+        order.correctionsAndModificationsCastOrientationEvertedRight = correctionsAndModificationsCastOrientationEvertedRight.text!;
         order.correctionsAndModificationsPlantarFaciaAccommodationLeft = correctionsAndModificationsPlantarFaciaAccomLeft.text!;
         order.correctionsAndModificationsPlantarFaciaAccommodationRight = correctionsAndModificationsPlantarFaciaAccomRight.text!;
         order.correctionsAndModificationsStyloidAccommodationLeft = correctionsAndModificationsStyloidAccomLeft.text!;
@@ -3339,7 +3404,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order.correctionsAndModificationsMedialHeelSkiveRight = correctionsAndModificationsMedialHeelSkiveRight.text!;
         order.correctionsAndModificationsintrinsicMetatarsalPadLeft = correctionsAndModificationsIntrinsicMetatarsalPadMmLeft.text!;
         order.correctionsAndModificationsintrinsicMetatarsalPadRight = correctionsAndModificationsIntrinsicMetatarsalPadMmRight.text!;
-
+        order.correctionsAndModificationsAccommodatePerPhotoLeft =
+            correctionsAndModificationsAsMarkedOnCastLeft.text!;
+        order.correctionsAndModificationsAccommodatePerPhotoRight =
+            correctionsAndModificationsAsMarkedOnCastRight.text!;
 
     }
 
@@ -4049,28 +4117,145 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             theReturn += order.orthosisMaterialOption! + ", ";
         }
         if (order.orthosisMaterialColor != nil) {
-           theReturn += order.orthosisMaterialColor!
+           theReturn += order.orthosisMaterialColor! + ", ";
         }
         
+
+        if (theReturn.hasSuffix(", ")) {
+            theReturn = String(theReturn.dropLast(2));
+        }
+
+        return theReturn;
+    }
+    
+    func calculateOrderOrthosisType() -> String{
+        var theReturn = "";
+        
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+        
+        let theOriginalOrderName = orthoticMaterialDescriptionMap[Int(theMOI.orthoticsMaterialPickerSelection)];
+        
+        theReturn += theOriginalOrderName;
+        return theReturn;
+
+    }
+    
+    func calculateOrderDeviceSpecificLanguage() -> String{
+        var theReturn = "";
+        
+        let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+        
         
         //medium crepe post here, blake etc
         if (theMOI.orthoticsMaterialPickerSelection == 12) {
             theReturn += "heel cup minimal, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 13) {
+            theReturn += "hole cut in heel, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 15) {
+            theReturn += "3mm plantar fascia accommodation, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 16) {
+            theReturn += "3mm plantar fascia accommodation, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 17) {
+            theReturn += "3mm plantar fascia accommodation, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 19) {
+            theReturn += "EVA post, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 1) {
+            theReturn += "milled polypropylene, "
         }
         
-
+        if (theMOI.orthoticsMaterialPickerSelection == 5) {
+            theReturn += "crepe post medium firm, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 6) {
+            theReturn += "crepe post medium firm, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 7) {
+            theReturn += "crepe post medium firm, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 8) {
+            theReturn += "crepe post medium firm, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 18) {
+            theReturn += "crepe post medium firm, "
+        } else if (theMOI.orthoticsMaterialPickerSelection == 20) {
+            theReturn += "crepe post medium firm, "
+        }
+        
+        
+        if (theReturn.hasSuffix(", ")) {
+            theReturn = String(theReturn.dropLast(2));
+        }
         return theReturn;
     }
+
 
     func calculateCommentsInstructionsOrderDescriptionFromOrder() -> String{
         return order.chiefComplaintDiagnosis ?? "";
     }
 
     func calculateCommentsInstructionsOrderDescriptionFromOrderForEmail() -> String{
+        if (order.chiefComplaintDiagnosis == nil && order.commentsInstructions == nil) {
+            return "";
+        }
+        if (order.chiefComplaintDiagnosis == nil) {
+            return order.commentsInstructions!;
+        }
+        if (order.commentsInstructions == nil) {
+            return order.chiefComplaintDiagnosis!;
+        }
         return order.chiefComplaintDiagnosis! + "\n" + order.commentsInstructions!;
     }
+    
+    func calculatePatientFormForEmail() -> String {
+        var theReturn = "";
 
+        theReturn += "Patient: " + order.orderPatient!.lastName! + ", " +
+            order.orderPatient!.firstName!;
+        theReturn += "\nAge: " +
+            String(order.orderPatient!.age);
+        theReturn += "\nHeight: " +
+            String(order.orderPatient!.height) + "ft, " +
+            String(order.orderPatient!.heightInches) + " in ";
+        theReturn += "\nWeight: " +
+            String(order.orderPatient!.weight) + " (lbs.)";
+        theReturn += "\nShoe Size: " +
+            String(order.orderPatient!.shoeSize);
+        theReturn += "\nMedical Record #: " +
+            (order.orderPatient!.medicalRecordNumber ?? "");
+         theReturn += "\nShoe Type: " +
+                order.orderPatient!.shoeType!;
+        theReturn += "\n\n";
+
+        return theReturn;
+    }
+    
+    func calculatePractitionerFormForEmail() -> String {
+        var theReturn = "";
+        
+        theReturn += "Practitioner: " + order.orderPractitioner!.lastName! + ", " + order.orderPractitioner!.firstName!;
+        theReturn += "\nPhone: " +
+            order.orderPractitioner!.phone!;
+        theReturn += "\nEmail: " +
+            order.orderPractitioner!.email!;
+        theReturn += "\nShipping Address: \n";
+        theReturn += order.orderPractitioner!.shippingAddressFacilityName! + "\n";
+        theReturn += order.orderPractitioner!.shippingAddress1! + " ";
+        theReturn += (order.orderPractitioner!.shippingAddress2 ?? "") + " ";
+        theReturn += order.orderPractitioner!.shippingAddressCity! + ", ";
+        theReturn += order.orderPractitioner!.shippingAddressState! + ", ";
+        theReturn += order.orderPractitioner!.shippingAddressZip! + " ";
+        theReturn += order.orderPractitioner!.shippingAddressCountry!
+        ;
+        theReturn += "\nBilling Address: \n";
+        theReturn += order.orderPractitioner!.billingAddressFacilityName! + "\n";
+        theReturn += order.orderPractitioner!.billingAddress1! + " ";
+        theReturn += (order.orderPractitioner!.billingAddress2 ?? "") + " ";
+        theReturn += order.orderPractitioner!.billingAddressCity! + ", ";
+        theReturn += order.orderPractitioner!.billingAddressState! + ", ";
+        theReturn += order.orderPractitioner!.billingAddressZip! + " ";
+        theReturn += order.orderPractitioner!.billingAddressCountry!;
+
+        theReturn += "\n\n";
+        
+        return theReturn;
+    }
+    
     func calculateTopCoversAndExtensionsOrderDescriptionFromOrder() -> String{
         var theReturn = "";
         
@@ -4104,10 +4289,241 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         if (order.topCoversAndExtensionsBottomCoverMaterialEVA116) {
-            theReturn += "EVA 1/16\"";
+            theReturn += "EVA 1/16\", ";
         }
-        //TODO add more here
+        if (order.topCoversAndExtensionsBottomCoverMaterialVinylBlack) {
+            theReturn += "Bottom Cover Material Vinyl Black, ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialVinylBronze) {
+            theReturn += "Bottom Cover Material Vinyl Bronze, ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialVinylForest) {
+            theReturn += "Bottom Cover Material Vinyl Forest, ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialLeatherBrown) {
+            theReturn += "Bottom Cover Material Leather Brown, ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialLeatherBlack) {
+            theReturn += "Bottom Cover Material Leather Black, ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialEva116) {
+            theReturn += "Bottom Cover Material EVA 1/16\", ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialEVA116) {
+            theReturn += "Bottom Cover Material EVA 1/16\", ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialEva18) {
+            theReturn += "Bottom Cover Material EVA 1/8\", ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialNcn18) {
+            theReturn += "Bottom Cover Material NCN 1/8\", ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialNcn116) {
+            theReturn += "Bottom Cover Material NCN 1/16\", ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
+            theReturn += "Bottom Cover Material Diabetic, ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
+            theReturn += "Bottom Cover Material Diabetic 1/16\" Poron 1/8\" Plastizone, ";
+        }
+        if (order.topCoversAndExtensionsBottomCoverForefootReinforcement) {
+            theReturn += "Forefoot Reinforcement, ";
+        }
+        if (order.topCoversAndExtensionsBottomCover116Eva) {
+            theReturn += "Bottom Cover 1/16\" EVA, ";
+        }
+        if (order.accommodationsMortonsExtensionRight || order.accommodationsMortonsExtensionLeft) {
+            theReturn += "Mortons Extension"
+            if (order.accommodationsMortonsExtensionLeft && order.accommodationsMortonsExtensionRight) {
+                theReturn += ", "
+            } else if (order.accommodationsMortonsExtensionLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
         
+        if (order.accommodationsReverseMortonsExtensionRight || order.accommodationsReverseMortonsExtensionLeft) {
+            theReturn += "Reverse Mortons Extension"
+            if (order.accommodationsReverseMortonsExtensionLeft && order.accommodationsReverseMortonsExtensionRight) {
+                theReturn += ", "
+            } else if (order.accommodationsReverseMortonsExtensionLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+    
+        if (order.accommodationsMetatarsalPadRight || order.accommodationsMetatarsalPadLeft) {
+            theReturn += "Metatarsal Pad"
+            if (order.accommodationsMetatarsalPadLeft && order.accommodationsMetatarsalPadRight) {
+                theReturn += ", "
+            } else if (order.accommodationsMetatarsalPadLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+        if (order.accommodationsMetatarsalBarRight || order.accommodationsMetatarsalBarLeft) {
+            theReturn += "Metatarsal Bar"
+            if (order.accommodationsMetatarsalBarLeft && order.accommodationsMetatarsalBarRight) {
+                theReturn += ", "
+            } else if (order.accommodationsMetatarsalBarLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+        if (order.accommodationsHeelPadRight || order.accommodationsHeelPadLEft) {
+            theReturn += "Heel Pad"
+            if (order.accommodationsHeelPadLEft && order.accommodationsHeelPadRight) {
+                theReturn += ", "
+            } else if (order.accommodationsHeelPadLEft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+        if (order.accommodationsHorseshoePadRight || order.accommodationsHorseshoePadLeft) {
+            theReturn += "Horseshoe Pad"
+            if (order.accommodationsHorseshoePadLeft && order.accommodationsHorseshoePadRight) {
+                theReturn += ", "
+            } else if (order.accommodationsHorseshoePadLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+        if (order.accommodationsDancersPadRight || order.accommodationsDancersPadLeft) {
+            theReturn += "Dancers Pad"
+            if (order.accommodationsDancersPadLeft && order.accommodationsDancersPadRight) {
+                theReturn += ", "
+            } else if (order.accommodationsDancersPadLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+        if (order.accommodationsKineticWedgeRight || order.accommodationsKineticWedgeLeft) {
+            theReturn += "Kinetic Wedge"
+            if (order.accommodationsKineticWedgeLeft && order.accommodationsKineticWedgeRight) {
+                theReturn += ", "
+            } else if (order.accommodationsKineticWedgeLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+        if (order.accommodationsMetHeadAccommodationsLeft > 0) {
+            theReturn += "Met head accommodations Left:  "
+
+            if (order.accommodationsMetHeadAccommodationsLeft & 0x0001 == 1) {
+                theReturn += " 1, "
+            }
+            if (order.accommodationsMetHeadAccommodationsLeft & 0x0002 == 2) {
+                theReturn += " 2, "
+            }
+            if (order.accommodationsMetHeadAccommodationsLeft & 0x0004 == 4) {
+                theReturn += " 3, "
+            }
+            if (order.accommodationsMetHeadAccommodationsLeft & 0x0008 == 8) {
+                theReturn += " 4, "
+            }
+            if (order.accommodationsMetHeadAccommodationsLeft & 0x0010 == 16) {
+                theReturn += " 5, "
+            }
+        }
+        
+        if (order.accommodationsMetHeadAccommodationsRight > 0) {
+            theReturn += "Met head accommodations Right:  "
+            
+            if (order.accommodationsMetHeadAccommodationsRight & 0x0001 == 1) {
+                theReturn += " 1, "
+            }
+            if (order.accommodationsMetHeadAccommodationsRight & 0x0002 == 2) {
+                theReturn += " 2, "
+            }
+            if (order.accommodationsMetHeadAccommodationsRight & 0x0004 == 4) {
+                theReturn += " 3, "
+            }
+            if (order.accommodationsMetHeadAccommodationsRight & 0x0008 == 8) {
+                theReturn += " 4, "
+            }
+            if (order.accommodationsMetHeadAccommodationsRight & 0x0010 == 16) {
+                theReturn += " 5, "
+            }
+        }
+        
+        
+        if (order.accommodationsNeuromaPadLeft > 0) {
+            theReturn += "Neuroma Pad accommodations Left:  "
+            
+            if (order.accommodationsNeuromaPadLeft & 0x0001 == 1) {
+                theReturn += " 1, "
+            }
+            if (order.accommodationsNeuromaPadLeft & 0x0002 == 2) {
+                theReturn += " 2, "
+            }
+            if (order.accommodationsNeuromaPadLeft & 0x0004 == 4) {
+                theReturn += " 3, "
+            }
+            if (order.accommodationsNeuromaPadLeft & 0x0008 == 8) {
+                theReturn += " 4, "
+            }
+        }
+        
+        if (order.accommodationsNeuromaPadRight > 0) {
+            theReturn += "Neuroma Pad accommodations Right:  "
+            
+            if (order.accommodationsNeuromaPadRight & 0x0001 == 1) {
+                theReturn += " 1, "
+            }
+            if (order.accommodationsNeuromaPadRight & 0x0002 == 2) {
+                theReturn += " 2, "
+            }
+            if (order.accommodationsNeuromaPadRight & 0x0004 == 4) {
+                theReturn += " 3, "
+            }
+            if (order.accommodationsNeuromaPadRight & 0x0008 == 8) {
+                theReturn += " 4, "
+            }
+        }
+        
+        
+        if (order.accommodationsEvaArchFillRight || order.accommodationsEvaArchFillLeft) {
+            theReturn += "EVA Bottom Fill"
+            if (order.accommodationsEvaArchFillLeft && order.accommodationsEvaArchFillRight) {
+                theReturn += ", "
+            } else if (order.accommodationsEvaArchFillLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        
+        if (order.accommodationsMedialArchReinforceRight || order.accommodationsMedialArchReinforceLeft) {
+            theReturn += "Medial Arch Reinforce"
+            if (order.accommodationsMedialArchReinforceLeft && order.accommodationsMedialArchReinforceRight) {
+                theReturn += ", "
+            } else if (order.accommodationsMedialArchReinforceLeft) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        if (order.accommodationsEva) {
+            theReturn += "EVA, ";
+        }
+        if (order.accommodationsKorex) {
+            theReturn += "Korex, ";
+        }
         return theReturn;
     }
 
@@ -4483,18 +4899,18 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             needToUpdateScreen = true;
         }
         if (screenViewing == orthoticsTopCoversAndExtensionsFormPageIndex || force) {
+            readTopCoversAndExtensionsForm();
             needToUpdateScreen = true;
 
         } else if (screenViewing == orthoticsRushOrderFormPageIndex || force) {
+            readRushOrderForm();
             needToUpdateScreen = true;
 
         } else if (screenViewing == orthoticsChiefComplaintFormPageIndex || force) {
+            readChiefComplaintDiagnosisForm();
             needToUpdateScreen = true;
 
-        } else if (screenViewing == orthoticsAccommodationsAndAdditionsFormPageIndex || force) {
-            needToUpdateScreen = true;
-
-        }
+         }
 
         if (needToUpdateScreen || force) {
             updateOrthosisScreenFromModel()
@@ -4503,6 +4919,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let isEverythingValid = everythingValid();
         submitFormButton.isEnabled = isEverythingValid;
         submitFinishedUIImageView.image = isEverythingValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+        submitFormButton.isEnabled = isEverythingValid;
+        submitEmailButton.isEnabled = isEverythingValid;
         
         topCoversViewController?.changeBasedOnValues();
         
@@ -4537,15 +4955,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
                 setValuesBasedOnPractitionerPageValid();
             }
-//        } else if (mySwitch == correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch && correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn) {
-//            correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.isOn = false;
-//        } else if (mySwitch == correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch && correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.isOn) {
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicLeftUISwitch.isOn = false;
-//        } else if (mySwitch == correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch && correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn) {
-//            correctionsAndModificationsForefootCorrectionTypeExtrinsicRightUISwitch.isOn = false;
-//        } else if (mySwitch == correctionsAndModificationsForefootCorrectionTypeExtrinsicRightUISwitch && correctionsAndModificationsForefootCorrectionTypeExtrinsicRightUISwitch.isOn) {
-//            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn = false;
+
         }
+        
         
         changeValuesBasedOnChangedInput();
     }
@@ -4875,6 +5287,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             if patientShoeSizeInput.isEditing{
+                self.view.window?.frame.origin.y = -1 * keyboardHeight
+            } else if patientMedicalRecordNumberInput.isEditing {
                 self.view.window?.frame.origin.y = -1 * keyboardHeight
             } else if practitionerBillingAddress1.isEditing {
                 self.view.window?.frame.origin.y = -1 * keyboardHeight
@@ -5833,37 +6247,71 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         return UIImage(cgImage: cgim)
     }
     
-    @IBAction func emailMesh(sender: AnyObject) {
+    @IBAction func emailMesh(sender: AnyObject)  {
+        var theSuccess = true;
         order.orderPractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
         
-            
-        mailViewController = MFMailComposeViewController.init()
+        let dateFormatter : DateFormatter = DateFormatter();
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss";
+        let date = Date();
+        let dateString = dateFormatter.string(from: date);
+        let diagnosis = (order.chiefComplaintDiagnosis ?? "");
+        let instructions = (order.commentsInstructions ?? "");
+
+        //WorkOrder
+        let messageBodyWithNewlines =
+            calculateRushOrderDescriptionFromOrder() +
+                "\n\n Date: " + dateString + "\n\n" +
+                calculatePractitionerFormForEmail() +
+                "\n\n " +
+                calculatePatientFormForEmail() +
+                "\n\nDiagnosis: " +
+                    diagnosis +
+                "\n\nOrthosis Type:" +
+                    calculateOrderOrthosisType() +
+                "\n\nOrthosis Material: " +
+                calculateOrthosisMaterialOrderDescriptionFromOrder() +
+                "\n\nCorrections and Modifications: " +
+                calculateCorrectionsAndModificationsDescriptionFromOrder() +
+                "\n\nShell: " +
+                calculateOrthosisSpecificationDescriptionFromOrder() +
+                "\n\nPosting: " +
+                calculatePostingDescriptionFromOrder() +
+                "\n\nTop Covers: " +
+                calculateTopCoversAndExtensionsOrderDescriptionFromOrder() +
+                "\n\n" +
+                calculateOrderDeviceSpecificLanguage() +
+                "\n\nInstructions: " +
+                instructions
         
-        if mailViewController == nil {
-            let alert = UIAlertController.init(title: "The email could not be sent.", message: "Please make sure an email account is properly setup on this device.", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-            
-            alert.addAction(defaultAction)
-            
-            present(alert, animated: true, completion: nil)
-            
-            return
-        }
+        ;
         
-        mailViewController!.mailComposeDelegate = self
+        let messageBody = messageBodyWithNewlines.replacingOccurrences(of: "\n", with: "<br>")
+
         
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            mailViewController!.modalPresentationStyle = .formSheet
-        }
+//        mailViewController = MFMailComposeViewController.init()
         
-        mailViewController!.setToRecipients(["scans@root-lab.com"]);
-        mailViewController!.setCcRecipients([(order.orderPractitioner?.email)!]);
+//        if mailViewController == nil {
+//            let alert = UIAlertController.init(title: "The email could not be sent.", message: "Please make sure an email account is properly setup on this device.", preferredStyle: .alert)
+//
+//            let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+//
+//            alert.addAction(defaultAction)
+//
+//            present(alert, animated: true, completion: nil)
+//
+//            return
+//        }
         
-        // Setup paths and filenames.
+//        mailViewController!.mailComposeDelegate = self
+//
+//        if UIDevice.current.userInterfaceIdiom == .pad {
+//            mailViewController!.modalPresentationStyle = .formSheet
+//        }
+        
         
         let zipFilename = "Model.zip"
-        let screenshotFilename = "Preview.jpg"
+        let screenshotFilename = "rootLabPreview.jpg"
         
         let fullPathFilename = FileMgr.sharedInstance.full(screenshotFilename)
         
@@ -5871,38 +6319,28 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         // Take a screenshot and save it to disk.
         
-        if (!reorderUISwitch.isOn) {
-            prepareScreenShotCurrentViewpoint(screenshotPath: fullPathFilename)
-            
-            // since file is save in prepareScreenShot() need to getData() here
-            
-            if let sshot = NSData(contentsOfFile: fullPathFilename) {
-                
-                mailViewController?.addAttachmentData(sshot as Data, mimeType: "image/jpeg", fileName: screenshotFilename)
-            }
-            else {
-                let alert = UIAlertController.init(title: "Error", message: "no pic", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-                
-                alert.addAction(defaultAction)
-                
-                present(alert, animated: true, completion: nil)
-            }
-
-        }
+//        if (!reorderUISwitch.isOn) {
+//            prepareScreenShotCurrentViewpoint(screenshotPath: fullPathFilename)
+//
+//            // since file is save in prepareScreenShot() need to getData() here
+//
+//            if let sshot = NSData(contentsOfFile: fullPathFilename) {
+//
+//                mailViewController?.addAttachmentData(sshot as Data, mimeType: "image/jpeg", fileName: screenshotFilename)
+//            }
+//            else {
+//                let alert = UIAlertController.init(title: "Error", message: "no pic", preferredStyle: .alert)
+//
+//                let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+//
+//                alert.addAction(defaultAction)
+//
+//                present(alert, animated: true, completion: nil)
+//            }
+//
+//        }
         
-        var i = 0;
-        for iUiImageView in reorderScrollView.subviews {
-            let theImageView = (iUiImageView as! UIImageView);
-            let theImage = theImageView.image;
-            //Only get the images we put in, not the scrollbars
-            if (theImageView.bounds.size.height == setImagePictureHeight) {
-                let imageData = theImage!.pngData()!
-                mailViewController!.addAttachmentData(imageData, mimeType: "image/png", fileName: "photo" + String(i) + ".png")
-            }
-            i = i + 1;
-        }
+      
         
         let thePractitionerName = (order.orderPractitioner?.firstName)! + " " + (order.orderPractitioner?.lastName)!;
         let thePatientName = (order.orderPatient?.firstName)! + " " + (order.orderPatient?.lastName)!;
@@ -5910,29 +6348,47 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let theSubject = (order.rushOrder2DayTurnaround ||
             order.rushOrderNextDayTurnaround) ? "RUSH ORDER: " + theStandardSubject : theStandardSubject;
         
-        mailViewController!.setSubject(theSubject)
-        
-        let messageBody =
-            calculateRushOrderDescriptionFromOrder() + "; " +
-            calculateOrthosisSpecificationDescriptionFromOrder() + "; " +
-            calculatePostingDescriptionFromOrder() + "; " +
-            calculateCorrectionsAndModificationsDescriptionFromOrder() +
-            calculateTopCoversAndExtensionsOrderDescriptionFromOrder() +
-            calculateCommentsInstructionsOrderDescriptionFromOrderForEmail() +
-            calculateOrthosisMaterialOrderDescriptionFromOrder()
-        ;
         
         
         
-        mailViewController?.setMessageBody(messageBody, isHTML: false)
+       
+        
+        let smtpSession = MCOSMTPSession()
+//        smtpSession.hostname = "mail.root-lab.com"
+        smtpSession.hostname = "smtp.root-lab.com"
+        smtpSession.username = "shasper@root-lab.com"
+        smtpSession.password = "porsche2"
+        smtpSession.port = 587
+        smtpSession.authType = MCOAuthType.saslLogin
+        smtpSession.connectionType = MCOConnectionType.clear
+        smtpSession.connectionLogger = {(connectionID, type, data) in
+            if data != nil {
+                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue){
+                    NSLog("Connectionlogger: \(string)")
+                }
+            }
+        }
+        
+        let builder = MCOMessageBuilder()
+//        builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
+        builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
+        builder.header.from = MCOAddress(displayName: "shasper@root-lab.com", mailbox: "shasper@root-lab.com")
+        builder.header.subject = theSubject;
+        builder.htmlBody = messageBody;
+        
         
         if (!reorderUISwitch.isOn) {
-
+            
             if let meshToSend = _meshToSave {
                 let zipfile = FileMgr.sharedInstance.saveMesh(zipFilename, data: meshToSend)
                 
                 if zipfile != nil {
-                    mailViewController?.addAttachmentData(zipfile!, mimeType: "application/zip", fileName: zipFilename)
+                    
+                    var attachment = MCOAttachment()
+                    attachment.mimeType =  "application/zip"
+                    attachment.filename = zipFilename;
+                    attachment.data = zipfile!
+                    builder.addAttachment(attachment)
                 }
             }
             else {
@@ -5945,12 +6401,73 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 
                 alert.addAction(defaultAction)
                 
-                present(alert, animated: true, completion: nil)
+                emailErrorLabel.text = "The email could not be sent: exporting the mesh failed";
                 
+                present(alert, animated: true, completion: nil)
+                theSuccess = false;
                 return
             }
         }
-        present(mailViewController!, animated: true, completion: nil)
+        
+        var i = 0;
+        for iUiImageView in reorderScrollView.subviews {
+            let theImageView = (iUiImageView as! UIImageView);
+            let theImage = theImageView.image;
+            //Only get the images we put in, not the scrollbars
+            if (theImageView.bounds.size.height == setImagePictureHeight) {
+                let imageData = theImage!.pngData()!
+                let attachment = MCOAttachment()
+                attachment.mimeType =  "image/png"
+                attachment.filename = "photo" + String(i) + ".png";
+                attachment.data = imageData
+                builder.addAttachment(attachment)
+            }
+            i = i + 1;
+        }
+        
+        let rfc822Data = builder.data()
+        let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
+        sendOperation?.start { (error) -> Void in
+            if (error != nil) {
+                NSLog("Error sending email: \(error)")
+                theSuccess = false;
+                
+                self.emailErrorLabel.text = "Error sending email: \(error)";
+            } else {
+                NSLog("Successfully sent email!")
+            }
+        }
+        
+        
+        
+        
+        
+        if (order.orderPractitioner!.useEmailForCC) {
+        let builder = MCOMessageBuilder()
+        builder.header.to = [MCOAddress(displayName: (order.orderPractitioner?.email)!, mailbox: (order.orderPractitioner?.email)!)]
+        builder.header.from = MCOAddress(displayName: "rootLab", mailbox: "scans@root-lab.com")
+        builder.header.subject = theSubject;
+        builder.htmlBody = messageBody;
+        
+        
+       
+        
+        let rfc822Data = builder.data()
+        let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
+        sendOperation?.start { (error) -> Void in
+            if (error != nil) {
+                NSLog("Error sending email: \(error)")
+            } else {
+                NSLog("Successfully sent email!")
+            }
+        }
+        }
+        
+        
+        if (theSuccess) {
+            changePageTo(pageTo: openingPageIndex);
+            resetEverything();
+        }
     }
     
     //MARK: Mail Delegate
@@ -6369,4 +6886,38 @@ extension ViewController: UIImagePickerControllerDelegate{
         reorderScrollView.showsHorizontalScrollIndicator = true;
 
     }
+    
+//    func sendEmailWithMailcore() {
+//        let smtpSession = MCOSMTPSession()
+//        smtpSession.hostname = "smtp.gmail.com"
+//        smtpSession.username = "matthewwhittle530@gmail.com"
+//        smtpSession.password = "IOXYEJesusChristGODSonSavior!"
+//        smtpSession.port = 465
+//        smtpSession.authType = MCOAuthType.saslPlain
+//        smtpSession.connectionType = MCOConnectionType.TLS
+//        smtpSession.connectionLogger = {(connectionID, type, data) in
+//            if data != nil {
+//                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue){
+//                    NSLog("Connectionlogger: \(string)")
+//                }
+//            }
+//        }
+//
+//        let builder = MCOMessageBuilder()
+//        builder.header.to = [MCOAddress(displayName: "mattdwhittle", mailbox: "mattdwhittle@gmail.com")]
+//        builder.header.from = MCOAddress(displayName: "matthewwhittle530", mailbox: "matthewwhittle530@gmail.com")
+//        builder.header.subject = "My message"
+//        builder.htmlBody = "Hi Matthew! this is a test message!"
+//
+//        let rfc822Data = builder.data()
+//        let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
+//        sendOperation?.start { (error) -> Void in
+//            if (error != nil) {
+//                NSLog("Error sending email: \(error)")
+//            } else {
+//                NSLog("Successfully sent email!")
+//            }
+//        }
+//    }
+    
 }

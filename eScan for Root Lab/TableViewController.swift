@@ -26,7 +26,19 @@ class OrthoticsDeviceViewController: UITableViewController {
         indexPathOfExpandedView = indexPath;
 
         self.tableView.reloadData();
-        (self.parent as! ViewController?)!.orthoticDeviceSelected = indexPath.row;
+        
+        var theRow = indexPath.row;
+        if (indexPath.section > 0) {
+            theRow += 5;
+        }
+        if (indexPath.section > 1) {
+            theRow += 5;
+        }
+        if (indexPath.section > 2) {
+            theRow += 5;
+        }
+
+        (self.parent as! ViewController?)!.orthoticDeviceSelected = theRow;
     }
 
     func resetTableView() {
