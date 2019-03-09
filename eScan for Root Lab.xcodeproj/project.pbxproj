@@ -50,6 +50,7 @@
 		2D9B41FE21E85E7F0022FE2D /* StructureScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */; };
 		2DA5914A2218748900D79518 /* PolyChart.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DA591492218748900D79518 /* PolyChart.png */; };
 		2DA5914C2218B77000D79518 /* TopCoversViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5914B2218B77000D79518 /* TopCoversViewController.swift */; };
+		2DAEDD2522346275003E1591 /* labUseOnly.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAEDD2422346275003E1591 /* labUseOnly.png */; };
 		2DB95DC6222BB9BA0015186A /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB95DC5222BB9BA0015186A /* libMailCore-ios.a */; };
 		2DBCBF85221904BE004E3AC9 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBCBF84221904B2004E3AC9 /* Circle.png */; };
 		2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5599121BC6D8B005F99BA /* structure scanner image.png */; };
@@ -146,6 +147,7 @@
 		2D9B41FD21E85E7F0022FE2D /* StructureScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureScannerViewController.swift; sourceTree = "<group>"; };
 		2DA591492218748900D79518 /* PolyChart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PolyChart.png; sourceTree = "<group>"; };
 		2DA5914B2218B77000D79518 /* TopCoversViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCoversViewController.swift; sourceTree = "<group>"; };
+		2DAEDD2422346275003E1591 /* labUseOnly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = labUseOnly.png; sourceTree = "<group>"; };
 		2DB95DC5222BB9BA0015186A /* libMailCore-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMailCore-ios.a"; path = "Pods/mailcore2-ios/lib/libMailCore-ios.a"; sourceTree = "<group>"; };
 		2DBCBF84221904B2004E3AC9 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		2DC5599121BC6D8B005F99BA /* structure scanner image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structure scanner image.png"; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DAEDD2422346275003E1591 /* labUseOnly.png */,
 				2DBCBF84221904B2004E3AC9 /* Circle.png */,
 				2DA591492218748900D79518 /* PolyChart.png */,
 				2DE3081F22186839002795E7 /* Donebutton.png */,
@@ -476,6 +479,7 @@
 				2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */,
 				2DE3081A22122E43002795E7 /* unchecked.png in Resources */,
 				2DE3081622122E43002795E7 /* checked.png in Resources */,
+				2DAEDD2522346275003E1591 /* labUseOnly.png in Resources */,
 				2D44BDC221B4BFA0009A1066 /* LaunchScreen.storyboard in Resources */,
 				2DE308082210E0A5002795E7 /* Mortons Extension.png in Resources */,
 				2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */,
@@ -807,7 +811,7 @@
 					"Pods/**",
 				);
 				INFOPLIST_FILE = "eScan for Root Lab/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -850,7 +854,7 @@
 					"Pods/**",
 				);
 				INFOPLIST_FILE = "eScan for Root Lab/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

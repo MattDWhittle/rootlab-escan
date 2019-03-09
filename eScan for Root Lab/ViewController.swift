@@ -1073,6 +1073,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        makePdf2AndEmail();
 
         pages.append(openingPage)              // 0
         pages.append(orderManagement)          // 1
@@ -2494,6 +2495,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 let newPatient = Patient.init(entity: NSEntityDescription.entity(forEntityName: "Patient", in:context)!, insertInto: context);
                 newPatient.firstName = firstName;
                 newPatient.lastName = lastName;
+                newPatient.gender = patientGender.selectedRow(inComponent: 0) == 0 ? "" : patientGender.selectedRow(inComponent: 0) == 1 ? "M" : "F";
                 newPatient.age = Int16(age!) ?? 0;
                 newPatient.height = Int16(height!) ?? 0;
                 newPatient.heightInches = Int16(heightInches!) ?? 0;
@@ -4093,24 +4095,38 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
     func calculateRushOrderDescriptionFromOrder() -> String{
-        var theReturn = "";
-        if (order.rushOrder2DayTurnaround) {
-            theReturn += "2 Day Turnaround, "
+        var theReturn = calculateRushOrderDescriptionLine1FromOrder();
+        if (theReturn != "") {
+            theReturn += " ,";
         }
-        if (order.rushOrderNextDayTurnaround) {
-            theReturn += "Next Day Turnaround, "
-        }
-        if (order.rushOrderExpressShiping > 0) {
-            let theView = self.pickerView(rushOrderExpressShippingPicker, viewForRow: Int(order.rushOrderExpressShiping), forComponent: 0, reusing: nil)
-            theReturn += (theView as! UILabel).text!;
-        }
-
+        
+        theReturn += calculateRushOrderDescriptionLine2FromOrder();
+        
         if (theReturn.hasSuffix(", ")) {
             theReturn = String(theReturn.dropLast(2));
         }
         return theReturn;
     }
 
+    func calculateRushOrderDescriptionLine1FromOrder() -> String{
+        var theReturn = "";
+        if (order.rushOrder2DayTurnaround) {
+            theReturn += "2 Day Turnaround"
+        }
+        if (order.rushOrderNextDayTurnaround) {
+            theReturn += "Next Day Turnaround"
+        }
+        return theReturn;
+    }
+    func calculateRushOrderDescriptionLine2FromOrder() -> String{
+        var theReturn = "";
+        if (order.rushOrderExpressShiping > 0) {
+            let theView = self.pickerView(rushOrderExpressShippingPicker, viewForRow: Int(order.rushOrderExpressShiping), forComponent: 0, reusing: nil)
+            theReturn += (theView as! UILabel).text!;
+        }
+        return theReturn;
+    }
+    
     func calculateOrthosisMaterialOrderDescriptionFromOrder() -> String{
         var theReturn = "";
         if (order.orthosisMaterialOption != nil) {
@@ -6257,62 +6273,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let dateString = dateFormatter.string(from: date);
         let diagnosis = (order.chiefComplaintDiagnosis ?? "");
         let instructions = (order.commentsInstructions ?? "");
-
-        //WorkOrder
-        let messageBodyWithNewlines =
-            calculateRushOrderDescriptionFromOrder() +
-                "\n\n Date: " + dateString + "\n\n" +
-                calculatePractitionerFormForEmail() +
-                "\n\n " +
-                calculatePatientFormForEmail() +
-                "\n\nDiagnosis: " +
-                    diagnosis +
-                "\n\nOrthosis Type:" +
-                    calculateOrderOrthosisType() +
-                "\n\nOrthosis Material: " +
-                calculateOrthosisMaterialOrderDescriptionFromOrder() +
-                "\n\nCorrections and Modifications: " +
-                calculateCorrectionsAndModificationsDescriptionFromOrder() +
-                "\n\nShell: " +
-                calculateOrthosisSpecificationDescriptionFromOrder() +
-                "\n\nPosting: " +
-                calculatePostingDescriptionFromOrder() +
-                "\n\nTop Covers: " +
-                calculateTopCoversAndExtensionsOrderDescriptionFromOrder() +
-                "\n\n" +
-                calculateOrderDeviceSpecificLanguage() +
-                "\n\nInstructions: " +
-                instructions
-        
-        ;
-        
-        let messageBody = messageBodyWithNewlines.replacingOccurrences(of: "\n", with: "<br>")
-
-        
-//        mailViewController = MFMailComposeViewController.init()
-        
-//        if mailViewController == nil {
-//            let alert = UIAlertController.init(title: "The email could not be sent.", message: "Please make sure an email account is properly setup on this device.", preferredStyle: .alert)
-//
-//            let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-//
-//            alert.addAction(defaultAction)
-//
-//            present(alert, animated: true, completion: nil)
-//
-//            return
-//        }
-        
-//        mailViewController!.mailComposeDelegate = self
-//
-//        if UIDevice.current.userInterfaceIdiom == .pad {
-//            mailViewController!.modalPresentationStyle = .formSheet
-//        }
-        
-        
+        let messageBody = "See attached pdf";
         let zipFilename = "Model.zip"
         let screenshotFilename = "rootLabPreview.jpg"
-        
         let fullPathFilename = FileMgr.sharedInstance.full(screenshotFilename)
         
         FileMgr.sharedInstance.del(screenshotFilename)
@@ -6370,8 +6333,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         let builder = MCOMessageBuilder()
-//        builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
-        builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
+        builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
+//        builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
         builder.header.from = MCOAddress(displayName: "shasper@root-lab.com", mailbox: "shasper@root-lab.com")
         builder.header.subject = theSubject;
         builder.htmlBody = messageBody;
@@ -6425,6 +6388,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             i = i + 1;
         }
         
+        
+        let dateFormatter2 : DateFormatter = DateFormatter();
+        dateFormatter2.dateFormat = "MM-dd-yyyy HH:mm:ss";
+        let dateString2 = dateFormatter2.string(from: date);
+        
+        
+        let aPDFDocument = PDFDocument();
+        aPDFDocument.insert(RooLabPDFPage().doParent(inParent: self), at: 0)
+        let attachment = MCOAttachment()
+        attachment.mimeType =  "application/pdf"
+        attachment.filename = dateString2 + " " + order.orderPractitioner!.lastName! + ", " + order.orderPractitioner!.firstName!;
+        attachment.data =  aPDFDocument.dataRepresentation()!
+        builder.addAttachment(attachment)
+        
+        
         let rfc822Data = builder.data()
         let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
         sendOperation?.start { (error) -> Void in
@@ -6438,29 +6416,23 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             }
         }
         
-        
-        
-        
-        
         if (order.orderPractitioner!.useEmailForCC) {
-        let builder = MCOMessageBuilder()
-        builder.header.to = [MCOAddress(displayName: (order.orderPractitioner?.email)!, mailbox: (order.orderPractitioner?.email)!)]
-        builder.header.from = MCOAddress(displayName: "rootLab", mailbox: "scans@root-lab.com")
-        builder.header.subject = theSubject;
-        builder.htmlBody = messageBody;
-        
-        
-       
-        
-        let rfc822Data = builder.data()
-        let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
-        sendOperation?.start { (error) -> Void in
-            if (error != nil) {
-                NSLog("Error sending email: \(error)")
-            } else {
-                NSLog("Successfully sent email!")
+            let builder = MCOMessageBuilder()
+            builder.header.to = [MCOAddress(displayName: (order.orderPractitioner?.email)!, mailbox: (order.orderPractitioner?.email)!)]
+            builder.header.from = MCOAddress(displayName: "rootLab", mailbox: "scans@root-lab.com")
+            builder.header.subject = theSubject;
+            builder.htmlBody = messageBody;
+            builder.addAttachment(attachment)
+
+            let rfc822Data = builder.data()
+            let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
+            sendOperation?.start { (error) -> Void in
+                if (error != nil) {
+                    NSLog("Error sending email: \(error)")
+                } else {
+                    NSLog("Successfully sent email!")
+                }
             }
-        }
         }
         
         
@@ -6738,54 +6710,309 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //
 //        pdfData?.write(to: (pdfFilename ?? nil)!, atomically: true)
 //    }
-
-//    func makePdf2() {
-//        let aPDFDocument = PDFDocument();
-//        
-//        
-//        let pdfLocation = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("nameOfPDFfile.pdf")
-//        
-//        aPDFDocument.insert(TestPDFPage(), at: 0)
-//        
-//        aPDFDocument.write(toFile: "/Users/rahmat/nameOfPDFfile.pdf")
 //
-//    }
-//
-//    class TestPDFPage :PDFPage{
-//        override func draw(with box: PDFDisplayBox, to context: CGContext) {
-//            super.draw(with: box, to: context)
-//            
-////            context.concatenate(CGAffineTransform(scaleX: 1.0, y: -1.0));
-////            context.concatenate(CGAffineTransform(translationX: 0.0, y: -CGFloat(context.height)));
-//            context.concatenate(CGAffineTransform(translationX: 0.0, y: 10.0));
-//
-//            
-//            UIGraphicsPushContext(context)
-//            context.saveGState()
-//            
-//            let aPath = UIBezierPath()
-//            aPath.move(to: CGPoint(x: 0, y: 0))
-//            aPath.addLine(to: CGPoint(x: 10, y: 10))
-//            aPath.close()
-//            
-//            UIColor.red.set()
-//            aPath.stroke()
-//            aPath.fill()
-//            
-//            let paragraphStyle = NSMutableParagraphStyle()
-//            paragraphStyle.alignment = .center
-//            
-//            let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 36)!, NSAttributedString.Key.paragraphStyle: paragraphStyle]
-//            
-//            let string = "How much wood would a woodchuck\nchuck if a woodchuck would chuck wood?"
-//            string.draw(with: CGRect(x: 32, y: 32, width: 448, height: 448), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
-//
-//            
-//
-//            context.restoreGState()
-//            UIGraphicsPopContext()
+//    func makePdf2AndEmail() {
+//        let smtpSession = MCOSMTPSession()
+//        //        smtpSession.hostname = "mail.root-lab.com"
+//        smtpSession.hostname = "smtp.root-lab.com"
+//        smtpSession.username = "shasper@root-lab.com"
+//        smtpSession.password = "porsche2"
+////        smtpSession.username = "sentscans@root-lab.com"
+////        smtpSession.password = "!*rfoL$Foot"
+//        smtpSession.port = 587
+//        smtpSession.authType = MCOAuthType.saslLogin
+//        smtpSession.connectionType = MCOConnectionType.clear
+//        smtpSession.connectionLogger = {(connectionID, type, data) in
+//            if data != nil {
+//                if let string = NSString(data: data!, encoding: String.Encoding.utf8.rawValue){
+//                    NSLog("Connectionlogger: \(string)")
+//                }
+//            }
 //        }
+//
+//        let builder = MCOMessageBuilder()
+//                builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
+////        builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
+//        builder.header.from = MCOAddress(displayName: "shasper@root-lab.com", mailbox: "shasper@root-lab.com")
+//        builder.header.subject = "Test pdf";
+//        builder.htmlBody = "lala";
+//
+//
+//        let aPDFDocument = PDFDocument();
+//        aPDFDocument.insert(RooLabPDFPage(), at: 0)
+//        var attachment = MCOAttachment()
+//        attachment.mimeType =  "application/pdf"
+//        attachment.filename = "root-labPdf.pdf";
+//        attachment.data =  aPDFDocument.dataRepresentation()!
+//        builder.addAttachment(attachment)
+//
+//
+//        let rfc822Data = builder.data()
+//        let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
+//        sendOperation?.start { (error) -> Void in
+//            if (error != nil) {
+//                NSLog("Error sending email: \(error)")
+//
+//            } else {
+//                NSLog("Successfully sent email!")
+//            }
+//        }
+//
+//
+//
+//
 //    }
+    
+    func makePdf2() {
+        let aPDFDocument = PDFDocument();
+        
+        
+        let pdfLocation = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("nameOfPDFfile.pdf")
+        
+        aPDFDocument.insert(RooLabPDFPage().doParent(inParent: self), at: 0)
+        
+    }
+
+    class RooLabPDFPage :PDFPage{
+        
+        var parent : ViewController?;
+        
+        func drawLine(fromx: Int, fromy: Int, tox: Int, toy: Int) {
+            UIColor.black.set()
+            let aPath = UIBezierPath()
+            aPath.move(to: CGPoint(x: fromx, y: fromy))
+            aPath.addLine(to: CGPoint(x: tox, y: toy))
+            aPath.close()
+            aPath.stroke()
+            aPath.fill()
+        }
+        
+        func doParent(inParent: ViewController) -> RooLabPDFPage {
+            parent = inParent;
+            return self;
+        }
+        
+        override func draw(with box: PDFDisplayBox, to context: CGContext) {
+            super.draw(with: box, to: context)
+            
+            let dateFormatter : DateFormatter = DateFormatter();
+            dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a";
+            let date = Date();
+
+            
+            let vRushOrderLine1 = parent!.calculateRushOrderDescriptionLine1FromOrder()
+            let vRushOrderLine2 = parent!.calculateRushOrderDescriptionLine2FromOrder();
+            let vOrderDate = dateFormatter.string(from: date);
+            let vPractitioner = order.orderPractitioner!.lastName! + ", " + order.orderPractitioner!.firstName!;
+            let vPractitionerPhone = order.orderPractitioner!.phone;
+            
+            var theReturn = "";
+            theReturn += order.orderPractitioner!.shippingAddressFacilityName! + "\n";
+            theReturn += order.orderPractitioner!.shippingAddress1! + " ";
+            theReturn += (order.orderPractitioner!.shippingAddress2 ?? "") + " ";
+            theReturn += order.orderPractitioner!.shippingAddressCity! + ", ";
+            theReturn += order.orderPractitioner!.shippingAddressState! + ", ";
+            theReturn += order.orderPractitioner!.shippingAddressZip! + " ";
+            theReturn += order.orderPractitioner!.shippingAddressCountry!
+            ;
+            
+            let vShippingAddress = theReturn;
+            
+            
+            theReturn = "";
+            theReturn += order.orderPractitioner!.billingAddressFacilityName! + "\n";
+            theReturn += order.orderPractitioner!.billingAddress1! + " ";
+            theReturn += (order.orderPractitioner!.billingAddress2 ?? "") + " ";
+            theReturn += order.orderPractitioner!.billingAddressCity! + ", ";
+            theReturn += order.orderPractitioner!.billingAddressState! + ", ";
+            theReturn += order.orderPractitioner!.billingAddressZip! + " ";
+            theReturn += order.orderPractitioner!.billingAddressCountry!;
+            
+            let vBillingAddress = theReturn;
+            let vPatientName = order.orderPatient!.lastName! + ", " +
+                order.orderPatient!.firstName!;
+            let vGender = order.orderPatient!.gender;
+            let vAge = String(order.orderPatient!.age);
+            let vWeight = String(order.orderPatient!.weight);
+            let vHeight = String(order.orderPatient!.height) + " ft. " + String(order.orderPatient!.heightInches) + " in.";
+            let vDiagnosis = order.chiefComplaintDiagnosis;
+            let vMedialRecordNumber = order.orderPatient!.medicalRecordNumber;
+            let vShoeSize = String(order.orderPatient!.shoeSize);
+            let vShoeType = order.orderPatient!.shoeType;
+
+            let vOrthosisType = parent!.calculateOrderOrthosisType()
+            let vOrthosisMaterial = parent!.calculateOrthosisMaterialOrderDescriptionFromOrder()
+            let vCorrectionsAndModifications = parent!.calculateCorrectionsAndModificationsDescriptionFromOrder()
+            let vShellSpecifications = parent!.calculateOrthosisSpecificationDescriptionFromOrder()
+            let vPosting = parent!.calculatePostingDescriptionFromOrder()
+            let vTopCovers = parent!.calculateTopCoversAndExtensionsOrderDescriptionFromOrder()
+            let vInstructions = order.commentsInstructions;
+
+            
+            let pageBounds = self.bounds(for: box);
+            
+//            context.concatenate(CGAffineTransform(scaleX: 1.0, y: -1.0));
+//            context.concatenate(CGAffineTransform(translationX: 0.0, y: -CGFloat(context.height)));
+//            context.concatenate(CGAffineTransform(translationX: 0.0, y: 10.0));
+
+            let leftMargin = 40;
+            let topMargin = 10;
+            let rightMargin = 580;
+            let pictureWidth = 100;
+            let orderBoxTop = 280;
+
+            UIGraphicsPushContext(context)
+            context.saveGState()
+            
+            context.translateBy(x: 0.0, y: pageBounds.height)
+            context.scaleBy(x: 1.0, y: -1.0)
+            
+            let theLogoImage = UIImage(named: "Root Lab transparent back PNG.png")
+            theLogoImage?.draw(in: CGRect(x: leftMargin, y: topMargin, width: pictureWidth, height: pictureWidth / 2));
+
+            
+            drawLine(fromx: leftMargin, fromy: topMargin + 60,
+                     tox: pictureWidth + 350, toy: topMargin + 60)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop,
+                     tox: rightMargin, toy: orderBoxTop)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop + 40,
+                     tox: rightMargin, toy: orderBoxTop + 40)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop + 80,
+                     tox: rightMargin, toy: orderBoxTop + 80)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop + 160,
+                     tox: rightMargin, toy: orderBoxTop + 160)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop + 220,
+                     tox: rightMargin, toy: orderBoxTop + 220)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop + 300,
+                     tox: rightMargin, toy: orderBoxTop + 300)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop + 380,
+                     tox: rightMargin, toy: orderBoxTop + 380)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop + 460,
+                     tox: rightMargin, toy: orderBoxTop + 460)
+            drawLine(fromx: leftMargin, fromy: orderBoxTop,
+                     tox: leftMargin, toy: orderBoxTop + 460)
+            drawLine(fromx: rightMargin, fromy: orderBoxTop,
+                     tox: rightMargin, toy: orderBoxTop + 460)
+
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .left
+            
+            let attrs10 = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 9)!, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+            let attrs10Bold = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 9)!, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+            let attrsBig = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 12)!, NSAttributedString.Key.paragraphStyle: paragraphStyle]
+
+            let rootLabContactString = "Root Lab, Inc.\n16739 Placer Hills Rd Meadow Vista, CA 95722\nwww.root-lab.com"
+            rootLabContactString.draw(with: CGRect(x: leftMargin + pictureWidth + 10, y: topMargin, width: 100, height: 50), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            
+            let rootLabPhoneString = "Toll free: 877-766-8522\nPhone: (530) 878-9300\nFax: (530) 878-9310\nemail: info@root-lab.com"
+            rootLabPhoneString.draw(with: CGRect(x: leftMargin + pictureWidth + 120, y: topMargin, width: 100, height: 50), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            
+            let prescriptionOrderFormString = "Prescription\nOrder Form"
+            prescriptionOrderFormString.draw(with: CGRect(x: leftMargin + pictureWidth + 230, y: topMargin, width: 100, height: 50), options: .usesLineFragmentOrigin, attributes: attrsBig, context: nil)
+
+            let theLabUseOnlyImage = UIImage(named: "labUseOnly.png")
+            theLabUseOnlyImage?.draw(in: CGRect(x: leftMargin + pictureWidth + 340, y: topMargin, width: pictureWidth, height: pictureWidth));
+
+            vRushOrderLine1.draw(with: CGRect(x: leftMargin, y: topMargin + 70, width: 100, height: 25), options: .usesLineFragmentOrigin, attributes: attrsBig, context: nil)
+            vRushOrderLine2.draw(with: CGRect(x: leftMargin, y: topMargin + 70 + 25, width: 100, height: 25), options: .usesLineFragmentOrigin, attributes: attrsBig, context: nil)
+
+            "Date:".draw(with: CGRect(x: leftMargin, y: topMargin + 120, width: 30, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Practitioner:".draw(with: CGRect(x: leftMargin + 100, y: topMargin + 120, width: 60, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Phone:".draw(with: CGRect(x: leftMargin + 355, y: topMargin + 120, width: 30, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Billing Address:".draw(with: CGRect(x: leftMargin, y: topMargin + 150, width: 80, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Shipping Address:".draw(with: CGRect(x: leftMargin + 250, y: topMargin + 150, width: 80, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Patient:".draw(with: CGRect(x: leftMargin, y: topMargin + 200, width: 40, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Medical Record #:".draw(with: CGRect(x: leftMargin + 355, y: topMargin + 200, width: 80, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+
+            "Gender:".draw(with: CGRect(x: leftMargin, y: topMargin + 220, width: 40, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Age:".draw(with: CGRect(x: leftMargin + 70, y: topMargin + 220, width: 30, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Wt (lbs.):".draw(with: CGRect(x: leftMargin + 150, y: topMargin + 220, width: 40, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Ht:".draw(with: CGRect(x: leftMargin + 225, y: topMargin + 220, width: 20, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Shoe Size:".draw(with: CGRect(x: leftMargin + 300, y: topMargin + 220, width: 50, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Shoe Type:".draw(with: CGRect(x: leftMargin + 400, y: topMargin + 220, width: 50, height: 10), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+
+            
+            "Diagnosis:".draw(with: CGRect(x: leftMargin, y: topMargin + 240, width: 50, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+
+            
+            
+            vOrderDate.draw(with: CGRect(x: leftMargin + 35, y: topMargin + 120, width: 60, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vPractitioner.draw(with: CGRect(x: leftMargin + 165, y: topMargin + 120, width: 240, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vPractitionerPhone?.draw(with: CGRect(x: leftMargin + 390, y: topMargin + 120, width: 100, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            
+          
+            
+            vBillingAddress.draw(with: CGRect(x: leftMargin + 85, y: topMargin + 150, width: 140, height: 60), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vShippingAddress.draw(with: CGRect(x: leftMargin + 355, y: topMargin + 150, width: 140, height: 60), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vPatientName.draw(with: CGRect(x: leftMargin + 45, y: topMargin + 200, width: 300, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vMedialRecordNumber?.draw(with: CGRect(x: leftMargin + 435, y: topMargin + 200, width: 100, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+
+            vGender?.draw(with: CGRect(x: leftMargin + 45, y: topMargin + 220, width: 20, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vAge.draw(with: CGRect(x: leftMargin + 105, y: topMargin + 220, width: 40, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vWeight.draw(with: CGRect(x: leftMargin + 195, y: topMargin + 220, width: 25, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vHeight.draw(with: CGRect(x: leftMargin + 250, y: topMargin + 220, width: 45, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vShoeSize.draw(with: CGRect(x: leftMargin + 355, y: topMargin + 220, width: 40, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vShoeType?.draw(with: CGRect(x: leftMargin + 455, y: topMargin + 220, width: 100, height: 10), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+
+
+            vDiagnosis?.draw(with: CGRect(x: leftMargin + 55, y: topMargin + 240, width: 400, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            
+            
+            
+            "Orthosis Type".draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 5,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Orthosis Material".draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 45,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Corrections and Modifications".draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 85,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Shell Specifications".draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 165,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Posting".draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 225,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Top Covers".draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 305,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+            "Instructions".draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 385,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10Bold, context: nil)
+
+
+            
+            
+            vOrthosisType.draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 25,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vOrthosisMaterial.draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 65,
+                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vCorrectionsAndModifications.draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 105,
+                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vShellSpecifications.draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 185,
+                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vPosting.draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 245,
+                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vTopCovers.draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 325,
+                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            vInstructions?.draw(with: CGRect(
+                x: leftMargin + 5, y: orderBoxTop + 405,
+                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+            
+
+            
+            context.restoreGState()
+            UIGraphicsPopContext()
+        }
+    }
 
     
 //
