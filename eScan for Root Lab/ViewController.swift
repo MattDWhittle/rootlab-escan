@@ -6721,25 +6721,25 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             
             vOrthosisType.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 25,
-                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+                width: 530, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
             vOrthosisMaterial.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 65,
-                width: 550, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+                width: 530, height: 15), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
             vCorrectionsAndModifications.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 105,
-                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+                width: 530, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
             vShellSpecifications.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 185,
-                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+                width: 530, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
             vPosting.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 245,
-                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+                width: 530, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
             vTopCovers.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 325,
-                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+                width: 530, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
             vInstructions?.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 405,
-                width: 550, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
+                width: 530, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
             
 
             
