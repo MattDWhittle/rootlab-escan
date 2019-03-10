@@ -3746,155 +3746,87 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         postingRearfootPostTypePicker.reloadAllComponents();
     }
 
+    func calculateALeftAndRightInt(leftInt : String?, rightInt: String?, string: String) -> String {
+        var theReturn = "";
+        let leftNotNilBlankOrZero = isNotNilBlankOrZero(string: leftInt);
+        let rightNotNilBlankOrZero = isNotNilBlankOrZero(string: rightInt);
+        if (leftNotNilBlankOrZero || rightNotNilBlankOrZero) {
+            theReturn += string;
+            if (leftInt == rightInt) {
+                theReturn += " " + leftInt! + " R/L, "
+            } else if (leftNotNilBlankOrZero && rightNotNilBlankOrZero) {
+                theReturn += " " + leftInt! + " L, ";
+                theReturn += rightInt! + " R, ";
+            } else if (leftNotNilBlankOrZero) {
+                theReturn += " " + leftInt! + " L, "
+            } else {
+                theReturn += " " + rightInt! + " R, "
+            }
+        }
+        return theReturn;
+    }
+    
+    func isNotNilBlankOrZero(string: String?) -> Bool {
+        return string != nil && string != "" && string != "0"
+    }
+    
+    func calculateALeftAndRight(leftBool : Bool, rightBool: Bool, string: String) -> String {
+        var theReturn = "";
+        if (leftBool || rightBool) {
+            theReturn += string;
+            if (leftBool && rightBool) {
+                theReturn += " R/L, "
+            } else if (leftBool) {
+                theReturn += " L, "
+            } else {
+                theReturn += " R, "
+            }
+        }
+        return theReturn;
+    }
     
     func calculateCorrectionsAndModificationsDescriptionFromOrder() -> String {
         var theReturn = "";
-        if (order.correctionsAndModificationsCastOrientationInvertedLeft != "") {
-            theReturn += (order.correctionsAndModificationsCastOrientationInvertedLeft ?? "") + " Inverted Left, "
-        }
-        if (order.correctionsAndModificationsCastOrientationInvertedRight != "") {
-            theReturn += (order.correctionsAndModificationsCastOrientationInvertedRight ?? "") + " Inverted Right, "
-        }
-        if (order.correctionsAndModificationsCastOrientationEvertedLeft != "") {
-            theReturn += (order.correctionsAndModificationsCastOrientationEvertedLeft ?? "") + " Everted Left, "
-        }
-        if (order.correctionsAndModificationsCastOrientationEvertedRight != "") {
-            theReturn += (order.correctionsAndModificationsCastOrientationEvertedRight ?? "") + " Everted Right, "
-        }
-        if (order.correctionsAndModificationsPlantarFaciaAccommodationLeft != "") {
-            theReturn += (order.correctionsAndModificationsPlantarFaciaAccommodationLeft ?? "") + "Plantar Facia Accommodation Left, "
-        }
-        if (order.correctionsAndModificationsPlantarFaciaAccommodationRight != "") {
-            theReturn += (order.correctionsAndModificationsPlantarFaciaAccommodationRight ?? "") + "Plantar Facia Accommodation Right, "
-        }
-        if (order.correctionsAndModificationsStyloidAccommodationLeft != "") {
-            theReturn += (order.correctionsAndModificationsStyloidAccommodationLeft ?? "") + "Styloid Accommodation Left, "
-        }
-        if (order.correctionsAndModificationsStyloidAccommodationRight != "") {
-            theReturn += (order.correctionsAndModificationsStyloidAccommodationRight ?? "") + "Styloid Accommodation Right, "
-        }
-        if (order.correctionsAndModificationsNavicularAccommodationLeft != "") {
-            theReturn += (order.correctionsAndModificationsNavicularAccommodationLeft ?? "") + "Navicular Accommodation Left, "
-        }
-        if (order.correctionsAndModificationsNavicularAccommodationRight != "") {
-            theReturn += (order.correctionsAndModificationsNavicularAccommodationRight ?? "") + "Navicular Accommodation Right, "
-        }
-        if (order.correctionsAndModificationsNavicularFillWithPoronLeft || order.correctionsAndModificationsNavicularFillWithPoronRight) {
-            theReturn += "Fill Navicular Accommodation with Poron"
-            if (order.correctionsAndModificationsNavicularFillWithPoronLeft && order.correctionsAndModificationsNavicularFillWithPoronRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsNavicularFillWithPoronLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.correctionsAndModificationsAccommodatePerPhotoLeft != "") {
-            theReturn += (order.correctionsAndModificationsAccommodatePerPhotoLeft ?? "") + "Accommodate Per Photo Left, "
-        }
-        if (order.correctionsAndModificationsAccommodatePerPhotoRight != "") {
-            theReturn += (order.correctionsAndModificationsAccommodatePerPhotoRight ?? "") + "Accommodate Per Photo Right, "
-        }
-        if (order.correctionsAndModificationsFillWithPoronLeft || order.correctionsAndModificationsFillWithPoronRight) {
-            theReturn += "Fill with Poron per Photo"
-            if (order.correctionsAndModificationsFillWithPoronLeft && order.correctionsAndModificationsFillWithPoronRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsFillWithPoronLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.correctionsAndModificationsAddLateralHeelExpansionLeft != "") {
-            theReturn += (order.correctionsAndModificationsAddLateralHeelExpansionLeft ?? "") + "Add Lateral Heel Expansion Left, "
-        }
-        if (order.correctionsAndModificationsAddLateralHeelExpansionRight != "") {
-            theReturn += (order.correctionsAndModificationsAddLateralHeelExpansionRight ?? "") + "Add Lateral Heel Expansion Right, "
-        }
-        if (order.correctionsAndModificationsMedialHeelSkiveLeft != "") {
-            theReturn += (order.correctionsAndModificationsMedialHeelSkiveLeft ?? "") + "Medial Heel Skive Left, "
-        }
-        if (order.correctionsAndModificationsMedialHeelSkiveRight != "") {
-            theReturn += (order.correctionsAndModificationsMedialHeelSkiveRight ?? "") + "Medial Heel Skive Right, "
-        }
-        if (order.correctionsAndModificationsintrinsicMetatarsalPadLeft != "") {
-            theReturn += (order.correctionsAndModificationsintrinsicMetatarsalPadLeft ?? "") + "Intrinsic Metatarsal Pad Left, "
-        }
-        if (order.correctionsAndModificationsintrinsicMetatarsalPadRight != "") {
-            theReturn += (order.correctionsAndModificationsintrinsicMetatarsalPadRight ?? "") + "Intrinsic Metatarsal Pad Right, "
-        }
-        if (order.correctionsAndModificationsNoFillerLeft || order.correctionsAndModificationsNoFillerRight) {
-            theReturn += "No Filler"
-            if (order.correctionsAndModificationsNoFillerLeft && order.correctionsAndModificationsNoFillerRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsNoFillerLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.correctionsAndModificationsMedialArchFillMinimalLeft || order.correctionsAndModificationsMedialArchFillMinimalRight) {
-            theReturn += "Medial Arch Fill Minimal"
-            if (order.correctionsAndModificationsMedialArchFillMinimalLeft && order.correctionsAndModificationsMedialArchFillMinimalRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsMedialArchFillMinimalLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.correctionsAndModificationsMedialArchFillStandardLeft || order.correctionsAndModificationsMedialArchFillStandardRight) {
-            theReturn += "Medial Arch Fill Standard"
-            if (order.correctionsAndModificationsMedialArchFillStandardLeft && order.correctionsAndModificationsMedialArchFillStandardRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsMedialArchFillStandardLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.correctionsAndModificationsMedialArchFillDecreasedLeft || order.correctionsAndModificationsMedialArchFillDecreasedRight) {
-            theReturn += "Medial Arch Fill Decreased"
-            if (order.correctionsAndModificationsMedialArchFillDecreasedLeft && order.correctionsAndModificationsMedialArchFillDecreasedRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsMedialArchFillDecreasedLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.correctionsAndModificationsMedialArchFillIncreasedLeft || order.correctionsAndModificationsMedialArchFillIncreasedRight) {
-            theReturn += "Medial Arch Fill Increased"
-            if (order.correctionsAndModificationsMedialArchFillIncreasedLeft && order.correctionsAndModificationsMedialArchFillIncreasedRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsMedialArchFillIncreasedLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
         
-        if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft || order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight) {
-            theReturn += "Forefoot Correction Type Extrinsic"
-            if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft && order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft || order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight) {
-            theReturn += "Forefoot Correction Type Intrinsic"
-            if (order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft && order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight) {
-                theReturn += ", "
-            } else if (order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsCastOrientationInvertedLeft, rightInt: order.correctionsAndModificationsCastOrientationInvertedRight, string: "Inverted");
         
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsCastOrientationEvertedLeft, rightInt: order.correctionsAndModificationsCastOrientationEvertedRight, string: "Everted");
+
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsPlantarFaciaAccommodationLeft, rightInt: order.correctionsAndModificationsPlantarFaciaAccommodationRight, string: "Plantar Facia Accommodation");
+
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsStyloidAccommodationLeft, rightInt: order.correctionsAndModificationsStyloidAccommodationRight, string: "Styloid Accommodation");
+
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsNavicularAccommodationLeft, rightInt: order.correctionsAndModificationsNavicularAccommodationRight, string: "Navicular Accommodation");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsNavicularFillWithPoronLeft, rightBool: order.correctionsAndModificationsNavicularFillWithPoronRight, string: "Fill Navicular Accommodation with Poron");
+
+        
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsAccommodatePerPhotoLeft, rightInt: order.correctionsAndModificationsAccommodatePerPhotoRight, string: "Accommodate Per Photo");
+        
+
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsFillWithPoronLeft, rightBool: order.correctionsAndModificationsFillWithPoronRight, string: "Fill with Poron per Photo");
+
+        
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsAddLateralHeelExpansionLeft, rightInt: order.correctionsAndModificationsAddLateralHeelExpansionRight, string: "Add Lateral Heel Expansion");
+
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsMedialHeelSkiveLeft, rightInt: order.correctionsAndModificationsMedialHeelSkiveRight, string: "Medial Heel Skive");
+
+        theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsintrinsicMetatarsalPadLeft, rightInt: order.correctionsAndModificationsintrinsicMetatarsalPadRight, string: "Intrinsic Metatarsal Pad");
+        
+        
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsNoFillerLeft, rightBool: order.correctionsAndModificationsNoFillerRight, string: "No Filler");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsMedialArchFillMinimalLeft, rightBool: order.correctionsAndModificationsMedialArchFillMinimalRight, string: "Medial Arch Fill Minimal");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsMedialArchFillStandardLeft, rightBool: order.correctionsAndModificationsMedialArchFillStandardRight, string: "Medial Arch Fill Standard");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsMedialArchFillDecreasedLeft, rightBool: order.correctionsAndModificationsMedialArchFillDecreasedRight, string: "Medial Arch Fill Decreased");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsMedialArchFillIncreasedLeft, rightBool: order.correctionsAndModificationsMedialArchFillIncreasedRight, string: "Medial Arch Fill Increased");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft, rightBool: order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight, string: "Forefoot Correction Type Extrinsic");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft, rightBool: order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight, string: "Forefoot Correction Type Intrinsic");
     
 
         if (theReturn.hasSuffix(", ")) {
@@ -3905,80 +3837,37 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func calculatePostingDescriptionFromOrder() -> String{
         var theReturn = "";
-        if (order.postingRearfootPostingElevator4mmLeft || order.postingRearfootPostingElevator4mmRight) {
-            theReturn += "Rearfoot Posting Elevator 4mm"
-            if (order.postingRearfootPostingElevator4mmLeft && order.postingRearfootPostingElevator4mmRight) {
-                theReturn += ", "
-            } else if (order.postingRearfootPostingElevator4mmLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.postingRearfootPostingElevator8mmLeft || order.postingRearfootPostingElevator8mmRight) {
-            theReturn += "Rearfoot Posting Elevator 8mm"
-            if (order.postingRearfootPostingElevator8mmLeft && order.postingRearfootPostingElevator8mmRight) {
-                theReturn += ", "
-            } else if (order.postingRearfootPostingElevator8mmLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.postingRearfootPostMotion0DegreesMotionLeft) {
-            theReturn += "Rearfoot Posting Motion 0 Degrees Left, "
-        }
-        if (order.postingRearfootPostMotion0DegreesMotionRight) {
-            theReturn += "Rearfoot Posting Motion 0 Degrees Right, "
-        }
-        if (order.postingRearfootPostMotion4DegreesMotionLeft) {
-            theReturn += "Rearfoot Posting Motion 4 Degrees Left, "
-        }
-        if (order.postingRearfootPostMotion4DegreesMotionRight) {
-            theReturn += "Rearfoot Posting Motion 4 Degrees Right, "
-        }
-        if (order.postingRearfootPostOptionsLongPostFlangeLeft) {
-            theReturn += "Rearfoot Post Options Long Post Flange Left, "
-        }
-        if (order.postingRearfootPostOptionsLongPostFlangeRight) {
-            theReturn += "Rearfoot Post Options Long Post Flange Right, "
-        }
-        if (order.postingRearfootPostOptionsShortPostFlangeLeft) {
-            theReturn += "Rearfoot Post Options Short Post Flange Left, "
-        }
-        if (order.postingRearfootPostOptionsShortPostFlangeRight) {
-            theReturn += "Rearfoot Post Options Short Post Flange Right, "
-        }
-        if (order.postingRearfootPostOptionsLateralPostFlangeLeft) {
-            theReturn += "Rearfoot Post Options Lateral Post Flange Left, "
-        }
-        if (order.postingRearfootPostOptionsLateralPostFlangeRight) {
-            theReturn += "Rearfoot Post Options Lateral Post Flange Right, "
-        }
-        if (order.postingRearfootPostOptionsMedialPostFlangeLeft) {
-            theReturn += "Rearfoot Post Options Medial Post Flange Left, "
-        }
-        if (order.postingRearfootPostOptionsMedialPostFlangeRight) {
-            theReturn += "Rearfoot Post Options Medial Post Flange Right, "
-        }
-        if (order.postingNonCorrectiveForefootPostFullWidthLeft) {
-            theReturn += "Non Corrective Forefoot Post Full Width Left, "
-        }
-        if (order.postingNonCorrectiveForefootPostFullWidthRight) {
-            theReturn += "Non Corrective Forefoot Post Full Width Right, "
-        }
-        if (order.postingNonCorrectiveForefootPostMedialCornerLeft) {
-            theReturn += "Non Corrective Forefoot Post Medial Corner Left, "
-        }
-        if (order.postingNonCorrectiveForefootPostMedialCornerRight) {
-            theReturn += "Non Corrective Forefoot Post Medial Corner Right, "
-        }
-        if (order.postingNonCorrectiveForefootPostLateralCornerWidthLeft) {
-            theReturn += "Non Corrective Forefoot Post Lateral Corner Left, "
-        }
-        if (order.postingNonCorrectiveForefootPostLateralCornerRight) {
-            theReturn += "Non Corrective Forefoot Post Lateral Corner Right, "
-        }
+        
+        theReturn += postingRearfootPostTypePickerData[Int(order.postingRearfootPostMaterial)];
+
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.postingHeelLiftLeft), rightInt: String(order.postingHeelLiftRight), string: "Heel Lift");
+        
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.postingRearfootPostingElevatorOtherMmLeft), rightInt: String(order.postingRearfootPostingElevatorOtherMmLeft), string: "Other mm Rearfoot Posting Elevator");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostingElevator4mmLeft, rightBool: order.postingRearfootPostingElevator4mmRight, string: "Rearfoot Posting Elevator 4mm");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostingElevator8mmLeft, rightBool: order.postingRearfootPostingElevator8mmRight, string: "Rearfoot Posting Elevator 8mm");
+        
+        
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.postingRearfootPostMotionOtherMotionDegreesLeft), rightInt: String(order.postingRearfootPostMotionOtherMotionDegreesRight), string: "Other Degrees Motion");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostMotion0DegreesMotionLeft, rightBool: order.postingRearfootPostMotion0DegreesMotionRight, string: "Rearfoot Posting Motion 0 Degrees");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostMotion4DegreesMotionLeft, rightBool: order.postingRearfootPostMotion4DegreesMotionRight, string: "Rearfoot Posting Motion 4 Degrees");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsLongPostFlangeLeft, rightBool: order.postingRearfootPostOptionsLongPostFlangeRight, string: "Rearfoot Post Options Long Post Flange");
+
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsShortPostFlangeLeft, rightBool: order.postingRearfootPostOptionsShortPostFlangeRight, string: "Rearfoot Post Options Short Post Flange");
+
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsLateralPostFlangeLeft, rightBool: order.postingRearfootPostOptionsLateralPostFlangeRight, string: "Rearfoot Post Options Lateral Post Flange");
+
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsMedialPostFlangeLeft, rightBool: order.postingRearfootPostOptionsMedialPostFlangeRight, string: "Rearfoot Post Options Medial Post Flange");
+
+        theReturn += calculateALeftAndRight(leftBool: order.postingNonCorrectiveForefootPostFullWidthLeft, rightBool: order.postingNonCorrectiveForefootPostFullWidthRight, string: "Non Corrective Forefoot Post Full Width");
+
+        theReturn += calculateALeftAndRight(leftBool: order.postingNonCorrectiveForefootPostMedialCornerLeft, rightBool: order.postingNonCorrectiveForefootPostMedialCornerRight, string: "Non Corrective Forefoot Post Medial Corner");
+
+        theReturn += calculateALeftAndRight(leftBool: order.postingNonCorrectiveForefootPostLateralCornerWidthLeft, rightBool: order.postingNonCorrectiveForefootPostLateralCornerRight, string: "Non Corrective Forefoot Post Lateral Corner");
 
         if (theReturn.hasSuffix(", ")) {
             theReturn = String(theReturn.dropLast(2));
@@ -3989,67 +3878,18 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
     func calculateOrthosisSpecificationDescriptionFromOrder() -> String{
         var theReturn = "";
-        if (order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft || order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight) {
-            theReturn += "Lateral flange"
-            if (order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft && order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight) {
-                theReturn += ", "
-            } else if (order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft || order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight) {
-            theReturn += "Wide arch profile"
-            if (order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft && order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight) {
-                theReturn += ", "
-            } else if (order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft || order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeRight) {
-            theReturn += "Fit to enclosed shoe, "
-            if (order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft && order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeRight) {
-                theReturn += ", "
-            } else if (order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft || order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight) {
-            theReturn += "Thin material at heel contact, "
-            if (order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft && order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight) {
-                theReturn += ", "
-            } else if (order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft || order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight) {
-            theReturn += "Cut out proximinal to fifth met head, "
-            if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft && order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight) {
-                theReturn += ", "
-            } else if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-        if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft || order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight) {
-            theReturn += "Cut out proximinal to first met head, "
-            if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft && order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight) {
-                theReturn += ", "
-            } else if (order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-
+        
+        theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight, string: "Lateral flange");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight, string: "Wide arch profile");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeRight, string: "Fit to enclosed shoe");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight, string: "Thin material at heel contact");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight, string: "Cut out proximinal to fifth met head");
+        
+        theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight, string: "Cut out proximinal to first met head");
         
         theReturn += anteriorWidthPickerData[orthoticSpecificationsAnteriorWidthLeftPicker.selectedRow(inComponent: 0)];
 
@@ -4062,31 +3902,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             theReturn += " R, ";
         }
         
-        if (orthosisSpecificationsOtherMedmmLeft.text != "" &&
-            orthosisSpecificationsOtherLatmmLeft.text != "0") {
-            theReturn += "Med(mm) ";
-            theReturn += orthosisSpecificationsOtherMedmmLeft.text!;
-            if (orthosisSpecificationsOtherMedmmRight.text == orthosisSpecificationsOtherMedmmLeft.text) {
-                theReturn += ", ";
-            } else {
-                theReturn += " L, ";
-                theReturn += orthosisSpecificationsOtherMedmmRight.text!;
-                theReturn += " R, ";
-            }
-        }
         
-        if (orthosisSpecificationsOtherLatmmLeft.text != "" &&
-            orthosisSpecificationsOtherLatmmLeft.text != "0") {
-            theReturn += "Lat(mm) ";
-            theReturn += orthosisSpecificationsOtherLatmmLeft.text!;
-            if (orthosisSpecificationsOtherLatmmRight.text == orthosisSpecificationsOtherLatmmLeft.text) {
-                theReturn += ", ";
-            } else {
-                theReturn += " L, ";
-                theReturn += orthosisSpecificationsOtherLatmmRight.text!;
-                theReturn += " R, ";
-            }
-        }
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsOtherMedmmLeft), rightInt: String(order.orthosisSpecificationsOtherMedmmRight), string: "Med(mm)");
+        
+        
+        
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsOtherLatmmLeft), rightInt: String(order.orthosisSpecificationsOtherLatmmRight), string: "Lat(mm)");
+        
         
         if (theReturn.hasSuffix(", ")) {
             theReturn = String(theReturn.dropLast(2));
@@ -4349,93 +4171,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.topCoversAndExtensionsBottomCover116Eva) {
             theReturn += "Bottom Cover 1/16\" EVA, ";
         }
-        if (order.accommodationsMortonsExtensionRight || order.accommodationsMortonsExtensionLeft) {
-            theReturn += "Mortons Extension"
-            if (order.accommodationsMortonsExtensionLeft && order.accommodationsMortonsExtensionRight) {
-                theReturn += ", "
-            } else if (order.accommodationsMortonsExtensionLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsMortonsExtensionLeft, rightBool: order.accommodationsMortonsExtensionRight, string: "Mortons Extension");
+
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsReverseMortonsExtensionLeft, rightBool: order.accommodationsReverseMortonsExtensionRight, string: "Reverse Mortons Extension");
         
-        if (order.accommodationsReverseMortonsExtensionRight || order.accommodationsReverseMortonsExtensionLeft) {
-            theReturn += "Reverse Mortons Extension"
-            if (order.accommodationsReverseMortonsExtensionLeft && order.accommodationsReverseMortonsExtensionRight) {
-                theReturn += ", "
-            } else if (order.accommodationsReverseMortonsExtensionLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
-    
-        if (order.accommodationsMetatarsalPadRight || order.accommodationsMetatarsalPadLeft) {
-            theReturn += "Metatarsal Pad"
-            if (order.accommodationsMetatarsalPadLeft && order.accommodationsMetatarsalPadRight) {
-                theReturn += ", "
-            } else if (order.accommodationsMetatarsalPadLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsMetatarsalPadLeft, rightBool: order.accommodationsMetatarsalPadRight, string: "Metatarsal Pad");
         
-        if (order.accommodationsMetatarsalBarRight || order.accommodationsMetatarsalBarLeft) {
-            theReturn += "Metatarsal Bar"
-            if (order.accommodationsMetatarsalBarLeft && order.accommodationsMetatarsalBarRight) {
-                theReturn += ", "
-            } else if (order.accommodationsMetatarsalBarLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsMetatarsalBarLeft, rightBool: order.accommodationsMetatarsalBarRight, string: "Metatarsal Bar");
         
-        if (order.accommodationsHeelPadRight || order.accommodationsHeelPadLEft) {
-            theReturn += "Heel Pad"
-            if (order.accommodationsHeelPadLEft && order.accommodationsHeelPadRight) {
-                theReturn += ", "
-            } else if (order.accommodationsHeelPadLEft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsHeelPadLEft, rightBool: order.accommodationsHeelPadRight, string: "Heel Pad");
         
-        if (order.accommodationsHorseshoePadRight || order.accommodationsHorseshoePadLeft) {
-            theReturn += "Horseshoe Pad"
-            if (order.accommodationsHorseshoePadLeft && order.accommodationsHorseshoePadRight) {
-                theReturn += ", "
-            } else if (order.accommodationsHorseshoePadLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsHorseshoePadLeft, rightBool: order.accommodationsHorseshoePadRight, string: "Horseshoe Pad");
         
-        if (order.accommodationsDancersPadRight || order.accommodationsDancersPadLeft) {
-            theReturn += "Dancers Pad"
-            if (order.accommodationsDancersPadLeft && order.accommodationsDancersPadRight) {
-                theReturn += ", "
-            } else if (order.accommodationsDancersPadLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsDancersPadLeft, rightBool: order.accommodationsDancersPadRight, string: "Dancers Pad");
         
-        if (order.accommodationsKineticWedgeRight || order.accommodationsKineticWedgeLeft) {
-            theReturn += "Kinetic Wedge"
-            if (order.accommodationsKineticWedgeLeft && order.accommodationsKineticWedgeRight) {
-                theReturn += ", "
-            } else if (order.accommodationsKineticWedgeLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsKineticWedgeLeft, rightBool: order.accommodationsKineticWedgeRight, string: "Kinetic Wedge");
         
         if (order.accommodationsMetHeadAccommodationsLeft > 0) {
             theReturn += "Met head accommodations Left:  "
@@ -4513,27 +4263,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         
-        if (order.accommodationsEvaArchFillRight || order.accommodationsEvaArchFillLeft) {
-            theReturn += "EVA Bottom Fill"
-            if (order.accommodationsEvaArchFillLeft && order.accommodationsEvaArchFillRight) {
-                theReturn += ", "
-            } else if (order.accommodationsEvaArchFillLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsEvaArchFillLeft, rightBool: order.accommodationsEvaArchFillRight, string: "EVA Bottom Fill");
         
-        if (order.accommodationsMedialArchReinforceRight || order.accommodationsMedialArchReinforceLeft) {
-            theReturn += "Medial Arch Reinforce"
-            if (order.accommodationsMedialArchReinforceLeft && order.accommodationsMedialArchReinforceRight) {
-                theReturn += ", "
-            } else if (order.accommodationsMedialArchReinforceLeft) {
-                theReturn += " L, "
-            } else {
-                theReturn += " R, "
-            }
-        }
+        theReturn += calculateALeftAndRight(leftBool: order.accommodationsMedialArchReinforceLeft, rightBool: order.accommodationsMedialArchReinforceRight, string: "Medial Arch Reinforce");
+        
+        
         if (order.accommodationsEva) {
             theReturn += "EVA, ";
         }
@@ -6334,8 +6068,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         let builder = MCOMessageBuilder()
         builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
-//        builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
-        builder.header.from = MCOAddress(displayName: "shasper@root-lab.com", mailbox: "shasper@root-lab.com")
+        builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
+//        builder.header.from = MCOAddress(displayName: "shasper@root-lab.com", mailbox: "shasper@root-lab.com")
         builder.header.subject = theSubject;
         builder.htmlBody = messageBody;
         
@@ -6347,7 +6081,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 
                 if zipfile != nil {
                     
-                    var attachment = MCOAttachment()
+                    let attachment = MCOAttachment()
                     attachment.mimeType =  "application/zip"
                     attachment.filename = zipFilename;
                     attachment.data = zipfile!
