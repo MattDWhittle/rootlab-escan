@@ -73,10 +73,10 @@
 		2DE3081922122E43002795E7 /* buttonLong.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081222122E43002795E7 /* buttonLong.png */; };
 		2DE3081A22122E43002795E7 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081322122E43002795E7 /* unchecked.png */; };
 		2DE3081C22122E43002795E7 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081522122E43002795E7 /* Button.png */; };
-		2DE3081E22122E58002795E7 /* ScanNowbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081D22122E57002795E7 /* ScanNowbutton.png */; };
 		2DE3082022186839002795E7 /* Donebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081F22186839002795E7 /* Donebutton.png */; };
 		A011D51F143C6639926B378D /* Pods_eScan_for_Root_Lab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD4258BEDC0FDCDCC8D2EE2 /* Pods_eScan_for_Root_Lab.framework */; };
 		DC83A54C980407467206585B /* Pods_eScan_for_Root_LabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450EE31D75D57B620C32F72D /* Pods_eScan_for_Root_LabTests.framework */; };
+		DD18CB8E2239675C0094735C /* ScanNowbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = DD18CB8D2239675C0094735C /* ScanNowbutton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,7 +170,6 @@
 		2DE3081222122E43002795E7 /* buttonLong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonLong.png; sourceTree = "<group>"; };
 		2DE3081322122E43002795E7 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		2DE3081522122E43002795E7 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
-		2DE3081D22122E57002795E7 /* ScanNowbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ScanNowbutton.png; path = "../../../rootlab images/ScanNowbutton.png"; sourceTree = "<group>"; };
 		2DE3081F22186839002795E7 /* Donebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donebutton.png; sourceTree = "<group>"; };
 		450EE31D75D57B620C32F72D /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		534A46261B8747864B8BD9AA /* Pods-eScan for Root LabTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root LabTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root LabTests/Pods-eScan for Root LabTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +177,7 @@
 		64B2D0386FFEDF6424EF0966 /* Pods-eScan for Root LabUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root LabUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root LabUITests/Pods-eScan for Root LabUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7E43037612DE032A5AB0EF30 /* Pods-eScan for Root Lab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root Lab.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root Lab/Pods-eScan for Root Lab.debug.xcconfig"; sourceTree = "<group>"; };
 		9AD4258BEDC0FDCDCC8D2EE2 /* Pods_eScan_for_Root_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD18CB8D2239675C0094735C /* ScanNowbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ScanNowbutton.png; path = ../../../../../../Volumes/AOMS/ScanNowbutton.png; sourceTree = "<group>"; };
 		DDF11C6C853AAA446F0C7426 /* Pods-eScan for Root LabUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root LabUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root LabUITests/Pods-eScan for Root LabUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F8F048265EA71687C36CBA56 /* Pods-eScan for Root LabTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root LabTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root LabTests/Pods-eScan for Root LabTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,11 +309,11 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				DD18CB8D2239675C0094735C /* ScanNowbutton.png */,
 				2DAEDD2422346275003E1591 /* labUseOnly.png */,
 				2DBCBF84221904B2004E3AC9 /* Circle.png */,
 				2DA591492218748900D79518 /* PolyChart.png */,
 				2DE3081F22186839002795E7 /* Donebutton.png */,
-				2DE3081D22122E57002795E7 /* ScanNowbutton.png */,
 				2DE3081522122E43002795E7 /* Button.png */,
 				2DE3081222122E43002795E7 /* buttonLong.png */,
 				2DE3081122122E42002795E7 /* buttonMD.png */,
@@ -485,6 +485,7 @@
 				2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */,
 				2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */,
 				2D44BDBF21B4BFA0009A1066 /* Assets.xcassets in Resources */,
+				DD18CB8E2239675C0094735C /* ScanNowbutton.png in Resources */,
 				2DE307FE2210E055002795E7 /* Heel Pad.png in Resources */,
 				2DE308022210E084002795E7 /* Dancers Pad.png in Resources */,
 				2D6663A521C8C90D007B5316 /* left-foot-md.png in Resources */,
@@ -500,7 +501,6 @@
 				2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */,
 				2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */,
 				2DE3081C22122E43002795E7 /* Button.png in Resources */,
-				2DE3081E22122E58002795E7 /* ScanNowbutton.png in Resources */,
 				2DE3081722122E43002795E7 /* Camera.png in Resources */,
 				2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */,
 				2DE307F22210DF56002795E7 /* Neuroma Pad.png in Resources */,

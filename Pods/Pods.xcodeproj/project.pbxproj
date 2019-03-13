@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -51,16 +51,16 @@
 		80E02782F3EBD58FDA28625F99E04A3A /* Pods-eScan for Root LabTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eScan for Root LabTests-resources.sh"; sourceTree = "<group>"; };
 		8E82171E8DB10BB9D76D8E2880A3A419 /* Pods-eScan for Root LabUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-eScan for Root LabUITests.modulemap"; sourceTree = "<group>"; };
 		924C8528EB5882EABC0266CFA88D1B47 /* Pods-eScan for Root LabTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eScan for Root LabTests.release.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A07072E3D23DA38B7ECB245BBC4956B /* Pods-eScan for Root LabUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-eScan for Root LabUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9E9C8B0341F0AB5ED7EADD3C10FBE62A /* Pods-eScan for Root LabTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eScan for Root LabTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A16E4E74607A2C37D5CBFD28ED0BCEC3 /* Pods-eScan for Root LabTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-eScan for Root LabTests.modulemap"; sourceTree = "<group>"; };
-		A4001F63C6527EEA6635188ED6AAA89F /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_eScan_for_Root_LabUITests.framework; path = "Pods-eScan for Root LabUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4001F63C6527EEA6635188ED6AAA89F /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5836DE1B1D8891E8405AB80633DBE08 /* Pods-eScan for Root Lab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eScan for Root Lab.debug.xcconfig"; sourceTree = "<group>"; };
 		B75CB3991B30B3B4CAE0FC50BCAA46FA /* Pods-eScan for Root LabTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eScan for Root LabTests-frameworks.sh"; sourceTree = "<group>"; };
 		C28A145249EB010FA5E7F91D8C3F2707 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3064181D2AE034D23FF04A8EFAABA74 /* Pods-eScan for Root LabTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-eScan for Root LabTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		CE94525003DEB7E1F0574B902C526F36 /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_eScan_for_Root_LabTests.framework; path = "Pods-eScan for Root LabTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE94525003DEB7E1F0574B902C526F36 /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC78A8C4B0EA6ED47F76FA5C2DCA9B7 /* Pods-eScan for Root LabUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eScan for Root LabUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CF2756B523FD9D9640BA7CA15BF55BB4 /* Pods-eScan for Root Lab-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eScan for Root Lab-frameworks.sh"; sourceTree = "<group>"; };
 		CF43ADA9A2F42AD452C20C97C4333738 /* Pods-eScan for Root Lab-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-eScan for Root Lab-umbrella.h"; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		D50D8398B2E5A173C7DFE6FE70AA71CC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DADF4CFB7FBF70BD29C3E03B33045A5C /* Pods-eScan for Root LabUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-eScan for Root LabUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E1A993E55522814A446D1F8C93FC08B4 /* Pods_eScan_for_Root_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_eScan_for_Root_Lab.framework; path = "Pods-eScan for Root Lab.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1A993E55522814A446D1F8C93FC08B4 /* Pods_eScan_for_Root_Lab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_Lab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34E67D2971DB0DB7E3246E959F58A27 /* Pods-eScan for Root LabTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-eScan for Root LabTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F34E3488EB43C831489387ECD679559D /* Pods-eScan for Root Lab-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-eScan for Root Lab-resources.sh"; sourceTree = "<group>"; };
 		F74026AFCAFB181177ECBA6C42D41EFA /* Pods-eScan for Root LabUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-eScan for Root LabUITests-umbrella.h"; sourceTree = "<group>"; };
@@ -190,7 +190,6 @@
 			children = (
 				8FD44F8F31E37749353A02349B19B32C /* Frameworks */,
 			);
-			name = "mailcore2-ios";
 			path = "mailcore2-ios";
 			sourceTree = "<group>";
 		};
@@ -427,10 +426,10 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-eScan for Root Lab/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+					"$(PROJECT_DIR)/mailcore2-ios",
 				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-eScan for Root Lab/Pods-eScan for Root Lab.modulemap";
@@ -466,11 +465,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-eScan for Root LabTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-eScan for Root LabTests/Pods-eScan for Root LabTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -504,11 +499,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-eScan for Root LabUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-eScan for Root LabUITests/Pods-eScan for Root LabUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -609,10 +600,10 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-eScan for Root Lab/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+					"$(PROJECT_DIR)/mailcore2-ios",
 				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-eScan for Root Lab/Pods-eScan for Root Lab.modulemap";
@@ -647,11 +638,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-eScan for Root LabUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-eScan for Root LabUITests/Pods-eScan for Root LabUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -722,8 +709,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -747,11 +733,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-eScan for Root LabTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-eScan for Root LabTests/Pods-eScan for Root LabTests.modulemap";
 				OTHER_LDFLAGS = "";
