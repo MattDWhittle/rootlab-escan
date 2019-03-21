@@ -81,6 +81,7 @@
         <attribute name="correctionsAndModificationsStyloidAccommodationLeft" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="correctionsAndModificationsStyloidAccommodationRight" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="deviceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastUpdateDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="leftFootObj" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="orthosisMaterialColor" optional="YES" attributeType="String" syncable="YES"/>
@@ -204,12 +205,17 @@
         <attribute name="useShippingAddressForBillingAddress" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="parentOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="orderPractitioner" inverseEntity="Order" syncable="YES"/>
     </entity>
+    <entity name="RichieBrace" representedClassName="RichieBrace" syncable="YES" codeGenerationType="class">
+        <attribute name="medialHeelSkive" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="navicularAccommodation" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Defaults" positionX="108" positionY="144" width="128" height="60"/>
         <element name="FootPhoto" positionX="117" positionY="153" width="128" height="90"/>
         <element name="MaterialOrderItem" positionX="305.16015625" positionY="67.2734375" width="128" height="90"/>
-        <element name="Order" positionX="128.48828125" positionY="203.7109375" width="128" height="2340"/>
+        <element name="Order" positionX="128.48828125" positionY="203.7109375" width="128" height="2355"/>
         <element name="Patient" positionX="58.953125" positionY="-11.796875" width="128" height="210"/>
         <element name="Practitioner" positionX="-92.83203125" positionY="38.47265625" width="128" height="360"/>
+        <element name="RichieBrace" positionX="108" positionY="144" width="128" height="75"/>
     </elements>
 </model>

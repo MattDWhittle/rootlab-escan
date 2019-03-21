@@ -342,6 +342,7 @@ var persistedDataDefaults: [NSManagedObject] = []
 
 var order : Order = Order();
 var allOrders : [Order] = [];
+var myDevices : [Order] = [];
 var currentOrder = 0
 var defaults : Defaults? = nil;
 var amScanningLeftFoot = false;
@@ -1288,86 +1289,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 }
             }
         }
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Practitioner")
-        do {
-            persistedData = try context.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        if (persistedData.count == 0) {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            
-            let newPractitioner = Practitioner.init(entity: NSEntityDescription.entity(forEntityName: "Practitioner", in:context)!, insertInto: context);
-            newPractitioner.firstName = "New";
-            newPractitioner.lastName = "Practitioner"
-            
-            do {
-                try context.save();
-                practitioners.append(newPractitioner);
-                appDelegate.saveContext();
-            } catch let error as NSError {
-                //TODO Cannot save, fail startup
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-        } else {
-            //Load the practitioners array
-            for i in 0 ..<  persistedData.count {
-                let practitionerFromStorage = persistedData[i]
-                if (practitionerFromStorage is Practitioner) {
-                    practitioners.append(practitionerFromStorage as! Practitioner);
-                }
-
-            }
-
-        }
         
+        loadPractitionersFromCoreData();
         clearPractitionerForm();
-        
-        let fetchRequestDefaults =
-            NSFetchRequest<NSManagedObject>(entityName: "Defaults")
-        
-        do {
-            persistedDataDefaults = try context.fetch(fetchRequestDefaults)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        if (persistedDataDefaults.count == 0) {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            defaults = Defaults.init(entity: NSEntityDescription.entity(forEntityName: "Defaults", in:context)!, insertInto: context);
-            defaults?.defaultPractitioner = -1;
-            do {
-                try context.save();
-                appDelegate.saveContext();
-            } catch let error as NSError {
-                //TODO Cannot save, fail startup
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-        } else {
-            defaults = (persistedDataDefaults[0] as! Defaults);
-            if (defaults!.defaultPractitioner != -1) {
-                if (practitioners.count <= defaults!.defaultPractitioner ) {
-                    //The default practitioner was deleted, ignore
-                    defaults!.defaultPractitioner = -1;
-                } else {
-                    defaultPractitioner =  practitioners[Int(defaults!.defaultPractitioner)];
-                    readPractitionerToForm(thePractitioner: defaultPractitioner)
-                    practitionerPicker.selectRow(Int(defaults!.defaultPractitioner), inComponent: 0, animated: false);
-                }
-            }
+        loadDefaultPractitionerFromCoreData();
+        loadMyDevicesFromCoreData();
 
-        }
-        
-//        practitionerBillingAddressInput.layer.borderWidth = 2
-//        practitionerBillingAddressInput.layer.borderColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1).cgColor
-//        practitionerBillingAddressInput.layer.cornerRadius = 8;
-//
-//        practitionerShippingAddressInput.layer.borderWidth = 2
-//        practitionerShippingAddressInput.layer.borderColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1).cgColor
-//        practitionerShippingAddressInput.layer.cornerRadius = 8;
 
+        
         practitionerNameInput.delegate = self
         practitionerLastNameInput.delegate = self
         practitionerPhoneInput.delegate = self
@@ -1551,6 +1480,185 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //        sendEmailWithMailcore();
     }
 
+    func loadPractitionersFromCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Practitioner")
+        do {
+            persistedData = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        if (persistedData.count == 0) {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let newPractitioner = Practitioner.init(entity: NSEntityDescription.entity(forEntityName: "Practitioner", in:context)!, insertInto: context);
+            newPractitioner.firstName = "New";
+            newPractitioner.lastName = "Practitioner"
+            
+            do {
+                try context.save();
+                practitioners.append(newPractitioner);
+                appDelegate.saveContext();
+            } catch let error as NSError {
+                //TODO Cannot save, fail startup
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        } else {
+            //Load the practitioners array
+            for i in 0 ..<  persistedData.count {
+                let practitionerFromStorage = persistedData[i]
+                if (practitionerFromStorage is Practitioner) {
+                    practitioners.append(practitionerFromStorage as! Practitioner);
+                }
+                
+            }
+            
+        }
+    }
+    
+    func loadDefaultPractitionerFromCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequestDefaults =
+            NSFetchRequest<NSManagedObject>(entityName: "Defaults")
+        
+        do {
+            persistedDataDefaults = try context.fetch(fetchRequestDefaults)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        if (persistedDataDefaults.count == 0) {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            defaults = Defaults.init(entity: NSEntityDescription.entity(forEntityName: "Defaults", in:context)!, insertInto: context);
+            defaults?.defaultPractitioner = -1;
+            do {
+                try context.save();
+                appDelegate.saveContext();
+            } catch let error as NSError {
+                //TODO Cannot save, fail startup
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        } else {
+            defaults = (persistedDataDefaults[0] as! Defaults);
+            if (defaults!.defaultPractitioner != -1) {
+                if (practitioners.count <= defaults!.defaultPractitioner ) {
+                    //The default practitioner was deleted, ignore
+                    defaults!.defaultPractitioner = -1;
+                } else {
+                    defaultPractitioner =  practitioners[Int(defaults!.defaultPractitioner)];
+                    readPractitionerToForm(thePractitioner: defaultPractitioner)
+                    practitionerPicker.selectRow(Int(defaults!.defaultPractitioner), inComponent: 0, animated: false);
+                }
+            }
+            
+        }
+    }
+    
+    
+    func saveRichieBraceToCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        do {
+            try context.save();
+            
+            let newRichieBrace = RichieBrace.init(entity: NSEntityDescription.entity(forEntityName: "RichieBrace", in:context)!, insertInto: context);
+
+            let theValueToStore = richieBraceViewController?.medialHeelSkivePikerView.selectedRow(inComponent: 0);
+            newRichieBrace.medialHeelSkive = Int16(theValueToStore ?? 0);
+            newRichieBrace.navicularAccommodation = false;
+            
+            appDelegate.saveContext();
+        } catch let error as NSError {
+            //TODO Cannot save, fail startup
+            print("Could not save Order. \(error), \(error.userInfo)")
+        }
+    }
+
+    func saveMyDeviceToCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        var deviceIndex = -1;
+        var i = 0;
+        for device in myDevices {
+            if (device.deviceName == order.deviceName) {
+                deviceIndex = i;
+            }
+            i = i + 1;
+        }
+        
+        do {
+            try context.save();
+            if (deviceIndex > -1) {
+                updateMyDeviceFromOrder(myDeviceIndex: deviceIndex);
+            } else {
+                myDevices.append(order);
+            }
+            appDelegate.saveContext();
+        } catch let error as NSError {
+            //TODO Cannot save, fail startup
+            print("Could not save Order. \(error), \(error.userInfo)")
+        }
+    }
+
+    func loadMyDevicesFromCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Order")
+        do {
+            persistedData = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch My Devices. \(error), \(error.userInfo)")
+        }
+        if (persistedData.count > 0) {
+            for i in 0 ..<  persistedData.count {
+                let orderFromStorage = persistedData[i]
+                if (orderFromStorage is Order) {
+                    myDevices.append(orderFromStorage as! Order);
+                }
+                
+            }
+            
+        }
+    }
+    
+    func updateOrderFromDevice(myDeviceIndex: Int) {
+        let theDevice = myDevices[myDeviceIndex];
+        let deviceMirror = Mirror(reflecting: theDevice)
+
+        for (label, value) in deviceMirror.children {
+            if (label != nil && (((value as? String) != nil) ||
+                    ((value as? Int16) != nil) ||
+                    ((value as? Bool) != nil))) {
+                order.setValue(value, forKey: label!)
+            }
+        }
+        
+        theDevice.orderMaterialItemList = order.orderMaterialItemList;
+    }
+    
+    func updateMyDeviceFromOrder(myDeviceIndex: Int) {
+        let theDevice = myDevices[myDeviceIndex];
+        let deviceMirror = Mirror(reflecting: order)
+        
+        for (label, value) in deviceMirror.children {
+            if (label != nil && (((value as? String) != nil) ||
+                ((value as? Int16) != nil) ||
+                ((value as? Bool) != nil))) {
+                theDevice.setValue(value, forKey: label!)
+            }
+        }
+        order.orderMaterialItemList = theDevice.orderMaterialItemList;
+
+    }
+
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -2061,13 +2169,23 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             return;
         }
         
-        theMOI.orthoticsMaterialPickerSelection = Int16(orthoticDeviceSelected);
+        if (orthoticDeviceSelected >= 24) {
+            //This is a my device
+            updateOrderFromDevice(myDeviceIndex: orthoticDeviceSelected - 24)
+        } else {
+            theMOI.orthoticsMaterialPickerSelection = Int16(orthoticDeviceSelected);
+        }
+
         theMOI.orthoticsMaterialSelection = Int16(orthoticMateriaPickerMap[Int(theMOI.orthoticsMaterialPickerSelection)]);
+
         orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
         
         
         resetDueToOrthosisTypeChange();
         
+        if (orthoticDeviceSelected >= 24) {
+            return;
+        }
         
         if (orthoticDeviceSelected == 0) { //Polypropylene
             setDefaultsSemiRigidPolypropyleneShell();
@@ -2297,7 +2415,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         updateOrthosisScreenFromModel();
         changeValuesBasedOnChangedInput();
     }
-
+    
     @IBAction func clickRootLabLogo(sender: UIButton){
         if let url = URL(string: "http://www.root-lab.com/") {
             UIApplication.shared.openURL(url)
@@ -2305,15 +2423,18 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func NewOrderAction(sender: UIButton){
-        changeValuesBasedOnChangedInput(force: true);
-        if (defaultPractitioner != nil) {
-            readPractitionerToForm(thePractitioner: defaultPractitioner);
-            setValuesBasedOnPractitionerPageValid();
-            changePageTo(pageTo: patientManagementPageIndex);
-            setValuesBasedOnPatientPageValid();
-        } else {
-            changePageTo(pageTo: practitionerManagementPageIndex);
-        }
+        //TODO xxxxxxxxxxx comment back in
+        changePageTo(pageTo: richieBraceFormPageIndex);
+        
+//        changeValuesBasedOnChangedInput(force: true);
+//        if (defaultPractitioner != nil) {
+//            readPractitionerToForm(thePractitioner: defaultPractitioner);
+//            setValuesBasedOnPractitionerPageValid();
+//            changePageTo(pageTo: patientManagementPageIndex);
+//            setValuesBasedOnPatientPageValid();
+//        } else {
+//            changePageTo(pageTo: practitionerManagementPageIndex);
+//        }
     }
     
     @IBAction func ExistingOrderAction(sender: UIButton){
@@ -4603,6 +4724,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (escanFormValid()) {
             eScanFinishedUIImageView.image = UIImage(named: "checked.png");
         }
+        
+        orthoticsDeviceViewController?.refreshMyDevices(); 
         
         if (screenViewing == newPractitionerPageIndex || force) {
             setValuesBasedOnPractitionerPageValid();

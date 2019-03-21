@@ -11,4 +11,6 @@ import Foundation
 var orthoticsPrescriptionViewController : OrthoticsPrescriptionViewController? = nil;
 var topCoversViewController : TopCoversViewController? = nil;
 var orthoticsDeviceViewController : OrthoticsDeviceViewController? = nil;
+var richieBraceViewController : RichieBraceViewController? = nil;
+
 

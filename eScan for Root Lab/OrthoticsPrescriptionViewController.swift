@@ -27,10 +27,15 @@ class OrthoticsPrescriptionViewController: UIViewController {
     @IBOutlet var chiefComplaintDiagnosisTextView: UITextView!
 
     @IBOutlet var orthosisMaterialButton: UIButton!
+    @IBOutlet var orthosisSaveToMyDevicesButton: UIButton!
 
-    @IBOutlet var orthosisHeadingLabel: UILabel!
+    @IBOutlet var orthosisHeadingLabel: UITextField!
 
-    
+    @IBAction func clickAddToMyDevices() {
+        let parent = self.parent! as! ViewController;
+        parent.saveMyDeviceToCoreData();
+    }
+
     @IBAction func clickOrthosisMaterial() {
         let parent = self.parent! as! ViewController;
         
@@ -83,7 +88,7 @@ class OrthoticsPrescriptionViewController: UIViewController {
             }
 
             orthosisHeadingLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
-            
+            orthosisSaveToMyDevicesButton.titleLabel?.font = UIFont(name: "Gil Sans-Bold", size: 48 * multiplier)
             
             orthosisMaterialTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             correctionsAndModificationsTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
