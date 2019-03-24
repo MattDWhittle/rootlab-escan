@@ -1585,6 +1585,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         var deviceIndex = -1;
         var i = 0;
+        
+        order.deviceName = orthoticsPrescriptionViewController?.orthosisHeadingLabel.text;
+        
         for device in myDevices {
             if (device.deviceName == order.deviceName) {
                 deviceIndex = i;
@@ -1593,12 +1596,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         do {
-            try context.save();
             if (deviceIndex > -1) {
+                try context.save();
                 updateMyDeviceFromOrder(myDeviceIndex: deviceIndex);
             } else {
-                myDevices.append(order);
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let context = appDelegate.persistentContainer.viewContext
+                
+                let newDevice = Order.init(entity: NSEntityDescription.entity(forEntityName: "Order", in:context)!, insertInto: context);
+                newDevice.addToOrderMaterialItemList(MaterialOrderItem.init(entity: NSEntityDescription.entity(forEntityName: "MaterialOrderItem", in:context)!, insertInto: context));
+
+                copyOrderAToB(orderA: order, orderB: newDevice);
+                try context.save();
+                myDevices.append(newDevice);
             }
+
             appDelegate.saveContext();
         } catch let error as NSError {
             //TODO Cannot save, fail startup
@@ -1620,7 +1632,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             for i in 0 ..<  persistedData.count {
                 let orderFromStorage = persistedData[i]
                 if (orderFromStorage is Order) {
-                    myDevices.append(orderFromStorage as! Order);
+                    let theOrderToStore = orderFromStorage as! Order;
+                    if (theOrderToStore.deviceName != nil && theOrderToStore.deviceName != "") {
+                        myDevices.append(theOrderToStore);
+                    }
                 }
                 
             }
@@ -1630,32 +1645,176 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func updateOrderFromDevice(myDeviceIndex: Int) {
         let theDevice = myDevices[myDeviceIndex];
-        let deviceMirror = Mirror(reflecting: theDevice)
-
-        for (label, value) in deviceMirror.children {
-            if (label != nil && (((value as? String) != nil) ||
-                    ((value as? Int16) != nil) ||
-                    ((value as? Bool) != nil))) {
-                order.setValue(value, forKey: label!)
-            }
-        }
-        
-        theDevice.orderMaterialItemList = order.orderMaterialItemList;
+        copyOrderAToB(orderA:theDevice, orderB:order);
     }
+    
+    func copyOrderAToB(orderA: Order?, orderB: Order?) {
+        let source = orderA!;
+        let dest = orderB!;
+        
+        let aeef = dest.orderMaterialItemList![0] as! MaterialOrderItem;
+        let beef = source.orderMaterialItemList![0] as! MaterialOrderItem;
+        aeef.orthoticsMaterialPickerSelection = beef.orthoticsMaterialPickerSelection;
+        aeef.orthoticsMaterialSelection = beef.orthoticsMaterialSelection;
+
+        
+        dest.accommodationsDancersPadLeft = source.accommodationsDancersPadLeft;
+        dest.accommodationsDancersPadRight = source.accommodationsDancersPadRight;
+        dest.accommodationsEva = source.accommodationsEva;
+        dest.accommodationsEvaArchFillLeft = source.accommodationsEvaArchFillLeft;
+        dest.accommodationsEvaArchFillRight = source.accommodationsEvaArchFillRight;
+        dest.accommodationsHeelPadLEft = source.accommodationsHeelPadLEft;
+        dest.accommodationsHeelPadRight = source.accommodationsHeelPadRight;
+        dest.accommodationsHorseshoePadLeft = source.accommodationsHorseshoePadLeft;
+        dest.accommodationsHorseshoePadRight = source.accommodationsHorseshoePadRight;
+        dest.accommodationsKineticWedgeLeft = source.accommodationsKineticWedgeLeft;
+        dest.accommodationsKineticWedgeRight = source.accommodationsKineticWedgeRight;
+        dest.accommodationsKorex = source.accommodationsKorex;
+        dest.accommodationsMedialArchReinforceLeft = source.accommodationsMedialArchReinforceLeft;
+        dest.accommodationsMedialArchReinforceRight = source.accommodationsMedialArchReinforceRight;
+        dest.accommodationsMetatarsalBarLeft = source.accommodationsMetatarsalBarLeft;
+        dest.accommodationsMetatarsalBarRight = source.accommodationsMetatarsalBarRight;
+        dest.accommodationsMetatarsalPadLeft = source.accommodationsMetatarsalPadLeft;
+        dest.accommodationsMetatarsalPadRight = source.accommodationsMetatarsalPadRight;
+        dest.accommodationsMetHeadAccommodationsLeft = source.accommodationsMetHeadAccommodationsLeft;
+        dest.accommodationsMetHeadAccommodationsRight = source.accommodationsMetHeadAccommodationsRight;
+        dest.accommodationsMortonsExtensionLeft = source.accommodationsMortonsExtensionLeft;
+        dest.accommodationsMortonsExtensionRight = source.accommodationsMortonsExtensionRight;
+        dest.accommodationsNeuromaPadLeft = source.accommodationsNeuromaPadLeft;
+        dest.accommodationsNeuromaPadRight = source.accommodationsNeuromaPadRight;
+        dest.accommodationsReverseMortonsExtensionLeft = source.accommodationsReverseMortonsExtensionLeft;
+        dest.accommodationsReverseMortonsExtensionRight = source.accommodationsReverseMortonsExtensionRight;
+        
+//        dest.chiefComplaintDiagnosis = source.chiefComplaintDiagnosis;
+//        dest.commentsInstructions = source.commentsInstructions;
+        
+        dest.correctionsAndModificationsAccommodatePerPhotoLeft = source.correctionsAndModificationsAccommodatePerPhotoLeft;
+        dest.correctionsAndModificationsNoFillerLeft = source.correctionsAndModificationsNoFillerLeft;
+        dest.correctionsAndModificationsNoFillerRight = source.correctionsAndModificationsNoFillerRight;
+        dest.correctionsAndModificationsFillWithPoronLeft = source.correctionsAndModificationsFillWithPoronLeft;
+        dest.correctionsAndModificationsFillWithPoronRight = source.correctionsAndModificationsFillWithPoronRight;
+        dest.correctionsAndModificationsMedialHeelSkiveLeft = source.correctionsAndModificationsMedialHeelSkiveLeft;
+        dest.correctionsAndModificationsMedialHeelSkiveRight = source.correctionsAndModificationsMedialHeelSkiveRight;
+        dest.correctionsAndModificationsAccommodatePerPhotoLeft = source.correctionsAndModificationsAccommodatePerPhotoLeft;
+        dest.correctionsAndModificationsAccommodatePerPhotoRight = source.correctionsAndModificationsAccommodatePerPhotoRight;
+        dest.correctionsAndModificationsStyloidAccommodationLeft = source.correctionsAndModificationsStyloidAccommodationLeft;
+        dest.correctionsAndModificationsStyloidAccommodationRight = source.correctionsAndModificationsStyloidAccommodationRight;
+        dest.correctionsAndModificationsMedialArchFillMinimalLeft = source.correctionsAndModificationsMedialArchFillMinimalLeft;
+        dest.correctionsAndModificationsMedialArchFillMinimalRight = source.correctionsAndModificationsMedialArchFillMinimalRight;
+        dest.correctionsAndModificationsCastOrientationEvertedLeft = source.correctionsAndModificationsCastOrientationEvertedLeft;
+        dest.correctionsAndModificationsCastOrientationEvertedRight = source.correctionsAndModificationsCastOrientationEvertedRight;
+        dest.correctionsAndModificationsCastOrientationInvertedLeft = source.correctionsAndModificationsCastOrientationInvertedLeft;
+        dest.correctionsAndModificationsCastOrientationInvertedRight = source.correctionsAndModificationsCastOrientationInvertedRight;
+        dest.correctionsAndModificationsCastOrientationVerticalLeft = source.correctionsAndModificationsCastOrientationVerticalLeft;
+        dest.correctionsAndModificationsCastOrientationVerticalRight = source.correctionsAndModificationsCastOrientationVerticalRight;
+        dest.correctionsAndModificationsintrinsicMetatarsalPadLeft = source.correctionsAndModificationsintrinsicMetatarsalPadLeft;
+        dest.correctionsAndModificationsintrinsicMetatarsalPadRight = source.correctionsAndModificationsintrinsicMetatarsalPadRight;
+        dest.correctionsAndModificationsMedialArchFillStandardLeft = source.correctionsAndModificationsMedialArchFillStandardLeft;
+        dest.correctionsAndModificationsMedialArchFillStandardRight = source.correctionsAndModificationsMedialArchFillStandardRight;
+        dest.correctionsAndModificationsMedialArchFillDecreasedLeft = source.correctionsAndModificationsMedialArchFillDecreasedLeft;
+        dest.correctionsAndModificationsMedialArchFillDecreasedRight = source.correctionsAndModificationsMedialArchFillDecreasedRight;
+        dest.correctionsAndModificationsMedialArchFillIncreasedLeft = source.correctionsAndModificationsMedialArchFillIncreasedLeft;
+        dest.correctionsAndModificationsMedialArchFillIncreasedRight = source.correctionsAndModificationsMedialArchFillIncreasedRight;
+        dest.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft = source.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft;
+        dest.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight = source.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight;
+        dest.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft = source.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft;
+        dest.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight = source.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight;
+
+        dest.deviceName = source.deviceName;
+        
+        dest.orthosisMaterialColor = source.orthosisMaterialColor;
+        dest.orthosisMaterialOption = source.orthosisMaterialOption;
+        
+        dest.orthosisSpecificationsOtherLatmmLeft = source.orthosisSpecificationsOtherLatmmLeft;
+        dest.orthosisSpecificationsOtherMedmmLeft = source.orthosisSpecificationsOtherMedmmLeft;
+        dest.orthosisSpecificationsAnteriorWidthLeft = source.orthosisSpecificationsAnteriorWidthLeft;
+        dest.orthosisSpecificationsHeelCupHeightLeft = source.orthosisSpecificationsHeelCupHeightLeft;
+        dest.orthosisSpecificationsHeelCupHeight18mmLeft = source.orthosisSpecificationsHeelCupHeight18mmLeft;
+        dest.orthosisSpecificationsOtherHeelCupHeightLeft = source.orthosisSpecificationsOtherHeelCupHeightLeft;
+        dest.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft = source.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft;
+        dest.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft = source.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft;
+        dest.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft = source.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeLeft;
+        dest.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft = source.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactLeft;
+        dest.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft = source.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadLeft;
+        dest.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft = source.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadLeft;
+        dest.orthosisSpecificationsOtherLatmmRight = source.orthosisSpecificationsOtherLatmmRight;
+        dest.orthosisSpecificationsOtherMedmmRight = source.orthosisSpecificationsOtherMedmmRight;
+        dest.orthosisSpecificationsAnteriorWidthRight = source.orthosisSpecificationsAnteriorWidthRight;
+        dest.orthosisSpecificationsHeelCupHeightRight = source.orthosisSpecificationsHeelCupHeightRight;
+        dest.orthosisSpecificationsHeelCupHeight18mmRight = source.orthosisSpecificationsHeelCupHeight18mmRight;
+        dest.orthosisSpecificationsOtherHeelCupHeightRight = source.orthosisSpecificationsOtherHeelCupHeightRight;
+        dest.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight = source.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight;
+        dest.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight = source.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight;
+        dest.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeRight = source.orthosisSpecificationsOtherShellConfigurationsFitToEnclosedShoeRight;
+        dest.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight = source.orthosisSpecificationsOtherShellConfigurationsThinMaterialAtHeelContactRight;
+        dest.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight = source.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFifthMetHeadRight;
+        dest.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight = source.orthosisSpecificationsOtherShellConfigurationsCutOutProximinalToFirstMetHeadRight;
+        
+        dest.postingRearfootPostMaterial = source.postingRearfootPostMaterial;
+        dest.postingRearfootPostingElevatormmLeft = source.postingRearfootPostingElevatormmLeft;
+        dest.postingHeelLiftLeft = source.postingHeelLiftLeft;
+        dest.postingRearfootPostingElevator4mmLeft = source.postingRearfootPostingElevator4mmLeft;
+        dest.postingRearfootPostingElevator8mmLeft = source.postingRearfootPostingElevator8mmLeft;
+        dest.postingRearfootPostingElevatorOtherMmLeft = source.postingRearfootPostingElevatorOtherMmLeft;
+        dest.postingRearfootPostMotion0DegreesMotionLeft = source.postingRearfootPostMotion0DegreesMotionLeft;
+        dest.postingRearfootPostMotion4DegreesMotionLeft = source.postingRearfootPostMotion4DegreesMotionLeft;
+        dest.postingRearfootPostOptionsLongPostFlangeLeft = source.postingRearfootPostOptionsLongPostFlangeLeft;
+        dest.postingNonCorrectiveForefootPostFullWidthLeft = source.postingNonCorrectiveForefootPostFullWidthLeft;
+        dest.postingRearfootPostOptionsShortPostFlangeLeft = source.postingRearfootPostOptionsShortPostFlangeLeft;
+        dest.postingRearfootPostOptionsMedialPostFlangeLeft = source.postingRearfootPostOptionsMedialPostFlangeLeft;
+        dest.postingRearfootPostMotionOtherMotionDegreesLeft = source.postingRearfootPostMotionOtherMotionDegreesLeft;
+        dest.postingRearfootPostOptionsLateralPostFlangeLeft = source.postingRearfootPostOptionsLateralPostFlangeLeft
+        dest.postingNonCorrectiveForefootPostMedialCornerLeft = source.postingNonCorrectiveForefootPostMedialCornerLeft;
+        dest.postingNonCorrectiveForefootPostLateralCornerWidthLeft = source.postingNonCorrectiveForefootPostLateralCornerWidthLeft;
+        dest.postingHeelLiftRight = source.postingHeelLiftRight;
+        dest.postingRearfootPostingElevator4mmRight = source.postingRearfootPostingElevator4mmRight;
+        dest.postingRearfootPostingElevator8mmRight = source.postingRearfootPostingElevator8mmRight;
+        dest.postingRearfootPostingElevatorOtherMmRight = source.postingRearfootPostingElevatorOtherMmRight;
+        dest.postingRearfootPostMotion0DegreesMotionRight = source.postingRearfootPostMotion0DegreesMotionRight;
+        dest.postingRearfootPostMotion4DegreesMotionRight = source.postingRearfootPostMotion4DegreesMotionRight;
+        dest.postingRearfootPostOptionsLongPostFlangeRight = source.postingRearfootPostOptionsLongPostFlangeRight;
+        dest.postingNonCorrectiveForefootPostFullWidthRight = source.postingNonCorrectiveForefootPostFullWidthRight;
+        dest.postingRearfootPostOptionsShortPostFlangeRight = source.postingRearfootPostOptionsShortPostFlangeRight;
+        dest.postingRearfootPostOptionsMedialPostFlangeRight = source.postingRearfootPostOptionsMedialPostFlangeRight;
+        dest.postingRearfootPostMotionOtherMotionDegreesRight = source.postingRearfootPostMotionOtherMotionDegreesRight;
+        dest.postingRearfootPostOptionsLateralPostFlangeRight = source.postingRearfootPostOptionsLateralPostFlangeRight
+        dest.postingNonCorrectiveForefootPostMedialCornerRight = source.postingNonCorrectiveForefootPostMedialCornerRight;
+        dest.postingNonCorrectiveForefootPostLateralCornerRight = source.postingNonCorrectiveForefootPostLateralCornerRight;
+        dest.postingRearfootPostingElevatormmRight = source.postingRearfootPostingElevatormmRight;
+//
+//        dest.rushOrder2DayTurnaround = source.rushOrder2DayTurnaround;
+//        dest.rushOrderExpressShiping = source.rushOrderExpressShiping;
+//        dest.rushOrderNextDayTurnaround = source.rushOrderNextDayTurnaround;
+
+        dest.topCoversAndExtensionsTopCoverLength = source.topCoversAndExtensionsTopCoverLength;
+        dest.topCoversAndExtensionsForefootExtensionsExtensionLength = source.topCoversAndExtensionsForefootExtensionsExtensionLength;
+        dest.topCoversAndExtensionsBottomCoverForefootReinforcement = source.topCoversAndExtensionsBottomCoverForefootReinforcement;
+        dest.topCoversAndExtensionsBottomCoverMaterialLeatherBrown = source.topCoversAndExtensionsBottomCoverMaterialLeatherBrown;
+        dest.topCoversAndExtensionsBottomCoverMaterialLeatherBlack = source.topCoversAndExtensionsBottomCoverMaterialLeatherBlack;
+        dest.topCoversAndExtensionsBottomCoverMaterialVinylForest = source.topCoversAndExtensionsBottomCoverMaterialVinylForest;
+        dest.topCoversAndExtensionsBottomCoverMaterialVinylBronze = source.topCoversAndExtensionsBottomCoverMaterialVinylBronze;
+        dest.topCoversAndExtensionsBottomCoverMaterialVinylBlack = source.topCoversAndExtensionsBottomCoverMaterialVinylBlack;
+        dest.topCoversAndExtensionsForefootExtensionsThickness = source.topCoversAndExtensionsForefootExtensionsThickness;
+        dest.topCoversAndExtensionsBottomCoverMaterialDiabetic = source.topCoversAndExtensionsBottomCoverMaterialDiabetic;
+        dest.topCoversAndExtensionsForefootExtensionsMaterial = source.topCoversAndExtensionsForefootExtensionsMaterial;
+        dest.topCoversAndExtensionsBottomCoverMaterialNcn116 = source.topCoversAndExtensionsBottomCoverMaterialNcn116;
+        dest.topCoversAndExtensionsBottomCoverMaterialEva116 = source.topCoversAndExtensionsBottomCoverMaterialEva116;
+        dest.topCoversAndExtensionsBottomCoverMaterialEVA116 = source.topCoversAndExtensionsBottomCoverMaterialEVA116;
+        dest.topCoversAndExtensionsBottomCoverMaterialNcn18 = source.topCoversAndExtensionsBottomCoverMaterialNcn18;
+        dest.topCoversAndExtensionsBottomCoverMaterialEva18 = source.topCoversAndExtensionsBottomCoverMaterialEva18;
+        dest.topCoversAndExtensionsPoronUnderTopcover116 = source.topCoversAndExtensionsPoronUnderTopcover116;
+        dest.topCoversAndExtensionsPoronUnderTopcover18 = source.topCoversAndExtensionsPoronUnderTopcover18;
+        dest.topCoversAndExtensionsBottomCover116Eva = source.topCoversAndExtensionsBottomCover116Eva;
+        dest.topCoversAndExtensionsTopCoverLength = source.topCoversAndExtensionsTopCoverLength;
+        
+
+        
+    }
+
     
     func updateMyDeviceFromOrder(myDeviceIndex: Int) {
         let theDevice = myDevices[myDeviceIndex];
-        let deviceMirror = Mirror(reflecting: order)
-        
-        for (label, value) in deviceMirror.children {
-            if (label != nil && (((value as? String) != nil) ||
-                ((value as? Int16) != nil) ||
-                ((value as? Bool) != nil))) {
-                theDevice.setValue(value, forKey: label!)
-            }
-        }
-        order.orderMaterialItemList = theDevice.orderMaterialItemList;
-
+        copyOrderAToB(orderA:order, orderB:theDevice);
     }
 
     
@@ -1886,7 +2045,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
     func orthoticDeviceClickEdit() {
         orthoticDeviceClickEditOrSelect();
-        changePageTo(pageTo: orthoticsFormPageIndex)
+        if (richieBraceHasBeenSelected) {
+            changePageTo(pageTo: richieBraceFormPageIndex)
+        } else {
+            changePageTo(pageTo: orthoticsFormPageIndex)
+        }
 
     }
     
@@ -2181,11 +2344,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
         
         
-        resetDueToOrthosisTypeChange();
         
         if (orthoticDeviceSelected >= 24) {
+            setOrthosisMaterialFormFromOrder()
+            setCorrectionsAndModificationsFromOrder()
+            setOrthosisSpecificationFormFromOrder()
+            setPostingFormFromOrder()
+            setTopCoversAndExtensionsFormFromOrder()
+            setRushOrderFormFromOrder()
+            setCommentsInstructionsFormFromOrder()
+            updateOrthosisScreenFromModel();
+            changeValuesBasedOnChangedInput();
             return;
         }
+
+        resetDueToOrthosisTypeChange();
+
         
         if (orthoticDeviceSelected == 0) { //Polypropylene
             setDefaultsSemiRigidPolypropyleneShell();
@@ -2423,18 +2597,15 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func NewOrderAction(sender: UIButton){
-        //TODO xxxxxxxxxxx comment back in
-        changePageTo(pageTo: richieBraceFormPageIndex);
-        
-//        changeValuesBasedOnChangedInput(force: true);
-//        if (defaultPractitioner != nil) {
-//            readPractitionerToForm(thePractitioner: defaultPractitioner);
-//            setValuesBasedOnPractitionerPageValid();
-//            changePageTo(pageTo: patientManagementPageIndex);
-//            setValuesBasedOnPatientPageValid();
-//        } else {
-//            changePageTo(pageTo: practitionerManagementPageIndex);
-//        }
+        changeValuesBasedOnChangedInput(force: true);
+        if (defaultPractitioner != nil) {
+            readPractitionerToForm(thePractitioner: defaultPractitioner);
+            setValuesBasedOnPractitionerPageValid();
+            changePageTo(pageTo: patientManagementPageIndex);
+            setValuesBasedOnPatientPageValid();
+        } else {
+            changePageTo(pageTo: practitionerManagementPageIndex);
+        }
     }
     
     @IBAction func ExistingOrderAction(sender: UIButton){
@@ -2562,7 +2733,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         } else if (screenViewing == patientManagementPageIndex) {
             setValuesBasedOnPatientPageValid();
-            changePageTo(pageTo: orthoticsDeviceFormPageIndex);
+            changePageTo(pageTo: newOrderTypePageIndex);
             readPatientForm();
         } else if (screenViewing == orthoticsFormPageIndex) {
             changePageTo(pageTo: orthoticsDeviceFormPageIndex);
@@ -2684,18 +2855,17 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         updateOrthosisScreenFromModel();
 
         orthoticsHasBeenSelected = true;
+        richieBraceHasBeenSelected = false;
+
         changePageTo(pageTo: orthoticsDeviceFormPageIndex);
         materialNameLabel.text = "> Orthotics";
     }
 
     @IBAction func ClickRichieBraceForm(sender: UIButton){
-        changePageTo(pageTo: richieBraceFormPageIndex);
         materialNameLabel.text = "> Richie Brace";
         richieBraceHasBeenSelected = true;
-    }
-    
-    @IBAction func ClickOrthosisMaterial(sender: UIButton){
-        ClickOrthosisMaterial();
+        orthoticsHasBeenSelected = false;
+        changePageTo(pageTo: orthoticsDeviceFormPageIndex)
     }
     
     func ClickOrthosisMaterial(){
@@ -2816,13 +2986,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func ClickOrderManagementButton(sender: UIButton){
-        if (orthoticsHasBeenSelected) {
-            changePageTo(pageTo: orthoticsDeviceFormPageIndex)
-        } else if (richieBraceHasBeenSelected) {
-            
-        } else {
-            changePageTo(pageTo: orthoticsDeviceFormPageIndex)
-        }
+        changePageTo(pageTo: orthoticsDeviceFormPageIndex)
     }
 
     @IBAction func ClickOkDeletePractitioner(sender: UIButton){
@@ -2918,8 +3082,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         syncUIfromDynamicOptions()
     }
     
-    func 
-        changePageTo(pageTo: Int?) {
+    func changePageTo(pageTo: Int?) {
         clearAllCarrotsFromLables();
         if (screenViewing == escanningPageIndex) {
             depthView.isHidden = true;
@@ -2929,6 +3092,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             pages[screenViewing].isHidden = true;
             backStack.append(screenViewing);
         }
+        if (pageTo == orthoticsDeviceFormPageIndex) {
+            orthoticsDeviceViewController?.refreshMyDevices();
+        }
+        
         screenViewing = pageTo!
         if (pageTo == practitionerManagementPageIndex) {
             setValuesBasedOnPractitionerPageValid();
@@ -3071,14 +3238,17 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
     func orthosisFormValid() -> Bool{
-        return orthosisMaterialValid() &&
+        return richieBraceHasBeenSelected ||
+            (
+        orthosisMaterialValid() &&
         correctionsAndModificationsValid() &&
         orthosisSpecificationsValid() &&
         postingValid() &&
         topCoversViewController?.topCoversAndExtensionsValid() ?? false &&
         accommodationsValid() &&
         rushOrderValid() &&
-            chiefComplaintDiagnosisValid();
+            chiefComplaintDiagnosisValid()
+        );
     }
 
     func orthosisMaterialValid() -> Bool {
@@ -3118,8 +3288,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         order.postingHeelLiftLeft = Int16(postingHeelLiftLeft.text!) ?? Int16(0);
         order.postingHeelLiftRight = Int16(postingHeelLiftRight.text!) ?? Int16(0);
-        order.postingRearfootPostMotionOtherMotionDegreesLeft = Int16(postingRearfootPostingElevatorOthermmLeft.text!) ?? 0;
-        order.postingRearfootPostMotionOtherMotionDegreesRight = Int16(postingRearfootPostingElevatorOthermmRight.text!) ?? 0;
+        order.postingRearfootPostMotionOtherMotionDegreesLeft = Int16(postingRearfootPostMotionOtherDegreesLeft.text!) ?? 0;
+        order.postingRearfootPostMotionOtherMotionDegreesRight = Int16(postingRearfootPostMotionOtherDegreesRight.text!) ?? 0;
         order.postingRearfootPostingElevatorOtherMmLeft = Int16(postingRearfootPostingElevatorOthermmLeft.text!) ?? 0;
         order.postingRearfootPostingElevatorOtherMmRight = Int16(postingRearfootPostingElevatorOthermmRight.text!) ?? 0;
 
@@ -3399,22 +3569,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         topCoversViewController!.topCoversAndExtensionsMaterialEva116UISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
         
         
-        topCoversViewController!.topCoversAndExtensionsMortonsExtensionLeftUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsMortonsExtensionRightUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsReverseMortonsExtensionLeftUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsReverseMortonsExtensionRightUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsMetatarsalBarLeftUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsMetatarsalBarRightUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsMetatarsalPadLeftUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsMetatarsalPadRightUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsHeelPadLeftUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsHeelPadRightUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsHorseshoePadLeftUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsHorseshoePadRightUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsDancersPadLeftUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsDancersPadRightUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsKineticWedgeLeftUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
-        topCoversViewController!.topCoversAndExtensionsKineticWedgeRightUISwitch.isOn = order.topCoversAndExtensionsBottomCover116Eva;
+        topCoversViewController!.topCoversAndExtensionsMortonsExtensionLeftUISwitch.isOn = order.accommodationsMortonsExtensionLeft;
+        topCoversViewController!.topCoversAndExtensionsMortonsExtensionRightUISwitch.isOn = order.accommodationsMortonsExtensionRight;
+        topCoversViewController!.topCoversAndExtensionsReverseMortonsExtensionLeftUISwitch.isOn = order.accommodationsReverseMortonsExtensionLeft;
+        topCoversViewController!.topCoversAndExtensionsReverseMortonsExtensionRightUISwitch.isOn = order.accommodationsReverseMortonsExtensionRight;
+        topCoversViewController!.topCoversAndExtensionsMetatarsalBarLeftUISwitch.isOn = order.accommodationsMetatarsalBarLeft;
+        topCoversViewController!.topCoversAndExtensionsMetatarsalBarRightUISwitch.isOn = order.accommodationsMetatarsalBarRight;
+        topCoversViewController!.topCoversAndExtensionsMetatarsalPadLeftUISwitch.isOn = order.accommodationsMetatarsalPadLeft;
+        topCoversViewController!.topCoversAndExtensionsMetatarsalPadRightUISwitch.isOn = order.accommodationsMetatarsalPadRight;
+        topCoversViewController!.topCoversAndExtensionsHeelPadLeftUISwitch.isOn = order.accommodationsHeelPadLEft;
+        topCoversViewController!.topCoversAndExtensionsHeelPadRightUISwitch.isOn = order.accommodationsHeelPadRight;
+        topCoversViewController!.topCoversAndExtensionsHorseshoePadLeftUISwitch.isOn = order.accommodationsHorseshoePadLeft;
+        topCoversViewController!.topCoversAndExtensionsHorseshoePadRightUISwitch.isOn = order.accommodationsHorseshoePadRight;
+        topCoversViewController!.topCoversAndExtensionsDancersPadLeftUISwitch.isOn = order.accommodationsDancersPadLeft;
+        topCoversViewController!.topCoversAndExtensionsDancersPadRightUISwitch.isOn = order.accommodationsDancersPadRight;
+        topCoversViewController!.topCoversAndExtensionsKineticWedgeLeftUISwitch.isOn = order.accommodationsKineticWedgeLeft;
+        topCoversViewController!.topCoversAndExtensionsKineticWedgeRightUISwitch.isOn = order.accommodationsKineticWedgeRight;
 
         
         setAccessibilityLabelAndBackgroundImage(on: order.accommodationsMetHeadAccommodationsLeft & 0x0001 == 1, button: topCoversViewController!.topCoversAndExtensionsMetHeadAccommodationsL1);
@@ -4720,7 +4890,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         changeValuesBasedOnChangedInput(force: false)
     }
     func changeValuesBasedOnChangedInput(force: Bool) {
-
+        orthoticsPrescriptionViewController?.orthosisSaveToMyDevicesButton.isEnabled = true;
         if (escanFormValid()) {
             eScanFinishedUIImageView.image = UIImage(named: "checked.png");
         }
@@ -4753,9 +4923,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         if (screenViewing == orthoticsDeviceFormPageIndex || force) {
             if (orthoticDeviceSelected > -1) {
-                orthoticsPrescriptionViewController?.orthosisHeadingLabel.text =  orthoticMaterialDescriptionMap[orthoticDeviceSelected];
+                if (orthoticDeviceSelected < 24) {
+                    orthoticsPrescriptionViewController?.orthosisHeadingLabel.text =  orthoticMaterialDescriptionMap[orthoticDeviceSelected];
+                } else {
+                    orthoticsPrescriptionViewController?.orthosisHeadingLabel.text = order.deviceName;
+                }
             }
-            
         }
 
         var needToUpdateScreen = false;

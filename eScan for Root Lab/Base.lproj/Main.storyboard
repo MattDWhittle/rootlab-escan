@@ -84,6 +84,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="ClickRichieBraceFormWithSender:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="wp8-Eo-nA3"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Orthotics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zct-cA-BBr">
                                         <rect key="frame" x="420" y="327" width="1525" height="138"/>
@@ -4542,7 +4545,6 @@ Try to re-align or press reset.</string>
                                                                 <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="ClickBackActionWithSender:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="inw-jE-wqR"/>
                                                                 <action selector="orthoticDeviceClickEdit" destination="csL-96-t2w" eventType="primaryActionTriggered" id="4Kw-Zl-Cjp"/>
                                                             </connections>
                                                         </button>
@@ -4555,8 +4557,19 @@ Try to re-align or press reset.</string>
                                                                 <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="ClickBackActionWithSender:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Ok8-b3-YGX"/>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="VMM-eZ-tXe"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5O-O0-UFu">
+                                                            <rect key="frame" x="624" y="190" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="5jh-JN-1en"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -4621,6 +4634,18 @@ Try to re-align or press reset.</string>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="gXs-Vj-L6F"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2o-7o-ExI">
+                                                            <rect key="frame" x="624" y="190" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="7eB-yz-QwF"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -4681,6 +4706,18 @@ Try to re-align or press reset.</string>
                                                             <connections>
                                                                 <action selector="ClickBackActionWithSender:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="A2Z-mg-WcS"/>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="BZt-H1-y9j"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuB-W1-41d">
+                                                            <rect key="frame" x="624" y="190" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="6Jy-Bs-8DU"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -4745,6 +4782,18 @@ Try to re-align or press reset.</string>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="Kwy-7W-Dav"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGt-t0-LQd">
+                                                            <rect key="frame" x="624" y="190" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="HEI-Yy-Uc9"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -4805,6 +4854,18 @@ Try to re-align or press reset.</string>
                                                             <connections>
                                                                 <action selector="ClickBackActionWithSender:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Fey-fV-J1E"/>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="fTW-VL-YZc"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4T-Bv-fcq">
+                                                            <rect key="frame" x="624" y="191" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="ZRE-1V-LSM"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -4869,6 +4930,18 @@ Try to re-align or press reset.</string>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="n4X-Hc-UBj"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIB-EJ-rBK">
+                                                            <rect key="frame" x="624" y="190" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="f4a-gb-kui"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -4931,6 +5004,18 @@ Try to re-align or press reset.</string>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="hyd-QF-dyF"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpK-ie-Z8C">
+                                                            <rect key="frame" x="624" y="190" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="tCU-UA-JI8"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -4989,6 +5074,18 @@ Try to re-align or press reset.</string>
                                                             </state>
                                                             <connections>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="SEO-T9-7jH"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ell-Cj-hfM">
+                                                            <rect key="frame" x="624" y="190" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="4sY-eR-Ig9"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -5051,6 +5148,18 @@ Try to re-align or press reset.</string>
                                                                 <action selector="orthoticDeviceClickSelect" destination="csL-96-t2w" eventType="primaryActionTriggered" id="Cei-Mu-Dgf"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXA-Y4-dBe">
+                                                            <rect key="frame" x="624" y="190" width="236" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="36"/>
+                                                            <state key="normal" title="Delete" backgroundImage="Button.png">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="deleteOrthoticsDevice" destination="csL-96-t2w" eventType="primaryActionTriggered" id="7bv-Ou-djE"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -5084,6 +5193,12 @@ Try to re-align or press reset.</string>
                         <outlet property="myDeviceLabel6" destination="PCb-nv-QUn" id="Bke-73-3zJ"/>
                         <outlet property="myDeviceLabel7" destination="oCZ-6e-v6D" id="1To-rd-7VC"/>
                         <outlet property="myDeviceLabel8" destination="XOi-FU-X9u" id="W0q-Sp-jlQ"/>
+                        <outlet property="richieBraceDescriptionLabel0" destination="V3T-jw-l5G" id="QMU-as-bNg"/>
+                        <outlet property="richieBraceDescriptionLabel1" destination="Bxr-Sf-Lot" id="0WA-eA-Tb5"/>
+                        <outlet property="richieBraceDescriptionLabel2" destination="eqI-0R-Ie7" id="aLH-Oa-Umw"/>
+                        <outlet property="richieBraceLabel0" destination="VXL-LP-Hy0" id="KgW-sj-QWr"/>
+                        <outlet property="richieBraceLabel1" destination="PaE-go-WeZ" id="ru5-2M-VZs"/>
+                        <outlet property="richieBraceLabel2" destination="nQl-Js-34e" id="Cgt-q8-4pc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjf-ax-2XT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6297,21 +6412,28 @@ Try to re-align or press reset.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Richie Brace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQp-bM-g7K">
-                                <rect key="frame" x="525" y="24" width="1513" height="137"/>
+                                <rect key="frame" x="525" y="0.0" width="1513" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="100"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medial Heel Skive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rC0-yW-bmS">
-                                <rect key="frame" x="1132" y="253" width="353" height="83"/>
+                                <rect key="frame" x="1132" y="199" width="353" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Special Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogE-B2-ErI">
+                                <rect key="frame" x="1625" y="1018" width="372" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vh-ek-36y">
-                                <rect key="frame" x="1132" y="316" width="353" height="154"/>
+                                <rect key="frame" x="1132" y="262" width="353" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="hsK-yF-Ton" id="56S-Eg-MXh"/>
@@ -6319,14 +6441,14 @@ Try to re-align or press reset.</string>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Length" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXy-GG-GTV">
-                                <rect key="frame" x="1692" y="301" width="353" height="83"/>
+                                <rect key="frame" x="1547" y="152" width="505" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAp-UB-4WL">
-                                <rect key="frame" x="1692" y="364" width="353" height="154"/>
+                                <rect key="frame" x="1547" y="223" width="492" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="hsK-yF-Ton" id="PPz-7l-oEt"/>
@@ -6334,14 +6456,14 @@ Try to re-align or press reset.</string>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Material" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0T-EY-W3Y">
-                                <rect key="frame" x="1692" y="554" width="353" height="83"/>
+                                <rect key="frame" x="1515" y="413" width="524" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mjl-PV-KRR">
-                                <rect key="frame" x="1692" y="617" width="353" height="154"/>
+                                <rect key="frame" x="1515" y="476" width="524" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="hsK-yF-Ton" id="dAn-rd-7Sr"/>
@@ -6349,14 +6471,14 @@ Try to re-align or press reset.</string>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Heel Cup Height" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Po-fDv">
-                                <rect key="frame" x="525" y="1109" width="353" height="83"/>
+                                <rect key="frame" x="525" y="1018" width="353" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pku-zQ-r1k">
-                                <rect key="frame" x="525" y="1172" width="353" height="154"/>
+                                <rect key="frame" x="525" y="1081" width="353" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="hsK-yF-Ton" id="4lK-Xa-sbe"/>
@@ -6364,224 +6486,283 @@ Try to re-align or press reset.</string>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Navicular accommodation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phl-Cq-6dc">
-                                <rect key="frame" x="640" y="403" width="526" height="51"/>
+                                <rect key="frame" x="640" y="349" width="526" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other accommodation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fC-66-hp1">
-                                <rect key="frame" x="640" y="467" width="414" height="51"/>
+                                <rect key="frame" x="640" y="413" width="414" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please mark on foot and photograph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ak3-SZ-6IY">
-                                <rect key="frame" x="974" y="526" width="667" height="51"/>
+                                <rect key="frame" x="974" y="472" width="667" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EX-vz-0xc">
+                                <rect key="frame" x="899" y="602" width="114" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Corrections and Modifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bw-MM-HzG">
-                                <rect key="frame" x="525" y="198" width="831" height="68"/>
+                                <rect key="frame" x="525" y="144" width="831" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="48"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AFO Specifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpv-Yn-HEf">
-                                <rect key="frame" x="525" y="606" width="831" height="68"/>
+                                <rect key="frame" x="525" y="542" width="831" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="48"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Top Cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VzQ-io-7oW">
-                                <rect key="frame" x="1692" y="198" width="397" height="68"/>
+                                <rect key="frame" x="1686" y="57" width="397" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="48"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RgR-e1-uZa">
-                                <rect key="frame" x="525" y="293" width="49" height="31"/>
+                                <rect key="frame" x="525" y="239" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9y2-bw-rq0">
-                                <rect key="frame" x="525" y="352" width="49" height="31"/>
+                                <rect key="frame" x="525" y="298" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-n1-SWP">
-                                <rect key="frame" x="525" y="413" width="49" height="31"/>
+                                <rect key="frame" x="525" y="359" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Styloid accommodation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwd-7V-2ru">
-                                <rect key="frame" x="640" y="344" width="581" height="46"/>
+                                <rect key="frame" x="640" y="290" width="581" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plantar fascia accommodation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6o-9M-t08">
-                                <rect key="frame" x="640" y="286" width="526" height="45"/>
+                                <rect key="frame" x="640" y="232" width="526" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="White 3mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSW-OK-EQ3">
-                                <rect key="frame" x="640" y="823" width="841" height="51"/>
+                                <rect key="frame" x="640" y="759" width="841" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Jc1-BB-bqB">
-                                <rect key="frame" x="525" y="713" width="49" height="31"/>
+                                <rect key="frame" x="525" y="649" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="clearNotMeWithSender:" destination="hsK-yF-Ton" eventType="primaryActionTriggered" id="SSw-n0-bEQ"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Udq-bL-4kx">
-                                <rect key="frame" x="525" y="772" width="49" height="31"/>
+                                <rect key="frame" x="525" y="708" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="clearNotMeWithSender:" destination="hsK-yF-Ton" eventType="primaryActionTriggered" id="IQ7-0e-ZrB"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZRm-iB-zgM">
-                                <rect key="frame" x="525" y="833" width="49" height="31"/>
+                                <rect key="frame" x="525" y="769" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="clearNotMeWithSender:" destination="hsK-yF-Ton" eventType="primaryActionTriggered" id="Itg-ja-FvK"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flesh Tone 4mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnJ-0I-8jk">
-                                <rect key="frame" x="640" y="764" width="814" height="46"/>
+                                <rect key="frame" x="640" y="700" width="814" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Black 3mm (std)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXS-Et-HoK">
-                                <rect key="frame" x="640" y="706" width="334" height="45"/>
+                                <rect key="frame" x="640" y="642" width="334" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VGp-Ag-5DF">
-                                <rect key="frame" x="1068" y="713" width="49" height="31"/>
+                                <rect key="frame" x="1068" y="649" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="clearNotMeWithSender:" destination="hsK-yF-Ton" eventType="primaryActionTriggered" id="ww2-HH-Rqv"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Black 4mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sI6-v9-OJf">
-                                <rect key="frame" x="1183" y="706" width="302" height="45"/>
+                                <rect key="frame" x="1183" y="642" width="302" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dNm-Jm-PBO">
-                                <rect key="frame" x="525" y="968" width="49" height="31"/>
+                                <rect key="frame" x="525" y="904" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="y7d-OA-8HH">
-                                <rect key="frame" x="525" y="1027" width="49" height="31"/>
+                                <rect key="frame" x="525" y="963" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Rearfoot Post (Heel Stabilizer Bar standard)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPl-Lf-dsW">
-                                <rect key="frame" x="639" y="1019" width="1002" height="46"/>
+                                <rect key="frame" x="639" y="955" width="1002" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medial Arch Suspender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2t0-AA-tGh">
-                                <rect key="frame" x="639" y="961" width="392" height="45"/>
+                                <rect key="frame" x="639" y="897" width="392" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="S8q-fY-MUF">
-                                <rect key="frame" x="1067" y="968" width="49" height="31"/>
+                                <rect key="frame" x="1067" y="904" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lateral Arch Suspender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ris-Rv-P6u">
-                                <rect key="frame" x="1182" y="961" width="484" height="45"/>
+                                <rect key="frame" x="1182" y="897" width="484" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eYh-KE-7Dp">
-                                <rect key="frame" x="1520" y="862" width="49" height="31"/>
+                                <rect key="frame" x="1681" y="721" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Poron under extension" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlH-dw-ksp">
-                                <rect key="frame" x="1612" y="855" width="426" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Poron" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlH-dw-ksp">
+                                <rect key="frame" x="1773" y="714" width="228" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="under extension" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JL-Bp-2Iz">
+                                <rect key="frame" x="1773" y="762" width="249" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Sab-Vz-qcw">
-                                <rect key="frame" x="525" y="910" width="49" height="31"/>
+                                <rect key="frame" x="525" y="846" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medial Arch Flange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHE-lq-hrn">
-                                <rect key="frame" x="639" y="903" width="392" height="45"/>
+                                <rect key="frame" x="639" y="839" width="392" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6fg-Ya-ZHH">
-                                <rect key="frame" x="1067" y="910" width="49" height="31"/>
+                                <rect key="frame" x="1067" y="846" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lateral Flange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pr-Et-LPa">
-                                <rect key="frame" x="1182" y="903" width="384" height="45"/>
+                                <rect key="frame" x="1182" y="839" width="384" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XJK-Yq-3cY">
-                                <rect key="frame" x="1068" y="777" width="49" height="31"/>
+                                <rect key="frame" x="1068" y="713" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="clearNotMeWithSender:" destination="hsK-yF-Ton" eventType="primaryActionTriggered" id="HAj-IZ-Frt"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Black 5mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8T-Bd-PgW">
-                                <rect key="frame" x="1183" y="770" width="384" height="45"/>
+                                <rect key="frame" x="1183" y="706" width="384" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-qR-JbQ">
-                                <rect key="frame" x="1107" y="477" width="400" height="30"/>
+                                <rect key="frame" x="1107" y="423" width="400" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Heel Lift (in.)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz6-ET-Nqb">
-                                <rect key="frame" x="901" y="1125" width="265" height="51"/>
+                                <rect key="frame" x="900" y="1031" width="265" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="wLx-0K-qfw">
-                                <rect key="frame" x="1167" y="1135" width="400" height="30"/>
+                                <rect key="frame" x="1166" y="1041" width="400" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XdF-xw-cyS">
+                                <rect key="frame" x="1182" y="1109" width="766" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92312985749999998" green="0.92312985749999998" blue="0.92312985749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="i9r-0i-qXK"/>
                     </view>
                     <size key="freeformSize" width="2058" height="1536"/>
                     <connections>
+                        <outlet property="addPoronUnderExtension" destination="eYh-KE-7Dp" id="D0M-Jx-CMw"/>
+                        <outlet property="afoBlack3mm" destination="Jc1-BB-bqB" id="6Qj-7u-kzc"/>
+                        <outlet property="afoBlack4mm" destination="VGp-Ag-5DF" id="uRa-nN-8ll"/>
+                        <outlet property="afoBlack5mm" destination="XJK-Yq-3cY" id="KAZ-Wf-ZLK"/>
+                        <outlet property="afoFleshTone4mm" destination="Udq-bL-4kx" id="9iR-vc-3ca"/>
+                        <outlet property="afoSpecificationUILabel" destination="Lpv-Yn-HEf" id="4Kn-YB-mtf"/>
+                        <outlet property="afoWhite3mm" destination="ZRm-iB-zgM" id="3iN-oE-vw6"/>
+                        <outlet property="correctionAndModificationsUILabel" destination="4bw-MM-HzG" id="xOZ-NQ-sya"/>
+                        <outlet property="fullRearfootPost" destination="y7d-OA-8HH" id="Fvg-4E-4Aj"/>
+                        <outlet property="heelCupHeightPickerView" destination="pku-zQ-r1k" id="8gp-Vj-vWP"/>
+                        <outlet property="heelLiftInches" destination="wLx-0K-qfw" id="HVM-Cb-YXm"/>
+                        <outlet property="laterArchSuspender" destination="S8q-fY-MUF" id="Zee-sW-luf"/>
+                        <outlet property="lateralFlange" destination="6fg-Ya-ZHH" id="rUO-Mz-JYq"/>
+                        <outlet property="medialArchFlange" destination="Sab-Vz-qcw" id="IEh-D8-tWD"/>
+                        <outlet property="medialArchSuspender" destination="dNm-Jm-PBO" id="JvF-Ka-1rc"/>
                         <outlet property="medialHeelSkivePikerView" destination="9Vh-ek-36y" id="yXr-aK-AxP"/>
                         <outlet property="medialHeelSkiveUILabel" destination="rC0-yW-bmS" id="3RE-md-vxt"/>
+                        <outlet property="navicularAccommodation" destination="I5b-n1-SWP" id="0lA-UL-Dys"/>
+                        <outlet property="otherAccommodation" destination="vsX-qR-JbQ" id="doA-Z2-uaU"/>
+                        <outlet property="plantarFaciaAccommodation" destination="RgR-e1-uZa" id="DEr-Zn-LHd"/>
                         <outlet property="richieBraceHeaderUILabel" destination="hQp-bM-g7K" id="mRA-eT-1eR"/>
+                        <outlet property="specialInstructions" destination="XdF-xw-cyS" id="ICj-o1-aOm"/>
+                        <outlet property="sytloidAccommodation" destination="9y2-bw-rq0" id="jLr-yV-B5o"/>
+                        <outlet property="topCoverLengthPickerView" destination="YAp-UB-4WL" id="oD6-Rx-c1t"/>
+                        <outlet property="topCoverMaterialPickerView" destination="mjl-PV-KRR" id="HRw-S4-yo4"/>
+                        <outlet property="topCoverUILabel" destination="VzQ-io-7oW" id="5Gz-ee-mYk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhk-PW-tm1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -34,6 +34,7 @@ class OrthoticsPrescriptionViewController: UIViewController {
     @IBAction func clickAddToMyDevices() {
         let parent = self.parent! as! ViewController;
         parent.saveMyDeviceToCoreData();
+        orthosisSaveToMyDevicesButton.isEnabled = false;
     }
 
     @IBAction func clickOrthosisMaterial() {

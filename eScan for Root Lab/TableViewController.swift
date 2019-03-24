@@ -24,6 +24,7 @@ class OrthoticsDeviceViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         indexPathOfExpandedView = indexPath;
+        self.tableView.scrollToRow(at: indexPathOfExpandedView!, at: .top, animated: true)
 
         self.tableView.reloadData();
         
@@ -50,6 +51,55 @@ class OrthoticsDeviceViewController: UITableViewController {
     }
     
     func refreshMyDevices() {
+        indexPathOfExpandedView = nil;
+
+        if (richieBraceHasBeenSelected) {
+            richieBraceDescriptionLabel0.text = "Full flexion ankle hinge pivot, black shell, 35mm heel cup, met. length EVA top cover, heel stabilizer bar, intrinsic forefoot correction.";
+            richieBraceDescriptionLabel1.text = "Limits ankle motion, black shell, 35mm heel cup, met. length EVA top cover, heel stabilizer bar, intrinsic forefoot correction.";
+            richieBraceDescriptionLabel2.text = "Full flexion ankle hinge pivot with spring (Tamarack) hinges for dorsiflexion assistance , black shell, 35mm heel cup, sulcus length EVA top cover, heel stabilizer bar, intrinsic forefoot correction.";
+            richieBraceLabel0.text = "Standard";
+            richieBraceLabel1.text = "Restricted Ankle Pivot";
+            richieBraceLabel2.text = "Dynamic Assist";
+        } else {
+            var i = 0;
+            var mySortedDevices = Array(myDevices);
+            mySortedDevices.sort(by: { $0.deviceName! < $1.deviceName! })
+            for myDevice in mySortedDevices {
+                if (i == 0) {
+                    myDeviceLabel0.text = myDevice.deviceName;
+                    myDeviceDescription0.text = "";
+                } else if (i == 1) {
+                    myDeviceLabel1.text = myDevice.deviceName;
+                    myDeviceDescription1.text = "";
+                } else if (i == 2) {
+                    myDeviceLabel2.text = myDevice.deviceName;
+                    myDeviceDescription2.text = "";
+                } else if (i == 3) {
+                    myDeviceLabel3.text = myDevice.deviceName;
+                    myDeviceDescription3.text = "";
+                } else if (i == 4) {
+                    myDeviceLabel4.text = myDevice.deviceName;
+                    myDeviceDescription4.text = "";
+                } else if (i == 5) {
+                    myDeviceLabel5.text = myDevice.deviceName;
+                    myDeviceDescription5.text = "";
+                } else if (i == 6) {
+                    myDeviceLabel6.text = myDevice.deviceName;
+                    myDeviceDescription6.text = "";
+                } else if (i == 7) {
+                    myDeviceLabel7.text = myDevice.deviceName;
+                    myDeviceDescription7.text = "";
+                } else if (i == 8) {
+                    myDeviceLabel8.text = myDevice.deviceName;
+                    myDeviceDescription8.text = "";
+                }
+                i = i + 1;
+            }
+        }
+        
+        self.tableView.reloadData();
+
+        
         //Not gonna do it this way
 //
 //        self.tableView.beginUpdates();
@@ -96,7 +146,11 @@ class OrthoticsDeviceViewController: UITableViewController {
         if (indexPath == indexPathOfExpandedView) {
             return heightForRowNormally * 4;
         }
-        if (indexPath.section == 4 && indexPath.row >= myDevices.count) {
+        if (richieBraceHasBeenSelected) {
+            if (indexPath.section != 0 || indexPath.row >= 3) {
+                return 0;
+            }
+        } else if (indexPath.section == 4 && indexPath.row >= myDevices.count) {
             return 0;
         }
         return heightForRowNormally;
@@ -109,7 +163,47 @@ class OrthoticsDeviceViewController: UITableViewController {
     @IBAction func orthoticDeviceClickEdit() {
         (self.parent as! ViewController?)!.orthoticDeviceClickEdit()
     }
+    
+    @IBAction func deleteOrthoticsDevice() {
+        do {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            try context.save();
+            var mySortedDevices = Array(myDevices);
+            mySortedDevices.sort(by: { $0.deviceName! < $1.deviceName! })
+            let nameToDelete = mySortedDevices[indexPathOfExpandedView!.row].deviceName;
+            var i = 0;
+            var deviceIndex = 0;
+            for device in myDevices {
+                if (device.deviceName == nameToDelete) {
+                    deviceIndex = i;
+                }
+                i = i + 1;
+            }
+            context.delete(myDevices[deviceIndex]);
+            myDevices.remove(at: deviceIndex);
+            appDelegate.saveContext();
+        } catch let error as NSError {
+        //TODO Cannot save, fail startup
+        print("Could not save Order. \(error), \(error.userInfo)")
+        }
+        
+        expandedView = nil;
+        indexPathOfExpandedView = nil;
+        refreshMyDevices();
+        self.tableView.reloadData();
+    }
 
+    
+    @IBOutlet var richieBraceLabel0: UILabel!
+    @IBOutlet var richieBraceLabel1: UILabel!
+    @IBOutlet var richieBraceLabel2: UILabel!
+
+    @IBOutlet var richieBraceDescriptionLabel0: UITextView!
+    @IBOutlet var richieBraceDescriptionLabel1: UITextView!
+    @IBOutlet var richieBraceDescriptionLabel2: UITextView!
+
+    
     @IBOutlet var myDeviceLabel0: UILabel!
     @IBOutlet var myDeviceLabel1: UILabel!
     @IBOutlet var myDeviceLabel2: UILabel!
