@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		22430FACBB0391771016282F /* Pods_eScan_for_Root_LabUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F70718464626024ACCCA47 /* Pods_eScan_for_Root_LabUITests.framework */; };
 		2D2B241122054D130057F8C2 /* Root Lab transparent back PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */; };
+		2D411F9E225074C7004D5862 /* ScannedR.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D411F9A225074C6004D5862 /* ScannedR.png */; };
+		2D411F9F225074C7004D5862 /* ScanR.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D411F9B225074C6004D5862 /* ScanR.png */; };
+		2D411FA0225074C7004D5862 /* ScanL.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D411F9C225074C6004D5862 /* ScanL.png */; };
+		2D411FA1225074C7004D5862 /* ScannedL.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D411F9D225074C7004D5862 /* ScannedL.png */; };
 		2D44BDB521B4BF9C009A1066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */; };
 		2D44BDB721B4BF9C009A1066 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D44BDB621B4BF9C009A1066 /* ViewController.swift */; };
 		2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDB821B4BF9C009A1066 /* Main.storyboard */; };
@@ -22,8 +26,6 @@
 		2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDEF21B5728D009A1066 /* orthotics.jpg */; };
 		2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */; };
 		2D52F7C421BC713D00AC60F5 /* patient.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D52F7C321BC713C00AC60F5 /* patient.png */; };
-		2D6663A521C8C90D007B5316 /* left-foot-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6663A321C8C90C007B5316 /* left-foot-md.png */; };
-		2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D6663A421C8C90C007B5316 /* right-foot-md.jpg */; };
 		2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E121F3DBA40077A8B1 /* fastcast3d.png */; };
 		2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E321F3DD210077A8B1 /* greybar.png */; };
 		2D6A61EE21F64A2B0077A8B1 /* MeshRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */; };
@@ -99,6 +101,10 @@
 /* Begin PBXFileReference section */
 		16F70718464626024ACCCA47 /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Root Lab transparent back PNG.png"; sourceTree = "<group>"; };
+		2D411F9A225074C6004D5862 /* ScannedR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScannedR.png; sourceTree = "<group>"; };
+		2D411F9B225074C6004D5862 /* ScanR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScanR.png; sourceTree = "<group>"; };
+		2D411F9C225074C6004D5862 /* ScanL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScanL.png; sourceTree = "<group>"; };
+		2D411F9D225074C7004D5862 /* ScannedL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScannedL.png; sourceTree = "<group>"; };
 		2D44BDB121B4BF9C009A1066 /* eScan for Root Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eScan for Root Lab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D44BDB621B4BF9C009A1066 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,8 +124,6 @@
 		2D44BDEF21B5728D009A1066 /* orthotics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = orthotics.jpg; sourceTree = "<group>"; };
 		2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = podiatrist.jpeg; sourceTree = "<group>"; };
 		2D52F7C321BC713C00AC60F5 /* patient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patient.png; sourceTree = "<group>"; };
-		2D6663A321C8C90C007B5316 /* left-foot-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-foot-md.png"; sourceTree = "<group>"; };
-		2D6663A421C8C90C007B5316 /* right-foot-md.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "right-foot-md.jpg"; sourceTree = "<group>"; };
 		2D6A61E121F3DBA40077A8B1 /* fastcast3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fastcast3d.png; sourceTree = "<group>"; };
 		2D6A61E321F3DD210077A8B1 /* greybar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greybar.png; sourceTree = "<group>"; };
 		2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshRenderer.swift; sourceTree = "<group>"; };
@@ -309,6 +313,10 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2D411F9C225074C6004D5862 /* ScanL.png */,
+				2D411F9D225074C7004D5862 /* ScannedL.png */,
+				2D411F9A225074C6004D5862 /* ScannedR.png */,
+				2D411F9B225074C6004D5862 /* ScanR.png */,
 				2D8E46C12242AC97008DDB9A /* ScanNowbutton.png */,
 				2DAEDD2422346275003E1591 /* labUseOnly.png */,
 				2DBCBF84221904B2004E3AC9 /* Circle.png */,
@@ -333,8 +341,6 @@
 				2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */,
 				2D6A61E321F3DD210077A8B1 /* greybar.png */,
 				2D6A61E121F3DBA40077A8B1 /* fastcast3d.png */,
-				2D6663A321C8C90C007B5316 /* left-foot-md.png */,
-				2D6663A421C8C90C007B5316 /* right-foot-md.jpg */,
 				2D52F7C321BC713C00AC60F5 /* patient.png */,
 				2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */,
 				2DC5599121BC6D8B005F99BA /* structure scanner image.png */,
@@ -473,8 +479,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DE3081822122E43002795E7 /* buttonMD.png in Resources */,
+				2D411F9E225074C7004D5862 /* ScannedR.png in Resources */,
 				2DBCBF85221904BE004E3AC9 /* Circle.png in Resources */,
-				2D6663A621C8C90D007B5316 /* right-foot-md.jpg in Resources */,
 				2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */,
 				2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */,
 				2DE3081A22122E43002795E7 /* unchecked.png in Resources */,
@@ -488,7 +494,6 @@
 				2D8E46C22242AC97008DDB9A /* ScanNowbutton.png in Resources */,
 				2DE307FE2210E055002795E7 /* Heel Pad.png in Resources */,
 				2DE308022210E084002795E7 /* Dancers Pad.png in Resources */,
-				2D6663A521C8C90D007B5316 /* left-foot-md.png in Resources */,
 				2DE307F32210DF56002795E7 /* Kinetic Wedge.png in Resources */,
 				2DE308042210E093002795E7 /* Metatarsal Pad.png in Resources */,
 				2D2B241122054D130057F8C2 /* Root Lab transparent back PNG.png in Resources */,
@@ -502,12 +507,15 @@
 				2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */,
 				2DE3081C22122E43002795E7 /* Button.png in Resources */,
 				2DE3081722122E43002795E7 /* Camera.png in Resources */,
+				2D411F9F225074C7004D5862 /* ScanR.png in Resources */,
 				2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */,
 				2DE307F22210DF56002795E7 /* Neuroma Pad.png in Resources */,
 				2DE3081922122E43002795E7 /* buttonLong.png in Resources */,
 				2DE3082022186839002795E7 /* Donebutton.png in Resources */,
+				2D411FA0225074C7004D5862 /* ScanL.png in Resources */,
 				2DE307F42210DF56002795E7 /* Metatarsal Bar.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
+				2D411FA1225074C7004D5862 /* ScannedL.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

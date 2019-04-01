@@ -7,21 +7,36 @@
 //
 
 
-// (TEST) use mailcore
 
-// (TEST - failure) Scans place images over foot buttons - loading image not working
+// (DONE) Under shoe type, Extra Depth and High Heel should be two separate types
+// (DONE) reset richie brace form
+// (DONE) use mailcore, use correct email address
+// (DONE) Complete work order pdf
+// (DONE) get the mail working without the ipad email
+// (DONE) email practitioner a copy of the work order without the scan files - don't CC
+// (DONE) address needs to be required
+// (DONE) click again shrink back down - orthotic device page
+// (DONE) A “no Top Cover option needs to be put in.
+// (DONE) Email Error should come up before it goes to the start page again. Currently it comes up when you go back to the Submit page on the next order. Basically it should let you know before you can move on.
+// (DONE) Richie Brace Form
+// (DONE) Under Corrections and modifications – Navicular Accommodation and Fill with Poron do not show up on the Prescription page when chosen until something else is chosen or refreshed maybe.
+// (DONE) Change title from eScan to Scan
+// (DONE) Under Posting –“CrepeRearfoot posting Elevator 4mm R” seems to come up, probably should just be the material as the Elevator comes up after if selected. Not sure how that is working.
+// (DONE) Under top covers “Bottom Cover Material” seems to come up in front of all material choices except 1/16 EVA which does not show up at all.
+// (DONE) Email button needs label centered.
+// (DONE) Replace foot images with the ones that were sent that change from red to green.
+// (DONE) Height, weight and shoe size default to numbers keyboard
+// (DONE) Done button looks smooched, use same sizing and positioning as Scan button
+// (DONE) When filling out and keyboard open can we move screen to place curser in boxes not shown without having to drop keyboard
 
-
+// (TODO) Remove all pictures from the devices, we can add then later
+// (TODO) Top Covers page needs to scroll so it is not all bunched up.
+// (TODO) Products with extended top covers do not have the top cover defaults filled out.
 
 //TODO
 // (TODO) Better Pictures
-// (TODO) get the mail working without the ipad email
-// (TODO) Complete work order pdf
 // (TODO) Email created document
 // (TODO) Submit Form - and review
-// (TODO) email practitioner a copy of the work order without the scan files - don't CC
-// (TODO) address needs to be required
-// (TODO) click again shrink back down - orthotic device page
 // (TODO) HDPE should be default for
 // (TODO) SOFT sport was wrong  - not graphite
 // (TODO) logo on opening page
@@ -54,7 +69,6 @@
 // (TODO) Validation- When L or R is selected EVA or Korex must be selected,
 
 // (TODO) when expand view, make sure it doesn't expand off screen, scoll it up
-// (TODO) if no email accounts set up on device, alert early
 // (IN PROGRESS) When No Post is selected, everything on the form greys out except Non Corrective Forefoot Post
 // (TODO) Accomodative EVA - grey out edit button on orthosis material
 // (TODO) Button says EDIT should say "Select and Modify"
@@ -90,7 +104,6 @@
 // (TODO) Submit page has the work order
 // (TODO) (and don't allow to change) default email
 // (TODO) Complaiance language
-// (TODO) Richie Brace Form
 // (TODO) Order a second pair, and reorder
 // (TODO) if left is checked anywhere, left scan is required
 // (TODO) if right is checked anywhere, right scan is required
@@ -350,6 +363,8 @@ var leftFootEscanDone = false;
 var rightFootEscanDone = false;
 var richieBraceHasBeenSelected = false;
 var orthoticsHasBeenSelected = false;
+var keyboardMovement = 0.0;
+var keyboardFrame: NSValue? = nil;
 
 let orthoticMateriaPickerMap: [Int] =
     [0, 0, 1, 2, 3,
@@ -408,7 +423,7 @@ let orthosisMaterialColorLabels: [String] =
     ["Natural","White"];
 
 let patientShoeTypeLabels: [String] =
-["Shoe Type", "Athletic", "Boot", "Casual", "Dress", "Extra depth High Heel"];
+["Shoe Type", "Athletic", "Boot", "Casual", "Dress", "Extra depth", "High Heel"];
 
 let orthosisMaterialTypeLabels: [String] =
     ["Polypropylene","Graphite Composite (TL-2100)","Fiberglass Composite (TL-Silver)","Acrylic (Polydor)","High-Density Polyethylene (HDPE)"];
@@ -972,8 +987,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func clearScanForm() {
-        escanLeftFootUIButton.setImage(UIImage(named: "left-foot-md.png"), for: UIControl.State.normal)
-        escanRightFootUIButton.setImage(UIImage(named: "right-foot-md.png"), for: UIControl.State.normal)
+        escanLeftFootUIButton.setImage(UIImage(named: "ScanL.png"), for: UIControl.State.normal)
+        escanRightFootUIButton.setImage(UIImage(named: "ScanR.png"), for: UIControl.State.normal)
         reorderUISwitch.isOn = false;
         for iUiImageView in reorderScrollView.subviews {
             let theImageView = (iUiImageView as! UIImageView);
@@ -988,6 +1003,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     func clearOrthoticDeviceForm() {
         orthoticDeviceSelected = -1;
         orthoticsDeviceViewController?.resetTableView();
+    }
+    
+    func clearRichieBraceForm() {
+        richieBraceHasBeenSelected = false;
+        richieBraceViewController?.clearThisRichieBraceForm();
     }
     
     func clearCorrectionsAndModificationsForm() {
@@ -1140,6 +1160,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order = Order.init(entity: NSEntityDescription.entity(forEntityName: "Order", in:context)!, insertInto: context);
         order.addToOrderMaterialItemList(MaterialOrderItem.init(entity: NSEntityDescription.entity(forEntityName: "MaterialOrderItem", in:context)!, insertInto: context));
         
+        let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+        theMOI.orthoticsMaterialPickerSelection = -1;
+        
         let multiplier : CGFloat = 1 - ((1 - (screenSize.width / 2048)) / 2);
 
         if (multiplier != 1) {
@@ -1153,7 +1176,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             defaultPractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             okDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             cancelDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
-
+            submitEmailButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            
             commentsTextArea.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             
             welcomeLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
@@ -1290,6 +1314,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             }
         }
         
+        
+        patientWeightInput.keyboardType = .numberPad
+        patientHeightInput.keyboardType = .numberPad
+        patientHeightInchesInput.keyboardType = .numberPad
+        patientAgeInput.keyboardType = .numberPad
+        patientShoeSizeInput.keyboardType = .numberPad
+
         loadPractitionersFromCoreData();
         clearPractitionerForm();
         loadDefaultPractitionerFromCoreData();
@@ -1338,6 +1369,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         correctionsAndModificationsAddLatHeelExpansionLeft.delegate = self
         correctionsAndModificationsMedialHeelSkiveRight.delegate = self
         correctionsAndModificationsMedialHeelSkiveLeft.delegate = self
+        correctionsAndModificationsNavicularAccomLeft.delegate = self
+        correctionsAndModificationsNavicularAccomRight.delegate = self
         orthosisSpecificationsOtherMedmmLeft.delegate = self
         orthosisSpecificationsOtherMedmmRight.delegate = self
         orthosisSpecificationsOtherLatmmLeft.delegate = self
@@ -1404,7 +1437,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         commentsTextArea.autocorrectionType = UITextAutocorrectionType.no;
        
         
-       
+        correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         
         correctionsAndModificationsFillWIthPoronLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsFillWIthPoronRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -2325,6 +2359,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func orthoticDeviceClickEditOrSelect() {
+        
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
         
         if (theMOI.orthoticsMaterialPickerSelection == Int16(orthoticDeviceSelected)) {
@@ -2338,12 +2373,65 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else {
             theMOI.orthoticsMaterialPickerSelection = Int16(orthoticDeviceSelected);
         }
-
+        
         theMOI.orthoticsMaterialSelection = Int16(orthoticMateriaPickerMap[Int(theMOI.orthoticsMaterialPickerSelection)]);
 
         orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
         
         
+        if (richieBraceHasBeenSelected) {
+            if (orthoticDeviceSelected == 0) { //Standard
+//                Full flexion ankle hinge pivot,
+                
+                //black shell,
+                richieBraceViewController?.afoBlack3mm.isOn = true;
+                //35mm heel cup,
+                richieBraceViewController?.heelCupHeightPickerView.selectRow(0, inComponent: 0, animated: false);
+
+                //met. length EVA top cover,
+                richieBraceViewController?.topCoverLengthPickerView.selectRow(0, inComponent: 0, animated: false);
+
+                //heel stabilizer bar,
+                
+                //intrinsic forefoot correction.
+
+                
+            } else if (orthoticDeviceSelected == 1) { //Restricted Ankle Pivot
+//                Limits ankle motion,
+                
+                //black shell,
+                richieBraceViewController?.afoBlack3mm.isOn = true;
+
+                //35mm heel cup,
+                richieBraceViewController?.heelCupHeightPickerView.selectRow(0, inComponent: 0, animated: false);
+
+                //met. length EVA top cover,
+                richieBraceViewController?.topCoverLengthPickerView.selectRow(0, inComponent: 0, animated: false);
+
+                //heel stabilizer bar,
+                
+                //intrinsic forefoot correction.
+
+            } else if (orthoticDeviceSelected == 2) { //Dynamic Assist
+//                Full flexion ankle hinge pivot with spring (Tamarack) hinges for dorsiflexion assistance ,
+                
+                //black shell,
+                richieBraceViewController?.afoBlack3mm.isOn = true;
+
+                //35mm heel cup,
+                richieBraceViewController?.heelCupHeightPickerView.selectRow(0, inComponent: 0, animated: false);
+
+                //sulcus length EVA top cover,
+                richieBraceViewController?.topCoverLengthPickerView.selectRow(1, inComponent: 0, animated: false);
+
+                //heel stabilizer bar,
+                
+                //intrinsic forefoot correction.
+
+            }
+        }
+        
+
         
         if (orthoticDeviceSelected >= 24) {
             setOrthosisMaterialFormFromOrder()
@@ -2697,6 +2785,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         thePractitioner.shippingAddressFacilityName = practitionerShippingAddressFacilityName.text;
         thePractitioner.phone = practitionerPhoneInput.text;
         thePractitioner.email = practitionerEmailInput.text;
+        thePractitioner.useEmailForCC = newPractitionerUseEmailForCC.isOn;
+        thePractitioner.useShippingAddressForBillingAddress = newPractitionerSameAsBillingAddressUiSwitch.isOn;
     }
     
     @IBAction func ClickNextAction(sender: UIButton){
@@ -2710,21 +2800,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             eviewMesh.isHidden = true;
             dismissEViewMesh();
             if (amScanningLeftFoot) {
-                let image = prepareScreenShotCurrentViewpointForUIImage();
-                if (image == nil) {
-                    escanLeftFootUIButton.setImage(image, for: UIControl.State.normal);
-                } else {
-                    escanLeftFootUIButton.setImage(UIImage(named: "checked.png"), for: UIControl.State.normal);
-                }
-                
+//                let image = prepareScreenShotCurrentViewpointForUIImage();
+//                if (image == nil) {
+//                    escanLeftFootUIButton.setImage(image, for: UIControl.State.normal);
+//                } else {
+//                }
+                escanLeftFootUIButton.setImage(UIImage(named: "ScannedL.png"), for: UIControl.State.normal);
+
                 
                 leftFootEscanDone = true;
                 changeValuesBasedOnChangedInput();
             } else {
                 rightFootEscanDone = true;
-                
-                let image = prepareScreenShotCurrentViewpointForUIImage();
-                escanRightFootUIButton.setImage(image, for: UIControl.State.normal);
+                escanRightFootUIButton.setImage(UIImage(named: "ScannedR.png"), for: UIControl.State.normal);
+
+//                let image = prepareScreenShotCurrentViewpointForUIImage();
+//                escanRightFootUIButton.setImage(image, for: UIControl.State.normal);
 
                 changeValuesBasedOnChangedInput();
             }
@@ -2825,7 +2916,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         clearPatientForm();
         clearScanForm();
         clearOrthoticDeviceForm();
-        
+        clearRichieBraceForm();
+
         clearCorrectionsAndModificationsForm();
         
         resetDueToOrthosisTypeChange();
@@ -3232,7 +3324,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerLabel.text = "Practitioner";
         patientLabel.text = "Patient";
         materialLabel.text = "Prescription";
-        eScanLabel.text = "eScan";
+        eScanLabel.text = "Scan";
         submitLabel.text = "Submit";
 
     }
@@ -3437,6 +3529,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order.topCoversAndExtensionsBottomCoverMaterialLeatherBlack = topCoversViewController!.topCoversAndExtensionsMaterialLeatherBlackUISwitch.isOn;
         order.topCoversAndExtensionsBottomCoverMaterialLeatherBrown = topCoversViewController!.topCoversAndExtensionsMaterialLeatherBrownUISwitch.isOn;
         order.topCoversAndExtensionsBottomCoverMaterialEVA116 = topCoversViewController!.topCoversAndExtensionsMaterialEva116UISwitch.isOn;
+        order.topCoversAndExtensionsBottomCoverMaterialEva116 = topCoversViewController!.topCoversAndExtensionsMaterialEva116UISwitch.isOn;
         order.topCoversAndExtensionsBottomCoverMaterialEva18 = topCoversViewController!.topCoversAndExtensionsMaterialEva18UISwitch.isOn;
         order.topCoversAndExtensionsBottomCoverMaterialNcn116 = topCoversViewController!.topCoversAndExtensionsMaterialNcn116UISwitch.isOn;
         order.topCoversAndExtensionsBottomCoverMaterialNcn18 = topCoversViewController!.topCoversAndExtensionsMaterialNcn18UISwitch.isOn;
@@ -4079,6 +4172,46 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     func calculateCorrectionsAndModificationsDescriptionFromOrder() -> String {
         var theReturn = "";
         
+        if (richieBraceHasBeenSelected) {
+        
+            if (richieBraceViewController!.heelLiftInches.text != nil &&
+                richieBraceViewController!.heelLiftInches.text != "") {
+                theReturn += "Heel lift: " + richieBraceViewController!.heelLiftInches.text! + " in, "
+            }
+            
+            let selectedHeelCupHeight = richieBraceViewController!.heelCupHeightPickerView.selectedRow(inComponent: 0);
+            if (selectedHeelCupHeight > 0) {
+                let heelCupHeight = richieBraceViewController!.richieBraceHeelCupHeightPickerViewValues[selectedHeelCupHeight];
+                theReturn += "Heel Cup Height: " + heelCupHeight + ", ";
+            }
+            
+            if (richieBraceViewController!.navicularAccommodation.isOn) {
+                theReturn += "Navicular Accommodation, "
+            }
+            if (richieBraceViewController!.plantarFaciaAccommodation.isOn) {
+                theReturn += "Plantar Facia Accommodation, "
+            }
+            if (richieBraceViewController!.sytloidAccommodation.isOn) {
+                theReturn += "Styloid Accommodation, "
+            }
+            if (richieBraceViewController!.otherAccommodation.text != nil &&
+                richieBraceViewController!.otherAccommodation.text != "") {
+                theReturn += "Other Accommodation: " + richieBraceViewController!.otherAccommodation.text! + ", ";
+            }
+            
+            let selectedMedialHeelSkive =  richieBraceViewController!.medialHeelSkivePikerView.selectedRow(inComponent: 0);
+            if (selectedMedialHeelSkive > 0) {
+                let selectedMedialHeelSkiveText = richieBraceViewController!.richieBraceMedialHeelSkivePickerViewValues[selectedMedialHeelSkive];
+                theReturn += "Medial Heel Skive: " + selectedMedialHeelSkiveText + ", ";
+            }
+
+            
+            if (theReturn.hasSuffix(", ")) {
+                theReturn = String(theReturn.dropLast(2));
+            }
+            return theReturn;
+        }
+
         theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsCastOrientationInvertedLeft, rightInt: order.correctionsAndModificationsCastOrientationInvertedRight, string: "Inverted");
         
         theReturn += calculateALeftAndRightInt(leftInt: order.correctionsAndModificationsCastOrientationEvertedLeft, rightInt: order.correctionsAndModificationsCastOrientationEvertedRight, string: "Everted");
@@ -4125,11 +4258,37 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         return theReturn;
     }
+
     
     func calculatePostingDescriptionFromOrder() -> String{
         var theReturn = "";
         
-        theReturn += postingRearfootPostTypePickerData[Int(order.postingRearfootPostMaterial)];
+        if (richieBraceHasBeenSelected) {
+            if (richieBraceViewController!.fullRearfootPost.isOn) {
+                theReturn += "Full Rearfoot Post, "
+            }
+            
+            if (richieBraceViewController!.medialArchFlange.isOn) {
+                theReturn += "Medial Arch Flange, "
+            }
+            if (richieBraceViewController!.medialArchSuspender.isOn) {
+                theReturn += "Medial Arch Suspender, "
+            }
+            if (richieBraceViewController!.lateralFlange.isOn) {
+                theReturn += "Lateral Flange, "
+            }
+            if (richieBraceViewController!.laterArchSuspender.isOn) {
+                theReturn += "Lateral Arch Suspender, "
+            }
+            
+            if (theReturn.hasSuffix(", ")) {
+                theReturn = String(theReturn.dropLast(2));
+            }
+            
+            return theReturn;
+        }
+        
+        theReturn += "Rearfoot post: " +  postingRearfootPostTypePickerData[Int(order.postingRearfootPostMaterial)] + ", ";
 
         theReturn += calculateALeftAndRightInt(leftInt: String(order.postingHeelLiftLeft), rightInt: String(order.postingHeelLiftRight), string: "Heel Lift");
         
@@ -4170,6 +4329,31 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     func calculateOrthosisSpecificationDescriptionFromOrder() -> String{
         var theReturn = "";
         
+        if (richieBraceHasBeenSelected) {
+            if (richieBraceViewController!.afoBlack3mm.isOn) {
+                theReturn += "AFO Black 3mm, "
+            }
+            if (richieBraceViewController!.afoBlack4mm.isOn) {
+                theReturn += "AFO Black 4mm, "
+            }
+            if (richieBraceViewController!.afoBlack5mm.isOn) {
+                theReturn += "AFO Black 5mm, "
+            }
+            if (richieBraceViewController!.afoWhite3mm.isOn) {
+                theReturn += "AFO White 3mm, "
+            }
+            if (richieBraceViewController!.afoFleshTone4mm.isOn) {
+                theReturn += "AFO Flesh Tone 4mm, "
+            }
+            if (richieBraceViewController!.afoBlack5mm.isOn) {
+                theReturn += "AFO Black 5mm, "
+            }
+            if (theReturn.hasSuffix(", ")) {
+                theReturn = String(theReturn.dropLast(2));
+            }
+            return theReturn;
+        }
+
         theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight, string: "Lateral flange");
         
         theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsWideArchProfileRight, string: "Wide arch profile");
@@ -4208,6 +4392,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
     func calculateRushOrderDescriptionFromOrder() -> String{
+        
+        if (richieBraceHasBeenSelected) {
+            return "";
+        }
+
         var theReturn = calculateRushOrderDescriptionLine1FromOrder();
         if (theReturn != "") {
             theReturn += " ,";
@@ -4223,6 +4412,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
     func calculateRushOrderDescriptionLine1FromOrder() -> String{
         var theReturn = "";
+        
+        if (richieBraceHasBeenSelected) {
+            return theReturn;
+        }
+
         if (order.rushOrder2DayTurnaround) {
             theReturn += "2 Day Turnaround"
         }
@@ -4233,6 +4427,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     func calculateRushOrderDescriptionLine2FromOrder() -> String{
         var theReturn = "";
+        
+        if (richieBraceHasBeenSelected) {
+            return theReturn;
+        }
+
         if (order.rushOrderExpressShiping > 0) {
             let theView = self.pickerView(rushOrderExpressShippingPicker, viewForRow: Int(order.rushOrderExpressShiping), forComponent: 0, reusing: nil)
             theReturn += (theView as! UILabel).text!;
@@ -4242,6 +4441,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func calculateOrthosisMaterialOrderDescriptionFromOrder() -> String{
         var theReturn = "";
+        
+        if (richieBraceHasBeenSelected) {
+            return theReturn;
+        }
+
         if (order.orthosisMaterialOption != nil) {
             theReturn += order.orthosisMaterialOption! + ", ";
         }
@@ -4261,6 +4465,23 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         var theReturn = "";
         
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+
+        if (richieBraceHasBeenSelected) {
+            if (orthoticsDeviceViewController == nil) {
+                return "";
+            }
+            if (theMOI.orthoticsMaterialPickerSelection == 0) {
+                return orthoticsDeviceViewController!.richieBraceLabel0.text!;
+            }
+            if (theMOI.orthoticsMaterialPickerSelection == 1) {
+                return orthoticsDeviceViewController!.richieBraceLabel1.text!;
+            }
+            if (theMOI.orthoticsMaterialPickerSelection == 2) {
+                return orthoticsDeviceViewController!.richieBraceLabel2.text!;
+            }
+
+            return "";
+        }
         
         let theOriginalOrderName = orthoticMaterialDescriptionMap[Int(theMOI.orthoticsMaterialPickerSelection)];
         
@@ -4271,6 +4492,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func calculateOrderDeviceSpecificLanguage() -> String{
         var theReturn = "";
+        
         
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
         
@@ -4313,22 +4535,36 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         return theReturn;
     }
 
-
     func calculateCommentsInstructionsOrderDescriptionFromOrder() -> String{
-        return order.chiefComplaintDiagnosis ?? "";
+        var theReturn = "";
+        theReturn = order.chiefComplaintDiagnosis ?? "";
+        
+        return theReturn;
     }
 
     func calculateCommentsInstructionsOrderDescriptionFromOrderForEmail() -> String{
-        if (order.chiefComplaintDiagnosis == nil && order.commentsInstructions == nil) {
-            return "";
+        var theReturn = "";
+
+        if (richieBraceHasBeenSelected) {
+            if (richieBraceViewController != nil &&
+                richieBraceViewController!.specialInstructions.text != nil &&
+                richieBraceViewController!.specialInstructions.text != "") {
+                theReturn = "Special Instructions: " + richieBraceViewController!.specialInstructions.text!;
+            } else {
+                theReturn = "";
+            }
+        } else {
+            if (order.chiefComplaintDiagnosis == nil && order.commentsInstructions == nil) {
+                theReturn = "";
+            } else if (order.chiefComplaintDiagnosis == nil) {
+                theReturn = order.commentsInstructions!;
+            } else if (order.commentsInstructions == nil) {
+                theReturn = order.chiefComplaintDiagnosis!;
+            } else {
+                theReturn = order.chiefComplaintDiagnosis! + "\n" + order.commentsInstructions!;
+            }
         }
-        if (order.chiefComplaintDiagnosis == nil) {
-            return order.commentsInstructions!;
-        }
-        if (order.commentsInstructions == nil) {
-            return order.chiefComplaintDiagnosis!;
-        }
-        return order.chiefComplaintDiagnosis! + "\n" + order.commentsInstructions!;
+        return theReturn;
     }
     
     func calculatePatientFormForEmail() -> String {
@@ -4387,6 +4623,31 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func calculateTopCoversAndExtensionsOrderDescriptionFromOrder() -> String{
         var theReturn = "";
+        
+        if (richieBraceHasBeenSelected) {
+            
+            if (richieBraceViewController == nil) {
+                return theReturn;
+            }
+            
+            if (richieBraceViewController!.addPoronUnderExtension.isOn) {
+                theReturn += "Add Poron under extension, "
+            }
+            
+            let selectedTopCoverLength = richieBraceViewController!.topCoverLengthPickerView.selectedRow(inComponent: 0);
+            let topCoverLength = richieBraceViewController!.richieBraceTopCoverLengthViewValues[selectedTopCoverLength];
+            theReturn += "Top Cover Length: " + topCoverLength + ", ";
+            
+            let selectedTopCoverMaterial = richieBraceViewController!.topCoverMaterialPickerView.selectedRow(inComponent: 0);
+            let topCoverMaterial = richieBraceViewController!.richieBraceTopCoverMaterialPickerViewValues[selectedTopCoverMaterial];
+            theReturn += "Top Cover Material: " + topCoverMaterial + ", ";
+
+            if (theReturn.hasSuffix(", ")) {
+                theReturn = String(theReturn.dropLast(2));
+            }
+            return theReturn;
+        }
+        
         
         if (topCoversViewController == nil) {
             return theReturn;
@@ -4565,6 +4826,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.accommodationsKorex) {
             theReturn += "Korex, ";
         }
+        if (theReturn.hasSuffix(", ")) {
+            theReturn = String(theReturn.dropLast(2));
+        }
         return theReturn;
     }
 
@@ -4659,6 +4923,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 practitionerEmailInput.text = "";
                 practitionerEmailInput.textColor = .black;
             }
+        } else if (textField == patientWeightInput) {
+            modifyKeyboard();
+        } else if (textField == patientHeightInput) {
+            modifyKeyboard();
+        } else if (textField == patientHeightInchesInput) {
+            modifyKeyboard();
+        } else if (textField == patientShoeSizeInput) {
+            modifyKeyboard();
+        } else if (textField == patientMedicalRecordNumberInput) {
+            modifyKeyboard();
+        } else if (textField == patientAgeInput) {
+            modifyKeyboard();
+        } else if (textField == patientNameInput) {
+            modifyKeyboard();
+        } else if (textField == patientLastNameInput) {
+            modifyKeyboard();
         }
 
 
@@ -4916,6 +5196,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             screenViewing == orthoticsRushOrderFormPageIndex ||
             screenViewing == orthoticsTopCoversAndExtensionsFormPageIndex ||
             screenViewing == orthoticsPostingFormPageIndex ||
+            screenViewing == richieBraceFormPageIndex ||
             screenViewing == orthoticsChiefComplaintFormPageIndex
             || force) {
             updateImagesForValidOrthoticsForm()
@@ -5329,39 +5610,51 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            if patientShoeSizeInput.isEditing{
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            } else if patientMedicalRecordNumberInput.isEditing {
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            } else if practitionerBillingAddress1.isEditing {
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            } else if practitionerBillingAddress2.isEditing {
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            } else if practitionerBillingAddressCity.isEditing {
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            } else if practitionerBillingAddressState.isEditing {
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            } else if practitionerBillingAddressZip.isEditing {
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            } else if practitionerBillingAddressCountry.isEditing {
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            } else if practitionerBillingAddressFacilityName.isEditing {
-                self.view.window?.frame.origin.y = -1 * keyboardHeight
-            }
+        keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue;
+        modifyKeyboard();
+    }
+    
+    func modifyKeyboard() {
+        if (keyboardFrame == nil) {
+            return;
         }
+        let keyboardRectangle = keyboardFrame!.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        
+        keyboardMovement = 0;
+        if patientShoeSizeInput.isEditing{
+            keyboardMovement = -0.7;
+        } else if patientMedicalRecordNumberInput.isEditing {
+            keyboardMovement = -0.9;
+        } else if practitionerBillingAddress1.isEditing {
+            keyboardMovement = -0.9;
+        } else if practitionerBillingAddress2.isEditing {
+            keyboardMovement = -0.9;
+        } else if practitionerBillingAddressCity.isEditing {
+            keyboardMovement = -0.9;
+        } else if practitionerBillingAddressState.isEditing {
+            keyboardMovement = -0.9;
+        } else if practitionerBillingAddressZip.isEditing {
+            keyboardMovement = -0.9;
+        } else if practitionerBillingAddressCountry.isEditing {
+            keyboardMovement = -0.9;
+        } else if practitionerBillingAddressFacilityName.isEditing {
+            keyboardMovement = -0.9;
+        } else if patientHeightInput.isEditing {
+            keyboardMovement = -0.5;
+        } else if patientHeightInchesInput.isEditing {
+            keyboardMovement = -0.5;
+        } else if patientWeightInput.isEditing {
+            keyboardMovement = -0.5;
+        }
+        self.view.window?.frame.origin.y = CGFloat(keyboardMovement) * keyboardHeight
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            if self.view.window?.frame.origin.y != 0 {
-                self.view.window?.frame.origin.y += keyboardHeight
-            }
+        if self.view.window?.frame.origin.y != 0 {
+            self.view.window?.frame.origin.y = 0
         }
+        keyboardFrame = nil;
     }
     
     override func didReceiveMemoryWarning() {
@@ -6342,15 +6635,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             order.rushOrderNextDayTurnaround) ? "RUSH ORDER: " + theStandardSubject : theStandardSubject;
         
         
-        
-        
-       
-        
         let smtpSession = MCOSMTPSession()
 //        smtpSession.hostname = "mail.root-lab.com"
         smtpSession.hostname = "smtp.root-lab.com"
-        smtpSession.username = "shasper@root-lab.com"
-        smtpSession.password = "porsche2"
+        smtpSession.username = "sentscans@root-lab.com"
+        smtpSession.password = "!*rfoL#$Foot"
         smtpSession.port = 587
         smtpSession.authType = MCOAuthType.saslLogin
         smtpSession.connectionType = MCOConnectionType.clear
@@ -6365,7 +6654,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let builder = MCOMessageBuilder()
         builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
         builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
-//        builder.header.from = MCOAddress(displayName: "shasper@root-lab.com", mailbox: "shasper@root-lab.com")
+        builder.header.from = MCOAddress(displayName: "sentscans@root-lab.com", mailbox: "shasper@root-lab.com")
         builder.header.subject = theSubject;
         builder.htmlBody = messageBody;
         
@@ -6432,7 +6721,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         attachment.data =  aPDFDocument.dataRepresentation()!
         builder.addAttachment(attachment)
         
-        
+        self.emailErrorLabel.text = "Sending...";
+
         let rfc822Data = builder.data()
         let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
         sendOperation?.start { (error) -> Void in
@@ -6443,13 +6733,16 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 self.emailErrorLabel.text = "Error sending email: \(error)";
             } else {
                 NSLog("Successfully sent email!")
+                self.changePageTo(pageTo: openingPageIndex);
+                self.resetEverything();
+
             }
         }
         
         if (order.orderPractitioner!.useEmailForCC) {
             let builder = MCOMessageBuilder()
             builder.header.to = [MCOAddress(displayName: (order.orderPractitioner?.email)!, mailbox: (order.orderPractitioner?.email)!)]
-            builder.header.from = MCOAddress(displayName: "rootLab", mailbox: "scans@root-lab.com")
+            builder.header.from = MCOAddress(displayName: "rootLab", mailbox: "sentscans@root-lab.com")
             builder.header.subject = theSubject;
             builder.htmlBody = messageBody;
             builder.addAttachment(attachment)
@@ -6466,10 +6759,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         
-        if (theSuccess) {
-            changePageTo(pageTo: openingPageIndex);
-            resetEverything();
-        }
     }
     
     //MARK: Mail Delegate
@@ -6876,7 +7165,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             let vShellSpecifications = parent!.calculateOrthosisSpecificationDescriptionFromOrder()
             let vPosting = parent!.calculatePostingDescriptionFromOrder()
             let vTopCovers = parent!.calculateTopCoversAndExtensionsOrderDescriptionFromOrder()
-            let vInstructions = order.commentsInstructions;
+            let vInstructions = parent!.calculateCommentsInstructionsOrderDescriptionFromOrderForEmail()
 
             
             let pageBounds = self.bounds(for: box);
@@ -7033,7 +7322,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             vTopCovers.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 325,
                 width: 530, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
-            vInstructions?.draw(with: CGRect(
+            vInstructions.draw(with: CGRect(
                 x: leftMargin + 5, y: orderBoxTop + 405,
                 width: 530, height: 55), options: .usesLineFragmentOrigin, attributes: attrs10, context: nil)
             

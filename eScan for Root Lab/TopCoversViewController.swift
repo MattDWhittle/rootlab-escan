@@ -11,7 +11,7 @@ import Foundation
 class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     let topCoversAndExtensionsTopCoverLengthPickerData: [String] =
-        ["Top cover length", "Orthosis only", "To sulcus", "Full length"];
+        ["No Top Cover", "Orthosis only", "To sulcus", "Full length"];
     
     
     let topCoversAndExtensionsForefootExtensionMaterialPickerData: [String] =

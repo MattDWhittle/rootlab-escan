@@ -114,6 +114,32 @@ class RichieBraceViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
+    func clearThisRichieBraceForm() {
+        medialHeelSkivePikerView.selectRow(0, inComponent: 0, animated: false);
+        topCoverLengthPickerView.selectRow(0, inComponent: 0, animated: false);
+        topCoverMaterialPickerView.selectRow(0, inComponent: 0, animated: false);
+        heelCupHeightPickerView.selectRow(0, inComponent: 0, animated: false);
+        
+        plantarFaciaAccommodation.isOn = false;
+        sytloidAccommodation.isOn = false;
+        navicularAccommodation.isOn = false;
+        afoBlack3mm.isOn = false;
+        afoBlack4mm.isOn = false;
+        afoBlack5mm.isOn = false;
+        afoWhite3mm.isOn = false;
+        afoFleshTone4mm.isOn = false;
+        medialArchFlange.isOn = false;
+        lateralFlange.isOn = false;
+        medialArchSuspender.isOn = false;
+        laterArchSuspender.isOn = false;
+        addPoronUnderExtension.isOn = false;
+        fullRearfootPost.isOn = false;
+
+        otherAccommodation.text = "";
+        heelLiftInches.text = "";
+        specialInstructions.text = "";
+    }
+    
     @IBOutlet var richieBraceHeaderUILabel: UILabel!
     @IBOutlet var topCoverUILabel: UILabel!
     @IBOutlet var correctionAndModificationsUILabel: UILabel!

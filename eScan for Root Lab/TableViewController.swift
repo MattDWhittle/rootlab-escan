@@ -23,26 +23,34 @@ class OrthoticsDeviceViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        indexPathOfExpandedView = indexPath;
-        self.tableView.scrollToRow(at: indexPathOfExpandedView!, at: .top, animated: true)
+        if (indexPathOfExpandedView == indexPath) {
+            self.tableView.scrollToRow(at: indexPathOfExpandedView!, at: .top, animated: true)
+            indexPathOfExpandedView = nil;
+            self.tableView.reloadData();
 
-        self.tableView.reloadData();
-        
-        var theRow = indexPath.row;
-        if (indexPath.section > 0) {
-            theRow += 5;
+        } else {
+            indexPathOfExpandedView = indexPath;
+            self.tableView.scrollToRow(at: indexPathOfExpandedView!, at: .top, animated: true)
+            
+            self.tableView.reloadData();
+            
+            var theRow = indexPath.row;
+            if (indexPath.section > 0) {
+                theRow += 5;
+            }
+            if (indexPath.section > 1) {
+                theRow += 5;
+            }
+            if (indexPath.section > 2) {
+                theRow += 5;
+            }
+            if (indexPath.section > 3) {
+                theRow += 9;
+            }
+            
+            (self.parent as! ViewController?)!.orthoticDeviceSelected = theRow;
         }
-        if (indexPath.section > 1) {
-            theRow += 5;
-        }
-        if (indexPath.section > 2) {
-            theRow += 5;
-        }
-        if (indexPath.section > 3) {
-            theRow += 9;
-        }
-
-        (self.parent as! ViewController?)!.orthoticDeviceSelected = theRow;
+       
     }
 
     func resetTableView() {
