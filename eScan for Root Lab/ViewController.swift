@@ -6,15 +6,15 @@
 //  Copyright © 2018 rootlab. All rights reserved.
 //
 
-// (TODO - Matt) Bottom cover material should read "Top cover Material" as in Bottom cover material NCN 1/8th
-// (TODO - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
-// (TODO - Matt) Diagnosis should not be in instructions
-// (TODO - Matt) Rearfoot posting elevator 4 mm right showing up when 8mm right and left selected - recreate
+// (DONE - Matt) Bottom cover material should read "Top cover Material" as in Bottom cover material NCN 1/8th
+// (DONE - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
+// (TEST - Matt) Diagnosis should not be in instructions
+// (DONE - Matt) Rearfoot posting elevator 4 mm right showing up when 8mm right and left selected - recreate
 // (TODO - Matt) Click New Button go back and reset everything, alert first
 // (TODO - Matt) Timebox can you scroll the screen - recenter fine
-// (TODO - Matt) Short Post Flange R or L from Posting Page Rearfoot post options should drop Flange
-// (TODO - Matt) Lateral Post Flange R or L from Posting Page Rearfoot post options should drop Flange, add Flare, actually it does it on all of them
-// (TODO - Matt) Multi-sport plus says No Top Cover but should be FUll Length, says Poron but should be EVA, should be 1/8th but is None
+// (DONE - Matt) Short Post Flange R or L from Posting Page Rearfoot post options should drop Flange
+// (DONE - Matt) Lateral Post Flange R or L from Posting Page Rearfoot post options should drop Flange, add Flare, actually it does it on all of them
+// (TEST - Matt) Multi-sport plus says No Top Cover but should be FUll Length, says Poron but should be EVA, should be 1/8th but is None
 
 
 
@@ -2391,24 +2391,24 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
     func setDefaults1_8thInchEvaExtensionUnderForefoot() {
-        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(2, inComponent: 0, animated: false)
-        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(1, inComponent: 0, animated: false)
-       //TODO check to see if should be to Sulcus
-        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(0, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(4, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(3, inComponent: 0, animated: false)
+        //TODO check to see if should be to Sulcus
+ topCoversViewController?.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(0, inComponent: 0, animated: false)
     }
     
     func setDefaults1_16thInchEvaExtensionUnderForefoot() {
-        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(2, inComponent: 0, animated: false)
-        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(0, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(4, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(2, inComponent: 0, animated: false)
         //TODO check to see if should be to Sulcus
-        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(0, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(0, inComponent: 0, animated: false)
     }
     
     func setDefaults1_16thInchPoronExtensionUnderForefoot() {
-        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(0, inComponent: 0, animated: false)
-        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(0, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(2, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(2, inComponent: 0, animated: false)
         //TODO check to see if should be to Sulcus
-        topCoversViewController?.topCoversAndExtensionsTopCoverLengthPicker.selectRow(0, inComponent: 0, animated: false)
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(0, inComponent: 0, animated: false)
     }
     
     func setEvaBottomFiller() {
@@ -3475,7 +3475,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         order.postingRearfootPostingElevator4mmLeft = postingRearfootPostingElevator4mmLeftUISwitch.isOn;
         order.postingRearfootPostingElevator8mmLeft = postingRearfootPostingElevator8mmLeftUISwitch.isOn;
-        order.postingRearfootPostingElevator4mmRight = postingRearfootPostingElevator8mmRightUISwitch.isOn;
+        order.postingRearfootPostingElevator4mmRight = postingRearfootPostingElevator4mmRightUISwitch.isOn;
         order.postingRearfootPostingElevator8mmRight =
             postingRearfootPostingElevator8mmRightUISwitch.isOn;
         
@@ -4393,13 +4393,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostMotion4DegreesMotionLeft, rightBool: order.postingRearfootPostMotion4DegreesMotionRight, string: "Rearfoot Posting Motion 4 Degrees");
         
-        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsLongPostFlangeLeft, rightBool: order.postingRearfootPostOptionsLongPostFlangeRight, string: "Rearfoot Post Options Long Post Flange");
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsLongPostFlangeLeft, rightBool: order.postingRearfootPostOptionsLongPostFlangeRight, string: "Rearfoot Post Options Long Post");
 
-        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsShortPostFlangeLeft, rightBool: order.postingRearfootPostOptionsShortPostFlangeRight, string: "Rearfoot Post Options Short Post Flange");
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsShortPostFlangeLeft, rightBool: order.postingRearfootPostOptionsShortPostFlangeRight, string: "Rearfoot Post Options Short Post");
 
-        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsLateralPostFlangeLeft, rightBool: order.postingRearfootPostOptionsLateralPostFlangeRight, string: "Rearfoot Post Options Lateral Post Flange");
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsLateralPostFlangeLeft, rightBool: order.postingRearfootPostOptionsLateralPostFlangeRight, string: "Rearfoot Post Options Lateral Post Flare");
 
-        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsMedialPostFlangeLeft, rightBool: order.postingRearfootPostOptionsMedialPostFlangeRight, string: "Rearfoot Post Options Medial Post Flange");
+        theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostOptionsMedialPostFlangeLeft, rightBool: order.postingRearfootPostOptionsMedialPostFlangeRight, string: "Rearfoot Post Options Medial Post Flare");
 
         theReturn += calculateALeftAndRight(leftBool: order.postingNonCorrectiveForefootPostFullWidthLeft, rightBool: order.postingNonCorrectiveForefootPostFullWidthRight, string: "Non Corrective Forefoot Post Full Width");
 
@@ -4642,14 +4642,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 theReturn = "";
             }
         } else {
-            if (order.chiefComplaintDiagnosis == nil && order.commentsInstructions == nil) {
+            if (order.commentsInstructions == nil) {
                 theReturn = "";
-            } else if (order.chiefComplaintDiagnosis == nil) {
-                theReturn = order.commentsInstructions!;
-            } else if (order.commentsInstructions == nil) {
-                theReturn = order.chiefComplaintDiagnosis!;
             } else {
-                theReturn = order.chiefComplaintDiagnosis! + "\n" + order.commentsInstructions!;
+                theReturn = order.commentsInstructions!;
             }
         }
         return theReturn;
@@ -4770,34 +4766,34 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             theReturn += "EVA 1/16\", ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialVinylBlack) {
-            theReturn += "Bottom Cover Material Vinyl Black, ";
+            theReturn += "Top Cover Material Vinyl Black, ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialVinylBronze) {
-            theReturn += "Bottom Cover Material Vinyl Bronze, ";
+            theReturn += "Top Cover Material Vinyl Bronze, ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialVinylForest) {
-            theReturn += "Bottom Cover Material Vinyl Forest, ";
+            theReturn += "Top Cover Material Vinyl Forest, ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialLeatherBrown) {
-            theReturn += "Bottom Cover Material Leather Brown, ";
+            theReturn += "Top Cover Material Leather Brown, ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialLeatherBlack) {
-            theReturn += "Bottom Cover Material Leather Black, ";
+            theReturn += "Top Cover Material Leather Black, ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialEva116) {
-            theReturn += "Bottom Cover Material EVA 1/16\", ";
+            theReturn += "Top Cover Material EVA 1/16\", ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialEVA116) {
-            theReturn += "Bottom Cover Material EVA 1/16\", ";
+            theReturn += "Top Cover Material EVA 1/16\", ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialEva18) {
-            theReturn += "Bottom Cover Material EVA 1/8\", ";
+            theReturn += "Top Cover Material EVA 1/8\", ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialNcn18) {
-            theReturn += "Bottom Cover Material NCN 1/8\", ";
+            theReturn += "Top Cover Material NCN 1/8\", ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialNcn116) {
-            theReturn += "Bottom Cover Material NCN 1/16\", ";
+            theReturn += "Top Cover Material NCN 1/16\", ";
         }
         if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
             theReturn += "Bottom Cover Material Diabetic, ";
@@ -5698,17 +5694,17 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if patientMedicalRecordNumberInput.isEditing {
             keyboardMovement = -0.3;
         } else if practitionerShippingAddress1.isEditing {
-            keyboardMovement = -0.3;
+            keyboardMovement = -0.2;
         } else if practitionerShippingAddress2.isEditing {
-            keyboardMovement = -0.3;
+            keyboardMovement = -0.2;
         } else if practitionerShippingAddressCity.isEditing {
-            keyboardMovement = -0.5;
+            keyboardMovement = -0.2;
         } else if practitionerShippingAddressState.isEditing {
-            keyboardMovement = -0.5;
+            keyboardMovement = -0.2;
         } else if practitionerShippingAddressZip.isEditing {
-            keyboardMovement = -0.5;
+            keyboardMovement = -0.2;
         } else if practitionerShippingAddressCountry.isEditing {
-            keyboardMovement = -0.5;
+            keyboardMovement = -0.2;
         } else if practitionerShippingAddressFacilityName.isEditing {
             keyboardMovement = -0.3;
         } else if practitionerBillingAddress1.isEditing {
@@ -5732,7 +5728,41 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if patientWeightInput.isEditing {
             keyboardMovement = -0.5;
         } else if correctionsAndModificationsPlantarFaciaAccomLeft.isEditing {
+            keyboardMovement = -0.2;
+        } else if correctionsAndModificationsPlantarFaciaAccomRight.isEditing {
+            keyboardMovement = -0.2;
+        } else if correctionsAndModificationsStyloidAccomLeft.isEditing {
+            keyboardMovement = -0.2;
+        } else if correctionsAndModificationsStyloidAccomRight.isEditing {
+            keyboardMovement = -0.2;
+        } else if correctionsAndModificationsNavicularAccomLeft.isEditing {
+            keyboardMovement = -0.2;
+        } else if correctionsAndModificationsNavicularAccomRight.isEditing {
+            keyboardMovement = -0.2;
+        } else if correctionsAndModificationsAsMarkedOnCastLeft.isEditing {
             keyboardMovement = -0.5;
+        } else if correctionsAndModificationsAsMarkedOnCastRight.isEditing {
+            keyboardMovement = -0.5;
+        } else if correctionsAndModificationsAddLatHeelExpansionLeft.isEditing {
+            keyboardMovement = -0.9;
+        } else if correctionsAndModificationsAddLatHeelExpansionRight.isEditing {
+            keyboardMovement = -0.9;
+        } else if correctionsAndModificationsMedialHeelSkiveLeft.isEditing {
+            keyboardMovement = -0.9;
+        } else if correctionsAndModificationsMedialHeelSkiveRight.isEditing {
+            keyboardMovement = -0.9;
+        } else if correctionsAndModificationsIntrinsicMetatarsalPadMmLeft.isEditing {
+            keyboardMovement = -0.9;
+        } else if correctionsAndModificationsIntrinsicMetatarsalPadMmRight.isEditing {
+            keyboardMovement = -0.9;
+        } else if postingRearfootPostMotionOtherDegreesLeft.isEditing {
+            keyboardMovement = -0.7;
+        } else if postingRearfootPostMotionOtherDegreesRight.isEditing {
+            keyboardMovement = -0.7;
+        } else if postingRearfootPostingElevatorOthermmLeft.isEditing {
+            keyboardMovement = -0.9;
+        } else if postingRearfootPostingElevatorOthermmRight.isEditing {
+            keyboardMovement = -0.9;
         }
         self.view.window?.frame.origin.y = CGFloat(keyboardMovement) * keyboardHeight
     }
