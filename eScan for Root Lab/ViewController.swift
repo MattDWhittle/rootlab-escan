@@ -7,6 +7,18 @@
 //
 
 // (TEST-MATT Keyboard Numbers for each number one)
+// (No Action, FAD - Matt) Make email-to default selected
+// (TODO - Matt) After resetEverything, practitioner dot still green
+
+// (TODO - Gary, looks like has no IBOutlet) Make email-to 32 size
+// (TODO - Gary) Need logo as icon and change App Name to Fast Cast 3D
+// (TODO - Gary) Save button on practitioner page
+// (TODO - Gary) Top cover page scroll so it is not squished
+// (TODO) recreate email error scenario
+// (TODO) Email Sent confirmation
+// (TODO) Revive and complete Previos Orders Page
+// (TODO) Take off photos of devices
+
 
 // (TEST) get rid of next button on submit/email page
 // (TEST) new order page index to orthotics/richie brace
@@ -14,26 +26,6 @@
 // (TEST) practitioner title size scaled
 // (DONE) device reset of richie brace table view
 
-// (DONE) Under shoe type, Extra Depth and High Heel should be two separate types
-// (DONE) reset richie brace form
-// (DONE) use mailcore, use correct email address
-// (DONE) Complete work order pdf
-// (DONE) get the mail working without the ipad email
-// (DONE) email practitioner a copy of the work order without the scan files - don't CC
-// (DONE) address needs to be required
-// (DONE) click again shrink back down - orthotic device page
-// (DONE) A “no Top Cover option needs to be put in.
-// (DONE) Email Error should come up before it goes to the start page again. Currently it comes up when you go back to the Submit page on the next order. Basically it should let you know before you can move on.
-// (DONE) Richie Brace Form
-// (DONE) Under Corrections and modifications – Navicular Accommodation and Fill with Poron do not show up on the Prescription page when chosen until something else is chosen or refreshed maybe.
-// (DONE) Change title from eScan to Scan
-// (DONE) Under Posting –“CrepeRearfoot posting Elevator 4mm R” seems to come up, probably should just be the material as the Elevator comes up after if selected. Not sure how that is working.
-// (DONE) Under top covers “Bottom Cover Material” seems to come up in front of all material choices except 1/16 EVA which does not show up at all.
-// (DONE) Email button needs label centered.
-// (DONE) Replace foot images with the ones that were sent that change from red to green.
-// (DONE) Height, weight and shoe size default to numbers keyboard
-// (DONE) Done button looks smooched, use same sizing and positioning as Scan button
-// (DONE) When filling out and keyboard open can we move screen to place curser in boxes not shown without having to drop keyboard
 
 // (TODO) Remove all pictures from the devices, we can add then later
 // (TODO) Top Covers page needs to scroll so it is not all bunched up.
@@ -66,8 +58,6 @@
 //(TODO) Orthosis Material:  Have "Per Weight" always available, if choose, type a weight in on that page.  Weight is autofilled
 
 
-//TO ASK:
-//Competition stealing work - CC practitioner, puts the other companies address
 
 // (TODO) second scan only gets color working if goto wireframe first - only first
 
@@ -122,6 +112,29 @@
 // (TODO) Clean up warnings
 // (TODO) Clean up extra IBOutlets
 
+
+// some push Early March
+// (DONE) Competition stealing work - CC practitioner, puts the other companies address -  no problem, the other company wont get the 3d scans
+// (DONE) Under shoe type, Extra Depth and High Heel should be two separate types
+// (DONE) reset richie brace form
+// (DONE) use mailcore, use correct email address
+// (DONE) Complete work order pdf
+// (DONE) get the mail working without the ipad email
+// (DONE) email practitioner a copy of the work order without the scan files - don't CC
+// (DONE) address needs to be required
+// (DONE) click again shrink back down - orthotic device page
+// (DONE) A “no Top Cover option needs to be put in.
+// (DONE) Email Error should come up before it goes to the start page again. Currently it comes up when you go back to the Submit page on the next order. Basically it should let you know before you can move on.
+// (DONE) Richie Brace Form
+// (DONE) Under Corrections and modifications – Navicular Accommodation and Fill with Poron do not show up on the Prescription page when chosen until something else is chosen or refreshed maybe.
+// (DONE) Change title from eScan to Scan
+// (DONE) Under Posting –“CrepeRearfoot posting Elevator 4mm R” seems to come up, probably should just be the material as the Elevator comes up after if selected. Not sure how that is working.
+// (DONE) Under top covers “Bottom Cover Material” seems to come up in front of all material choices except 1/16 EVA which does not show up at all.
+// (DONE) Email button needs label centered.
+// (DONE) Replace foot images with the ones that were sent that change from red to green.
+// (DONE) Height, weight and shoe size default to numbers keyboard
+// (DONE) Done button looks smooched, use same sizing and positioning as Scan button
+// (DONE) When filling out and keyboard open can we move screen to place curser in boxes not shown without having to drop keyboard
 
 
 //Thursday Feb 28 Push
