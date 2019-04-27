@@ -6,7 +6,11 @@
 //  Copyright © 2018 rootlab. All rights reserved.
 //
 
-
+// (TEST) get rid of next button on submit/email page
+// (TEST) new order page index to orthotics/richie brace
+// (TEST) country not a required field
+// (TEST) practitioner title size scaled
+// (DONE) device reset of richie brace table view
 
 // (DONE) Under shoe type, Extra Depth and High Heel should be two separate types
 // (DONE) reset richie brace form
@@ -932,7 +936,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerBillingAddressCity.text = "*City";
         practitionerBillingAddressState.text = "*State";
         practitionerBillingAddressZip.text = "*Zip";
-        practitionerBillingAddressCountry.text = "*Country";
+        practitionerBillingAddressCountry.text = "Country";
         practitionerBillingAddressFacilityName.text = "Business or Facility Name";
         
 
@@ -941,7 +945,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerShippingAddressCity.text = "*City";
         practitionerShippingAddressState.text = "*State";
         practitionerShippingAddressZip.text = "*Zip";
-        practitionerShippingAddressCountry.text = "*Country";
+        practitionerShippingAddressCountry.text = "Country";
         practitionerShippingAddressFacilityName.text = "Business or Facility Name";
         practitionerPhoneInput.text = "*Phone";
         practitionerEmailInput.text = "*Email";
@@ -1070,7 +1074,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerBillingAddressCity.textColor = practitionerBillingAddressCity.text == "*City" ? .gray : .black
         practitionerBillingAddressState.textColor = practitionerBillingAddressState.text == "*State" ? .gray : .black
         practitionerBillingAddressZip.textColor = practitionerBillingAddressZip.text == "*Zip" ? .gray : .black
-        practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "*Country" ? .gray : .black
+        practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "Country" ? .gray : .black
         practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
         
         practitionerShippingAddress1.textColor = practitionerShippingAddress1.text == "*Address 1" ? .gray : .black
@@ -1078,7 +1082,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerShippingAddressCity.textColor = practitionerShippingAddressCity.text == "*City" ? .gray : .black
         practitionerShippingAddressState.textColor = practitionerShippingAddressState.text == "*State" ? .gray : .black
         practitionerShippingAddressZip.textColor = practitionerShippingAddressZip.text == "*Zip" ? .gray : .black
-        practitionerShippingAddressCountry.textColor = practitionerShippingAddressCountry.text == "*Country" ? .gray : .black
+        practitionerShippingAddressCountry.textColor = practitionerShippingAddressCountry.text == "Country" ? .gray : .black
         practitionerShippingAddressFacilityName.textColor = practitionerShippingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
         
         practitionerPhoneInput.text = thePractitioner.phone;
@@ -1177,6 +1181,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             okDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             cancelDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             submitEmailButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            newPractitionerLabel.font = UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             
             commentsTextArea.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             
@@ -1186,6 +1191,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             practitionerNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             patientNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            
             patientLastNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             materialLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             materialNameLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
@@ -3078,7 +3084,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func ClickOrderManagementButton(sender: UIButton){
-        changePageTo(pageTo: orthoticsDeviceFormPageIndex)
+        changePageTo(pageTo: newOrderTypePageIndex)
     }
 
     @IBAction func ClickOkDeletePractitioner(sender: UIButton){
@@ -3192,6 +3198,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (pageTo == practitionerManagementPageIndex) {
             setValuesBasedOnPractitionerPageValid();
         }
+
         if (pageTo == escanningPageIndex) {
             escanViewDidLoad()
             let _ = connectToStructureSensorAndStartStreaming()
@@ -3206,6 +3213,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             _slamState.scannerState = .cubePlacement
             eaglviewDidAppear();
 
+        } else if (pageTo == reviewAndSubmitPageIndex) {
+            nextButton.isHidden = true;
         } else {
             pages[screenViewing].isHidden = false;
             nextButton.isHidden = screenViewing == newOrderTypePageIndex;
@@ -3235,12 +3244,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             isNotEmptyAndIsNot(thisString: "*City", stringToTest: practitionerShippingAddressCity.text!) &&
             isNotEmptyAndIsNot(thisString: "*State", stringToTest: practitionerShippingAddressState.text!) &&
             isNotEmptyAndIsNot(thisString: "*Zip", stringToTest: practitionerShippingAddressZip.text!) &&
-            isNotEmptyAndIsNot(thisString: "*Country", stringToTest: practitionerShippingAddressCountry.text!) &&
             isNotEmptyAndIsNot(thisString: "*Address 1", stringToTest: practitionerBillingAddress1.text!) &&
             isNotEmptyAndIsNot(thisString: "*City", stringToTest: practitionerBillingAddressCity.text!) &&
             isNotEmptyAndIsNot(thisString: "*State", stringToTest: practitionerBillingAddressState.text!) &&
             isNotEmptyAndIsNot(thisString: "*Zip", stringToTest: practitionerBillingAddressZip.text!) &&
-            isNotEmptyAndIsNot(thisString: "*Country", stringToTest: practitionerBillingAddressCountry.text!) &&
+
             isNotEmptyAndIsNot(thisString: "*Email", stringToTest: practitionerEmailInput.text!)
 
         
@@ -4854,7 +4862,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 practitionerBillingAddressState.textColor = .black;
             }
         } else if (textField == practitionerBillingAddressCountry) {
-            if (practitionerBillingAddressCountry.text == "*Country") {
+            if (practitionerBillingAddressCountry.text == "Country") {
                 practitionerBillingAddressCountry.text = "";
                 practitionerBillingAddressCountry.textColor = .black;
             }
@@ -4889,7 +4897,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 practitionerShippingAddressState.textColor = .black;
             }
         } else if (textField == practitionerShippingAddressCountry) {
-            if (practitionerShippingAddressCountry.text == "*Country") {
+            if (practitionerShippingAddressCountry.text == "Country") {
                 practitionerShippingAddressCountry.text = "";
                 practitionerShippingAddressCountry.textColor = .black;
             }
@@ -5066,12 +5074,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddressCountry) {
             if (practitionerShippingAddressCountry.text!.isEmpty) {
-                practitionerShippingAddressCountry.text = "*Country";
+                practitionerShippingAddressCountry.text = "Country";
                 practitionerShippingAddressCountry.textColor = .gray;
             }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddressCountry.text = practitionerShippingAddressCountry.text!;
-                practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "*Country" ? .gray : .black
+                practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "Country" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddressFacilityName) {
@@ -5137,7 +5145,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerBillingAddressCountry) {
             if (practitionerBillingAddressCountry.text!.isEmpty) {
-                practitionerBillingAddressCountry.text = "*Country";
+                practitionerBillingAddressCountry.text = "Country";
                 practitionerBillingAddressCountry.textColor = .gray;
             }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
@@ -5277,7 +5285,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 practitionerBillingAddressCity.textColor = practitionerBillingAddressCity.text == "*City" ? .gray : .black
                 practitionerBillingAddressState.textColor = practitionerBillingAddressState.text == "*State" ? .gray : .black
                 practitionerBillingAddressZip.textColor = practitionerBillingAddressZip.text == "*Zip" ? .gray : .black
-                practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "*Country" ? .gray : .black
+                practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "Country" ? .gray : .black
                 practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
 
                 setValuesBasedOnPractitionerPageValid();

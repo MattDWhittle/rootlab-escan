@@ -103,6 +103,14 @@ class OrthoticsDeviceViewController: UITableViewController {
                 }
                 i = i + 1;
             }
+            
+            richieBraceDescriptionLabel0.text = "semi-rigid polypropylene shell, standard width, 14mm heel cup, intrinsic forefoot correction, heel bisection vertical, 4/4 firm crepe post, 8mm post elevator, orthosis length vinyl top cover ";
+            richieBraceDescriptionLabel1.text = "milled semi-rigid polypropylene shell, standard width, 14mm heel cup, intrinsic forefoot correction, heel bisection vertical, 4/4 integrated polypropylene post, 8mm post elevator, orthosis length vinyl top cover (some Rx options not available)";
+            richieBraceDescriptionLabel2.text = "semi-rigid graphite composite shell, standard width, 14mm heel cup, intrinsic forefoot correction, heel bisection vertical, 4/4 firm crepe post, 8mm post elevator, orthosis length vinyl top cover ";
+            richieBraceLabel0.text = "Polypropylene";
+            richieBraceLabel1.text = "PolyMax™";
+            richieBraceLabel2.text = "Graphite";
+            
         }
         
         self.tableView.reloadData();
