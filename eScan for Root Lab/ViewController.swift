@@ -6,9 +6,10 @@
 //  Copyright © 2018 rootlab. All rights reserved.
 //
 
-// (TEST-MATT Keyboard Numbers for each number one)
-// (No Action, FAD - Matt) Make email-to default selected
-// (TODO - Matt) After resetEverything, practitioner dot still green
+
+// (TODO - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
+
+
 
 // (TODO - Gary, looks like has no IBOutlet) Make email-to 32 size
 // (TODO - Gary) Need logo as icon and change App Name to Fast Cast 3D
@@ -20,11 +21,15 @@
 // (TODO) Take off photos of devices
 
 
-// (TEST) get rid of next button on submit/email page
-// (TEST) new order page index to orthotics/richie brace
-// (TEST) country not a required field
-// (TEST) practitioner title size scaled
-// (DONE) device reset of richie brace table view
+// (DONE-MATT Keyboard Numbers for each number one)
+// (No Action, FAD - Matt) Make email-to default selected
+// (DONE - Matt) After resetEverything, practitioner dot still green
+// (DONE - Matt) After patient weight supplied, practitioner dot still green even though no device chosen
+// (DONE - GaryMatt) get rid of next button on submit/email page
+// (DONE - GaryMatt) new order page index to orthotics/richie brace
+// (DONE - GaryMatt) country not a required field
+// (DONE - GaryMatt) practitioner title size scaled
+// (DONE - GaryMatt) device reset of richie brace table view
 
 
 // (TODO) Remove all pictures from the devices, we can add then later
@@ -1003,6 +1008,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         patientMedicalRecordNumberInput.text = "";
         patientGender.selectRow(0, inComponent: 0, animated: false);
         patientShoeTypePicker.selectRow(0, inComponent: 0, animated: false);
+        order.orderPatient = nil;
     }
     
     func clearScanForm() {
@@ -3260,11 +3266,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             _slamState.scannerState = .cubePlacement
             eaglviewDidAppear();
 
-        } else if (pageTo == reviewAndSubmitPageIndex) {
-            nextButton.isHidden = true;
         } else {
             pages[screenViewing].isHidden = false;
-            nextButton.isHidden = screenViewing == newOrderTypePageIndex;
+            nextButton.isHidden =
+                screenViewing == newOrderTypePageIndex ||
+            pageTo == reviewAndSubmitPageIndex;
         }
 
         menuView.isHidden = screenViewing == 0 || screenViewing == escanningPageIndex
@@ -3385,7 +3391,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
 
     func orthosisFormValid() -> Bool{
-        return richieBraceHasBeenSelected ||
+        return
+            orthosisSomethingHasBeenSelected() &&
+                (
+            richieBraceHasBeenSelected ||
             (
         orthosisMaterialValid() &&
         correctionsAndModificationsValid() &&
@@ -3395,9 +3404,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         accommodationsValid() &&
         rushOrderValid() &&
             chiefComplaintDiagnosisValid()
-        );
+        ));
     }
 
+    func orthosisSomethingHasBeenSelected() -> Bool {
+        return orthoticDeviceSelected > -1;
+    }
+    
     func orthosisMaterialValid() -> Bool {
         let isWeightSupplied = Int((order.orderPatient?.weight) ?? 0) > 0;
 
