@@ -6,9 +6,28 @@
 //  Copyright © 2018 rootlab. All rights reserved.
 //
 
+// (TODO - Matt) Bottom cover material should read "Top cover Material" as in Bottom cover material NCN 1/8th
+// (TODO - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
+// (TODO - Matt) Diagnosis should not be in instructions
+// (TODO - Matt) Rearfoot posting elevator 4 mm right showing up when 8mm right and left selected - recreate
+// (TODO - Matt) Click New Button go back and reset everything, alert first
+// (TODO - Matt) Timebox can you scroll the screen - recenter fine
+// (TODO - Matt) Short Post Flange R or L from Posting Page Rearfoot post options should drop Flange
+// (TODO - Matt) Lateral Post Flange R or L from Posting Page Rearfoot post options should drop Flange, add Flare, actually it does it on all of them
+// (TODO - Matt) Multi-sport plus says No Top Cover but should be FUll Length, says Poron but should be EVA, should be 1/8th but is None
+
+
+
+
+
+
 
 // (TODO - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
 
+// (TODO - Gary) Error message Needs to turn into a text area, one line isn't enough.
+
+// (TODO - Gary) Make Practitioner page have a save button
+// (TODO - Gary) Make Practitioner buttons smaller and same size, increase size of right column
 
 
 // (TODO - Gary, looks like has no IBOutlet) Make email-to 32 size
@@ -1227,6 +1246,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             commentsInstructionsLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisChiefComplaintDiagnosisLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
 
+            emailErrorLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             
             newPractitionerSameAsBillingAddressLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
 
@@ -4991,26 +5011,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 practitionerEmailInput.text = "";
                 practitionerEmailInput.textColor = .black;
             }
-        } else if (textField == patientWeightInput) {
-            modifyKeyboard();
-        } else if (textField == patientHeightInput) {
-            modifyKeyboard();
-        } else if (textField == patientHeightInchesInput) {
-            modifyKeyboard();
-        } else if (textField == patientShoeSizeInput) {
-            modifyKeyboard();
-        } else if (textField == patientMedicalRecordNumberInput) {
-            modifyKeyboard();
-        } else if (textField == patientAgeInput) {
-            modifyKeyboard();
-        } else if (textField == patientNameInput) {
-            modifyKeyboard();
-        } else if (textField == patientLastNameInput) {
-            modifyKeyboard();
         }
-
-
-
+        modifyKeyboard();
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField,
@@ -5693,7 +5696,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if patientShoeSizeInput.isEditing{
             keyboardMovement = -0.7;
         } else if patientMedicalRecordNumberInput.isEditing {
-            keyboardMovement = -0.9;
+            keyboardMovement = -0.3;
+        } else if practitionerShippingAddress1.isEditing {
+            keyboardMovement = -0.3;
+        } else if practitionerShippingAddress2.isEditing {
+            keyboardMovement = -0.3;
+        } else if practitionerShippingAddressCity.isEditing {
+            keyboardMovement = -0.5;
+        } else if practitionerShippingAddressState.isEditing {
+            keyboardMovement = -0.5;
+        } else if practitionerShippingAddressZip.isEditing {
+            keyboardMovement = -0.5;
+        } else if practitionerShippingAddressCountry.isEditing {
+            keyboardMovement = -0.5;
+        } else if practitionerShippingAddressFacilityName.isEditing {
+            keyboardMovement = -0.3;
         } else if practitionerBillingAddress1.isEditing {
             keyboardMovement = -0.9;
         } else if practitionerBillingAddress2.isEditing {
@@ -5713,6 +5730,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if patientHeightInchesInput.isEditing {
             keyboardMovement = -0.5;
         } else if patientWeightInput.isEditing {
+            keyboardMovement = -0.5;
+        } else if correctionsAndModificationsPlantarFaciaAccomLeft.isEditing {
             keyboardMovement = -0.5;
         }
         self.view.window?.frame.origin.y = CGFloat(keyboardMovement) * keyboardHeight
