@@ -6,6 +6,8 @@
 //  Copyright © 2018 rootlab. All rights reserved.
 //
 
+// (TEST-MATT Keyboard Numbers for each number one)
+
 // (TEST) get rid of next button on submit/email page
 // (TEST) new order page index to orthotics/richie brace
 // (TEST) country not a required field
@@ -1326,6 +1328,38 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         patientHeightInchesInput.keyboardType = .numberPad
         patientAgeInput.keyboardType = .numberPad
         patientShoeSizeInput.keyboardType = .numberPad
+
+        practitionerBillingAddressZip.keyboardType = .numberPad
+        practitionerShippingAddressZip.keyboardType = .numberPad
+        practitionerPhoneInput.keyboardType = .numberPad
+        correctionsAndModificationsCastOrientationInvertedLeft.keyboardType = .numberPad
+        correctionsAndModificationsCastOrientationInvertedRight.keyboardType = .numberPad
+        correctionsAndModificationsCastOrientationEvertedLeft.keyboardType = .numberPad
+        correctionsAndModificationsCastOrientationEvertedRight.keyboardType = .numberPad
+        correctionsAndModificationsPlantarFaciaAccomLeft.keyboardType = .numberPad
+        correctionsAndModificationsPlantarFaciaAccomRight.keyboardType = .numberPad
+        correctionsAndModificationsStyloidAccomLeft.keyboardType = .numberPad
+        correctionsAndModificationsStyloidAccomRight.keyboardType = .numberPad
+        correctionsAndModificationsNavicularAccomLeft.keyboardType = .numberPad
+        correctionsAndModificationsNavicularAccomRight.keyboardType = .numberPad
+        correctionsAndModificationsAsMarkedOnCastLeft.keyboardType = .numberPad
+        correctionsAndModificationsAsMarkedOnCastRight.keyboardType = .numberPad
+        correctionsAndModificationsAddLatHeelExpansionLeft.keyboardType = .numberPad
+        correctionsAndModificationsAddLatHeelExpansionRight.keyboardType = .numberPad
+        correctionsAndModificationsMedialHeelSkiveLeft.keyboardType = .numberPad
+        correctionsAndModificationsMedialHeelSkiveRight.keyboardType = .numberPad
+        correctionsAndModificationsIntrinsicMetatarsalPadMmLeft.keyboardType = .numberPad
+        correctionsAndModificationsIntrinsicMetatarsalPadMmRight.keyboardType = .numberPad
+        orthosisSpecificationsOtherMedmmLeft.keyboardType = .numberPad
+        orthosisSpecificationsOtherMedmmRight.keyboardType = .numberPad
+        orthosisSpecificationsOtherLatmmLeft.keyboardType = .numberPad
+        orthosisSpecificationsOtherLatmmRight.keyboardType = .numberPad
+        postingHeelLiftLeft.keyboardType = .numberPad
+        postingHeelLiftRight.keyboardType = .numberPad
+        postingRearfootPostMotionOtherDegreesLeft.keyboardType = .numberPad
+        postingRearfootPostMotionOtherDegreesRight.keyboardType = .numberPad
+        postingRearfootPostingElevatorOthermmLeft.keyboardType = .numberPad
+        postingRearfootPostingElevatorOthermmRight.keyboardType = .numberPad
 
         loadPractitionersFromCoreData();
         clearPractitionerForm();
