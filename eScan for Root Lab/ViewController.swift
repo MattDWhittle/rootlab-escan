@@ -6,40 +6,37 @@
 //  Copyright © 2018 rootlab. All rights reserved.
 //
 
-// (DONE - Matt) Bottom cover material should read "Top cover Material" as in Bottom cover material NCN 1/8th
-// (DONE - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
-// (TEST - Matt) Diagnosis should not be in instructions
-// (DONE - Matt) Rearfoot posting elevator 4 mm right showing up when 8mm right and left selected - recreate
 // (TODO - Matt) Click New Button go back and reset everything, alert first
 // (TODO - Matt) Timebox can you scroll the screen - recenter fine
-// (DONE - Matt) Short Post Flange R or L from Posting Page Rearfoot post options should drop Flange
-// (DONE - Matt) Lateral Post Flange R or L from Posting Page Rearfoot post options should drop Flange, add Flare, actually it does it on all of them
-// (TEST - Matt) Multi-sport plus says No Top Cover but should be FUll Length, says Poron but should be EVA, should be 1/8th but is None
 
-
-
-
-
-
-
-// (TODO - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
-
-// (TODO - Gary) Error message Needs to turn into a text area, one line isn't enough.
+// (TODO - Matt) Force resign keyboard when page index changes
 
 // (TODO - Gary) Make Practitioner page have a save button
 // (TODO - Gary) Make Practitioner buttons smaller and same size, increase size of right column
-
-
 // (TODO - Gary, looks like has no IBOutlet) Make email-to 32 size
 // (TODO - Gary) Need logo as icon and change App Name to Fast Cast 3D
 // (TODO - Gary) Save button on practitioner page
 // (TODO - Gary) Top cover page scroll so it is not squished
-// (TODO) recreate email error scenario
+// (TODO - Gary) Remove all pictures from the devices, we can add then later
+// (TODO - Gary) Top Covers page needs to scroll so it is not all bunched up.
 // (TODO) Email Sent confirmation
 // (TODO) Revive and complete Previos Orders Page
 // (TODO) Take off photos of devices
 
 
+
+// (DONE - Matt) Make Order management page backend
+// (DONE - Matt) Reword error text when no internet
+// (DONE - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
+// (DONE) recreate email error scenario
+// (DONE - Matt) Products with extended top covers do not have the top cover defaults filled out.
+// (DONE - Matt) Diagnosis should not be in instructions
+// (DONE - Matt) Multi-sport plus says No Top Cover but should be FUll Length, says Poron but should be EVA, should be 1/8th but is None
+// (DONE - Matt) Short Post Flange R or L from Posting Page Rearfoot post options should drop Flange
+// (DONE - Matt) Lateral Post Flange R or L from Posting Page Rearfoot post options should drop Flange, add Flare, actually it does it on all of them
+// (DONE - Matt) Rearfoot posting elevator 4 mm right showing up when 8mm right and left selected - recreate
+// (DONE - Matt) Bottom cover material should read "Top cover Material" as in Bottom cover material NCN 1/8th
+// (DONE - Matt) Orthotics pages and practitioner pages, many text boxes still need page liftage
 // (DONE-MATT Keyboard Numbers for each number one)
 // (No Action, FAD - Matt) Make email-to default selected
 // (DONE - Matt) After resetEverything, practitioner dot still green
@@ -51,9 +48,6 @@
 // (DONE - GaryMatt) device reset of richie brace table view
 
 
-// (TODO) Remove all pictures from the devices, we can add then later
-// (TODO) Top Covers page needs to scroll so it is not all bunched up.
-// (TODO) Products with extended top covers do not have the top cover defaults filled out.
 
 //TODO
 // (TODO) Better Pictures
@@ -800,6 +794,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     var screenViewing = 0;
     var practitioners = [Practitioner]()
+    var orders = [Order]()
     var patients = [Patient]()
     var photos = [FootPhoto]()
     var defaultPractitioner : Practitioner?
@@ -1197,11 +1192,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         self.preferredContentSize.height = screenSize.height;
         view.frame.size.width = screenSize.width;
         view.frame.size.height = screenSize.height;
-        
+
+        loadOrdersFromCoreData();
+
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
 
-        order = Order.init(entity: NSEntityDescription.entity(forEntityName: "Order", in:context)!, insertInto: context);
         order.addToOrderMaterialItemList(MaterialOrderItem.init(entity: NSEntityDescription.entity(forEntityName: "MaterialOrderItem", in:context)!, insertInto: context));
         
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
@@ -1632,6 +1628,58 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
     }
     
+    func loadOrdersFromCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Order")
+        do {
+            persistedData = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        do {
+            try context.save();
+            appDelegate.saveContext();
+        } catch let error as NSError {
+            //TODO Cannot save, fail startup
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        if (persistedData.count > 0) {
+            //Load the Orders array
+            let sixMonthsAgo = Calendar.current.date(byAdding: .month, value: -6, to: Date())
+            for i in 0 ..<  persistedData.count {
+                let orderFromStorage = persistedData[i]
+                if (orderFromStorage is Order) {
+                    let orderFromStore = orderFromStorage as! Order;
+                    if (orderFromStore.createDateTime != nil && orderFromStore.createDateTime! < sixMonthsAgo!) {
+                        context.delete(orderFromStore);
+                    } else if (orderFromStore.orderPatient == nil){
+                        context.delete(orderFromStore);
+                    } else {
+                        orders.append(orderFromStore);
+                    }
+                }
+                
+            }
+            
+        }
+        let newOrder = Order.init(entity: NSEntityDescription.entity(forEntityName: "Order", in:context)!, insertInto: context);
+        newOrder.createDateTime = Date();
+        order = newOrder;
+        
+
+        do {
+            try context.save();
+            appDelegate.saveContext();
+        } catch let error as NSError {
+            //TODO Cannot save, fail startup
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        NSLog("There are " + String(orders.count) + " orders")
+    }
+
     func loadDefaultPractitionerFromCoreData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -1921,7 +1969,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         dest.topCoversAndExtensionsTopCoverLength = source.topCoversAndExtensionsTopCoverLength;
         
 
-        
+        dest.orderPatient = source.orderPatient;
+        dest.orderPractitioner = source.orderPractitioner;
+        dest.orderPhotos = source.orderPhotos;
+        dest.leftFootObj = source.leftFootObj;
+        dest.rightFootObj = source.rightFootObj;
     }
 
     
@@ -2393,15 +2445,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     func setDefaults1_8thInchEvaExtensionUnderForefoot() {
         topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(4, inComponent: 0, animated: false)
         topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(3, inComponent: 0, animated: false)
-        //TODO check to see if should be to Sulcus
- topCoversViewController?.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(0, inComponent: 0, animated: false)
+ topCoversViewController?.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(3, inComponent: 0, animated: false)
     }
     
     func setDefaults1_16thInchEvaExtensionUnderForefoot() {
         topCoversViewController?.topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(4, inComponent: 0, animated: false)
         topCoversViewController?.topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(2, inComponent: 0, animated: false)
-        //TODO check to see if should be to Sulcus
-        topCoversViewController?.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(0, inComponent: 0, animated: false)
+
+        topCoversViewController?.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(3, inComponent: 0, animated: false)
     }
     
     func setDefaults1_16thInchPoronExtensionUnderForefoot() {
@@ -2807,6 +2858,24 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             changePageTo(pageTo: (backStack.popLast())!);
         }
     }
+
+    func saveOrder() {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let newOrder = Order.init(entity: NSEntityDescription.entity(forEntityName: "Order", in:context)!, insertInto: context);
+        newOrder.addToOrderMaterialItemList(MaterialOrderItem.init(entity: NSEntityDescription.entity(forEntityName: "MaterialOrderItem", in:context)!, insertInto: context));
+
+        copyOrderAToB(orderA: order, orderB: newOrder)
+        
+        do {
+            try context.save();
+            appDelegate.saveContext();
+        } catch let error as NSError {
+            //TODO Cannot save, fail startup
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
     func savePractitionerFromPage(setAsDefault: Bool) {
         var thePractitioner :(Practitioner);
@@ -3011,6 +3080,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         readPatientForm();
         
         emailErrorLabel.text = "";
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let newOrder = Order.init(entity: NSEntityDescription.entity(forEntityName: "Order", in:context)!, insertInto: context);
+        newOrder.createDateTime = Date();
+        order = newOrder;
+        order.addToOrderMaterialItemList(MaterialOrderItem.init(entity: NSEntityDescription.entity(forEntityName: "MaterialOrderItem", in:context)!, insertInto: context));
+        
+        do {
+            try context.save();
+            appDelegate.saveContext();
+        } catch let error as NSError {
+            //TODO Cannot save, fail startup
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
     
     @IBAction func ClickDeletePractitioner(sender: UIButton){
@@ -5233,6 +5317,46 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
     }
 
+    func searchOrders(inSearchString: String, inComplete: Bool) -> [Order] {
+        var theReturn = [Order]();
+        var theTemp = [Order]();
+        let littleStrings = inSearchString.split(separator: " ")
+        theReturn.append(contentsOf: orders);
+        for searchString in littleStrings {
+            for order in theReturn {
+                if (order.orderPractitioner?.firstName?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.orderPractitioner?.lastName?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.orderPractitioner?.billingAddress1?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.orderPractitioner?.shippingAddress1?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.orderPractitioner?.billingAddressFacilityName?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.orderPractitioner?.shippingAddressFacilityName?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.orderPatient?.firstName?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.orderPatient?.lastName?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.orderPatient?.medicalRecordNumber?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.commentsInstructions?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                } else if (order.chiefComplaintDiagnosis?.contains(searchString) ?? false) {
+                    theTemp.append(order)
+                }
+                theReturn.removeAll();
+                theReturn.append(contentsOf: theTemp);
+                theTemp.removeAll();
+            }
+            
+        }
+
+        return theReturn;
+    }
+    
     func changeValuesBasedOnChangedInput() {
         changeValuesBasedOnChangedInput(force: false)
     }
@@ -6704,6 +6828,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func emailMesh(sender: AnyObject)  {
+        
         var theSuccess = true;
         order.orderPractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
         
@@ -6771,7 +6896,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let builder = MCOMessageBuilder()
         builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
         builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
-        builder.header.from = MCOAddress(displayName: "sentscans@root-lab.com", mailbox: "shasper@root-lab.com")
+        //TODO change mailbox here so if password is hacked, no PHI leaked
+        builder.header.from = MCOAddress(displayName: "sentscans@root-lab.com", mailbox: "sentscans@root-lab.com")
         builder.header.subject = theSubject;
         builder.htmlBody = messageBody;
         
@@ -6844,10 +6970,15 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let sendOperation = smtpSession.sendOperation(with: rfc822Data!)
         sendOperation?.start { (error) -> Void in
             if (error != nil) {
-                NSLog("Error sending email: \(error)")
+                var finalError = "Error sending email: \(error!)";
+                if (finalError.contains("A stable connection to the server could not be established.")) {
+                    finalError = "Error sending email: No connection";
+                }
+                
+                NSLog(finalError)
                 theSuccess = false;
                 
-                self.emailErrorLabel.text = "Error sending email: \(error)";
+                self.emailErrorLabel.text = finalError;
             } else {
                 NSLog("Successfully sent email!")
                 self.changePageTo(pageTo: openingPageIndex);
@@ -6875,7 +7006,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             }
         }
         
-        
+        saveOrder();
+
     }
     
     //MARK: Mail Delegate
