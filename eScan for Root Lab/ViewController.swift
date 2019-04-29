@@ -19,11 +19,28 @@
 // (TODO - Gary) Top cover page scroll so it is not squished
 // (TODO - Gary) Remove all pictures from the devices, we can add then later
 // (TODO - Gary) Top Covers page needs to scroll so it is not all bunched up.
+// (TODO - Gary) Selecting "this is a reorder" permanently sets eScan to valid
+// (TODO - Gary) Disallow user to type into orthoses/richie brace descriptions
+// (TODO - Gary) Can't click on 'Submit' in menu
+// (TODO - Gary) Fix shipping/billing address size to not get cutoff
+// (TODO - Gary) Check all keyboards for correct input keyboard type
+// (TODO - Gary) Fix width of orthotic device description table
+// (TODO - Gary) Fix spelling of "Orthotic Device" on prescription page
+// (TODO - Gary) Should the richie brace/orthotic pages scroll when clicking on special instr?
+// (TODO - Gary) Collapse keyboard when clicking on another menu item
+// (TODO - Gary) Typing in business or facility name clears only first time (first name/last name work correctly so just need to apply to that field)
+// (TODO - Gary) Make the delete practicioner dialog dismiss on click away, or make it impossible to click away from unless you cancel
+// (TODO - Gary) Business or Facility Name is not initially required, but is once you click on it, then click away?
+
 // (TODO) Email Sent confirmation
 // (TODO) Revive and complete Previos Orders Page
 // (TODO) Take off photos of devices
 
 
+// (QUESTION) Should there/is there a way to view the summary of the current prescription?
+// (QUESTION) Should back button go to previous page in menu or last visited page?
+// (QUESTION) Should Richie Braces also have a 'My Devices'
+// (QUESTION) What to do if they want to retake a photo? Should they be able to delete?
 
 // (DONE - Matt) Make Order management page backend
 // (DONE - Matt) Reword error text when no internet
@@ -6894,8 +6911,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         let builder = MCOMessageBuilder()
-        builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
-        builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
+        //builder.header.to = [MCOAddress(displayName: "matt", mailbox: //"mattdwhittle@gmail.com")]
+        //builder.header.to = [MCOAddress(displayName: "scans", mailbox: //"scans@root-lab.com")]
+        builder.header.to = [MCOAddress(displayName: "gary", mailbox: "gary.root.a@gmail.com")]
         //TODO change mailbox here so if password is hacked, no PHI leaked
         builder.header.from = MCOAddress(displayName: "sentscans@root-lab.com", mailbox: "sentscans@root-lab.com")
         builder.header.subject = theSubject;
