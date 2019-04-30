@@ -31,6 +31,7 @@
 // (TODO - Gary) Typing in business or facility name clears only first time (first name/last name work correctly so just need to apply to that field)
 // (TODO - Gary) Make the delete practicioner dialog dismiss on click away, or make it impossible to click away from unless you cancel
 // (TODO - Gary) Business or Facility Name is not initially required, but is once you click on it, then click away?
+// (TODO - Gary) 'Save as Default' practitioner doesn't update the menu on the left
 
 // (TODO) Email Sent confirmation
 // (TODO) Revive and complete Previos Orders Page
