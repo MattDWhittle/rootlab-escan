@@ -47,6 +47,9 @@
 // (QUESTION) Should back button go to previous page in menu or last visited page?
 // (QUESTION) Should Richie Braces also have a 'My Devices'
 // (QUESTION) What to do if they want to retake a photo? Should they be able to delete?
+// (QUESTION) Is business required field? It changes when you click on/away from it.
+// (QUESTION) Should all buttons have the same size font, are there any exceptions?
+// (QUESTION) Should 'My Devices' have a description as well?
 
 // (DONE - Matt) Make Order management page backend
 // (DONE - Matt) Reword error text when no internet
