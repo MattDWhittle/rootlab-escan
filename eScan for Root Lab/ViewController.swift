@@ -19,7 +19,7 @@
 // (TODO - Gary) Top cover page scroll so it is not squished
 // (TODO - Gary) Remove all pictures from the devices, we can add then later
 // (TODO - Gary) Top Covers page needs to scroll so it is not all bunched up.
-// (TODO - Gary) Selecting "this is a reorder" permanently sets eScan to valid
+// (DONE) Selecting "this is a reorder" permanently sets eScan to valid
 // (TODO - Gary) Disallow user to type into orthoses/richie brace descriptions
 // (TODO - Gary) Can't click on 'Submit' in menu
 // (TODO - Gary) Fix shipping/billing address size to not get cutoff
@@ -1536,7 +1536,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         correctionsAndModificationsFillWIthPoronLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsFillWIthPoronRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
- correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        correctionsAndModificationsMedialArchFillIncreasedLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsMedialArchFillIncreasedRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsMedialArchFillStandardLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         correctionsAndModificationsMedialArchFillStandardRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -5392,6 +5392,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthoticsPrescriptionViewController?.orthosisSaveToMyDevicesButton.isEnabled = true;
         if (escanFormValid()) {
             eScanFinishedUIImageView.image = UIImage(named: "checked.png");
+        }
+        else {
+            eScanFinishedUIImageView.image = UIImage(named: "unchecked.png");
         }
         
         orthoticsDeviceViewController?.refreshMyDevices(); 
