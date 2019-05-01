@@ -11,30 +11,32 @@
 
 // (TODO - Matt) Force resign keyboard when page index changes
 
-// (DONE) Make Practitioner page have a save button
+
 // (TODO - Gary) Make Practitioner buttons smaller and same size, increase size of right column
 // (TODO - Gary, looks like has no IBOutlet) Make email-to 32 size
 // (TODO - Gary) Need logo as icon and change App Name to Fast Cast 3D
-// (DONE) Save button on practitioner page
 // (TODO - Gary) Top cover page scroll so it is not squished
 // (TODO - Gary) Remove all pictures from the devices, we can add then later
 // (TODO - Gary) Top Covers page needs to scroll so it is not all bunched up.
-// (DONE) Selecting "this is a reorder" permanently sets eScan to valid
 // (TODO - Gary) Disallow user to type into orthoses/richie brace descriptions
 // (TODO - Gary) Can't click on 'Submit' in menu
 // (TODO - Gary) Fix shipping/billing address size to not get cutoff
 // (TODO - Gary) Check all keyboards for correct input keyboard type
 // (TODO - Gary) Fix width of orthotic device description table
-// (DONE) Fix spelling of "Orthotic Device" on prescription page
 // (TODO - Gary) Should the richie brace/orthotic pages scroll when clicking on special instr?
 // (TODO - Gary) Collapse keyboard when clicking on another menu item
 // (TODO - Gary) Typing in business or facility name clears only first time (first name/last name work correctly so just need to apply to that field)
 // (TODO - Gary) Make the delete practicioner dialog dismiss on click away, or make it impossible to click away from unless you cancel
 // (TODO - Gary) Business or Facility Name is not initially required, but is once you click on it, then click away?
-// (DONE) 'Save as Default' practitioner doesn't update the menu on the left
-
-// (DONE) Replace 'not taken' with 'reorder'
 // (TODO - Gary) Add text for 'scan taken' or similar when a photo/escan is done
+
+// (DONE - Gary) 'Save as Default' practitioner doesn't update the menu on the left
+// (DONE - Gary) Remove extra sections from Richie Brace options
+// (DONE - Gary) Replace 'not taken' with 'reorder'
+// (DONE - Gary) Fix spelling of "Orthotic Device" on prescription page
+// (DONE - Gary) Save button on practitioner page
+// (DONE - Gary) Make Practitioner page have a save button
+// (DONE - Gary) Selecting "this is a reorder" permanently sets eScan to valid
 
 // (TODO) Email Sent confirmation
 // (TODO) Revive and complete Previos Orders Page

@@ -17,6 +17,8 @@ class OrthoticsDeviceViewController: UITableViewController {
     
     var heightForRowNormally: CGFloat;
     
+    var heightForSectionNormally: CGFloat;
+    
     override func viewDidLoad() {
         orthoticsDeviceViewController = self;
     }
@@ -143,6 +145,7 @@ class OrthoticsDeviceViewController: UITableViewController {
     
     override init(style: UITableView.Style) {
         heightForRowNormally = UIScreen.main.bounds.height / 12;
+        heightForSectionNormally = UIScreen.main.bounds.height / 20;
         super.init(style: style);
         expandedView = nil;
         indexPathOfExpandedView = nil;
@@ -152,6 +155,7 @@ class OrthoticsDeviceViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         heightForRowNormally = UIScreen.main.bounds.height / 12;
+        heightForSectionNormally = UIScreen.main.bounds.height / 20;
         super.init(coder: aDecoder);
         expandedView = nil;
         indexPathOfExpandedView = nil;
@@ -170,6 +174,17 @@ class OrthoticsDeviceViewController: UITableViewController {
             return 0;
         }
         return heightForRowNormally;
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (richieBraceHasBeenSelected) {
+            if(section > 0) {
+                return 0.0
+            }
+        }
+
+        return heightForSectionNormally;
+        
     }
     
     @IBAction func orthoticDeviceClickSelect() {
