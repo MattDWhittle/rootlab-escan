@@ -25,13 +25,13 @@
 // (TODO - Gary) Fix shipping/billing address size to not get cutoff
 // (TODO - Gary) Check all keyboards for correct input keyboard type
 // (TODO - Gary) Fix width of orthotic device description table
-// (TODO - Gary) Fix spelling of "Orthotic Device" on prescription page
+// (DONE) Fix spelling of "Orthotic Device" on prescription page
 // (TODO - Gary) Should the richie brace/orthotic pages scroll when clicking on special instr?
 // (TODO - Gary) Collapse keyboard when clicking on another menu item
 // (TODO - Gary) Typing in business or facility name clears only first time (first name/last name work correctly so just need to apply to that field)
 // (TODO - Gary) Make the delete practicioner dialog dismiss on click away, or make it impossible to click away from unless you cancel
 // (TODO - Gary) Business or Facility Name is not initially required, but is once you click on it, then click away?
-// (TODO - Gary) 'Save as Default' practitioner doesn't update the menu on the left
+// (DONE) 'Save as Default' practitioner doesn't update the menu on the left
 
 // (TODO) Email Sent confirmation
 // (TODO) Revive and complete Previos Orders Page
@@ -2931,6 +2931,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         appDelegate.saveContext()
         changePageTo(pageTo: patientManagementPageIndex);
         setValuesBasedOnPatientPageValid();
+        
+        refreshPractitionerNameLabel()
     }
     
     func fromFormToPractitioner(thePractitioner: Practitioner!) {
