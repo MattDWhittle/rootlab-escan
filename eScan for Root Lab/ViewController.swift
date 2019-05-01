@@ -33,6 +33,9 @@
 // (TODO - Gary) Business or Facility Name is not initially required, but is once you click on it, then click away?
 // (DONE) 'Save as Default' practitioner doesn't update the menu on the left
 
+// (DONE) Replace 'not taken' with 'reorder'
+// (TODO - Gary) Add text for 'scan taken' or similar when a photo/escan is done
+
 // (TODO) Email Sent confirmation
 // (TODO) Revive and complete Previos Orders Page
 // (TODO) Take off photos of devices
@@ -5465,6 +5468,15 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         if (needToUpdateScreen || force) {
             updateOrthosisScreenFromModel()
+        }
+        
+        if (screenViewing == scanFormPageIndex || force) {
+            if (reorderUISwitch.isOn) {
+                eScanNameLabel.text = "Reorder"
+            }
+            else {
+                eScanNameLabel.text = "Not Taken"
+            }
         }
         
         let isEverythingValid = everythingValid();
