@@ -11,11 +11,11 @@
 
 // (TODO - Matt) Force resign keyboard when page index changes
 
-// (TODO - Gary) Make Practitioner page have a save button
+// (DONE) Make Practitioner page have a save button
 // (TODO - Gary) Make Practitioner buttons smaller and same size, increase size of right column
 // (TODO - Gary, looks like has no IBOutlet) Make email-to 32 size
 // (TODO - Gary) Need logo as icon and change App Name to Fast Cast 3D
-// (TODO - Gary) Save button on practitioner page
+// (DONE) Save button on practitioner page
 // (TODO - Gary) Top cover page scroll so it is not squished
 // (TODO - Gary) Remove all pictures from the devices, we can add then later
 // (TODO - Gary) Top Covers page needs to scroll so it is not all bunched up.
@@ -1232,6 +1232,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             richieBraceButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             deletePractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             defaultPractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            savePractitionerButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             okDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             cancelDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             submitEmailButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
@@ -2045,6 +2046,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var backButton: UIButton!
     @IBOutlet var defaultPractitionerButton: UIButton!
     @IBOutlet var deletePractitionerButton: UIButton!
+    @IBOutlet var savePractitionerButton: UIButton!
     @IBOutlet var orthoticsButton: UIButton!
     @IBOutlet var orthoticskButton: UIButton!
     @IBOutlet var richieBraceButton: UIButton!
@@ -3119,6 +3121,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         areYouSureView.isHidden = false;
     }
 
+    @IBAction func ClickSavePractitioner(sender: UIButton){
+        savePractitionerFromPage(setAsDefault: false);
+    }
+    
     @IBAction func ClickDefaultPractitioner(sender: UIButton){
         savePractitionerFromPage(setAsDefault: true);
     }
@@ -3404,10 +3410,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
     func setValuesBasedOnPractitionerPageValid() {
         let isValid = isPractitionerPageValid();
+        
         nextButton.isEnabled = isValid;
         defaultPractitionerButton.isEnabled = isValid;
-        practitionerFinishedUIImageView.image = isValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+        savePractitionerButton.isEnabled = isValid;
         deletePractitionerButton.isEnabled = practitionerPicker.selectedRow(inComponent: 0) != 0;
+        
+        practitionerFinishedUIImageView.image = isValid ? UIImage(named: "checked.png") : UIImage(named: "unchecked.png");
+
     }
 
     func isPractitionerPageValid() -> Bool {
