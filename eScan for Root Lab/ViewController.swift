@@ -4857,37 +4857,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             return theReturn;
         }
         
-        let theLengthIndex = topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0)
-        if (theLengthIndex > 0) {
-            theReturn += "Length: " + topCoversViewController!.topCoversAndExtensionsTopCoverLengthPickerData[theLengthIndex] + ", ";
-        }
-        else {
-            theReturn += "No top cover, ";
-        }
-
-//        let theMaterialIndex = topCoversAndExtensionsTopCoverMaterialPicker.selectedRow(inComponent: 0)
-//        if (theMaterialIndex > 0) {
-//            theReturn += "Material: " + topCoversAndExtensionsTopCoverMaterialPickerData[theMaterialIndex] + ", ";
-//        }
-
-        let theExtensionThicknessIndex = topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker.selectedRow(inComponent: 0)
-        if (theExtensionThicknessIndex > 0) {
-            theReturn += "Extension Thickness: " + topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPickerData[theExtensionThicknessIndex] + ", ";
-        }
-
-        let theExtensionMaterialIndex = topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0)
-        if (theExtensionMaterialIndex > 0) {
-            theReturn += "Extension Material: " + topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPickerData[theExtensionMaterialIndex] + ", ";
-        }
-        
-        let theExtensionExtensionLengthIndex = topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectedRow(inComponent: 0)
-        if (theExtensionExtensionLengthIndex > 0) {
-            theReturn += "Extension Length: " + topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPickerData[theExtensionExtensionLengthIndex] + ", ";
-        }
-        
-        if (order.topCoversAndExtensionsBottomCoverMaterialEVA116) {
-            theReturn += "EVA 1/16\", ";
-        }
         if (order.topCoversAndExtensionsBottomCoverMaterialVinylBlack) {
             theReturn += "Top Cover Material Vinyl Black, ";
         }
@@ -4924,6 +4893,36 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
             theReturn += "Bottom Cover Material Diabetic 1/16\" Poron 1/8\" Plastizone, ";
         }
+        
+        
+        let theLengthIndex = topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0)
+        if (theLengthIndex > 0) {
+            theReturn += "Length: " + topCoversViewController!.topCoversAndExtensionsTopCoverLengthPickerData[theLengthIndex] + ", ";
+        }
+        else {
+            theReturn += "No top cover, ";
+        }
+
+//        let theMaterialIndex = topCoversAndExtensionsTopCoverMaterialPicker.selectedRow(inComponent: 0)
+//        if (theMaterialIndex > 0) {
+//            theReturn += "Material: " + topCoversAndExtensionsTopCoverMaterialPickerData[theMaterialIndex] + ", ";
+//        }
+
+        let theExtensionThicknessIndex = topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPicker.selectedRow(inComponent: 0)
+        if (theExtensionThicknessIndex > 0) {
+            theReturn += "Extension Thickness: " + topCoversViewController!.topCoversAndExtensionsForefootExtensionThicknessPickerData[theExtensionThicknessIndex] + ", ";
+        }
+
+        let theExtensionMaterialIndex = topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0)
+        if (theExtensionMaterialIndex > 0) {
+            theReturn += "Extension Material: " + topCoversViewController!.topCoversAndExtensionsForefootExtensionMaterialPickerData[theExtensionMaterialIndex] + ", ";
+        }
+        
+        let theExtensionExtensionLengthIndex = topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectedRow(inComponent: 0)
+        if (theExtensionExtensionLengthIndex > 0) {
+            theReturn += "Extension Length: " + topCoversViewController!.topCoversAndExtensionsForefootExtensionExtensionLengthPickerData[theExtensionExtensionLengthIndex] + ", ";
+        }
+        
         if (order.topCoversAndExtensionsBottomCoverForefootReinforcement) {
             theReturn += "Forefoot Reinforcement, ";
         }
