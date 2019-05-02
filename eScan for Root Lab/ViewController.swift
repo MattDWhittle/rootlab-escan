@@ -4913,12 +4913,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.topCoversAndExtensionsBottomCoverMaterialLeatherBlack) {
             theReturn += "Top Cover Material Leather Black, ";
         }
+        
+        // lowercase = top cover
         if (order.topCoversAndExtensionsBottomCoverMaterialEva116) {
             theReturn += "Top Cover Material EVA 1/16\", ";
         }
-        if (order.topCoversAndExtensionsBottomCoverMaterialEVA116) {
-            theReturn += "Top Cover Material EVA 1/16\", ";
-        }
+        
+
         if (order.topCoversAndExtensionsBottomCoverMaterialEva18) {
             theReturn += "Top Cover Material EVA 1/8\", ";
         }
@@ -4928,13 +4929,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.topCoversAndExtensionsBottomCoverMaterialNcn116) {
             theReturn += "Top Cover Material NCN 1/16\", ";
         }
-        if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
-            theReturn += "Bottom Cover Material Diabetic, ";
-        }
-        if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
-            theReturn += "Bottom Cover Material Diabetic 1/16\" Poron 1/8\" Plastizone, ";
-        }
-        
         
         let theLengthIndex = topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0)
         if (theLengthIndex > 0) {
@@ -4943,6 +4937,19 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         else {
             theReturn += "No top cover, ";
         }
+        
+        // uppercase = bottom cover
+        if (order.topCoversAndExtensionsBottomCoverMaterialEVA116) {
+            theReturn += "Bottom Cover Material EVA 1/16\", ";
+        }
+        
+        if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
+            theReturn += "Bottom Cover Material Diabetic 1/16\" Poron 1/8\" Plastizone, ";
+        }
+        
+
+        
+
 
 //        let theMaterialIndex = topCoversAndExtensionsTopCoverMaterialPicker.selectedRow(inComponent: 0)
 //        if (theMaterialIndex > 0) {
