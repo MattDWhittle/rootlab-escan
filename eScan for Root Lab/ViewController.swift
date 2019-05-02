@@ -3360,12 +3360,16 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (rushOrderNextDayTurnaroundUISwitch.isOn) {
             rushOrder2DayTurnaroundUISwitch.isOn = false;
         }
+        
+        changeValuesBasedOnChangedInput();
     }
 
     @IBAction func clickRushOrder2DayTurnaround(sender: UIButton){
         if (rushOrder2DayTurnaroundUISwitch.isOn) {
             rushOrderNextDayTurnaroundUISwitch.isOn = false;
         }
+        
+        changeValuesBasedOnChangedInput();
     }
 
     @IBAction func ClickEditPractitioner(sender: UIButton){
@@ -3964,11 +3968,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             rushOrder2DayTurnaroundUISwitch.isOn;
         order.rushOrderNextDayTurnaround =
             rushOrderNextDayTurnaroundUISwitch.isOn;
-        
-        let theSelectedRow = rushOrderExpressShippingPicker.selectedRow(inComponent: 0);
-        if (theSelectedRow > 0) {
-            order.rushOrderExpressShiping = Int16(rushOrderExpressShippingPicker.selectedRow(inComponent: 0));
-        }
+
+        // If set to 0, it will be ignored and interpreted as normal shipping
+        order.rushOrderExpressShiping = Int16(rushOrderExpressShippingPicker.selectedRow(inComponent: 0));
+
 
     }
 
@@ -4644,7 +4647,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         var theReturn = calculateRushOrderDescriptionLine1FromOrder();
         if (theReturn != "") {
-            theReturn += " ,";
+            theReturn += ", ";
         }
         
         theReturn += calculateRushOrderDescriptionLine2FromOrder();
@@ -4679,6 +4682,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         if (order.rushOrderExpressShiping > 0) {
             let theView = self.pickerView(rushOrderExpressShippingPicker, viewForRow: Int(order.rushOrderExpressShiping), forComponent: 0, reusing: nil)
+            theReturn += "Express Shipping: "
             theReturn += (theView as! UILabel).text!;
         }
         return theReturn;
