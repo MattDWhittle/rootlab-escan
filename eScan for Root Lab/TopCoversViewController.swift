@@ -259,8 +259,115 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
     }
     
+    func enableAllTopCoverSwitch(enable: Bool) {
+        topCoversAndExtensionsMaterialVinylBlackUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMaterialEva18UISwitch.isEnabled = enable;
+        topCoversAndExtensionsMaterialEva116UISwitch.isEnabled = enable;
+        topCoversAndExtensionsMaterialVinylBronzeUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMaterialVinylForestUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMaterialLeatherBlackUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMaterialLeatherBrownUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMaterialNcn18UISwitch.isEnabled = enable;
+        topCoversAndExtensionsMaterialNcn116UISwitch.isEnabled = enable;
+        topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isEnabled = enable;
+        topCoversAndExtensionsPoronUnderTopcover18.isEnabled = enable;
+        topCoversAndExtensionsPoronUnderTopcover116.isEnabled = enable;
+        
+        topCoversAndExtensionsForefootExtensionMaterialPicker.isUserInteractionEnabled = enable;
+        topCoversAndExtensionsForefootExtensionThicknessPicker.isUserInteractionEnabled = enable;
+        topCoversAndExtensionsForefootExtensionExtensionLengthPicker.isUserInteractionEnabled = enable;
+        
+        topCoversAndExtensionsMortonsExtensionLeftUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMortonsExtensionRightUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMetatarsalBarLeftUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMetatarsalBarRightUISwitch.isEnabled = enable;
+        topCoversAndExtensionsHeelPadLeftUISwitch.isEnabled = enable;
+        topCoversAndExtensionsHeelPadRightUISwitch.isEnabled = enable;
+        topCoversAndExtensionsDancersPadLeftUISwitch.isEnabled = enable;
+        topCoversAndExtensionsDancersPadRightUISwitch.isEnabled = enable;
+        topCoversAndExtensionsReverseMortonsExtensionLeftUISwitch.isEnabled = enable;
+        topCoversAndExtensionsReverseMortonsExtensionRightUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMetatarsalPadLeftUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMetatarsalPadRightUISwitch.isEnabled = enable;
+        topCoversAndExtensionsHorseshoePadLeftUISwitch.isEnabled = enable;
+        topCoversAndExtensionsHorseshoePadRightUISwitch.isEnabled = enable;
+        topCoversAndExtensionsKineticWedgeLeftUISwitch.isEnabled = enable;
+        topCoversAndExtensionsKineticWedgeRightUISwitch.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsL1.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsL2.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsL3.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsL4.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsL5.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsR1.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsR2.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsR3.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsR4.isEnabled = enable;
+        topCoversAndExtensionsMetHeadAccommodationsR5.isEnabled = enable;
+        
+        topCoversAndExtensionsNeuromaPadL1.isEnabled = enable;
+        topCoversAndExtensionsNeuromaPadL2.isEnabled = enable;
+        topCoversAndExtensionsNeuromaPadL3.isEnabled = enable;
+        topCoversAndExtensionsNeuromaPadL4.isEnabled = enable;
+        topCoversAndExtensionsNeuromaPadR1.isEnabled = enable;
+        topCoversAndExtensionsNeuromaPadR2.isEnabled = enable;
+        topCoversAndExtensionsNeuromaPadR3.isEnabled = enable;
+        topCoversAndExtensionsNeuromaPadR4.isEnabled = enable;
+        
+        topCoversAndExtensionsEVAUISwitch.isEnabled = enable;
+        topCoversAndExtensionsKorexUISwitch.isEnabled = enable;
+    }
+    
+    func switchAllTopCoverSwitch(enable: Bool) {
+        topCoversAndExtensionsMaterialVinylBlackUISwitch.isOn = enable;
+        topCoversAndExtensionsMaterialEva18UISwitch.isOn = enable;
+        topCoversAndExtensionsMaterialEva116UISwitch.isOn = enable;
+        topCoversAndExtensionsMaterialVinylBronzeUISwitch.isOn = enable;
+        topCoversAndExtensionsMaterialVinylForestUISwitch.isOn = enable;
+        topCoversAndExtensionsMaterialLeatherBlackUISwitch.isOn = enable;
+        topCoversAndExtensionsMaterialLeatherBrownUISwitch.isOn = enable;
+        topCoversAndExtensionsMaterialNcn18UISwitch.isOn = enable;
+        topCoversAndExtensionsMaterialNcn116UISwitch.isOn = enable;
+        topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isOn = enable;
+        topCoversAndExtensionsPoronUnderTopcover18.isOn = enable;
+        topCoversAndExtensionsPoronUnderTopcover116.isOn = enable;
+        
+        topCoversAndExtensionsMortonsExtensionLeftUISwitch.isOn = enable;
+        topCoversAndExtensionsMortonsExtensionRightUISwitch.isOn = enable;
+        topCoversAndExtensionsMetatarsalBarLeftUISwitch.isOn = enable;
+        topCoversAndExtensionsMetatarsalBarRightUISwitch.isOn = enable;
+        topCoversAndExtensionsHeelPadLeftUISwitch.isOn = enable;
+        topCoversAndExtensionsHeelPadRightUISwitch.isOn = enable;
+        topCoversAndExtensionsDancersPadLeftUISwitch.isOn = enable;
+        topCoversAndExtensionsDancersPadRightUISwitch.isOn = enable;
+        topCoversAndExtensionsReverseMortonsExtensionLeftUISwitch.isOn = enable;
+        topCoversAndExtensionsReverseMortonsExtensionRightUISwitch.isOn = enable;
+        topCoversAndExtensionsMetatarsalPadLeftUISwitch.isOn = enable;
+        topCoversAndExtensionsMetatarsalPadRightUISwitch.isOn = enable;
+        topCoversAndExtensionsHorseshoePadLeftUISwitch.isOn = enable;
+        topCoversAndExtensionsHorseshoePadRightUISwitch.isOn = enable;
+        topCoversAndExtensionsKineticWedgeLeftUISwitch.isOn = enable;
+        topCoversAndExtensionsKineticWedgeRightUISwitch.isOn = enable;
+        
+        topCoversAndExtensionsEVAUISwitch.isOn = enable;
+        topCoversAndExtensionsKorexUISwitch.isOn = enable;
+    }
+    
+    
     func changeBasedOnValues() {
-        if (topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0) == 1) {
+        
+        enableAllTopCoverSwitch(enable: true)
+        
+        if (topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0) == 0) {
+            // No top cover selected
+            topCoversAndExtensionsForefootExtensionExtensionLengthPicker.alpha = 0.6;
+            topCoversAndExtensionsForefootExtensionThicknessPicker.alpha = 0.6;
+            topCoversAndExtensionsForefootExtensionMaterialPicker.alpha = 0.6;
+            
+            // turn off and disable features
+            switchAllTopCoverSwitch(enable: false)
+            enableAllTopCoverSwitch(enable: false)
+        }
+        else if (topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0) == 1) {
             //Orthosis only, disable top covers
             topCoversAndExtensionsForefootExtensionExtensionLengthPicker.isUserInteractionEnabled = false;
             topCoversAndExtensionsForefootExtensionExtensionLengthPicker.alpha = 0.6;
