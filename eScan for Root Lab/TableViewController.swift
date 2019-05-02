@@ -178,9 +178,7 @@ class OrthoticsDeviceViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if (richieBraceHasBeenSelected) {
-            if(section > 0) {
-                return 0.0
-            }
+            return 0.0
         }
 
         return heightForSectionNormally;

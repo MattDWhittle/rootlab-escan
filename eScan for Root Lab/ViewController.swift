@@ -2877,8 +2877,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             ) {
             changePageTo(pageTo: orthoticsFormPageIndex);
             
-        } else if (screenViewing == orthoticsFormPageIndex) {
-            changePageTo(pageTo: orthoticsDeviceFormPageIndex);
         } else {
             changePageTo(pageTo: (backStack.popLast())!);
         }
@@ -3144,11 +3142,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         richieBraceHasBeenSelected = false;
 
         changePageTo(pageTo: orthoticsDeviceFormPageIndex);
+        
         materialNameLabel.text = "> Orthotics";
+        orthoticDeviceLabel.text = "Orthotic Device"
     }
 
     @IBAction func ClickRichieBraceForm(sender: UIButton){
         materialNameLabel.text = "> Richie Brace";
+        orthoticDeviceLabel.text = "Richie Brace"
         richieBraceHasBeenSelected = true;
         orthoticsHasBeenSelected = false;
         changePageTo(pageTo: orthoticsDeviceFormPageIndex)
