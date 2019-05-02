@@ -252,8 +252,11 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         changeBasedOnValues();
         
+        // Also update the parent if any descriptions need to be updated
+        let parent = self.parent! as! ViewController;
+        parent.changeValuesBasedOnChangedInput();
         
-
+        
     }
     
     func changeBasedOnValues() {
@@ -283,7 +286,7 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             
         }
         topCoversAndExtensionsForefootExtensionExtensionLengthPicker.reloadAllComponents();
-        
+
     }
     
     @objc func clickLorRMedialArchRelief(mySwitch: UISwitch) {

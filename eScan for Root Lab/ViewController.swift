@@ -4861,6 +4861,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (theLengthIndex > 0) {
             theReturn += "Length: " + topCoversViewController!.topCoversAndExtensionsTopCoverLengthPickerData[theLengthIndex] + ", ";
         }
+        else {
+            theReturn += "No top cover, ";
+        }
 
 //        let theMaterialIndex = topCoversAndExtensionsTopCoverMaterialPicker.selectedRow(inComponent: 0)
 //        if (theMaterialIndex > 0) {
