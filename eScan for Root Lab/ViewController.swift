@@ -694,7 +694,7 @@ struct DisplayData {
 }
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, STSensorControllerDelegate,
-STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
+STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var eview: EAGLView!
     
@@ -1327,7 +1327,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             practitionerPicker.dataSource = self;
             postingRearfootPostTypePicker.delegate = self;
             postingRearfootPostTypePicker.dataSource = self;
-
             
             //orthoticsMaterialPicker defined in storyboard
             
@@ -1480,6 +1479,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         postingRearfootPostMotionOtherDegreesRight.delegate = self
         postingRearfootPostingElevatorOthermmLeft.delegate = self
         postingRearfootPostingElevatorOthermmRight.delegate = self
+        
+        commentsTextArea.delegate = self;
 
         practitionerNameInput.autocorrectionType = UITextAutocorrectionType.no;
         practitionerLastNameInput.autocorrectionType = UITextAutocorrectionType.no;
@@ -4083,6 +4084,17 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
 
     }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (textView == commentsTextArea) {
+            let maxChars = 600;
+            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            let numberOfChars = newText.count
+            return numberOfChars < maxChars
+        }
+        return true
+    }
+
     
     func readChiefComplaintDiagnosisForm() {
         order.chiefComplaintDiagnosis = orthosisChiefComplaintDiagnosisInput.text!;
