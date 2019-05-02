@@ -5244,10 +5244,6 @@ Try to re-align or press reset.</string>
                                 <rect key="frame" x="396" y="939" width="63" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Item Selection.png" translatesAutoresizingMaskIntoConstraints="NO" id="Zk2-UT-SdC">
-                                <rect key="frame" x="396" y="65" width="165" height="132"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PIw-Du-4hE">
                                 <rect key="frame" x="1192" y="570" width="663" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -6667,7 +6663,6 @@ Try to re-align or press reset.</string>
         <image name="Donebutton.png" width="318.75" height="171"/>
         <image name="Heel Pad.png" width="191" height="129"/>
         <image name="Horeshoe Pad.png" width="189" height="140"/>
-        <image name="Item Selection.png" width="95" height="73"/>
         <image name="Kinetic Wedge.png" width="250" height="158"/>
         <image name="Metatarsal Bar.png" width="187" height="131"/>
         <image name="Metatarsal Pad.png" width="202" height="131"/>
