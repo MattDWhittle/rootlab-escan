@@ -923,7 +923,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if (pickerView == orthoticMaterialColorPicker) {
             pickerLabel?.text = orthosisMaterialColorLabels[row]
         } else if (pickerView == postingRearfootPostTypePicker) {
-            if (orthoticDeviceSelected == 1) {
+            if (orthoticDeviceSelected == 1) { // if polymax, should be polypropelene
                 pickerLabel?.text = postingRearfootPostPolypropeleneTypePickerData[row];
             } else {
                 pickerLabel?.text = postingRearfootPostTypePickerData[row]
@@ -4548,8 +4548,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             return theReturn;
         }
         
-        theReturn += "Rearfoot post: " +  postingRearfootPostTypePickerData[Int(order.postingRearfootPostMaterial)] + ", ";
-
+        // if polymax, use different array of picker values
+        if (orthoticDeviceSelected == 1) {
+            theReturn += "Rearfoot post: " +  postingRearfootPostPolypropeleneTypePickerData[Int(order.postingRearfootPostMaterial)] + ", ";
+        }
+        else {
+            theReturn += "Rearfoot post: " +  postingRearfootPostTypePickerData[Int(order.postingRearfootPostMaterial)] + ", ";
+        }
+        
         theReturn += calculateALeftAndRightInt(leftInt: String(order.postingHeelLiftLeft), rightInt: String(order.postingHeelLiftRight), string: "Heel Lift");
         
         theReturn += calculateALeftAndRightInt(leftInt: String(order.postingRearfootPostingElevatorOtherMmLeft), rightInt: String(order.postingRearfootPostingElevatorOtherMmRight), string: "Rearfoot Posting Elevator (mm)");
