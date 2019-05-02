@@ -2419,6 +2419,16 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         postingRearfootPostingElevatorOthermmLeft.text = "10";
         postingRearfootPostingElevatorOthermmRight.text = "10";
     }
+    
+    func setDefaultsStandardMedialArch() {
+        correctionsAndModificationsMedialArchFillStandardLeftUISwitch.isOn = true;
+        correctionsAndModificationsMedialArchFillStandardRightUISwitch.isOn = true;
+    }
+    
+    func setDefaultsMinimalMedialArch() {
+        correctionsAndModificationsMedialArchFillMinimalLeftUISwitch.isOn = true;
+        correctionsAndModificationsMedialArchFillMinimalRightUISwitch.isOn = true;
+    }
 
     func setDefaultsOthosisLengthVinylTopCoverFunctional() {
         //orthosis length vinyl top cover
@@ -2613,6 +2623,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults44FirmCrepePost();
             setDefaults8mmPostElevator();
             setDefaultsOthosisLengthVinylTopCoverFunctional();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 1) { //PolyMax
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthStandard();
@@ -2622,6 +2633,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults44IntegratedPolypropylenePost()
             setDefaults8mmPostElevator();
             setDefaultsOthosisLengthVinylTopCoverFunctional();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 2) {//Graphite
             setDefaultsSemiRigidGraphiteCompositeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2631,6 +2643,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults44FirmCrepePost();
             setDefaults8mmPostElevator();
             setDefaultsOthosisLengthVinylTopCoverFunctional();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 3) {//Fiberglass
             setDefaultsSemiRigidFiberglassCompositeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2640,6 +2653,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults44FirmCrepePost();
             setDefaults8mmPostElevator();
             setDefaultsOthosisLengthVinylTopCoverFunctional();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 4) { //Acrylic
             setDefaultsSemiRigidAcrylicCompositeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2649,6 +2663,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults44FirmCrepePost();
             setDefaults8mmPostElevator();
             setDefaultsOthosisLengthVinylTopCoverFunctional();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 5) { //Multi Sport
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthStandard();
@@ -2658,6 +2673,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults44MediumCrepePost();
             setDefaults8mmPostElevator();
             setDefaultsOthosisLengthVinylTopCoverSport();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 6) { //Multi Sport Plus
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthStandard();
@@ -2668,6 +2684,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults8mmPostElevator();
             setDefaultsFullLengthVinylTopCoverSport();
             setDefaults1_8thInchEvaExtensionUnderForefoot();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 7) { //Soft Sport
             setDefaults1_8thInchPolypropyleneShell();
             setDefaultsAnteriorWidthStandard();
@@ -2678,6 +2695,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults8mmPostElevator();
             setDefaults1_8thInchFullLengthEvaTopCover();
             setEvaBottomFiller();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 8) { //Soft Sport Flex
             setDefaults2mmHdpeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2688,6 +2706,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults8mmPostElevator();
             setDefaults1_8thInchFullLengthEvaTopCover();
             setEvaBottomFiller();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 9) { //SSC™
             setDefaultsRigidGraphiteCompositeShell();
             setWidthAndHeelCupPerShoeGear();
@@ -2696,6 +2715,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults00FirmCrepePost();
             setDefaults1_16thInchFullLengthNcnTopCover();
             setDefaults1_16thInchEvaExtensionUnderForefoot();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 10) { //Men's Dress
             setDefaultsSemiRigidGraphiteCompositeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2706,6 +2726,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults8mmPostElevator();
             setDefaultsSulcusLengthVinylTopCoverDress();
             setDefaults1_16thInchPoronExtensionUnderForefoot();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 11) { //Women's Casual
             setDefaultsSemiRigidGraphiteCompositeShell();
             setDefaultsAnteriorWidthNarrow();
@@ -2716,6 +2737,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults10mmPostElevator();
             setDefaultsSulcusLengthVinylTopCoverDress();
             setDefaults1_16thInchPoronExtensionUnderForefoot();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 12) { //Women's High-Heel
             setDefaultsSemiRigidGraphiteCompositeShell();
             setDefaultsAnteriorWidthNarrow();
@@ -2725,6 +2747,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsNoRearfootPost();
             setDefaultsSulcusLengthVinylTopCoverDress();
             setDefaults1_16thInchPoronExtensionUnderForefoot();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 13) { //Women's Hole-Heel™
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthNarrow();
@@ -2734,6 +2757,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsNoRearfootPost();
             setDefaultsSulcusLengthVinylTopCoverDress();
             setDefaults1_16thInchPoronExtensionUnderForefoot();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 14) { //Cobra
             setDefaults1_8thInchPolypropyleneShell();
             setDefaultsAnteriorWidthNarrow();
@@ -2744,11 +2768,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsSulcusLengthVinylTopCoverDress();
             setDefaults1_16thInchPoronExtensionUnderForefoot();
             setDefaultsFullEvaBottomFiller();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 15) { //Blake 25
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthExtraWide();
             set23mmMed21mmLatHeelCup();
             setDefaultsLimitedIntrinsicForefootCorrection();
+            setDefaultsStandardMedialArch();
             
             setDefaults00BirkocorkPost();
             setDefaults8mmPostElevator();
@@ -2758,6 +2784,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsAnteriorWidthExtraWide();
             set23mmMed21mmLatHeelCup();
             setDefaultsLimitedIntrinsicForefootCorrection();
+            setDefaultsStandardMedialArch();
             
             setDefaults00BirkocorkPost();
             setDefaults8mmPostElevator();
@@ -2767,6 +2794,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsAnteriorWidthExtraWide();
             set23mmMed21mmLatHeelCup();
             setDefaultsLimitedIntrinsicForefootCorrection();
+            setDefaultsStandardMedialArch();
             
             setDefaults00BirkocorkPost();
             setDefaults8mmPostElevator();
@@ -2779,6 +2807,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsVerticalHeelBisection();
             setDefaults44FirmCrepePost();
             setDefaults8mmPostElevator();
+            
+            //Minimal medial arch for UCBL
+            setDefaultsMinimalMedialArch();
+            
         } else if (orthoticDeviceSelected == 19) { //Cushion-Flex™
             setDefaults2mmHdpeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2787,6 +2819,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsVerticalHeelBisection();
             setDefaults1_8thInchFullLengthNcnTopCover();
             setEvaBottomFiller();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 20) { //Cushion-Flex-Control™
             setDefaults2mmHdpeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2797,6 +2830,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults8mmPostElevator();
             setDefaults1_8thInchFullLengthNcnTopCover();
             setEvaBottomFiller();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 21) { //Diaba-Flex™
             setDefaults2mmHdpeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2805,6 +2839,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsVerticalHeelBisection();
             setDefaults316FullLengthDiabeticTopCover();
             setEvaBottomFiller();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 22) { //Diaba-Flex-Control™
             setDefaults2mmHdpeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2815,6 +2850,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults8mmPostElevator();
             setDefaults316FullLengthDiabeticTopCover();
             setEvaBottomFiller();
+            setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 23) { //Accommodative
             setDefaultsAnteriorWidthFull();
             setDefaults316FullLengthDiabeticTopCover();
@@ -2824,6 +2860,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsNoRearfootPost();
             setDefaults316FullLengthDiabeticTopCover();
             setDefaults1_16thInchEvaBottomCover();
+            setDefaultsStandardMedialArch();
 
         }
         
