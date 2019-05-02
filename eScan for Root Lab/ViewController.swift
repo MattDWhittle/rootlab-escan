@@ -29,7 +29,9 @@
 // (TODO - Gary) Make the delete practicioner dialog dismiss on click away, or make it impossible to click away from unless you cancel
 // (TODO - Gary) Business or Facility Name is not initially required, but is once you click on it, then click away?
 // (TODO - Gary) Add text for 'scan taken' or similar when a photo/escan is done
+// (TODO - Gary) Don't allow editing of description of orthotics/richie braces
 
+// (DONE - Gary) Business not a required field
 // (DONE - Gary) 'Save as Default' practitioner doesn't update the menu on the left
 // (DONE - Gary) Remove extra sections from Richie Brace options
 // (DONE - Gary) Replace 'not taken' with 'reorder'
@@ -42,14 +44,9 @@
 // (TODO) Revive and complete Previos Orders Page
 // (TODO) Take off photos of devices
 
-
 // (QUESTION) Should there/is there a way to view the summary of the current prescription?
-// (QUESTION) Should back button go to previous page in menu or last visited page?
-// (QUESTION) Should Richie Braces also have a 'My Devices'
 // (QUESTION) What to do if they want to retake a photo? Should they be able to delete?
-// (QUESTION) Is business required field? It changes when you click on/away from it.
-// (QUESTION) Should all buttons have the same size font, are there any exceptions?
-// (QUESTION) Should 'My Devices' have a description as well?
+
 
 // (DONE - Matt) Make Order management page backend
 // (DONE - Matt) Reword error text when no internet
@@ -1136,7 +1133,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerBillingAddressState.textColor = practitionerBillingAddressState.text == "*State" ? .gray : .black
         practitionerBillingAddressZip.textColor = practitionerBillingAddressZip.text == "*Zip" ? .gray : .black
         practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "Country" ? .gray : .black
-        practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
+        practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "Business or Facility Name" ? .gray : .black
         
         practitionerShippingAddress1.textColor = practitionerShippingAddress1.text == "*Address 1" ? .gray : .black
         practitionerShippingAddress2.textColor = practitionerShippingAddress2.text == "Address 2" ? .gray : .black
@@ -1144,7 +1141,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         practitionerShippingAddressState.textColor = practitionerShippingAddressState.text == "*State" ? .gray : .black
         practitionerShippingAddressZip.textColor = practitionerShippingAddressZip.text == "*Zip" ? .gray : .black
         practitionerShippingAddressCountry.textColor = practitionerShippingAddressCountry.text == "Country" ? .gray : .black
-        practitionerShippingAddressFacilityName.textColor = practitionerShippingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
+        practitionerShippingAddressFacilityName.textColor = practitionerShippingAddressFacilityName.text == "Business or Facility Name" ? .gray : .black
         
         practitionerPhoneInput.text = thePractitioner.phone;
         practitionerEmailInput.text = thePractitioner.email;
@@ -5265,12 +5262,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerShippingAddressFacilityName) {
             if (practitionerShippingAddressFacilityName.text!.isEmpty) {
-                practitionerShippingAddressFacilityName.text = "*Business or Facility Name";
+                practitionerShippingAddressFacilityName.text = "Business or Facility Name";
                 practitionerShippingAddressFacilityName.textColor = .gray;
             }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn) {
                 practitionerBillingAddressFacilityName.text = practitionerShippingAddressFacilityName.text!;
-                practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
+                practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "Business or Facility Name" ? .gray : .black
             }
             setValuesBasedOnPractitionerPageValid();
 
@@ -5336,7 +5333,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setValuesBasedOnPractitionerPageValid();
         } else if (textField == practitionerBillingAddressFacilityName) {
             if (practitionerBillingAddressFacilityName.text!.isEmpty) {
-                practitionerBillingAddressFacilityName.text = "*Business or Facility Name";
+                practitionerBillingAddressFacilityName.text = "Business or Facility Name";
                 practitionerBillingAddressFacilityName.textColor = .gray;
             }
             if (newPractitionerSameAsBillingAddressUiSwitch.isOn &&
@@ -5519,7 +5516,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 practitionerBillingAddressState.textColor = practitionerBillingAddressState.text == "*State" ? .gray : .black
                 practitionerBillingAddressZip.textColor = practitionerBillingAddressZip.text == "*Zip" ? .gray : .black
                 practitionerBillingAddressCountry.textColor = practitionerBillingAddressCountry.text == "Country" ? .gray : .black
-                practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "*Business or Facility Name" ? .gray : .black
+                practitionerBillingAddressFacilityName.textColor = practitionerBillingAddressFacilityName.text == "Business or Facility Name" ? .gray : .black
 
                 setValuesBasedOnPractitionerPageValid();
             }
@@ -6944,8 +6941,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         let builder = MCOMessageBuilder()
-        //builder.header.to = [MCOAddress(displayName: "matt", mailbox: //"mattdwhittle@gmail.com")]
-        //builder.header.to = [MCOAddress(displayName: "scans", mailbox: //"scans@root-lab.com")]
+        builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
+        builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
         builder.header.to = [MCOAddress(displayName: "gary", mailbox: "gary.root.a@gmail.com")]
         //TODO change mailbox here so if password is hacked, no PHI leaked
         builder.header.from = MCOAddress(displayName: "sentscans@root-lab.com", mailbox: "sentscans@root-lab.com")
