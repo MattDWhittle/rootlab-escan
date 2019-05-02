@@ -4500,14 +4500,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
         theReturn += calculateALeftAndRightInt(leftInt: String(order.postingHeelLiftLeft), rightInt: String(order.postingHeelLiftRight), string: "Heel Lift");
         
-        theReturn += calculateALeftAndRightInt(leftInt: String(order.postingRearfootPostingElevatorOtherMmLeft), rightInt: String(order.postingRearfootPostingElevatorOtherMmLeft), string: "Other mm Rearfoot Posting Elevator");
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.postingRearfootPostingElevatorOtherMmLeft), rightInt: String(order.postingRearfootPostingElevatorOtherMmRight), string: "Rearfoot Posting Elevator (mm)");
         
         theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostingElevator4mmLeft, rightBool: order.postingRearfootPostingElevator4mmRight, string: "Rearfoot Posting Elevator 4mm");
         
         theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostingElevator8mmLeft, rightBool: order.postingRearfootPostingElevator8mmRight, string: "Rearfoot Posting Elevator 8mm");
         
         
-        theReturn += calculateALeftAndRightInt(leftInt: String(order.postingRearfootPostMotionOtherMotionDegreesLeft), rightInt: String(order.postingRearfootPostMotionOtherMotionDegreesRight), string: "Other Degrees Motion");
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.postingRearfootPostMotionOtherMotionDegreesLeft), rightInt: String(order.postingRearfootPostMotionOtherMotionDegreesRight), string: "Rearfoot Posting Motion (Degrees)");
         
         theReturn += calculateALeftAndRight(leftBool: order.postingRearfootPostMotion0DegreesMotionLeft, rightBool: order.postingRearfootPostMotion0DegreesMotionRight, string: "Rearfoot Posting Motion 0 Degrees");
         
@@ -4930,6 +4930,15 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.topCoversAndExtensionsBottomCover116Eva) {
             theReturn += "Bottom Cover 1/16\" EVA, ";
         }
+        
+        if (order.topCoversAndExtensionsPoronUnderTopcover116) {
+            theReturn += "Poron under topcover 1/16, ";
+        }
+        if (order.topCoversAndExtensionsPoronUnderTopcover18) {
+            theReturn += "Poron under topcover 1/8, ";
+        }
+        
+        
         theReturn += calculateALeftAndRight(leftBool: order.accommodationsMortonsExtensionLeft, rightBool: order.accommodationsMortonsExtensionRight, string: "Mortons Extension");
 
         theReturn += calculateALeftAndRight(leftBool: order.accommodationsReverseMortonsExtensionLeft, rightBool: order.accommodationsReverseMortonsExtensionRight, string: "Reverse Mortons Extension");

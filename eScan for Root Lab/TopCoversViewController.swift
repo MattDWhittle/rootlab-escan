@@ -90,8 +90,8 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         topCoversAndExtensionsKineticWedgeLeftUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         topCoversAndExtensionsKineticWedgeRightUISwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
        
-        topCoversAndExtensionsPoronUnderTopcover116.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
-        topCoversAndExtensionsPoronUnderTopcover18.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsPoronUnderTopcover116.addTarget(self, action: #selector(poronUnderTopcoverSwitchChanged), for: UIControl.Event.valueChanged)
+        topCoversAndExtensionsPoronUnderTopcover18.addTarget(self, action: #selector(poronUnderTopcoverSwitchChanged), for: UIControl.Event.valueChanged)
 
         
         topCoversAndExtensionsMedialArchReinforceLeftUISwitch.addTarget(self, action: #selector(clickLorRMedialArchRelief), for: UIControl.Event.valueChanged)
@@ -406,6 +406,21 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
         parent.changeValuesBasedOnChangedInput();
 
+    }
+    
+    @objc func poronUnderTopcoverSwitchChanged(mySwitch: UISwitch) {
+        let parent = self.parent! as! ViewController;
+        
+        if (mySwitch.isOn) {
+            if (mySwitch == topCoversAndExtensionsPoronUnderTopcover116) {
+                topCoversAndExtensionsPoronUnderTopcover18.isOn = false;
+            }
+            if (mySwitch == topCoversAndExtensionsPoronUnderTopcover18) {
+                topCoversAndExtensionsPoronUnderTopcover116.isOn = false;
+            }
+        }
+        
+        parent.changeValuesBasedOnChangedInput();
     }
     
     @objc func materialSwitchChanged(mySwitch: UISwitch) {
