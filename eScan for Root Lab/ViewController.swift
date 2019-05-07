@@ -2806,7 +2806,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults30mmHeelCup();
             setDefaultsIntrinsicForefootCorrection();
             setDefaultsVerticalHeelBisection();
-            setDefaults44FirmCrepePost();
+            setDefaults00FirmCrepePost();
             setDefaults8mmPostElevator();
             
             //Minimal medial arch for UCBL
