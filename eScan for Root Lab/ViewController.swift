@@ -2514,7 +2514,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //        Width standard, Heel cup 12, Elevator 8mm
     }
     func setDefaults1_16thInchEvaBottomCover() {
-        //how?
+        topCoversViewController?.topCoversAndExtensionsBottomCoverMaterialEVA116UISwitch.isOn = true;
     }
     
     func set23mmMed21mmLatHeelCup() {
