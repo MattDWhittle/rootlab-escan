@@ -3901,6 +3901,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         topCoversViewController!.topCoversAndExtensionsMaterialVinylForestUISwitch.isOn = order.topCoversAndExtensionsBottomCoverMaterialVinylForest;
         topCoversViewController!.topCoversAndExtensionsMaterialLeatherBlackUISwitch.isOn = order.topCoversAndExtensionsBottomCoverMaterialLeatherBlack;
         topCoversViewController!.topCoversAndExtensionsMaterialLeatherBrownUISwitch.isOn = order.topCoversAndExtensionsBottomCoverMaterialLeatherBrown;
+        topCoversViewController!.topCoversAndExtensionsDiabetic116Plastazone18UISwitch.isOn = order.topCoversAndExtensionsBottomCoverMaterialDiabetic;
 
         topCoversViewController!.topCoversAndExtensionsPoronUnderTopcover18.isOn = order.topCoversAndExtensionsPoronUnderTopcover18;
         topCoversViewController!.topCoversAndExtensionsPoronUnderTopcover116.isOn = order.topCoversAndExtensionsPoronUnderTopcover116;
