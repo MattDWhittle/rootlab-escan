@@ -321,9 +321,6 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         topCoversAndExtensionsNeuromaPadR2.isEnabled = enable;
         topCoversAndExtensionsNeuromaPadR3.isEnabled = enable;
         topCoversAndExtensionsNeuromaPadR4.isEnabled = enable;
-        
-        topCoversAndExtensionsEVAUISwitch.isEnabled = enable;
-        topCoversAndExtensionsKorexUISwitch.isEnabled = enable;
     }
     
     func switchAllTopCoverSwitch(enable: Bool) {
@@ -356,9 +353,6 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         topCoversAndExtensionsHorseshoePadRightUISwitch.isOn = enable;
         topCoversAndExtensionsKineticWedgeLeftUISwitch.isOn = enable;
         topCoversAndExtensionsKineticWedgeRightUISwitch.isOn = enable;
-        
-        topCoversAndExtensionsEVAUISwitch.isOn = enable;
-        topCoversAndExtensionsKorexUISwitch.isOn = enable;
     }
     
     
@@ -411,6 +405,14 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             mySwitch.isOn) {
             topCoversAndExtensionsEVAUISwitch.isOn = true;
         }
+        
+        if (topCoversAndExtensionsMedialArchReinforceLeftUISwitch.isOn == false &&
+        topCoversAndExtensionsMedialArchReinformceRightUISwitch.isOn == false)
+        {
+            topCoversAndExtensionsEVAUISwitch.isOn = false;
+            topCoversAndExtensionsKorexUISwitch.isOn = false;
+        }
+        
         let parent = self.parent! as! ViewController;
 
         parent.changeValuesBasedOnChangedInput();
