@@ -2258,11 +2258,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func setDefaults2mmHdpeShell() {
-        orthoticMaterialPicker.selectRow(0, inComponent: 0, animated: false)
+        orthoticMaterialPicker.selectRow(1, inComponent: 0, animated: false)
     }
     
     func setDefaultsSemiRigidGraphiteCompositeShell() {
-        orthoticMaterialPicker.selectRow(1, inComponent: 0, animated: false)
+        orthoticMaterialPicker.selectRow(2, inComponent: 0, animated: false)
     }
     
     func setDefaultsRigidGraphiteCompositeShell() {
