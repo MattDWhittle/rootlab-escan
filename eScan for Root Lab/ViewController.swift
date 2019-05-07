@@ -3200,6 +3200,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
         orthoticMaterialTypeLabel.text = orthosisMaterialTypeLabels[Int(theMOI.orthoticsMaterialSelection)];
         orthoticMaterialColorPicker.isHidden = (Int(theMOI.orthoticsMaterialSelection) != 0)
+        orthosisMaterialColorLabel.isHidden = (Int(theMOI.orthoticsMaterialSelection) != 0)
         polyChartUIImageView.isHidden = (Int(theMOI.orthoticsMaterialSelection) != 0);
 
         orthoticMaterialPicker.reloadAllComponents();
@@ -4114,10 +4115,16 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let theView = self.pickerView(orthoticMaterialPicker, viewForRow: orthoticMaterialPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil)
         order.orthosisMaterialOption = (theView as! UILabel).text;
 
-        if(!orthoticMaterialColorPicker.isHidden) {
+        let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+        
+        if (theMOI.orthoticsMaterialSelection == orthosisMaterialPolypropyleneIndex) {
             let theView2 = self.pickerView(orthoticMaterialColorPicker, viewForRow: orthoticMaterialColorPicker.selectedRow(inComponent: 0), forComponent: 0, reusing: nil);
             order.orthosisMaterialColor = (theView2 as! UILabel).text;
         }
+        else {
+            order.orthosisMaterialColor = nil;
+        }
+        
     }
     
     func setOrthosisMaterialFormFromOrder() {
@@ -4127,7 +4134,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             orthoticMaterialColorPicker.selectRow(orthosisMaterialColorLabels.index(of: order.orthosisMaterialColor!) ?? 0, inComponent: 0, animated: false)
         }
         
-        //TODO set orthosisMaterialOption
+        //if (order.orthosisMaterialOption == nil) {
+        //    orthoticMaterialPicker.selectRow(0,inComponent: 0, animated: false);
+        //} else {
+        //    orthoticMaterialPicker.selectRow(orthosisMaterialTypeLabels.index(of: order.orthosisMaterialOption!) ?? 0, inComponent: 0, animated: false)
+        //}
         
     }
     
@@ -4261,6 +4272,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func resetDueToOrthosisTypeChange() {
         order.orthosisMaterialColor = nil;
+        order.orthosisMaterialOption = nil;
         order.correctionsAndModificationsFillWithPoronLeft = false;
         order.correctionsAndModificationsFillWithPoronRight = false;
         order.correctionsAndModificationsNavicularFillWithPoronLeft = false;
