@@ -2821,6 +2821,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults1_8thInchFullLengthNcnTopCover();
             setEvaBottomFiller();
             setDefaultsStandardMedialArch();
+            setDefaultsNoRearfootPost();
         } else if (orthoticDeviceSelected == 20) { //Cushion-Flex-Control™
             setDefaults2mmHdpeShell();
             setDefaultsAnteriorWidthStandard();
@@ -2841,6 +2842,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaults316FullLengthDiabeticTopCover();
             setEvaBottomFiller();
             setDefaultsStandardMedialArch();
+            setDefaultsNoRearfootPost();
         } else if (orthoticDeviceSelected == 22) { //Diaba-Flex-Control™
             setDefaults2mmHdpeShell();
             setDefaultsAnteriorWidthStandard();
@@ -4948,6 +4950,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             theReturn += "Top Cover Material NCN 1/16\", ";
         }
         
+        if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
+            theReturn += "Top Cover Material Diabetic, ";
+        }
+        
         let theLengthIndex = topCoversViewController!.topCoversAndExtensionsTopCoverLengthPicker.selectedRow(inComponent: 0)
         if (theLengthIndex > 0) {
             theReturn += "Length: " + topCoversViewController!.topCoversAndExtensionsTopCoverLengthPickerData[theLengthIndex] + ", ";
@@ -4961,9 +4967,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             theReturn += "Bottom Cover Material EVA 1/16\", ";
         }
         
-        if (order.topCoversAndExtensionsBottomCoverMaterialDiabetic) {
-            theReturn += "Bottom Cover Material Diabetic 1/16\" Poron 1/8\" Plastizone, ";
-        }
+
         
 
         
