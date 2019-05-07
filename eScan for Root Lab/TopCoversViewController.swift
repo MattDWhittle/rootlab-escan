@@ -216,7 +216,16 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectedRow(inComponent: 0) > 0
                 && topCoversAndExtensionsForefootExtensionThicknessPicker.selectedRow(inComponent: 0) > 0
                 && topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0) > 0
-            
+            ) {
+            return true;
+        }
+        
+        // Handle case where extension material and thickness set, but sulcus is only one
+        if (
+            (topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectedRow(inComponent: 0) > 0 ||
+                topCoversAndExtensionsForefootExtensionExtensionLengthPicker.numberOfRows(inComponent: 0) == 1)
+                && topCoversAndExtensionsForefootExtensionThicknessPicker.selectedRow(inComponent: 0) > 0
+                && topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0) > 0
             ) {
             return true;
         }
