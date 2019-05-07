@@ -400,12 +400,6 @@ let orthoticsDeviceFormPageIndex = 21;
 
 var setImagePictureHeight = CGFloat(0);
 
-let orthosisMaterialPolypropyleneIndex = 0;
-let orthosisMaterialGraphiteCompositeIndex = 1;
-let orthosisMaterialFiberglassCompositeIndex = 2;
-let orthosisMaterialAcrylicIndex = 3;
-let orthosisMaterialHighDensityProlyetheleneIndex = 4;
-
 let screenSize = UIScreen.main.bounds
 
 let genderPickerViewValues = ["Gender", "Male", "Female"]
@@ -426,12 +420,19 @@ var orthoticsHasBeenSelected = false;
 var keyboardMovement = 0.0;
 var keyboardFrame: NSValue? = nil;
 
+
+let orthosisMaterialPolypropyleneIndex = 0;
+let orthosisMaterialGraphiteCompositeIndex = 1;
+let orthosisMaterialFiberglassCompositeIndex = 2;
+let orthosisMaterialAcrylicIndex = 3;
+let orthosisMaterialHighDensityProlyetheleneIndex = 4;
+
 let orthoticMateriaPickerMap: [Int] =
     [0, 0, 1, 2, 3,
      0, 0, 0, 4, 1,
      1, 1, 1, 0, 0,
-     0, 0, 0, 0, 4, 0, 0, 0, 0, 0,
-     4, 4, 4, 5, 0, 0, 0, 0, 0, 0];
+     0, 0, 0, 0, 4, 4, 4, 4, 0];
+
 
 let orthoticMaterialDescriptionMap: [String] =
 [
