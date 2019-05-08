@@ -5326,16 +5326,65 @@ Try to re-align or press reset.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ob-q3-Amn" userLabel="Name My Device">
+                                <rect key="frame" x="689" y="79" width="1057" height="654"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name of My Device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joX-zr-ZW3">
+                                        <rect key="frame" x="0.0" y="0.0" width="890" height="144"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4k5-cu-RqP">
+                                        <rect key="frame" x="157" y="474" width="321" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
+                                        <state key="normal" title=" Cancel " backgroundImage="Button.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelMyDeviceButtonPressed:" destination="TjN-Vn-Rkz" eventType="primaryActionTriggered" id="cYx-jo-TV3"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHK-zl-oNI">
+                                        <rect key="frame" x="68" y="287" width="918" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJn-VW-UvD">
+                                        <rect key="frame" x="584" y="474" width="306" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
+                                        <state key="normal" title="Save" backgroundImage="Button.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveMyDeviceButtonPressed:" destination="TjN-Vn-Rkz" eventType="primaryActionTriggered" id="8sr-x1-x8g"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92312985749999998" green="0.92312985749999998" blue="0.92312985749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="E2g-mX-5cC"/>
                     </view>
                     <size key="freeformSize" width="2048" height="1536"/>
                     <connections>
+                        <outlet property="cancelMyDeviceButton" destination="4k5-cu-RqP" id="O0s-tp-Be2"/>
                         <outlet property="chiefComplaintDiagnosisFinishedUIImageView" destination="s8g-QG-IbI" id="K1U-hD-56z"/>
                         <outlet property="chiefComplaintDiagnosisTextView" destination="9DM-z5-m5M" id="YF6-62-K7L"/>
                         <outlet property="correctionsAndModificationsFinishedUIImageView" destination="Oip-Cc-Fen" id="ngk-RX-zK1"/>
                         <outlet property="correctionsAndModificationsTextView" destination="zq0-Q3-pMu" id="ymr-DI-EdU"/>
+                        <outlet property="myDeviceNameTextField" destination="BHK-zl-oNI" id="bGi-R2-2Df"/>
+                        <outlet property="myDeviceNameView" destination="2Ob-q3-Amn" id="LKP-J9-j1T"/>
+                        <outlet property="nameMyDeviceTitle" destination="joX-zr-ZW3" id="a5y-kG-e0Z"/>
                         <outlet property="orthosisHeadingLabel" destination="oCV-rA-Aew" id="Acu-pM-Iv0"/>
                         <outlet property="orthosisMaterialButton" destination="u88-Zg-GXE" id="ihG-cN-kEq"/>
                         <outlet property="orthosisMaterialFinishedUIImageView" destination="O0E-A4-OaY" id="Z66-Cd-hLa"/>
@@ -5347,6 +5396,7 @@ Try to re-align or press reset.</string>
                         <outlet property="postingTextView" destination="ci8-B9-WK8" id="XYO-DW-rYI"/>
                         <outlet property="rushOrderFinishedUIImageView" destination="m2J-sG-jEu" id="ble-Qp-on6"/>
                         <outlet property="rushOrderTextView" destination="PIw-Du-4hE" id="2Hj-L5-4Ju"/>
+                        <outlet property="saveMyDeviceButton" destination="GJn-VW-UvD" id="5Tg-3i-N3L"/>
                         <outlet property="topCoversAndExtensionsFinishedUIImageView" destination="zXN-h4-wCZ" id="aoT-sj-I8Z"/>
                         <outlet property="topCoversAndExtensionsTextView" destination="13r-H3-Gya" id="dMK-jO-9jF"/>
                     </connections>

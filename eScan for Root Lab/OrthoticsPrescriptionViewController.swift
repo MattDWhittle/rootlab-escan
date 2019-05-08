@@ -28,13 +28,32 @@ class OrthoticsPrescriptionViewController: UIViewController {
 
     @IBOutlet var orthosisMaterialButton: UIButton!
     @IBOutlet var orthosisSaveToMyDevicesButton: UIButton!
+    
+    @IBOutlet var saveMyDeviceButton: UIButton!
+    @IBOutlet var cancelMyDeviceButton: UIButton!
+    @IBOutlet var nameMyDeviceTitle: UILabel!
+    @IBOutlet var myDeviceNameView: UIView!
+    @IBOutlet var myDeviceNameTextField: UITextField!
 
+    @IBAction func saveMyDeviceButtonPressed(_ sender: UIButton) {
+        myDeviceNameView.isHidden = true;
+        
+        let myDeviceNameTextFieldValue = myDeviceNameTextField.text!;
+        
+        let parent = self.parent! as! ViewController;
+        parent.saveMyDeviceToCoreData(nameOfDevice : myDeviceNameTextFieldValue);
+        orthosisSaveToMyDevicesButton.isEnabled = false;
+    }
+    
+    @IBAction func cancelMyDeviceButtonPressed(_ sender: UIButton) {
+        myDeviceNameView.isHidden = true;
+    }
+    
     @IBOutlet var orthosisHeadingLabel: UILabel!
     
     @IBAction func clickAddToMyDevices() {
-        let parent = self.parent! as! ViewController;
-        parent.saveMyDeviceToCoreData();
-        orthosisSaveToMyDevicesButton.isEnabled = false;
+        myDeviceNameTextField.text = "";
+        myDeviceNameView.isHidden = false;
     }
 
     @IBAction func clickOrthosisMaterial() {
@@ -77,6 +96,7 @@ class OrthoticsPrescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         orthoticsPrescriptionViewController = self;
+        myDeviceNameView.isHidden = true;
 
         let multiplier : CGFloat = 1 - ((1 - (screenSize.width / 2048)) / 2);
         
@@ -98,6 +118,13 @@ class OrthoticsPrescriptionViewController: UIViewController {
             topCoversAndExtensionsTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             rushOrderTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             chiefComplaintDiagnosisTextView.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            
+            saveMyDeviceButton.titleLabel?.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            cancelMyDeviceButton.titleLabel?.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            nameMyDeviceTitle.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            
+            myDeviceNameTextField.textColor = .gray;
+            myDeviceNameTextField.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
         }
 
     }

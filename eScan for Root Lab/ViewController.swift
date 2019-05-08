@@ -1778,14 +1778,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
     }
 
-    func saveMyDeviceToCoreData() {
+    func saveMyDeviceToCoreData(nameOfDevice : String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         var deviceIndex = -1;
         var i = 0;
         
-        order.deviceName = orthoticsPrescriptionViewController?.orthosisHeadingLabel.text;
+        order.deviceName = nameOfDevice;
         
         for device in myDevices {
             if (device.deviceName == order.deviceName) {
