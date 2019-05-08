@@ -2250,6 +2250,27 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         changePageTo(pageTo: scanFormPageIndex)
     }
     
+    func setDefaultsBlake25Inverted() {
+        correctionsAndModificationsCastOrientationInvertedLeft.text = "25";
+        correctionsAndModificationsCastOrientationInvertedRight.text = "25";
+    }
+    
+    func setDefaultsBlake35Inverted() {
+        correctionsAndModificationsCastOrientationInvertedLeft.text = "35";
+        correctionsAndModificationsCastOrientationInvertedRight.text = "35";
+    }
+    
+    func setDefaultsBlake45Inverted() {
+        correctionsAndModificationsCastOrientationInvertedLeft.text = "45";
+        correctionsAndModificationsCastOrientationInvertedRight.text = "45";
+    }
+    
+    func setDefaults3mmPlantarFasciaAccom() {
+        correctionsAndModificationsPlantarFaciaAccomLeft.text = "3"
+        correctionsAndModificationsPlantarFaciaAccomRight.text = "3"
+    }
+
+    
     func setDefaultsSemiRigidPolypropyleneShell() {
         orthoticMaterialPicker.selectRow(0, inComponent: 0, animated: false)
     }
@@ -2774,16 +2795,23 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if (orthoticDeviceSelected == 15) { //Blake 25
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthExtraWide();
+            setDefaults3mmPlantarFasciaAccom();
+            setDefaultsBlake25Inverted();
+            
             set23mmMed21mmLatHeelCup();
             setDefaultsLimitedIntrinsicForefootCorrection();
             setDefaultsStandardMedialArch();
             
             setDefaults00BirkocorkPost();
             setDefaults8mmPostElevator();
+            
             //no top cover
         } else if (orthoticDeviceSelected == 16) { //Blake 35˚
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthExtraWide();
+            setDefaults3mmPlantarFasciaAccom();
+            setDefaultsBlake35Inverted();
+            
             set23mmMed21mmLatHeelCup();
             setDefaultsLimitedIntrinsicForefootCorrection();
             setDefaultsStandardMedialArch();
@@ -2795,6 +2823,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsSemiRigidPolypropyleneShell();
             setDefaultsAnteriorWidthExtraWide();
             set23mmMed21mmLatHeelCup();
+            setDefaults3mmPlantarFasciaAccom();
+            setDefaultsBlake45Inverted();
+            
             setDefaultsLimitedIntrinsicForefootCorrection();
             setDefaultsStandardMedialArch();
             
@@ -4256,10 +4287,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //        order.correctionsAndModificationsCastOrientationVerticalLeft;
 //            correctionsAndModificationsCastOrientationVerticalRightUISwitch.isOn =
 //        order.correctionsAndModificationsCastOrientationVerticalRight;
-        correctionsAndModificationsFillWIthPoronLeftUISwitch.isOn =
-            order.correctionsAndModificationsFillWithPoronLeft;
-        correctionsAndModificationsFillWIthPoronRightUISwitch.isOn =
-            order.correctionsAndModificationsFillWithPoronRight;
+
 //        correctionsAndModificationsForefootCorrectionTypeExtrinsicLeftUISwitch.isOn =
 //        order.correctionsAndModificationsForefootCorrectionTypeExtrinsicLeft;
 //            correctionsAndModificationsForefootCorrectionTypeExtrinsicRightUISwitch.isOn =
@@ -4268,6 +4296,44 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //        order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft;
 //            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn =
 //        order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight;
+        
+        correctionsAndModificationsPlantarFaciaAccomLeft.text =
+            order.correctionsAndModificationsPlantarFaciaAccommodationLeft;
+        correctionsAndModificationsPlantarFaciaAccomRight.text =
+            order.correctionsAndModificationsPlantarFaciaAccommodationRight;
+        correctionsAndModificationsStyloidAccomRight.text =
+            order.correctionsAndModificationsStyloidAccommodationRight;
+        correctionsAndModificationsStyloidAccomLeft.text =
+            order.correctionsAndModificationsStyloidAccommodationLeft;
+        correctionsAndModificationsNavicularAccomRight.text =
+            order.correctionsAndModificationsNavicularAccommodationRight;
+        correctionsAndModificationsNavicularAccomLeft.text =
+            order.correctionsAndModificationsNavicularAccommodationLeft;
+        correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.isOn =
+            order.correctionsAndModificationsNavicularFillWithPoronLeft;
+        correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.isOn =
+            order.correctionsAndModificationsNavicularFillWithPoronRight;
+        correctionsAndModificationsAsMarkedOnCastLeft.text =
+            order.correctionsAndModificationsAccommodatePerPhotoLeft;
+        correctionsAndModificationsAsMarkedOnCastRight.text =
+            order.correctionsAndModificationsAccommodatePerPhotoRight;
+        correctionsAndModificationsFillWIthPoronLeftUISwitch.isOn =
+            order.correctionsAndModificationsFillWithPoronLeft;
+        correctionsAndModificationsFillWIthPoronRightUISwitch.isOn =
+            order.correctionsAndModificationsFillWithPoronRight;
+        
+        correctionsAndModificationsAddLatHeelExpansionLeft.text =
+            order.correctionsAndModificationsAddLateralHeelExpansionLeft;
+        correctionsAndModificationsAddLatHeelExpansionRight.text =
+            order.correctionsAndModificationsAddLateralHeelExpansionRight;
+        correctionsAndModificationsMedialHeelSkiveLeft.text =
+            order.correctionsAndModificationsMedialHeelSkiveLeft;
+        correctionsAndModificationsMedialHeelSkiveRight.text =
+            order.correctionsAndModificationsMedialHeelSkiveRight;
+        correctionsAndModificationsIntrinsicMetatarsalPadMmRight.text =
+            order.correctionsAndModificationsintrinsicMetatarsalPadRight;
+        correctionsAndModificationsIntrinsicMetatarsalPadMmLeft.text =
+            order.correctionsAndModificationsintrinsicMetatarsalPadLeft;
     }
     
     func resetDueToOrthosisTypeChange() {
@@ -4293,6 +4359,22 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order.correctionsAndModificationsForefootCorrectionTypeExtrinsicRight = false;
         order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft = false;
         order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight = false;
+        
+        order.correctionsAndModificationsPlantarFaciaAccommodationLeft = "";
+        order.correctionsAndModificationsPlantarFaciaAccommodationRight = "";
+        order.correctionsAndModificationsStyloidAccommodationLeft = "";
+        order.correctionsAndModificationsStyloidAccommodationRight = "";
+        order.correctionsAndModificationsNavicularAccommodationLeft = "";
+        order.correctionsAndModificationsNavicularAccommodationRight = "";
+        order.correctionsAndModificationsAccommodatePerPhotoLeft = "";
+        order.correctionsAndModificationsAccommodatePerPhotoRight = "";
+        order.correctionsAndModificationsAddLateralHeelExpansionLeft = "";
+        order.correctionsAndModificationsAddLateralHeelExpansionRight = "";
+        order.correctionsAndModificationsMedialHeelSkiveLeft = "";
+        order.correctionsAndModificationsMedialHeelSkiveRight = "";
+        order.correctionsAndModificationsintrinsicMetatarsalPadRight = "";
+        order.correctionsAndModificationsintrinsicMetatarsalPadLeft = "";
+        
         
         order.orthosisSpecificationsOtherMedmmLeft = 0;
         order.orthosisSpecificationsOtherMedmmRight = 0;
