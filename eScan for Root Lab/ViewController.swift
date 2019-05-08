@@ -426,6 +426,7 @@ let orthosisMaterialGraphiteCompositeIndex = 1;
 let orthosisMaterialFiberglassCompositeIndex = 2;
 let orthosisMaterialAcrylicIndex = 3;
 let orthosisMaterialHighDensityProlyetheleneIndex = 4;
+let orthosisMaterialHighDensityEVA = 5;
 
 let orthoticMateriaPickerMap: [Int] =
     [0, 0, 1, 2, 3,
@@ -7150,7 +7151,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let builder = MCOMessageBuilder()
         builder.header.to = [MCOAddress(displayName: "matt", mailbox: "mattdwhittle@gmail.com")]
         builder.header.to = [MCOAddress(displayName: "scans", mailbox: "scans@root-lab.com")]
-        builder.header.to = [MCOAddress(displayName: "gary", mailbox: "gary.root.a@gmail.com")]
+        builder.header.cc = [MCOAddress(displayName: "gary", mailbox: "gary.root.a@gmail.com")]
         //TODO change mailbox here so if password is hacked, no PHI leaked
         builder.header.from = MCOAddress(displayName: "sentscans@root-lab.com", mailbox: "sentscans@root-lab.com")
         builder.header.subject = theSubject;
