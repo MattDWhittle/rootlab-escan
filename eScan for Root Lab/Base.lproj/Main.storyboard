@@ -5355,6 +5355,9 @@ Try to re-align or press reset.</string>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="myDeviceNameTextFieldValueChanged:" destination="TjN-Vn-Rkz" eventType="editingChanged" id="shX-TT-Zoi"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJn-VW-UvD">
                                         <rect key="frame" x="584" y="474" width="306" height="120"/>

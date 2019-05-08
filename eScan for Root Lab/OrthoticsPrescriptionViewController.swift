@@ -35,6 +35,18 @@ class OrthoticsPrescriptionViewController: UIViewController {
     @IBOutlet var myDeviceNameView: UIView!
     @IBOutlet var myDeviceNameTextField: UITextField!
 
+    @IBAction func myDeviceNameTextFieldValueChanged(_ sender: UITextField) {
+        if let actualCount = sender.text?.count {
+            if (actualCount > 0) {
+                saveMyDeviceButton.isEnabled = true;
+                return
+            }
+        }
+        
+        saveMyDeviceButton.isEnabled = false;
+
+    }
+    
     @IBAction func saveMyDeviceButtonPressed(_ sender: UIButton) {
         myDeviceNameView.isHidden = true;
         
@@ -53,6 +65,7 @@ class OrthoticsPrescriptionViewController: UIViewController {
     
     @IBAction func clickAddToMyDevices() {
         myDeviceNameTextField.text = "";
+        saveMyDeviceButton.isEnabled = false;
         myDeviceNameView.isHidden = false;
     }
 
