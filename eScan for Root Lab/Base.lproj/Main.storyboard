@@ -5304,14 +5304,6 @@ Try to re-align or press reset.</string>
                                     <action selector="clickChiefComplaintDiagnosis" destination="TjN-Vn-Rkz" eventType="primaryActionTriggered" id="98t-zW-PLo"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Orthosis Material" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMb-aB-JLS">
-                                <rect key="frame" x="603" y="65" width="1084" height="132"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIH-XP-vXz">
                                 <rect key="frame" x="1126" y="911" width="723" height="151"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -5324,6 +5316,16 @@ Try to re-align or press reset.</string>
                                     <action selector="clickAddToMyDevices" destination="TjN-Vn-Rkz" eventType="primaryActionTriggered" id="cuJ-qP-Ju6"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Orthosis Material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCV-rA-Aew">
+                                <rect key="frame" x="603" y="65" width="1084" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="E2g-mX-5cC"/>
@@ -5334,7 +5336,7 @@ Try to re-align or press reset.</string>
                         <outlet property="chiefComplaintDiagnosisTextView" destination="9DM-z5-m5M" id="YF6-62-K7L"/>
                         <outlet property="correctionsAndModificationsFinishedUIImageView" destination="Oip-Cc-Fen" id="ngk-RX-zK1"/>
                         <outlet property="correctionsAndModificationsTextView" destination="zq0-Q3-pMu" id="ymr-DI-EdU"/>
-                        <outlet property="orthosisHeadingLabel" destination="dMb-aB-JLS" id="Ieh-yT-dhm"/>
+                        <outlet property="orthosisHeadingLabel" destination="oCV-rA-Aew" id="Acu-pM-Iv0"/>
                         <outlet property="orthosisMaterialButton" destination="u88-Zg-GXE" id="ihG-cN-kEq"/>
                         <outlet property="orthosisMaterialFinishedUIImageView" destination="O0E-A4-OaY" id="Z66-Cd-hLa"/>
                         <outlet property="orthosisMaterialTextView" destination="vq1-js-FiL" id="mqE-D5-K0d"/>

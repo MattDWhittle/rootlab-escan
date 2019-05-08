@@ -29,8 +29,8 @@ class OrthoticsPrescriptionViewController: UIViewController {
     @IBOutlet var orthosisMaterialButton: UIButton!
     @IBOutlet var orthosisSaveToMyDevicesButton: UIButton!
 
-    @IBOutlet var orthosisHeadingLabel: UITextField!
-
+    @IBOutlet var orthosisHeadingLabel: UILabel!
+    
     @IBAction func clickAddToMyDevices() {
         let parent = self.parent! as! ViewController;
         parent.saveMyDeviceToCoreData();
