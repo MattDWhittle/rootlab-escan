@@ -71,6 +71,14 @@ class OrthoticsDeviceViewController: UITableViewController {
             richieBraceLabel0.text = "Standard";
             richieBraceLabel1.text = "Restricted Ankle Pivot";
             richieBraceLabel2.text = "Dynamic Assist";
+            
+            // Expand currently selected device
+            let parent = self.parent! as! ViewController;
+            if (parent.shouldExpandCurrentOrder() && parent.activeDeviceIsRichie) {
+                let indexPath = IndexPath(row: Int(parent.orthoticDeviceSelected), section: 0)
+                indexPathOfExpandedView = indexPath;
+            }
+            
         } else {
             var i = 0;
             var mySortedDevices = Array(myDevices);
@@ -114,6 +122,44 @@ class OrthoticsDeviceViewController: UITableViewController {
             richieBraceLabel1.text = "PolyMax™";
             richieBraceLabel2.text = "Graphite";
             
+            
+            // Expand currently selected device
+            let parent = self.parent! as! ViewController;
+            if (parent.shouldExpandCurrentOrder() && parent.activeDeviceIsOrthotic) {
+                let idx = Int(parent.orthoticDeviceSelected);
+                var sectionForDevice = 0;
+                var remainderDevice = 0;
+                
+                let valFunc = 5;
+                let valFuncSport = 10;
+                let valFuncSportDress = 15;
+                let valFuncSportDressSpec = 24;
+                
+                if (idx < valFunc) { // num functional orthosis
+                    sectionForDevice = 0;
+                    remainderDevice = Int(parent.orthoticDeviceSelected)
+
+                } else if (idx < valFuncSport) { // num functional+sport
+                    sectionForDevice = 1;
+                    remainderDevice = Int(parent.orthoticDeviceSelected % valFunc)
+                    
+                } else if (idx < valFuncSportDress) { // functional+sport+dress
+                    sectionForDevice = 2;
+                    remainderDevice = Int(parent.orthoticDeviceSelected % valFuncSport)
+                    
+                } else if (idx < valFuncSportDressSpec) {//functional+sport+dress+specialty
+                    sectionForDevice = 3;
+                    remainderDevice = Int(parent.orthoticDeviceSelected % valFuncSportDress)
+                    
+                } else {
+                    sectionForDevice = 4;
+                    remainderDevice = Int(parent.orthoticDeviceSelected % valFuncSportDressSpec)
+                }
+                
+                let indexPath = IndexPath(row: Int(remainderDevice), section: sectionForDevice)
+                indexPathOfExpandedView = indexPath;
+                
+            }
         }
         
         self.tableView.reloadData();
@@ -164,13 +210,6 @@ class OrthoticsDeviceViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let parent = self.parent! as! ViewController;
-        
-        if parent.shouldExpandCurrentOrder {
-            let indexPath = IndexPath(row: Int(parent.orthoticDeviceSelected), section: 0)
-            indexPathOfExpandedView = indexPath;
-        }
-            
         if (indexPath == indexPathOfExpandedView) {
             return heightForRowNormally * 4;
         }

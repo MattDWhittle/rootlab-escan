@@ -827,7 +827,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     var photos = [FootPhoto]()
     var defaultPractitioner : Practitioner?
     var pages = [UIView]();
-    var shouldExpandCurrentOrder = false;
+    var expandCurrentOrder = false;
+    var activeDeviceIsOrthotic = false;
+    var activeDeviceIsRichie = false;
     
     
     func updateImagesForValidOrthoticsForm() {
@@ -2561,13 +2563,17 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func orthoticDeviceClickEditOrSelect() {
-        
         let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
         
         if (theMOI.orthoticsMaterialPickerSelection == Int16(orthoticDeviceSelected)) {
             //No change, do not update things
             return;
         }
+        
+        // Update the default expanded item
+        setExpandCurrentOrder(value: true);
+        activeDeviceIsOrthotic = false;
+        activeDeviceIsRichie = false;
         
         if (orthoticDeviceSelected >= 24) {
             //This is a my device
@@ -2580,6 +2586,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         
         if (richieBraceHasBeenSelected) {
+            
+            activeDeviceIsRichie = true;
+            
             if (orthoticDeviceSelected == 0) { //Standard
 //                Full flexion ankle hinge pivot,
                 
@@ -2630,7 +2639,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 
             }
         }
+        else {
+            // Assuming no 'my devices' can be richie braces
+            activeDeviceIsOrthotic = true;
+        }
         
+
 
         
         if (orthoticDeviceSelected >= 24) {
@@ -3171,6 +3185,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
     }
     
+    func setExpandCurrentOrder(value : Bool) {
+        expandCurrentOrder = value;
+    }
+    
+    func shouldExpandCurrentOrder() -> Bool {
+        return expandCurrentOrder;
+    }
+    
     func resetEverything() {
         clearPractitionerForm();
         clearPatientForm();
@@ -3179,6 +3201,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         clearRichieBraceForm();
 
         clearCorrectionsAndModificationsForm();
+        
+        // Reset default selection in orthotic device page
+        setExpandCurrentOrder(value: false);
+        activeDeviceIsOrthotic = false;
+        activeDeviceIsRichie = false;
         
         resetDueToOrthosisTypeChange();
         
@@ -3473,16 +3500,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         if (pageTo == orthoticsDeviceFormPageIndex) {
             orthoticsDeviceViewController?.refreshMyDevices();
-        }
-        
-        // If coming from prescription, keep the last one opened
-        if (pageTo == orthoticsDeviceFormPageIndex) {
-            if (screenViewing == orthoticsFormPageIndex) {
-                shouldExpandCurrentOrder = true;
-            }
-            else {
-                shouldExpandCurrentOrder = false;
-            }
         }
         
         screenViewing = pageTo!
