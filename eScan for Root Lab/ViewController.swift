@@ -426,13 +426,13 @@ let orthosisMaterialGraphiteCompositeIndex = 1;
 let orthosisMaterialFiberglassCompositeIndex = 2;
 let orthosisMaterialAcrylicIndex = 3;
 let orthosisMaterialHighDensityProlyetheleneIndex = 4;
-let orthosisMaterialHighDensityEVA = 5;
+let orthosisMaterialEVAIndex = 5;
 
 let orthoticMateriaPickerMap: [Int] =
     [0, 0, 1, 2, 3,
      0, 0, 0, 4, 1,
      1, 1, 1, 0, 0,
-     0, 0, 0, 0, 4, 4, 4, 4, 0];
+     0, 0, 0, 0, 4, 4, 4, 4, 5];
 
 
 let orthoticMaterialDescriptionMap: [String] =
@@ -488,7 +488,7 @@ let patientShoeTypeLabels: [String] =
 ["Shoe Type", "Athletic", "Boot", "Casual", "Dress", "Extra depth", "High Heel"];
 
 let orthosisMaterialTypeLabels: [String] =
-    ["Polypropylene","Graphite Composite (TL-2100)","Fiberglass Composite (TL-Silver)","Acrylic (Polydor)","High-Density Polyethylene (HDPE)"];
+    ["Polypropylene","Graphite Composite (TL-2100)","Fiberglass Composite (TL-Silver)","Acrylic (Polydor)","High-Density Polyethylene (HDPE)","Accomodative - EVA Only"];
 
 let orthosisPolypropyleneColorLabels: [String] =
     ["Natural","White"];
@@ -518,6 +518,9 @@ let orthosisAcrylicLabels: [String] =
 
 let orthosisHighDensityPolyetheleneLabels: [String] =
     ["Per weight","2mm","3mm","4mm"];
+
+let orthosisAccomodativeEVALabels: [String] =
+    ["EVA"];
 
 
 let rushOrderExpressShippingPickerData: [String] =
@@ -863,7 +866,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 return orthosisAcrylicLabels.count;
             } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialHighDensityProlyetheleneIndex) {
                 return orthosisHighDensityPolyetheleneLabels.count;
-           }
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialEVAIndex) {
+                return orthosisAccomodativeEVALabels.count;
+            }
         } else if (pickerView == patientShoeTypePicker) {
             return patientShoeTypeLabels.count;
         } else if (pickerView == orthoticSpecificationsHeelCupHeightLeftPicker) {
@@ -944,7 +949,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisAcrylicLabels[row] : "Choose one";
             } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialHighDensityProlyetheleneIndex) {
                 pickerLabel?.text = isWeightSupplied || row > 0 ?orthosisHighDensityPolyetheleneLabels[row] : "Choose one";
+            } else if (theMOI.orthoticsMaterialSelection == orthosisMaterialEVAIndex) {
+                pickerLabel?.text = orthosisAccomodativeEVALabels[0]; // Can only select EVA
             }
+            
         } else if (pickerView == orthoticSpecificationsHeelCupHeightLeftPicker) {
             pickerLabel?.text = orthosisSpecificationHeelCupLeftPickerData[row]
         } else if (pickerView == orthoticSpecificationsHeelCupHeightRightPicker) {
@@ -2327,6 +2335,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthoticSpecificationsAnteriorWidthRightPicker.selectRow(5, inComponent: 0, animated: false)
     }
 
+    func setDefaultsAccomodativeEVA() {
+        orthoticMaterialPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
     func setDefaultsMinimalHeelCup() {
         // what is minimal heel cup?  You can call it 0
 
@@ -2564,8 +2576,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         theMOI.orthoticsMaterialSelection = Int16(orthoticMateriaPickerMap[Int(theMOI.orthoticsMaterialPickerSelection)]);
-
-        orthoticsPrescriptionViewController?.orthosisMaterialButton.isEnabled = theMOI.orthoticsMaterialSelection != 5;
         
         
         if (richieBraceHasBeenSelected) {
@@ -2888,6 +2898,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setEvaBottomFiller();
             setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 23) { //Accommodative
+            setDefaultsAccomodativeEVA();
             setDefaultsAnteriorWidthFull();
             setDefaults316FullLengthDiabeticTopCover();
             setDefaults14mmHeelCup();
@@ -3631,8 +3642,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func orthosisMaterialValid() -> Bool {
         let isWeightSupplied = Int((order.orderPatient?.weight) ?? 0) > 0;
+        
+        let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+        let isEVAOnlyAllowedOrthosisMaterial = theMOI.orthoticsMaterialSelection == orthosisMaterialEVAIndex;
 
-        return isWeightSupplied || orthoticMaterialPicker.selectedRow(inComponent: 0) > 0;
+        return isWeightSupplied || orthoticMaterialPicker.selectedRow(inComponent: 0) > 0 || isEVAOnlyAllowedOrthosisMaterial;
     }
     func correctionsAndModificationsValid() -> Bool{
         return true;
