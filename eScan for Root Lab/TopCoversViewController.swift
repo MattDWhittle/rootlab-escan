@@ -25,7 +25,6 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     let topCoversAndExtensionsForefootExtensionExtensionLengthOnlySulcusPickerData: [String] =
         ["Sulcus"];
-
     
     override func viewDidLoad() {
         topCoversViewController = self;

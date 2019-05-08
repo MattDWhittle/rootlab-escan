@@ -61,6 +61,7 @@ class OrthoticsDeviceViewController: UITableViewController {
     }
     
     func refreshMyDevices() {
+
         indexPathOfExpandedView = nil;
 
         if (richieBraceHasBeenSelected) {
@@ -163,6 +164,13 @@ class OrthoticsDeviceViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let parent = self.parent! as! ViewController;
+        
+        if parent.shouldExpandCurrentOrder {
+            let indexPath = IndexPath(row: Int(parent.orthoticDeviceSelected), section: 0)
+            indexPathOfExpandedView = indexPath;
+        }
+            
         if (indexPath == indexPathOfExpandedView) {
             return heightForRowNormally * 4;
         }

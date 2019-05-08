@@ -827,6 +827,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     var photos = [FootPhoto]()
     var defaultPractitioner : Practitioner?
     var pages = [UIView]();
+    var shouldExpandCurrentOrder = false;
     
     
     func updateImagesForValidOrthoticsForm() {
@@ -2961,6 +2962,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             ) {
             changePageTo(pageTo: orthoticsFormPageIndex);
             
+        } else if (screenViewing == orthoticsFormPageIndex) {
+            changePageTo(pageTo: orthoticsDeviceFormPageIndex)
         } else {
             changePageTo(pageTo: (backStack.popLast())!);
         }
@@ -3470,6 +3473,16 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         if (pageTo == orthoticsDeviceFormPageIndex) {
             orthoticsDeviceViewController?.refreshMyDevices();
+        }
+        
+        // If coming from prescription, keep the last one opened
+        if (pageTo == orthoticsDeviceFormPageIndex) {
+            if (screenViewing == orthoticsFormPageIndex) {
+                shouldExpandCurrentOrder = true;
+            }
+            else {
+                shouldExpandCurrentOrder = false;
+            }
         }
         
         screenViewing = pageTo!
