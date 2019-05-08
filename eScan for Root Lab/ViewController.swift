@@ -5784,6 +5784,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostMotion4DegreesMotionLeftUISwitch.isOn = false;
             postingRearfootPostMotionOtherDegreesLeft.text = "";
         }
+        
+        changeValuesBasedOnChangedInput();
     }
 
     @IBAction func clickPostingRearfootPostMotion4DegreesMotionLeftUISwitch(sender: UIButton) {
@@ -5791,6 +5793,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostMotion0DegreesMotionLeftUISwitch.isOn = false;
             postingRearfootPostMotionOtherDegreesLeft.text = "";
         }
+        
+        changeValuesBasedOnChangedInput();
     }
 
     @IBAction func clickPostingRearfootPostMotion0DegreesMotionRightUISwitch(sender: UIButton) {
@@ -5798,6 +5802,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostMotion4DegreesMotionRightUISwitch.isOn = false;
             postingRearfootPostMotionOtherDegreesRight.text = "";
         }
+        
+        changeValuesBasedOnChangedInput();
     }
     
     @IBAction func clickPostingRearfootPostMotion4DegreesMotionRightUISwitch(sender: UIButton) {
@@ -5805,6 +5811,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostMotion0DegreesMotionRightUISwitch.isOn = false;
             postingRearfootPostMotionOtherDegreesRight.text = "";
         }
+        
+        changeValuesBasedOnChangedInput();
     }
     
     
@@ -5813,6 +5821,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostingElevator8mmLeftUISwitch.isOn = false;
             postingRearfootPostingElevatorOthermmLeft.text = "";
         }
+        
+        changeValuesBasedOnChangedInput();
     }
     
     @IBAction func clickPostingRearfootPostingElevator8mmLeftUISwitch(sender: UIButton) {
@@ -5820,6 +5830,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostingElevator4mmLeftUISwitch.isOn = false;
             postingRearfootPostingElevatorOthermmLeft.text = "";
         }
+        
+        changeValuesBasedOnChangedInput();
     }
     
     @IBAction func clickPostingRearfootPostingElevator4mmRightUISwitch(sender: UIButton) {
@@ -5827,6 +5839,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostingElevator8mmRightUISwitch.isOn = false;
             postingRearfootPostingElevatorOthermmRight.text = "";
         }
+        
+        changeValuesBasedOnChangedInput();
     }
     
     @IBAction func clickPostingRearfootPostingElevator8mmRightUISwitch(sender: UIButton) {
@@ -5834,6 +5848,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingRearfootPostingElevator4mmRightUISwitch.isOn = false;
             postingRearfootPostingElevatorOthermmRight.text = "";
         }
+        
+        changeValuesBasedOnChangedInput();
     }
     
     @IBAction func clickPostingRearfootPostOptionsLongPostFlangeLeftUISwitch(sender: UIButton) {
