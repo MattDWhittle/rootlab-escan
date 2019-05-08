@@ -2071,6 +2071,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var richieBraceButton: UIButton!
     @IBOutlet var okDeletePractitioner: UIButton!
     @IBOutlet var cancelDeletePractitioner: UIButton!
+    @IBOutlet var practitionerButton: UIButton!
+    @IBOutlet var patientButton: UIButton!
     @IBOutlet var prescriptionButton: UIButton!
     @IBOutlet var escanFormButton: UIButton!
     @IBOutlet var escanLeftFootUIButton: UIButton!
@@ -3109,10 +3111,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         } else if (screenViewing == scanFormPageIndex) {
             changePageTo(pageTo: reviewAndSubmitPageIndex);
         } else if (screenViewing == reviewAndSubmitPageIndex) {
-            //makePdf2();
-            changePageTo(pageTo: openingPageIndex);
-            resetEverything();
-
+            self.changePageTo(pageTo: openingPageIndex);
+            self.resetEverything();
+            self.enableAfterClearedEmailNotification();
         } else if (screenViewing == orthoticsMaterialFormPageIndex) {
             changePageTo(pageTo: orthoticsCorrectionsFormPageIndex);
         } else if (screenViewing == orthoticsCorrectionsFormPageIndex) {
@@ -3571,6 +3572,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func setValuesBasedOnPatientPageValid() {
+        // practitioner and patient always valid
+        practitionerButton.isEnabled = true;
+        patientButton.isEnabled = true;
+        
         let isValid = isPatientPageValid();
         nextButton.isEnabled = isValid;
         prescriptionButton.isEnabled = isValid;
@@ -7126,6 +7131,32 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         return UIImage(cgImage: cgim)
     }
     
+    func disableWithSuccessfulEmail() {
+        self.backButton.isEnabled = false;
+        self.submitEmailButton.isEnabled = false;
+        self.nextButton.isHidden = false;
+        self.prescriptionButton.isEnabled = false;
+        self.escanFormButton.isEnabled = false;
+        self.submitFormButton.isEnabled = false;
+        self.patientButton.isEnabled = false;
+        self.practitionerButton.isEnabled = false;
+        self.nextButton.titleLabel?.text = "Done";
+    }
+    
+    func enableAfterClearedEmailNotification() {
+        self.backButton.isEnabled = true;
+        self.nextButton.isHidden = true;
+        
+        self.patientButton.isEnabled = true;
+        self.practitionerButton.isEnabled = true;
+        
+        self.prescriptionButton.isEnabled = false;
+        self.escanFormButton.isEnabled = false;
+        self.submitFormButton.isEnabled = false;
+
+        self.nextButton.titleLabel?.text = "Next";
+    }
+    
     @IBAction func emailMesh(sender: AnyObject)  {
         
         var theSuccess = true;
@@ -7281,8 +7312,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 self.emailErrorLabel.text = finalError;
             } else {
                 NSLog("Successfully sent email!")
-                self.changePageTo(pageTo: openingPageIndex);
-                self.resetEverything();
+                self.emailErrorLabel.text = "Successfully sent scan."
+                
+                // Unhide next button and rename text in order to have them go to next scan.
+                self.disableWithSuccessfulEmail();
+                
+                //self.changePageTo(pageTo: openingPageIndex);
+                //self.resetEverything();
 
             }
         }

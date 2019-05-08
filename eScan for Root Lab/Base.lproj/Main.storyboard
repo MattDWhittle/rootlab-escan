@@ -2874,6 +2874,7 @@ Try to re-align or press reset.</string>
                         <outlet property="orthoticsTopCoversAndExtensionsForm" destination="uja-ka-o1r" id="MHm-Tr-N9R"/>
                         <outlet property="orthoticskButton" destination="hbF-nC-pce" id="4Kg-li-SaU"/>
                         <outlet property="patientAgeInput" destination="0ao-Q6-Lfz" id="efD-Eb-IFF"/>
+                        <outlet property="patientButton" destination="6cR-zU-5b4" id="2ss-RA-lv7"/>
                         <outlet property="patientDetailsAgeLabel" destination="Biw-9f-vJT" id="lzB-sZ-9Fz"/>
                         <outlet property="patientDetailsGenderLabel" destination="Qan-1f-8V8" id="0Nw-vi-ePw"/>
                         <outlet property="patientDetailsHeightFeetLabel" destination="tgE-ZE-SPJ" id="nnd-9C-Vic"/>
@@ -2935,6 +2936,7 @@ Try to re-align or press reset.</string>
                         <outlet property="practitionerBillingAddressFacilityName" destination="YbT-Zr-VYl" id="8nc-sU-S8w"/>
                         <outlet property="practitionerBillingAddressState" destination="AHz-U6-PIo" id="ldj-hD-ejI"/>
                         <outlet property="practitionerBillingAddressZip" destination="OJ3-UF-QfY" id="iZq-m8-oAc"/>
+                        <outlet property="practitionerButton" destination="VvX-bp-4wN" id="1ek-pl-qFr"/>
                         <outlet property="practitionerEmailInput" destination="jXf-rT-Rn8" id="EsZ-pO-Z1m"/>
                         <outlet property="practitionerFinishedUIImageView" destination="lRC-SF-qb4" id="XL2-HR-mNc"/>
                         <outlet property="practitionerLabel" destination="7Op-nt-Tue" id="Ep4-XY-ILs"/>
