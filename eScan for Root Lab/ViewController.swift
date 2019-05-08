@@ -4297,6 +4297,15 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
 //            correctionsAndModificationsForefootCorrectionTypeIntrinsicRightUISwitch.isOn =
 //        order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight;
         
+        correctionsAndModificationsCastOrientationInvertedRight.text =
+            order.correctionsAndModificationsCastOrientationInvertedRight;
+        correctionsAndModificationsCastOrientationInvertedLeft.text =
+            order.correctionsAndModificationsCastOrientationInvertedLeft;
+        correctionsAndModificationsCastOrientationEvertedRight.text =
+            order.correctionsAndModificationsCastOrientationEvertedRight;
+        correctionsAndModificationsCastOrientationEvertedLeft.text =
+            order.correctionsAndModificationsCastOrientationEvertedLeft;
+        
         correctionsAndModificationsPlantarFaciaAccomLeft.text =
             order.correctionsAndModificationsPlantarFaciaAccommodationLeft;
         correctionsAndModificationsPlantarFaciaAccomRight.text =
@@ -4360,6 +4369,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order.correctionsAndModificationsForefootCorrectionTypeIntrinsicLeft = false;
         order.correctionsAndModificationsForefootCorrectionTypeIntrinsicRight = false;
         
+        order.correctionsAndModificationsCastOrientationInvertedLeft = "";
+        order.correctionsAndModificationsCastOrientationInvertedRight = "";
+        order.correctionsAndModificationsCastOrientationEvertedLeft = "";
+        order.correctionsAndModificationsCastOrientationEvertedRight = "";
         order.correctionsAndModificationsPlantarFaciaAccommodationLeft = "";
         order.correctionsAndModificationsPlantarFaciaAccommodationRight = "";
         order.correctionsAndModificationsStyloidAccommodationLeft = "";
