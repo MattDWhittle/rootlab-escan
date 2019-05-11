@@ -77,6 +77,7 @@
 		2DE3081A22122E43002795E7 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081322122E43002795E7 /* unchecked.png */; };
 		2DE3081C22122E43002795E7 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081522122E43002795E7 /* Button.png */; };
 		2DE3082022186839002795E7 /* Donebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081F22186839002795E7 /* Donebutton.png */; };
+		4EF53A9B22866E0200EE477D /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 4EF53A9A22866E0200EE477D /* icons */; };
 		A011D51F143C6639926B378D /* Pods_eScan_for_Root_Lab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD4258BEDC0FDCDCC8D2EE2 /* Pods_eScan_for_Root_Lab.framework */; };
 		DC83A54C980407467206585B /* Pods_eScan_for_Root_LabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450EE31D75D57B620C32F72D /* Pods_eScan_for_Root_LabTests.framework */; };
 /* End PBXBuildFile section */
@@ -177,6 +178,7 @@
 		2DE3081522122E43002795E7 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
 		2DE3081F22186839002795E7 /* Donebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donebutton.png; sourceTree = "<group>"; };
 		450EE31D75D57B620C32F72D /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EF53A9A22866E0200EE477D /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
 		534A46261B8747864B8BD9AA /* Pods-eScan for Root LabTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root LabTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root LabTests/Pods-eScan for Root LabTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F98FE6D1D999B2FF00B6ED9 /* Pods-eScan for Root Lab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root Lab.release.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root Lab/Pods-eScan for Root Lab.release.xcconfig"; sourceTree = "<group>"; };
 		64B2D0386FFEDF6424EF0966 /* Pods-eScan for Root LabUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root LabUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root LabUITests/Pods-eScan for Root LabUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				4EF53A9A22866E0200EE477D /* icons */,
 				2D411F9C225074C6004D5862 /* ScanL.png */,
 				2D411F9D225074C7004D5862 /* ScannedL.png */,
 				2D411F9A225074C6004D5862 /* ScannedR.png */,
@@ -490,6 +493,7 @@
 				2DE308082210E0A5002795E7 /* Mortons Extension.png in Resources */,
 				2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */,
 				2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */,
+				4EF53A9B22866E0200EE477D /* icons in Resources */,
 				2D44BDBF21B4BFA0009A1066 /* Assets.xcassets in Resources */,
 				2D8E46C22242AC97008DDB9A /* ScanNowbutton.png in Resources */,
 				2DE307FE2210E055002795E7 /* Heel Pad.png in Resources */,
