@@ -848,7 +848,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         rightFootEscanDone = false;
         richieBraceHasBeenSelected = false;
         orthoticsHasBeenSelected = false;
-
+        
+        resetEverything();
     }
     
     // The number of rows of data
@@ -1221,6 +1222,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         menuView.isHidden = true;
         backNextView.isHidden = true;
         
+        startNewOrderView.isHidden = true;
+        
         emailErrorLabel.text = "";
 
         
@@ -1279,6 +1282,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             commentsInstructionsLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             orthosisChiefComplaintDiagnosisLabel.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
 
+            startNewOrderDialogTitle.font = UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            startNewOrderDialogDescription.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
+            startNewOrderCancelButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            startNewOrderYesButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            
+            
             emailErrorLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             
             newPractitionerSameAsBillingAddressLabel.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
@@ -2056,7 +2065,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var depthView: UIImageView!
     @IBOutlet var polyChartUIImageView: UIImageView!
 
-
+    @IBOutlet var startNewOrderView: UIView!
+    @IBOutlet var startNewOrderDialogTitle: UILabel!
+    @IBOutlet var startNewOrderDialogDescription: UILabel!
+    @IBOutlet var startNewOrderCancelButton: UIButton!
+    @IBOutlet var startNewOrderYesButton: UIButton!
+    
     
     
     @IBOutlet var newOrderButton: UIButton!
@@ -3381,9 +3395,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func ClickNewOrderButton(sender: UIButton){
-        //resetValuesForNewOrder();
-        //changeValuesBasedOnChangedInput(force: true);
-        //changePageTo(pageTo: orderManagementPageIndex)
+        startNewOrderView.isHidden = false;
     }
     
     @IBAction func ClickPractitionerManagementButton(sender: UIButton){
@@ -3435,6 +3447,18 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBAction func ClickCancelDeletePractitioner(sender: UIButton){
         areYouSureView.isHidden = true;
     }
+    
+    @IBAction func ClickYesStartNewOrder(_ sender: UIButton) {
+        startNewOrderView.isHidden = true;
+        
+        self.changePageTo(pageTo: openingPageIndex);
+        self.resetValuesForNewOrder();
+    }
+    
+    @IBAction func ClickCancelStartNewOrder(_ sender: UIButton) {
+        startNewOrderView.isHidden = true;
+    }
+    
 
     @IBAction func ClickCorrectionsAndModificationsCastOrientationVerticalLeft(sender: UIButton){
 //        if (correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn) {

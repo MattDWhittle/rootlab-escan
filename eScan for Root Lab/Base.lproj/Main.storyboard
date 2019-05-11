@@ -2754,6 +2754,53 @@ Try to re-align or press reset.</string>
                                     </button>
                                 </subviews>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npY-HC-oJ7" userLabel="Are you sure?">
+                                <rect key="frame" x="495" y="441" width="1057" height="654"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An8-pY-BLg">
+                                        <rect key="frame" x="44" y="152" width="889" height="153"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Press "Yes" to start a new order and remove all data entered for the current order. 
+Press "Cancel" to dismiss the dialog and continue the current order.</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start New Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axw-wm-wRc">
+                                        <rect key="frame" x="44" y="0.0" width="889" height="144"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WpV-Hn-WUK">
+                                        <rect key="frame" x="605" y="474" width="328" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
+                                        <state key="normal" title="Yes" backgroundImage="Button.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ClickYesStartNewOrder:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="TMN-X7-gci"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yV-3k-vL3">
+                                        <rect key="frame" x="178" y="474" width="321" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
+                                        <state key="normal" title="Cancel" backgroundImage="Button.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ClickCancelStartNewOrder:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="xmz-z0-zbK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92312985749999998" green="0.92312985749999998" blue="0.92312985749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -2968,6 +3015,11 @@ Try to re-align or press reset.</string>
                         <outlet property="savePractitionerButton" destination="4Cv-lc-3bs" id="jYv-ZV-PjZ"/>
                         <outlet property="scanButton" destination="PQf-oA-EIs" id="kTR-EG-OsY"/>
                         <outlet property="scanForm" destination="ZC5-YK-sRL" id="NkT-dK-1NN"/>
+                        <outlet property="startNewOrderCancelButton" destination="6yV-3k-vL3" id="d2c-8k-9eS"/>
+                        <outlet property="startNewOrderDialogDescription" destination="An8-pY-BLg" id="ZVr-nL-j7T"/>
+                        <outlet property="startNewOrderDialogTitle" destination="axw-wm-wRc" id="TSY-gd-4W4"/>
+                        <outlet property="startNewOrderView" destination="npY-HC-oJ7" id="YKN-Of-JQT"/>
+                        <outlet property="startNewOrderYesButton" destination="WpV-Hn-WUK" id="3iw-sR-c5H"/>
                         <outlet property="submitEmailButton" destination="tzO-7v-Wez" id="boc-cZ-53t"/>
                         <outlet property="submitFinishedUIImageView" destination="UOQ-IO-h9p" id="6US-Ay-kj9"/>
                         <outlet property="submitFormButton" destination="9Am-dZ-dR7" id="IX8-b7-o9G"/>
