@@ -5382,6 +5382,43 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             correctionsAndModificationsCastOrientationInvertedLeft.text = "";
 //            correctionsAndModificationsCastOrientationVerticalLeftUISwitch.isOn = false;
         }
+            
+        else if (textField == correctionsAndModificationsNavicularAccomLeft)
+        {
+            if (correctionsAndModificationsNavicularAccomLeft.text?.isEmpty ?? true) {
+                correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.isEnabled = false;
+                correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.isOn = false;
+            } else {
+                correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.isEnabled = true;
+            }
+        }
+        else if (textField == correctionsAndModificationsNavicularAccomRight)
+        {
+            if (correctionsAndModificationsNavicularAccomRight.text?.isEmpty ?? true) {
+                correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.isEnabled = false;
+                correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.isOn = false;
+            } else {
+                correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.isEnabled = true;
+            }
+        }
+        else if (textField == correctionsAndModificationsAsMarkedOnCastLeft)
+        {
+            if (correctionsAndModificationsAsMarkedOnCastLeft.text?.isEmpty ?? true) {
+                correctionsAndModificationsFillWIthPoronLeftUISwitch.isEnabled = false;
+                correctionsAndModificationsFillWIthPoronLeftUISwitch.isOn = false;
+            } else {
+                correctionsAndModificationsFillWIthPoronLeftUISwitch.isEnabled = true;
+            }
+        }
+        else if (textField == correctionsAndModificationsAsMarkedOnCastRight)
+        {
+            if (correctionsAndModificationsAsMarkedOnCastRight.text?.isEmpty ?? true) {
+                correctionsAndModificationsFillWIthPoronRightUISwitch.isEnabled = false;
+                correctionsAndModificationsFillWIthPoronRightUISwitch.isOn = false;
+            } else {
+                correctionsAndModificationsFillWIthPoronRightUISwitch.isEnabled = true;
+            }
+        }
         else if (textField == orthosisSpecificationsOtherMedmmLeft && !(orthosisSpecificationsOtherMedmmLeft.text?.isEmpty ?? true)) {
             orthoticSpecificationsHeelCupHeightLeftPicker.selectRow(0, inComponent: 0, animated: true)
         }
@@ -5633,6 +5670,41 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         return theReturn;
     }
     
+    func updateOrthoticDeviceRestrictionsBasedOnInput() {
+        if (correctionsAndModificationsNavicularAccomLeft.text?.isEmpty ?? true) {
+            correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.isEnabled = false;
+            correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.isOn = false;
+        }
+        else {
+            correctionsAndModificationsNavicularFillWIthPoronLeftUISwitch.isEnabled = true;
+        }
+        
+        if (correctionsAndModificationsNavicularAccomRight.text?.isEmpty ?? true) {
+            correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.isEnabled = false;
+            correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.isOn = false;
+        }
+        else {
+            correctionsAndModificationsNavicularFillWIthPoronRightUISwitch.isEnabled = true;
+        }
+        
+
+        if (correctionsAndModificationsAsMarkedOnCastLeft.text?.isEmpty ?? true) {
+            correctionsAndModificationsFillWIthPoronLeftUISwitch.isEnabled = false;
+            correctionsAndModificationsFillWIthPoronLeftUISwitch.isOn = false;
+        } else {
+            correctionsAndModificationsFillWIthPoronLeftUISwitch.isEnabled = true;
+        }
+
+        if (correctionsAndModificationsAsMarkedOnCastRight.text?.isEmpty ?? true) {
+            correctionsAndModificationsFillWIthPoronRightUISwitch.isEnabled = false;
+            correctionsAndModificationsFillWIthPoronRightUISwitch.isOn = false;
+        } else {
+            correctionsAndModificationsFillWIthPoronRightUISwitch.isEnabled = true;
+        }
+
+        
+    }
+    
     func changeValuesBasedOnChangedInput() {
         changeValuesBasedOnChangedInput(force: false)
     }
@@ -5670,6 +5742,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             screenViewing == orthoticsChiefComplaintFormPageIndex
             || force) {
             updateImagesForValidOrthoticsForm()
+            updateOrthoticDeviceRestrictionsBasedOnInput()
         }
         
         if (screenViewing == orthoticsDeviceFormPageIndex || force) {
