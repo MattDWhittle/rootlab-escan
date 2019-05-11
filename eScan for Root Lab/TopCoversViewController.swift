@@ -15,13 +15,13 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     
     let topCoversAndExtensionsForefootExtensionMaterialPickerData: [String] =
-        ["Extension Material", "None", "Poron", "Korex", "EVA", "NCN™"];
+        ["None", "Poron", "Korex", "EVA", "NCN™"];
     
     let topCoversAndExtensionsForefootExtensionThicknessPickerData: [String] =
-        ["Extension Thickness", "None", "1/16\"", "1/8\"", "3/16\"", "1/4\""];
+        ["None", "1/16\"", "1/8\"", "3/16\"", "1/4\""];
     
     let topCoversAndExtensionsForefootExtensionExtensionLengthPickerData: [String] =
-        ["Extension Length", "None", "Sulcus", "Full length"];
+        ["None", "Sulcus", "Full length"];
 
     let topCoversAndExtensionsForefootExtensionExtensionLengthOnlySulcusPickerData: [String] =
         ["Sulcus"];
@@ -354,6 +354,15 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         topCoversAndExtensionsKineticWedgeRightUISwitch.isOn = enable;
     }
     
+    func resetForefootExtensionPickers() {
+        topCoversAndExtensionsForefootExtensionMaterialPicker.selectRow(0, inComponent: 0, animated: false);
+        topCoversAndExtensionsForefootExtensionThicknessPicker.selectRow(0, inComponent: 0, animated: false);
+        topCoversAndExtensionsForefootExtensionExtensionLengthPicker.selectRow(0, inComponent: 0, animated: false);
+        
+        topCoversAndExtensionsForefootExtensionMaterialPicker.reloadAllComponents();
+        topCoversAndExtensionsForefootExtensionThicknessPicker.reloadAllComponents();
+        topCoversAndExtensionsForefootExtensionExtensionLengthPicker.reloadAllComponents();
+    }
     
     func changeBasedOnValues() {
         
@@ -364,6 +373,8 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             topCoversAndExtensionsForefootExtensionExtensionLengthPicker.alpha = 0.6;
             topCoversAndExtensionsForefootExtensionThicknessPicker.alpha = 0.6;
             topCoversAndExtensionsForefootExtensionMaterialPicker.alpha = 0.6;
+            
+            resetForefootExtensionPickers();
             
             // turn off and disable features
             switchAllTopCoverSwitch(enable: false)
@@ -378,7 +389,9 @@ class TopCoversViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             topCoversAndExtensionsForefootExtensionMaterialPicker.isUserInteractionEnabled = false;
             topCoversAndExtensionsForefootExtensionMaterialPicker.alpha = 0.6;
             
-        } else if (topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0) < 2){
+            resetForefootExtensionPickers();
+            
+        } else if (topCoversAndExtensionsForefootExtensionMaterialPicker.selectedRow(inComponent: 0) < 1){
             topCoversAndExtensionsForefootExtensionMaterialPicker.isUserInteractionEnabled = true;
             topCoversAndExtensionsForefootExtensionMaterialPicker.alpha = 1;
             topCoversAndExtensionsForefootExtensionExtensionLengthPicker.isUserInteractionEnabled = false;
