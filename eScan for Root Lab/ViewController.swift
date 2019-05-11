@@ -7245,7 +7245,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func disableWithSuccessfulEmail() {
         self.backButton.isEnabled = false;
-        self.submitEmailButton.isEnabled = false;
         self.nextButton.isHidden = false;
         self.prescriptionButton.isEnabled = false;
         self.escanFormButton.isEnabled = false;
@@ -7270,6 +7269,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func emailMesh(sender: AnyObject)  {
+        submitEmailButton.isEnabled = false;
         
         var theSuccess = true;
         order.orderPractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
@@ -7373,6 +7373,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 
                 present(alert, animated: true, completion: nil)
                 theSuccess = false;
+                
                 return
             }
         }
