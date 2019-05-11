@@ -2297,6 +2297,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthoticMaterialPicker.selectRow(1, inComponent: 0, animated: false)
     }
     
+    func setDefaultsOrthosisMaterialPerWeight() {
+        orthoticMaterialPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
+    func setDefaultsGraphiteOrthosisMaterial() {
+        let isWeightSupplied = Int((order.orderPatient?.weight) ?? 0) > 0;
+        
+        if (isWeightSupplied) {
+            setDefaultsOrthosisMaterialPerWeight();
+        }
+        else {
+            setDefaultsSemiRigidGraphiteCompositeShell();
+        }
+    }
+    
     func setDefaultsSemiRigidGraphiteCompositeShell() {
         orthoticMaterialPicker.selectRow(2, inComponent: 0, animated: false)
     }
@@ -2686,7 +2701,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             setDefaultsOthosisLengthVinylTopCoverFunctional();
             setDefaultsStandardMedialArch();
         } else if (orthoticDeviceSelected == 2) {//Graphite
-            setDefaultsSemiRigidGraphiteCompositeShell();
+            setDefaultsGraphiteOrthosisMaterial();
             setDefaultsAnteriorWidthStandard();
             setDefaults14mmHeelCup();
             setDefaultsIntrinsicForefootCorrection();
