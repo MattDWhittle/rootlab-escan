@@ -12,5 +12,5 @@ var orthoticsPrescriptionViewController : OrthoticsPrescriptionViewController? =
 var topCoversViewController : TopCoversViewController? = nil;
 var orthoticsDeviceViewController : OrthoticsDeviceViewController? = nil;
 var richieBraceViewController : RichieBraceViewController? = nil;
-
+var orderManagementViewController : OrderManagementViewController? = nil;
 

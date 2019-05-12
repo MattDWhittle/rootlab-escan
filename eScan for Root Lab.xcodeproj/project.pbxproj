@@ -77,6 +77,7 @@
 		2DE3081A22122E43002795E7 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081322122E43002795E7 /* unchecked.png */; };
 		2DE3081C22122E43002795E7 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081522122E43002795E7 /* Button.png */; };
 		2DE3082022186839002795E7 /* Donebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE3081F22186839002795E7 /* Donebutton.png */; };
+		2DE5CF4B2287F17900C68708 /* OrderManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE5CF4A2287F17900C68708 /* OrderManagementViewController.swift */; };
 		4EF53A9B22866E0200EE477D /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 4EF53A9A22866E0200EE477D /* icons */; };
 		A011D51F143C6639926B378D /* Pods_eScan_for_Root_Lab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD4258BEDC0FDCDCC8D2EE2 /* Pods_eScan_for_Root_Lab.framework */; };
 		DC83A54C980407467206585B /* Pods_eScan_for_Root_LabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450EE31D75D57B620C32F72D /* Pods_eScan_for_Root_LabTests.framework */; };
@@ -177,6 +178,7 @@
 		2DE3081322122E43002795E7 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		2DE3081522122E43002795E7 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
 		2DE3081F22186839002795E7 /* Donebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donebutton.png; sourceTree = "<group>"; };
+		2DE5CF4A2287F17900C68708 /* OrderManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManagementViewController.swift; sourceTree = "<group>"; };
 		450EE31D75D57B620C32F72D /* Pods_eScan_for_Root_LabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF53A9A22866E0200EE477D /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
 		534A46261B8747864B8BD9AA /* Pods-eScan for Root LabTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eScan for Root LabTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-eScan for Root LabTests/Pods-eScan for Root LabTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				2D44BDB421B4BF9C009A1066 /* AppDelegate.swift */,
 				2D44BDB621B4BF9C009A1066 /* ViewController.swift */,
 				2DE307E3220F5CF9002795E7 /* TableViewController.swift */,
+				2DE5CF4A2287F17900C68708 /* OrderManagementViewController.swift */,
 				2DA5914B2218B77000D79518 /* TopCoversViewController.swift */,
 				2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */,
 				2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */,
@@ -627,6 +630,7 @@
 				2D9B41FA21E859E40022FE2D /* RichieBraceViewController.swift in Sources */,
 				2D6A61FA21F64A690077A8B1 /* ViewpointController.swift in Sources */,
 				2DE307E82210A8DF002795E7 /* GlobalVariables.swift in Sources */,
+				2DE5CF4B2287F17900C68708 /* OrderManagementViewController.swift in Sources */,
 				2DE307E4220F5CF9002795E7 /* TableViewController.swift in Sources */,
 				2D6A61EE21F64A2B0077A8B1 /* MeshRenderer.swift in Sources */,
 				2D9B417521D2DF9C0022FE2D /* CustomPrintRenderer.swift in Sources */,

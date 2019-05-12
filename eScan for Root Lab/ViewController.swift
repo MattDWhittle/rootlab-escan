@@ -408,7 +408,6 @@ var persistedData: [NSManagedObject] = []
 var persistedDataDefaults: [NSManagedObject] = []
 
 var order : Order = Order();
-var allOrders : [Order] = [];
 var myDevices : [Order] = [];
 var currentOrder = 0
 var defaults : Defaults? = nil;
@@ -823,6 +822,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     var screenViewing = 0;
     var practitioners = [Practitioner]()
     var orders = [Order]()
+    var searchedOrders = [Order]()
     var patients = [Patient]()
     var photos = [FootPhoto]()
     var defaultPractitioner : Practitioner?
@@ -1247,6 +1247,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (multiplier != 1) {
             newOrderButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             existingOrderButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            orderManagementSearchButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             nextButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             backButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             orthoticsButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
@@ -1338,6 +1339,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             patientShoeSizeInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
             patientMedicalRecordNumberInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
 
+            
+            orderManagementLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
             orthoticsPrescriptionLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
             orthoticDeviceLabel.font = UIFont(name: "Gil Sans-Bold", size: 100 * multiplier)
             orthosisChiefComplaintDiagnosisInput.font = UIFont(name: "Gil Sans-Bold", size: 60 * multiplier)
@@ -1627,11 +1630,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         viewpointControllerMesh = ViewpointController.init(screenSizeX: Float(self.eviewMesh.frame.size.width), screenSizeY: Float(self.eviewMesh.frame.size.height))
         
         registerForKeyboardNotifications()
-        
-        
-        //TODO remove these to enable features
-        existingOrderButton.isHidden = true;
-        
         
 //        sendEmailWithMailcore();
     }
@@ -2075,6 +2073,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBOutlet var newOrderButton: UIButton!
     @IBOutlet var existingOrderButton: UIButton!
+    @IBOutlet var orderManagementSearchButton: UIButton!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var backButton: UIButton!
     @IBOutlet var defaultPractitionerButton: UIButton!
@@ -2129,6 +2128,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var orthosisMaterialColorLabel: UILabel!
     @IBOutlet var commentsInstructionsLabel: UILabel!
     @IBOutlet var emailErrorLabel: UILabel!
+    @IBOutlet var orderManagementLabel: UILabel!
 
     
     @IBOutlet var reorderScrollView: UIScrollView!
@@ -2189,6 +2189,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var postingRearfootPostMotionOtherDegreesRight: UITextField!
     @IBOutlet var postingRearfootPostingElevatorOthermmLeft: UITextField!
     @IBOutlet var postingRearfootPostingElevatorOthermmRight: UITextField!
+    @IBOutlet var orderManagementSearchField: UITextField!
 
     @IBOutlet var escanScene: UIViewController!
     @IBOutlet var richieBraceScene: UIViewController!
@@ -2982,7 +2983,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     @IBAction func ExistingOrderAction(sender: UIButton){
-        //changePageTo(pageTo: orderManagementPageIndex);
+        changePageTo(pageTo: orderManagementPageIndex);
     }
     @IBAction func ClickBackAction(sender: UIButton){
         if (screenViewing == escanningPageIndex) {
@@ -3565,7 +3566,14 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             pages[screenViewing].isHidden = false;
             nextButton.isHidden =
                 screenViewing == newOrderTypePageIndex ||
+                screenViewing == orderManagementPageIndex ||
             pageTo == reviewAndSubmitPageIndex;
+        }
+        
+        if (screenViewing == orderManagementPageIndex) {
+            searchedOrders = orders;
+            orderManagementSearchField.text = "";
+            orderManagementViewController?.resetTableView()
         }
 
         menuView.isHidden = screenViewing == 0 || screenViewing == escanningPageIndex
@@ -5669,6 +5677,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
     }
 
+    @IBAction func orderManagementClickSearch() {
+        searchedOrders = searchOrders(inSearchString: orderManagementSearchField.text!, inComplete: true);
+        orderManagementViewController?.resetTableView()
+    }
+    
     func searchOrders(inSearchString: String, inComplete: Bool) -> [Order] {
         var theReturn = [Order]();
         var theTemp = [Order]();
@@ -5699,11 +5712,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 } else if (order.chiefComplaintDiagnosis?.contains(searchString) ?? false) {
                     theTemp.append(order)
                 }
-                theReturn.removeAll();
-                theReturn.append(contentsOf: theTemp);
-                theTemp.removeAll();
             }
-            
+            theReturn.removeAll();
+            theReturn.append(contentsOf: theTemp);
+            theTemp.removeAll();
+
         }
 
         return theReturn;
