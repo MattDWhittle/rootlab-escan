@@ -101,6 +101,7 @@ class OrderManagementViewController: UITableViewController {
         let theIndex = Int(sender.title(for: .disabled)!);
         order = theParent.searchedOrders[theIndex!];
         theParent.changePageTo(pageTo: practitionerManagementPageIndex)
+        theParent.fromOrderToScreen();
     }
 
     

@@ -1062,6 +1062,27 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         order.orderPatient = nil;
     }
     
+    func fromOrderToPatientForm() {
+        patientNameInput.text = order.orderPatient?.firstName;
+        patientLastNameInput.text = order.orderPatient?.lastName;
+        patientAgeInput.text = String(order.orderPatient!.age);
+        patientHeightInput.text = String(order.orderPatient!.height);
+        patientHeightInchesInput.text = String(order.orderPatient!.heightInches);
+        patientWeightInput.text = String(order.orderPatient!.weight);
+        patientShoeSizeInput.text = String(order.orderPatient!.shoeSize);
+        patientMedicalRecordNumberInput.text = order.orderPatient!.medicalRecordNumber;
+        patientGender.selectRow(order.orderPatient?.gender == "Male" ? 1 : order.orderPatient!.gender == "Female" ? 2 : 0, inComponent: 0, animated: false);
+       
+        
+        if (order.orderPatient!.shoeType != nil && order.orderPatient!.shoeType != "") {
+            patientShoeTypePicker.selectRow(patientShoeTypeLabels.firstIndex(of: order.orderPatient!.shoeType!)!, inComponent: 0, animated: false);
+
+        } else {
+            patientShoeTypePicker.selectRow(0, inComponent: 0, animated: false);
+        }
+        
+    }
+    
     func clearScanForm() {
         escanLeftFootUIButton.setImage(UIImage(named: "ScanL.png"), for: UIControl.State.normal)
         escanRightFootUIButton.setImage(UIImage(named: "ScanR.png"), for: UIControl.State.normal)
@@ -1710,6 +1731,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             }
             
         }
+        orders.reverse();
         let newOrder = Order.init(entity: NSEntityDescription.entity(forEntityName: "Order", in:context)!, insertInto: context);
         newOrder.createDateTime = Date();
         order = newOrder;
@@ -1863,6 +1885,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         aeef.orthoticsMaterialPickerSelection = beef.orthoticsMaterialPickerSelection;
         aeef.orthoticsMaterialSelection = beef.orthoticsMaterialSelection;
 
+        dest.createDateTime = source.createDateTime;
         
         dest.accommodationsDancersPadLeft = source.accommodationsDancersPadLeft;
         dest.accommodationsDancersPadRight = source.accommodationsDancersPadRight;
@@ -1891,8 +1914,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         dest.accommodationsReverseMortonsExtensionLeft = source.accommodationsReverseMortonsExtensionLeft;
         dest.accommodationsReverseMortonsExtensionRight = source.accommodationsReverseMortonsExtensionRight;
         
-//        dest.chiefComplaintDiagnosis = source.chiefComplaintDiagnosis;
-//        dest.commentsInstructions = source.commentsInstructions;
+        dest.chiefComplaintDiagnosis = source.chiefComplaintDiagnosis;
+        dest.commentsInstructions = source.commentsInstructions;
         
         dest.correctionsAndModificationsAccommodatePerPhotoLeft = source.correctionsAndModificationsAccommodatePerPhotoLeft;
         dest.correctionsAndModificationsNoFillerLeft = source.correctionsAndModificationsNoFillerLeft;
@@ -3031,6 +3054,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             //TODO Cannot save, fail startup
             print("Could not save. \(error), \(error.userInfo)")
         }
+        
+        orders.insert(newOrder, at: 0);
     }
     
     func savePractitionerFromPage(setAsDefault: Bool) {
@@ -3451,7 +3476,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBAction func ClickYesStartNewOrder(_ sender: UIButton) {
         startNewOrderView.isHidden = true;
-        
+        changeValuesBasedOnChangedInput(force: true);
+        saveOrder();
         self.changePageTo(pageTo: openingPageIndex);
         self.resetValuesForNewOrder();
     }
@@ -3813,6 +3839,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             postingNonCorrectiveForefootPostLateralCornerWidthLeftUISwitch.isOn;
 
 
+    }
+    
+    func fromOrderToScreen() {
+        setOrthosisMaterialFormFromOrder()
+        setCorrectionsAndModificationsFromOrder()
+        setOrthosisSpecificationFormFromOrder()
+        setPostingFormFromOrder()
+        setTopCoversAndExtensionsFormFromOrder()
+        setRushOrderFormFromOrder()
+        setCommentsInstructionsFormFromOrder()
+        fromOrderToPatientForm()
+        fromFormToPractitioner(thePractitioner: order.orderPractitioner)
+        orthoticDeviceSelected = 0;
+        updateOrthosisScreenFromModel();
+        changeValuesBasedOnChangedInput(force: true);
     }
     
     func setPostingFormFromOrder() {
@@ -7283,6 +7324,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     @IBAction func emailMesh(sender: AnyObject)  {
         submitEmailButton.isEnabled = false;
+        
+        changeValuesBasedOnChangedInput(force: true);
         
         var theSuccess = true;
         order.orderPractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
