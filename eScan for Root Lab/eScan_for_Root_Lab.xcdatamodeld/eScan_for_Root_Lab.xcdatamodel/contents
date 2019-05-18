@@ -82,6 +82,7 @@
         <attribute name="correctionsAndModificationsStyloidAccommodationRight" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="deviceName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deviceSelected" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastUpdateDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="leftFootObj" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="orthosisMaterialColor" optional="YES" attributeType="String" syncable="YES"/>
@@ -141,6 +142,7 @@
         <attribute name="postingRearfootPostOptionsMedialPostFlangeRight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="postingRearfootPostOptionsShortPostFlangeLeft" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="postingRearfootPostOptionsShortPostFlangeRight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="richieBraceSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rightFootObj" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="rushOrder2DayTurnaround" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rushOrderExpressShiping" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -213,7 +215,7 @@
         <element name="Defaults" positionX="108" positionY="144" width="128" height="60"/>
         <element name="FootPhoto" positionX="117" positionY="153" width="128" height="90"/>
         <element name="MaterialOrderItem" positionX="305.16015625" positionY="67.2734375" width="128" height="90"/>
-        <element name="Order" positionX="128.48828125" positionY="203.7109375" width="128" height="2355"/>
+        <element name="Order" positionX="128.48828125" positionY="203.7109375" width="128" height="2385"/>
         <element name="Patient" positionX="58.953125" positionY="-11.796875" width="128" height="210"/>
         <element name="Practitioner" positionX="-92.83203125" positionY="38.47265625" width="128" height="360"/>
         <element name="RichieBrace" positionX="108" positionY="144" width="128" height="75"/>

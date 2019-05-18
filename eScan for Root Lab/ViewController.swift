@@ -1889,6 +1889,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         aeef.orthoticsMaterialSelection = beef.orthoticsMaterialSelection;
 
         dest.createDateTime = source.createDateTime;
+        dest.deviceSelected = source.deviceSelected;
+        dest.richieBraceSelected = source.richieBraceSelected;
         
         dest.accommodationsDancersPadLeft = source.accommodationsDancersPadLeft;
         dest.accommodationsDancersPadRight = source.accommodationsDancersPadRight;
@@ -3857,6 +3859,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         orthoticDeviceSelected = 0;
         updateOrthosisScreenFromModel();
         changeValuesBasedOnChangedInput(force: true);
+        orthoticDeviceSelected = Int(order.deviceSelected);
+        richieBraceHasBeenSelected = order.richieBraceSelected;
+        
     }
     
     func setPostingFormFromOrder() {
@@ -7335,6 +7340,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (order.orderPractitioner == nil) {
             order.orderPractitioner = defaultPractitioner;
         }
+        order.richieBraceSelected = richieBraceHasBeenSelected;
+        order.deviceSelected = Int16(orthoticDeviceSelected);
         let dateFormatter : DateFormatter = DateFormatter();
         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss";
         let date = Date();

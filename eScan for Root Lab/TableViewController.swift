@@ -126,68 +126,45 @@ class OrthoticsDeviceViewController: UITableViewController {
             // Expand currently selected device
             let parent = self.parent! as! ViewController;
             if (parent.shouldExpandCurrentOrder() && parent.activeDeviceIsOrthotic) {
-                let idx = Int(parent.orthoticDeviceSelected);
-                var sectionForDevice = 0;
-                var remainderDevice = 0;
-                
-                let valFunc = 5;
-                let valFuncSport = 10;
-                let valFuncSportDress = 15;
-                let valFuncSportDressSpec = 24;
-                
-                if (idx < valFunc) { // num functional orthosis
-                    sectionForDevice = 0;
-                    remainderDevice = Int(parent.orthoticDeviceSelected)
-
-                } else if (idx < valFuncSport) { // num functional+sport
-                    sectionForDevice = 1;
-                    remainderDevice = Int(parent.orthoticDeviceSelected % valFunc)
-                    
-                } else if (idx < valFuncSportDress) { // functional+sport+dress
-                    sectionForDevice = 2;
-                    remainderDevice = Int(parent.orthoticDeviceSelected % valFuncSport)
-                    
-                } else if (idx < valFuncSportDressSpec) {//functional+sport+dress+specialty
-                    sectionForDevice = 3;
-                    remainderDevice = Int(parent.orthoticDeviceSelected % valFuncSportDress)
-                    
-                } else {
-                    sectionForDevice = 4;
-                    remainderDevice = Int(parent.orthoticDeviceSelected % valFuncSportDressSpec)
-                }
-                
-                let indexPath = IndexPath(row: Int(remainderDevice), section: sectionForDevice)
-                indexPathOfExpandedView = indexPath;
-                
+                indexPathOfExpandedView = indexForInt(idx: Int(parent.orthoticDeviceSelected));
             }
         }
         
         self.tableView.reloadData();
 
+    }
+    
+    func indexForInt(idx : Int) ->IndexPath {
+        var sectionForDevice = 0;
+        var remainderDevice = 0;
         
-        //Not gonna do it this way
-//
-//        self.tableView.beginUpdates();
-//        var i = 0;
-//        //        for myDevice in myDevices {
-//        self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-//        let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0))
-////        let cellToCopy = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0))
-////
-////        let copiedView = NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: cellToCopy!.contentView))
-//
-////        let copiedViewAsUiView = copiedView as? UIView;
-////        if (copiedViewAsUiView != nil) {
-////            cell?.contentView.addSubview(copiedViewAsUiView!);
-////        }
-//        let addedUIView = UIView();
-//        let addedUILabel = UILabel();
-//        addedUILabel.text = "SUPER COOL";
-//        addedUIView.addSubview(addedUILabel)
-//        cell?.contentView.addSubview(addedUIView);
-//        i = i + 1;
-//        //      }
-//        self.tableView.endUpdates();
+        let valFunc = 5;
+        let valFuncSport = 10;
+        let valFuncSportDress = 15;
+        let valFuncSportDressSpec = 24;
+        
+        if (idx < valFunc) { // num functional orthosis
+            sectionForDevice = 0;
+            remainderDevice = idx;
+            
+        } else if (idx < valFuncSport) { // num functional+sport
+            sectionForDevice = 1;
+            remainderDevice = idx % valFunc
+            
+        } else if (idx < valFuncSportDress) { // functional+sport+dress
+            sectionForDevice = 2;
+            remainderDevice = idx % valFuncSport
+            
+        } else if (idx < valFuncSportDressSpec) {//functional+sport+dress+specialty
+            sectionForDevice = 3;
+            remainderDevice = idx % valFuncSportDress
+            
+        } else {
+            sectionForDevice = 4;
+            remainderDevice = idx % valFuncSportDressSpec
+        }
+        
+        return IndexPath(row: remainderDevice, section: sectionForDevice)
     }
     
     override init(style: UITableView.Style) {
@@ -209,7 +186,18 @@ class OrthoticsDeviceViewController: UITableViewController {
         
     }
     
+
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let theMOI : MaterialOrderItem = order.orderMaterialItemList!.object(at: currentOrder) as! MaterialOrderItem;
+        
+        let theMOI_indexPath = indexForInt(idx: Int(theMOI.orthoticsMaterialPickerSelection));
+
+        if (indexPath == theMOI_indexPath) {
+            return heightForRowNormally * 6;
+        }
+        
         if (indexPath == indexPathOfExpandedView) {
             return heightForRowNormally * 4;
         }
