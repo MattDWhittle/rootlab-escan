@@ -1141,6 +1141,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func readPractitionerToForm(thePractitioner: Practitioner!) {
+        if (thePractitioner == nil) {
+            return;
+        }
         practitionerNameInput.text = thePractitioner.firstName;
         practitionerLastNameInput.text = thePractitioner.lastName;
         
@@ -3850,7 +3853,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         setRushOrderFormFromOrder()
         setCommentsInstructionsFormFromOrder()
         fromOrderToPatientForm()
-        fromFormToPractitioner(thePractitioner: order.orderPractitioner)
+        readPractitionerToForm(thePractitioner: order.orderPractitioner)
         orthoticDeviceSelected = 0;
         updateOrthosisScreenFromModel();
         changeValuesBasedOnChangedInput(force: true);
@@ -7329,7 +7332,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         var theSuccess = true;
         order.orderPractitioner = practitioners[practitionerPicker.selectedRow(inComponent: 0)];
-        
+        if (order.orderPractitioner == nil) {
+            order.orderPractitioner = defaultPractitioner;
+        }
         let dateFormatter : DateFormatter = DateFormatter();
         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss";
         let date = Date();
