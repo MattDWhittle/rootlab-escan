@@ -525,6 +525,11 @@ let orthosisAccomodativeEVALabels: [String] =
 let rushOrderExpressShippingPickerData: [String] =
     ["Express Shipping", "3 day", "2 day", "Next day"];
 
+
+let zipFilenameLeft = "comrootlabModelLeft.zip"
+let zipFilenameRight = "comrootlabModelRight.zip"
+
+
 var imagePicker: UIImagePickerController!
 enum ImageSource {
     case photoLibrary
@@ -777,8 +782,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     var needsDisplay: Bool = false
     
     var _mesh: STMesh? = nil
-
-    var _meshToSave: STMesh? = nil
+    
+    var zipMeshLeft: Data? = nil
+    var zipMeshRight: Data? = nil
 
     var mesh: STMesh?
     {
@@ -6484,11 +6490,15 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         updateIdleTimer()
         
-        _mesh = inmesh;
-        
         setupGLMesh(contextMesh!)
-        mesh = _mesh;
-        _meshToSave = _mesh;
+        mesh = inmesh;
+        if (amScanningLeftFoot) {
+            zipMeshLeft = FileMgr.sharedInstance.saveMesh(zipFilenameLeft, data: inmesh!)
+            
+        } else {
+            zipMeshRight = FileMgr.sharedInstance.saveMesh(zipFilenameRight, data: inmesh!)
+
+        }
 
         setCameraProjectionMatrix(projectionMatrixMesh)
         resetMeshCenter(volumeCenter)
@@ -7349,7 +7359,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let diagnosis = (order.chiefComplaintDiagnosis ?? "");
         let instructions = (order.commentsInstructions ?? "");
         let messageBody = "See attached pdf";
-        let zipFilename = "Model.zip"
         let screenshotFilename = "rootLabPreview.jpg"
         let fullPathFilename = FileMgr.sharedInstance.full(screenshotFilename)
         
@@ -7415,36 +7424,25 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         if (!reorderUISwitch.isOn) {
             
-            if let meshToSend = _meshToSave {
-                let zipfile = FileMgr.sharedInstance.saveMesh(zipFilename, data: meshToSend)
-                
-                if zipfile != nil {
-                    
-                    let attachment = MCOAttachment()
-                    attachment.mimeType =  "application/zip"
-                    attachment.filename = zipFilename;
-                    attachment.data = zipfile!
-                    builder.addAttachment(attachment)
-                }
+            
+            if zipMeshLeft != nil {
+                let attachment = MCOAttachment()
+                attachment.mimeType =  "application/zip"
+                attachment.filename = zipFilenameLeft;
+                attachment.data = zipMeshLeft!
+                builder.addAttachment(attachment)
             }
-            else {
-                
-                mailViewController = nil
-                
-                let alert = UIAlertController.init(title: "The email could not be sent", message: "Exporting the mesh failed", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-                
-                alert.addAction(defaultAction)
-                
-                emailErrorLabel.text = "The email could not be sent: exporting the mesh failed";
-                
-                present(alert, animated: true, completion: nil)
-                theSuccess = false;
-                
-                return
+            
+            if zipMeshRight != nil {
+                let attachment = MCOAttachment()
+                attachment.mimeType =  "application/zip"
+                attachment.filename = zipFilenameRight;
+                attachment.data = zipMeshRight!
+                builder.addAttachment(attachment)
             }
+            
         }
+
         
         var i = 0;
         for iUiImageView in reorderScrollView.subviews {
