@@ -6300,7 +6300,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if patientShoeSizeInput.isEditing{
             keyboardMovement = -0.7;
         } else if patientMedicalRecordNumberInput.isEditing {
-            keyboardMovement = -0.3;
+            keyboardMovement = -0.5;
         } else if practitionerShippingAddress1.isEditing {
             keyboardMovement = -0.2;
         } else if practitionerShippingAddress2.isEditing {
