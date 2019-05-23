@@ -3867,7 +3867,15 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         changeValuesBasedOnChangedInput(force: true);
         orthoticDeviceSelected = Int(order.deviceSelected);
         richieBraceHasBeenSelected = order.richieBraceSelected;
-        
+        if (order.rightFootObj != nil) {
+            rightFootEscanDone = true;
+            zipMeshRight = FileMgr.sharedInstance.saveMesh(zipFilenameRight, data: (order.rightFootObj as! STMesh?)!)
+        }
+        if (order.leftFootObj != nil) {
+            leftFootEscanDone = true;
+            zipMeshLeft = FileMgr.sharedInstance.saveMesh(zipFilenameLeft, data: (order.leftFootObj as! STMesh?)!)
+        }
+
     }
     
     func setPostingFormFromOrder() {
@@ -6494,10 +6502,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         mesh = inmesh;
         if (amScanningLeftFoot) {
             zipMeshLeft = FileMgr.sharedInstance.saveMesh(zipFilenameLeft, data: inmesh!)
-            
+            order.leftFootObj = inmesh as! Data?;
         } else {
             zipMeshRight = FileMgr.sharedInstance.saveMesh(zipFilenameRight, data: inmesh!)
-
+            order.rightFootObj = inmesh as! Data?;
         }
 
         setCameraProjectionMatrix(projectionMatrixMesh)
