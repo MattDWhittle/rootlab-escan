@@ -783,9 +783,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     var _mesh: STMesh? = nil
     
-    var zipMeshLeft: Data? = nil
-    var zipMeshRight: Data? = nil
-
     var mesh: STMesh?
     {
         get {
@@ -3869,11 +3866,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         richieBraceHasBeenSelected = order.richieBraceSelected;
         if (order.rightFootObj != nil) {
             rightFootEscanDone = true;
-            zipMeshRight = FileMgr.sharedInstance.saveMesh(zipFilenameRight, data: (order.rightFootObj as! STMesh?)!)
+            escanRightFootUIButton.setImage(UIImage(named: "ScannedR.png"), for: UIControl.State.normal);
         }
         if (order.leftFootObj != nil) {
             leftFootEscanDone = true;
-            zipMeshLeft = FileMgr.sharedInstance.saveMesh(zipFilenameLeft, data: (order.leftFootObj as! STMesh?)!)
+            escanLeftFootUIButton.setImage(UIImage(named: "ScannedL.png"), for: UIControl.State.normal);
         }
 
     }
@@ -5908,6 +5905,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             else {
                 eScanNameLabel.text = "Not Taken"
             }
+
+
         }
         
         let isEverythingValid = everythingValid();
@@ -6501,11 +6500,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         setupGLMesh(contextMesh!)
         mesh = inmesh;
         if (amScanningLeftFoot) {
-            zipMeshLeft = FileMgr.sharedInstance.saveMesh(zipFilenameLeft, data: inmesh!)
-            order.leftFootObj = inmesh as! Data?;
+            order.leftFootObj = FileMgr.sharedInstance.saveMesh(zipFilenameLeft, data: inmesh!)
         } else {
-            zipMeshRight = FileMgr.sharedInstance.saveMesh(zipFilenameRight, data: inmesh!)
-            order.rightFootObj = inmesh as! Data?;
+            order.rightFootObj = FileMgr.sharedInstance.saveMesh(zipFilenameRight, data: inmesh!)
         }
 
         setCameraProjectionMatrix(projectionMatrixMesh)
@@ -7433,19 +7430,19 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         if (!reorderUISwitch.isOn) {
             
             
-            if zipMeshLeft != nil {
+            if order.leftFootObj != nil {
                 let attachment = MCOAttachment()
                 attachment.mimeType =  "application/zip"
                 attachment.filename = zipFilenameLeft;
-                attachment.data = zipMeshLeft!
+                attachment.data = order.leftFootObj!
                 builder.addAttachment(attachment)
             }
             
-            if zipMeshRight != nil {
+            if order.rightFootObj != nil {
                 let attachment = MCOAttachment()
                 attachment.mimeType =  "application/zip"
                 attachment.filename = zipFilenameRight;
-                attachment.data = zipMeshRight!
+                attachment.data = order.rightFootObj!
                 builder.addAttachment(attachment)
             }
             
