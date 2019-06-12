@@ -19,11 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fastcast3d.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ms-km-ouo">
-                                <rect key="frame" x="0.0" y="396" width="2048" height="691"/>
+                                <rect key="frame" x="0.0" y="396" width="2048" height="690"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rootlabwhitebackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="tG3-hi-XmI">
-                                <rect key="frame" x="66" y="71" width="436" height="251"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-1024.png" translatesAutoresizingMaskIntoConstraints="NO" id="tG3-hi-XmI">
+                                <rect key="frame" x="66" y="71" width="435" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="StructureSensorRequiredDark.png" translatesAutoresizingMaskIntoConstraints="NO" id="P5c-me-TX3">
+                                <rect key="frame" x="1120" y="1028" width="683" height="405"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -34,11 +38,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.799999999999997" y="374.21289355322341"/>
+            <point key="canvasLocation" x="52.708638360175691" y="373.828125"/>
         </scene>
     </scenes>
     <resources>
+        <image name="StructureSensorRequiredDark.png" width="522" height="303"/>
         <image name="fastcast3d.png" width="687" height="203"/>
-        <image name="rootlabwhitebackground.png" width="232" height="153"/>
+        <image name="icon-1024.png" width="1024" height="1024"/>
     </resources>
 </document>

@@ -57,6 +57,21 @@
 		2DB95DC6222BB9BA0015186A /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB95DC5222BB9BA0015186A /* libMailCore-ios.a */; };
 		2DBCBF85221904BE004E3AC9 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBCBF84221904B2004E3AC9 /* Circle.png */; };
 		2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5599121BC6D8B005F99BA /* structure scanner image.png */; };
+		2DC563C622B1999B00E87B77 /* SensorBatteryLow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563B722B1999B00E87B77 /* SensorBatteryLow@2x.png */; };
+		2DC563C722B1999B00E87B77 /* StructureSensorCalibrationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563B822B1999B00E87B77 /* StructureSensorCalibrationIcon.png */; };
+		2DC563C822B1999B00E87B77 /* StructureSensorRequiredDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563B922B1999B00E87B77 /* StructureSensorRequiredDark.png */; };
+		2DC563C922B1999B00E87B77 /* SensorBattery2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563BA22B1999B00E87B77 /* SensorBattery2.png */; };
+		2DC563CA22B1999B00E87B77 /* StructureSensorRequiredDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563BB22B1999B00E87B77 /* StructureSensorRequiredDark@2x.png */; };
+		2DC563CB22B1999B00E87B77 /* SensorBatteryLow.ai in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563BC22B1999B00E87B77 /* SensorBatteryLow.ai */; };
+		2DC563CC22B1999B00E87B77 /* LaunchImageExamples.ai in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563BD22B1999B00E87B77 /* LaunchImageExamples.ai */; };
+		2DC563CD22B1999B00E87B77 /* StructureSensorRequiredLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563BE22B1999B00E87B77 /* StructureSensorRequiredLight.png */; };
+		2DC563CE22B1999B00E87B77 /* StructureSensorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563BF22B1999B00E87B77 /* StructureSensorIcon.png */; };
+		2DC563CF22B1999B00E87B77 /* StructureSensorRequiredLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C022B1999B00E87B77 /* StructureSensorRequiredLight@2x.png */; };
+		2DC563D022B1999B00E87B77 /* SensorBatteryLow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C122B1999B00E87B77 /* SensorBatteryLow.png */; };
+		2DC563D122B1999B00E87B77 /* LaunchImageExamples.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C222B1999B00E87B77 /* LaunchImageExamples.pdf */; };
+		2DC563D222B1999B00E87B77 /* SensorBattery2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C322B1999B00E87B77 /* SensorBattery2@2x.png */; };
+		2DC563D322B1999B00E87B77 /* StructureSensorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C422B1999B00E87B77 /* StructureSensorIcon@2x.png */; };
+		2DC563D422B1999B00E87B77 /* StructureSensorIcon.ai in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C522B1999B00E87B77 /* StructureSensorIcon.ai */; };
 		2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307E1220F4AA2002795E7 /* Item Selection.png */; };
 		2DE307E4220F5CF9002795E7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E3220F5CF9002795E7 /* TableViewController.swift */; };
 		2DE307E6220F911F002795E7 /* OrthoticsPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */; };
@@ -158,6 +173,21 @@
 		2DB95DC5222BB9BA0015186A /* libMailCore-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libMailCore-ios.a"; path = "Pods/mailcore2-ios/lib/libMailCore-ios.a"; sourceTree = "<group>"; };
 		2DBCBF84221904B2004E3AC9 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		2DC5599121BC6D8B005F99BA /* structure scanner image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "structure scanner image.png"; sourceTree = "<group>"; };
+		2DC563B722B1999B00E87B77 /* SensorBatteryLow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SensorBatteryLow@2x.png"; sourceTree = "<group>"; };
+		2DC563B822B1999B00E87B77 /* StructureSensorCalibrationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StructureSensorCalibrationIcon.png; sourceTree = "<group>"; };
+		2DC563B922B1999B00E87B77 /* StructureSensorRequiredDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StructureSensorRequiredDark.png; sourceTree = "<group>"; };
+		2DC563BA22B1999B00E87B77 /* SensorBattery2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SensorBattery2.png; sourceTree = "<group>"; };
+		2DC563BB22B1999B00E87B77 /* StructureSensorRequiredDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StructureSensorRequiredDark@2x.png"; sourceTree = "<group>"; };
+		2DC563BC22B1999B00E87B77 /* SensorBatteryLow.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SensorBatteryLow.ai; sourceTree = "<group>"; };
+		2DC563BD22B1999B00E87B77 /* LaunchImageExamples.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchImageExamples.ai; sourceTree = "<group>"; };
+		2DC563BE22B1999B00E87B77 /* StructureSensorRequiredLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StructureSensorRequiredLight.png; sourceTree = "<group>"; };
+		2DC563BF22B1999B00E87B77 /* StructureSensorIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StructureSensorIcon.png; sourceTree = "<group>"; };
+		2DC563C022B1999B00E87B77 /* StructureSensorRequiredLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StructureSensorRequiredLight@2x.png"; sourceTree = "<group>"; };
+		2DC563C122B1999B00E87B77 /* SensorBatteryLow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SensorBatteryLow.png; sourceTree = "<group>"; };
+		2DC563C222B1999B00E87B77 /* LaunchImageExamples.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LaunchImageExamples.pdf; sourceTree = "<group>"; };
+		2DC563C322B1999B00E87B77 /* SensorBattery2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SensorBattery2@2x.png"; sourceTree = "<group>"; };
+		2DC563C422B1999B00E87B77 /* StructureSensorIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StructureSensorIcon@2x.png"; sourceTree = "<group>"; };
+		2DC563C522B1999B00E87B77 /* StructureSensorIcon.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StructureSensorIcon.ai; sourceTree = "<group>"; };
 		2DE307E1220F4AA2002795E7 /* Item Selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Item Selection.png"; sourceTree = "<group>"; };
 		2DE307E3220F5CF9002795E7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthoticsPrescriptionViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +348,7 @@
 		2D9B417821D354280022FE2D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2DC563B622B1999B00E87B77 /* Structure_SDK_App_Review_Assets */,
 				4EF53A9A22866E0200EE477D /* icons */,
 				2D411F9C225074C6004D5862 /* ScanL.png */,
 				2D411F9D225074C7004D5862 /* ScannedL.png */,
@@ -375,6 +406,28 @@
 				16F70718464626024ACCCA47 /* Pods_eScan_for_Root_LabUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DC563B622B1999B00E87B77 /* Structure_SDK_App_Review_Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2DC563B722B1999B00E87B77 /* SensorBatteryLow@2x.png */,
+				2DC563B822B1999B00E87B77 /* StructureSensorCalibrationIcon.png */,
+				2DC563B922B1999B00E87B77 /* StructureSensorRequiredDark.png */,
+				2DC563BA22B1999B00E87B77 /* SensorBattery2.png */,
+				2DC563BB22B1999B00E87B77 /* StructureSensorRequiredDark@2x.png */,
+				2DC563BC22B1999B00E87B77 /* SensorBatteryLow.ai */,
+				2DC563BD22B1999B00E87B77 /* LaunchImageExamples.ai */,
+				2DC563BE22B1999B00E87B77 /* StructureSensorRequiredLight.png */,
+				2DC563BF22B1999B00E87B77 /* StructureSensorIcon.png */,
+				2DC563C022B1999B00E87B77 /* StructureSensorRequiredLight@2x.png */,
+				2DC563C122B1999B00E87B77 /* SensorBatteryLow.png */,
+				2DC563C222B1999B00E87B77 /* LaunchImageExamples.pdf */,
+				2DC563C322B1999B00E87B77 /* SensorBattery2@2x.png */,
+				2DC563C422B1999B00E87B77 /* StructureSensorIcon@2x.png */,
+				2DC563C522B1999B00E87B77 /* StructureSensorIcon.ai */,
+			);
+			path = Structure_SDK_App_Review_Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,6 +540,7 @@
 				2DE3081822122E43002795E7 /* buttonMD.png in Resources */,
 				2D411F9E225074C7004D5862 /* ScannedR.png in Resources */,
 				2DBCBF85221904BE004E3AC9 /* Circle.png in Resources */,
+				2DC563D122B1999B00E87B77 /* LaunchImageExamples.pdf in Resources */,
 				2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */,
 				2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */,
 				2DE3081A22122E43002795E7 /* unchecked.png in Resources */,
@@ -495,6 +549,7 @@
 				2D44BDC221B4BFA0009A1066 /* LaunchScreen.storyboard in Resources */,
 				2DE308082210E0A5002795E7 /* Mortons Extension.png in Resources */,
 				2D44BDEE21B57231009A1066 /* richieBrace.jpg in Resources */,
+				2DC563C622B1999B00E87B77 /* SensorBatteryLow@2x.png in Resources */,
 				2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */,
 				4EF53A9B22866E0200EE477D /* icons in Resources */,
 				2D44BDBF21B4BFA0009A1066 /* Assets.xcassets in Resources */,
@@ -502,7 +557,10 @@
 				2DE307FE2210E055002795E7 /* Heel Pad.png in Resources */,
 				2DE308022210E084002795E7 /* Dancers Pad.png in Resources */,
 				2DE307F32210DF56002795E7 /* Kinetic Wedge.png in Resources */,
+				2DC563C722B1999B00E87B77 /* StructureSensorCalibrationIcon.png in Resources */,
 				2DE308042210E093002795E7 /* Metatarsal Pad.png in Resources */,
+				2DC563CD22B1999B00E87B77 /* StructureSensorRequiredLight.png in Resources */,
+				2DC563CA22B1999B00E87B77 /* StructureSensorRequiredDark@2x.png in Resources */,
 				2D2B241122054D130057F8C2 /* Root Lab transparent back PNG.png in Resources */,
 				2D52F7C421BC713D00AC60F5 /* patient.png in Resources */,
 				2DA5914A2218748900D79518 /* PolyChart.png in Resources */,
@@ -510,9 +568,14 @@
 				2DE308062210E09D002795E7 /* Reverse mortons extension.png in Resources */,
 				2DC5599221BC6D90005F99BA /* structure scanner image.png in Resources */,
 				2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */,
+				2DC563CE22B1999B00E87B77 /* StructureSensorIcon.png in Resources */,
+				2DC563C822B1999B00E87B77 /* StructureSensorRequiredDark.png in Resources */,
 				2D44BDBA21B4BF9C009A1066 /* Main.storyboard in Resources */,
 				2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */,
 				2DE3081C22122E43002795E7 /* Button.png in Resources */,
+				2DC563CF22B1999B00E87B77 /* StructureSensorRequiredLight@2x.png in Resources */,
+				2DC563D022B1999B00E87B77 /* SensorBatteryLow.png in Resources */,
+				2DC563D322B1999B00E87B77 /* StructureSensorIcon@2x.png in Resources */,
 				2DE3081722122E43002795E7 /* Camera.png in Resources */,
 				2D411F9F225074C7004D5862 /* ScanR.png in Resources */,
 				2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */,
@@ -522,7 +585,12 @@
 				2D411FA0225074C7004D5862 /* ScanL.png in Resources */,
 				2DE307F42210DF56002795E7 /* Metatarsal Bar.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
+				2DC563CB22B1999B00E87B77 /* SensorBatteryLow.ai in Resources */,
+				2DC563CC22B1999B00E87B77 /* LaunchImageExamples.ai in Resources */,
+				2DC563D422B1999B00E87B77 /* StructureSensorIcon.ai in Resources */,
+				2DC563D222B1999B00E87B77 /* SensorBattery2@2x.png in Resources */,
 				2D411FA1225074C7004D5862 /* ScannedL.png in Resources */,
+				2DC563C922B1999B00E87B77 /* SensorBattery2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,7 +880,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 24TQ5NG7FY;
+				DEVELOPMENT_TEAM = 623A5J4WD9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -838,7 +906,7 @@
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*]" = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = rootlab.com.testStructureSensor2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.root-lab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "eScan for Root Lab-Bridging-Header.h";
@@ -855,7 +923,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 24TQ5NG7FY;
+				DEVELOPMENT_TEAM = 623A5J4WD9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -881,7 +949,7 @@
 				);
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = rootlab.com.testStructureSensor2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.root-lab";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "eScan for Root Lab-Bridging-Header.h";
