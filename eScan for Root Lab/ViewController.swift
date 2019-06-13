@@ -833,7 +833,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     var expandCurrentOrder = false;
     var activeDeviceIsOrthotic = false;
     var activeDeviceIsRichie = false;
-    
+    var weAreShowingAppStatus = false;
     
     func updateImagesForValidOrthoticsForm() {
         orthoticsPrescriptionViewController?.updateImagesForValidOrthoticsForm();
@@ -2123,6 +2123,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var escanRightFootUIButton: UIButton!
     @IBOutlet var submitFormButton: UIButton!
     @IBOutlet var submitEmailButton: UIButton!
+    @IBOutlet var escanPleaseConnectStructureScanner: UIButton!
+    @IBOutlet var escanBatteryLow: UIButton!
 
     
     @IBOutlet var welcomeLabel: UILabel!
@@ -3000,7 +3002,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             UIApplication.shared.openURL(url)
         }
     }
-    
+    @IBAction func clickStructureSensorLogo(sender: UIButton){
+        if let url = URL(string: "​http://structure.io/get-a-sensor") {
+            UIApplication.shared.openURL(url)
+        }
+    }
+
     @IBAction func NewOrderAction(sender: UIButton){
         changeValuesBasedOnChangedInput(force: true);
         if (defaultPractitioner != nil) {
@@ -6438,6 +6445,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         // Fully transparent message label, initially.
         appStatusMessageLabel.alpha = 0
+        escanPleaseConnectStructureScanner.alpha = 0
+        escanBatteryLow.isHidden = true;
     }
     
     // Make sure the status bar is hidden
@@ -6800,41 +6809,78 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func showAppStatusMessage(_ msg: String) {
         
-        _appStatus.needsDisplayOfStatusMessage = true
-        view.layer.removeAllAnimations()
+        if (weHaveSeenAStructureSensorConnect) {
+            weAreShowingAppStatus = true;
+            _appStatus.needsDisplayOfStatusMessage = true
+            view.layer.removeAllAnimations()
+            
+            appStatusMessageLabel.text = msg
+            appStatusMessageLabel.isHidden = false
+            
+            // Progressively show the message label.
+            eview!.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.5, animations: {
+                self.appStatusMessageLabel.alpha = 1.0
+            })
+        } else {
+            weAreShowingAppStatus = false;
+            _appStatus.needsDisplayOfStatusMessage = true
+            view.layer.removeAllAnimations()
+            
+            escanPleaseConnectStructureScanner.isHidden = false
+            
+            // Progressively show the message label.
+            eview!.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.5, animations: {
+                self.escanPleaseConnectStructureScanner.alpha = 1.0
+            })
+
+        }
         
-        appStatusMessageLabel.text = msg
-        appStatusMessageLabel.isHidden = false
-        
-        // Progressively show the message label.
-        eview!.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.5, animations: {
-            self.appStatusMessageLabel.alpha = 1.0
-        })
     }
     
     func hideAppStatusMessage() {
-        
+        escanBatteryLow.isHidden = true;
+
         if !_appStatus.needsDisplayOfStatusMessage {
             return
         }
         
         _appStatus.needsDisplayOfStatusMessage = false
         view.layer.removeAllAnimations()
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.appStatusMessageLabel.alpha = 0
-        }, completion: { _ in
-            // If nobody called showAppStatusMessage before the end of the animation, do not hide it.
-            if !self._appStatus.needsDisplayOfStatusMessage {
-                
-                // Could be nil if the self is released before the callback happens.
-                if self.eview != nil {
-                    self.appStatusMessageLabel.isHidden = true
-                    self.eview.isUserInteractionEnabled = true
+        if (self.appStatusMessageLabel.alpha > 0.0) {
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.appStatusMessageLabel.alpha = 0
+            }, completion: { _ in
+                // If nobody called showAppStatusMessage before the end of the animation, do not hide it.
+                if !self._appStatus.needsDisplayOfStatusMessage {
+                    
+                    // Could be nil if the self is released before the callback happens.
+                    if self.eview != nil {
+                        self.appStatusMessageLabel.isHidden = true
+                        self.eview.isUserInteractionEnabled = true
+                    }
                 }
-            }
-        })
+            })
+        }
+        if (self.escanPleaseConnectStructureScanner.alpha > 0.0) {
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.escanPleaseConnectStructureScanner.alpha = 0
+            }, completion: { _ in
+                // If nobody called showAppStatusMessage before the end of the animation, do not hide it.
+                if !self._appStatus.needsDisplayOfStatusMessage {
+                    
+                    // Could be nil if the self is released before the callback happens.
+                    if self.eview != nil {
+                        self.escanPleaseConnectStructureScanner.isHidden = true
+                        self.eview.isUserInteractionEnabled = true
+                    }
+                }
+            })
+        }
+
     }
     
     func updateAppStatusMessage() {
@@ -6854,6 +6900,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             
         case .needsUserToCharge:
             showAppStatusMessage(_appStatus.pleaseChargeSensorMessage)
+            escanBatteryLow.isHidden = false;
             return
             
         case .ok:

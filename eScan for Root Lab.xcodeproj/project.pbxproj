@@ -72,6 +72,7 @@
 		2DC563D222B1999B00E87B77 /* SensorBattery2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C322B1999B00E87B77 /* SensorBattery2@2x.png */; };
 		2DC563D322B1999B00E87B77 /* StructureSensorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C422B1999B00E87B77 /* StructureSensorIcon@2x.png */; };
 		2DC563D422B1999B00E87B77 /* StructureSensorIcon.ai in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563C522B1999B00E87B77 /* StructureSensorIcon.ai */; };
+		2DC563D622B209C100E87B77 /* StructureSensorRequired.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC563D522B209B500E87B77 /* StructureSensorRequired.png */; };
 		2DE307E2220F4AA7002795E7 /* Item Selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE307E1220F4AA2002795E7 /* Item Selection.png */; };
 		2DE307E4220F5CF9002795E7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E3220F5CF9002795E7 /* TableViewController.swift */; };
 		2DE307E6220F911F002795E7 /* OrthoticsPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */; };
@@ -188,6 +189,7 @@
 		2DC563C322B1999B00E87B77 /* SensorBattery2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SensorBattery2@2x.png"; sourceTree = "<group>"; };
 		2DC563C422B1999B00E87B77 /* StructureSensorIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StructureSensorIcon@2x.png"; sourceTree = "<group>"; };
 		2DC563C522B1999B00E87B77 /* StructureSensorIcon.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StructureSensorIcon.ai; sourceTree = "<group>"; };
+		2DC563D522B209B500E87B77 /* StructureSensorRequired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StructureSensorRequired.png; sourceTree = "<group>"; };
 		2DE307E1220F4AA2002795E7 /* Item Selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Item Selection.png"; sourceTree = "<group>"; };
 		2DE307E3220F5CF9002795E7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		2DE307E5220F911F002795E7 /* OrthoticsPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthoticsPrescriptionViewController.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 		2DC563B622B1999B00E87B77 /* Structure_SDK_App_Review_Assets */ = {
 			isa = PBXGroup;
 			children = (
+				2DC563D522B209B500E87B77 /* StructureSensorRequired.png */,
 				2DC563B722B1999B00E87B77 /* SensorBatteryLow@2x.png */,
 				2DC563B822B1999B00E87B77 /* StructureSensorCalibrationIcon.png */,
 				2DC563B922B1999B00E87B77 /* StructureSensorRequiredDark.png */,
@@ -585,6 +588,7 @@
 				2D411FA0225074C7004D5862 /* ScanL.png in Resources */,
 				2DE307F42210DF56002795E7 /* Metatarsal Bar.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
+				2DC563D622B209C100E87B77 /* StructureSensorRequired.png in Resources */,
 				2DC563CB22B1999B00E87B77 /* SensorBatteryLow.ai in Resources */,
 				2DC563CC22B1999B00E87B77 /* LaunchImageExamples.ai in Resources */,
 				2DC563D422B1999B00E87B77 /* StructureSensorIcon.ai in Resources */,

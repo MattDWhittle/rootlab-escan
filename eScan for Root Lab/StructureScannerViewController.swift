@@ -55,6 +55,8 @@ class StructureScannerViewController: UIViewController, STSensorControllerDelega
     }
     
     func sensorDidConnect() {
+        weHaveSeenAStructureSensorConnect = true;
+
         if tryStartStreaming() {
             //            statusLabel.text = "Streaming"
         } else {

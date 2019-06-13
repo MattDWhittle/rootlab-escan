@@ -443,7 +443,7 @@ extension ViewController {
     }
     
     func sensorDidDisconnect() {
-		
+        weHaveSeenAStructureSensorConnect = true;
         // If we receive the message while in background, do nothing. We'll check the status when we
         // become active again.
         
