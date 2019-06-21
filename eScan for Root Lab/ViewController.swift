@@ -6661,7 +6661,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func processDeviceMotion(_ motion: CMDeviceMotion, error: NSError?) {
-        
+        let batteryPercentage = STSensorController.getBatteryChargePercentage(_sensorController);
+        if (batteryPercentage() <= 5) {
+            escanBatteryLow.isHidden = false;
+        }
+
         if _slamState.scannerState == .cubePlacement {
             
             // Update our gravity vector, it will be used by the cube placement initializer.
@@ -6894,7 +6898,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func updateAppStatusMessage() {
-        
         // Skip everything if we should not show app status messages (e.g. in viewing state).
         if _appStatus.statusMessageDisabled {
             hideAppStatusMessage()
