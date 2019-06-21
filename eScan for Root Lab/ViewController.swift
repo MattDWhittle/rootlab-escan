@@ -1285,6 +1285,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             okDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             cancelDeletePractitioner.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             submitEmailButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
+            mailSupportButton.titleLabel?.font =  UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
             newPractitionerLabel.font = UIFont(name: "Gil Sans-Bold", size: 80 * multiplier)
             
             commentsTextArea.font = UIFont(name: "Gil Sans-Bold", size: 32 * multiplier)
@@ -2125,6 +2126,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var submitEmailButton: UIButton!
     @IBOutlet var escanPleaseConnectStructureScanner: UIButton!
     @IBOutlet var escanBatteryLow: UIButton!
+    @IBOutlet var mailSupportButton: UIButton!
 
     
     @IBOutlet var welcomeLabel: UILabel!
@@ -3570,13 +3572,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         syncUIfromDynamicOptions()
     }
     
+    @IBAction func mailSupport() {
+        UIApplication.shared.open(URL(string: "mailto:shasper@root-lab.com")!);
+    }
+    
     func changePageTo(pageTo: Int?) {
         clearAllCarrotsFromLables();
         if (screenViewing == escanningPageIndex) {
             depthView.isHidden = true;
             eview.isHidden = true;
+            enableAllOrientation = false;
+//            initialVolumeResolutionInMeters = 0.005;
         } else if (screenViewing == eViewingMeshPageIndex) {
+            enableAllOrientation = true;
         } else {
+            enableAllOrientation = true;
             pages[screenViewing].isHidden = true;
             backStack.append(screenViewing);
         }
