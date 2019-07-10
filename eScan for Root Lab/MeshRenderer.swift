@@ -181,6 +181,7 @@ class MeshRenderer: NSObject {
 
    func setRenderingMode(_ mode: RenderingMode) {
         d!.currentRenderingMode = mode
+        clear();
     }
 
    func getRenderingMode() -> RenderingMode {

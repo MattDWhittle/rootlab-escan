@@ -554,7 +554,7 @@ struct DynamicOptions {
 struct Options {
     // The initial scanning volume size will be 0.5 x 0.5 x 0.5 meters
     // (X is left-right, Y is up-down, Z is forward-back)
-    var initVolumeSizeInMeters: GLKVector3 = GLKVector3Make(0.5, 0.5, 0.5)
+    var initVolumeSizeInMeters: GLKVector3 = GLKVector3Make(0.005, 0.005, 0.005)
     
     // The maximum number of keyframes saved in keyFrameManager
     var maxNumKeyFrames: Int = 48
@@ -2127,6 +2127,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBOutlet var escanPleaseConnectStructureScanner: UIButton!
     @IBOutlet var escanBatteryLow: UIButton!
     @IBOutlet var mailSupportButton: UIButton!
+    @IBOutlet var cameraButton: UIButton!
 
     
     @IBOutlet var welcomeLabel: UILabel!
@@ -3537,7 +3538,9 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBAction func ClickEditPractitioner(sender: UIButton){
         
     }
-
+    override var shouldAutorotate: Bool {
+        return false
+    }
 
     func escanViewDidLoad() {
         
@@ -3575,13 +3578,23 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     @IBAction func mailSupport() {
         UIApplication.shared.open(URL(string: "mailto:shasper@root-lab.com")!);
     }
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            if (enableAllOrientation) {
+                return .all
+            } else {
+                return .landscapeLeft
+            }
+            
+        }
+    }
     func changePageTo(pageTo: Int?) {
         clearAllCarrotsFromLables();
         if (screenViewing == escanningPageIndex) {
             depthView.isHidden = true;
             eview.isHidden = true;
             enableAllOrientation = false;
+
 //            initialVolumeResolutionInMeters = 0.005;
         } else if (screenViewing == eViewingMeshPageIndex) {
             enableAllOrientation = true;
@@ -3590,6 +3603,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             pages[screenViewing].isHidden = true;
             backStack.append(screenViewing);
         }
+        
         if (pageTo == orthoticsDeviceFormPageIndex) {
             orthoticsDeviceViewController?.refreshMyDevices();
         }
@@ -6057,6 +6071,10 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             //TODO Cannot save, fail startup
             print("Could not save. \(error), \(error.userInfo)")
         }
+        
+        if (photos.count >= 3) {
+            cameraButton.isEnabled = false;
+        }
 
         viewDidLoad()
         
@@ -6822,8 +6840,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func showAppStatusMessage(_ msg: String) {
-        
-        if (weHaveSeenAStructureSensorConnect) {
+        //TODO put that back in
+//        if (weHaveSeenAStructureSensorConnect) {
             weAreShowingAppStatus = true;
             _appStatus.needsDisplayOfStatusMessage = true
             view.layer.removeAllAnimations()
@@ -6836,20 +6854,20 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             UIView.animate(withDuration: 0.5, animations: {
                 self.appStatusMessageLabel.alpha = 1.0
             })
-        } else {
-            weAreShowingAppStatus = false;
-            _appStatus.needsDisplayOfStatusMessage = true
-            view.layer.removeAllAnimations()
-            
-            escanPleaseConnectStructureScanner.isHidden = false
-            
-            // Progressively show the message label.
-            eview!.isUserInteractionEnabled = false
-            UIView.animate(withDuration: 0.5, animations: {
-                self.escanPleaseConnectStructureScanner.alpha = 1.0
-            })
-
-        }
+//        } else {
+//            weAreShowingAppStatus = false;
+//            _appStatus.needsDisplayOfStatusMessage = true
+//            view.layer.removeAllAnimations()
+//
+//            escanPleaseConnectStructureScanner.isHidden = false
+//
+//            // Progressively show the message label.
+//            eview!.isUserInteractionEnabled = false
+//            UIView.animate(withDuration: 0.5, animations: {
+//                self.escanPleaseConnectStructureScanner.alpha = 1.0
+//            })
+//
+//        }
         
     }
     
@@ -7009,8 +7027,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         _appStatus.statusMessageDisabled = false
         updateAppStatusMessage()
         
-        let _ = connectToStructureSensorAndStartStreaming()
+        //I don't think this is needed
+//        let _ = connectToStructureSensorAndStartStreaming()
         
+        
+        //TODO sssssssssss is this being called? No it is not
+
+//        (TEST) millimeters to meters, see if it fixes
+//        (FIXED) second scan is bad
+//        (FIXED) check does "Please connect structure sensor" label never appear
+//        (TEST) check 3 photots disable camera
+        // (TEST) Delete photos
+        // (TEST) no autorotate while scanning
+        
+        
+
         resetSLAM()
     }
     
@@ -7815,27 +7846,36 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     func dismissEViewMesh() {
         
         displayControl.selectedSegmentIndex = 1
-        rendererMesh.setRenderingMode(.lightedGray)
+        //rendererMesh.setRenderingMode(.lightedGray)
         
         if delegate?.meshViewWillDismiss != nil {
             delegate?.meshViewWillDismiss()
         }
         
-        rendererMesh.releaseGLBuffers()
-        rendererMesh.releaseGLTextures()
+        //rendererMesh.releaseGLBuffers()
+        //rendererMesh.releaseGLTextures()
         
         displayLink!.invalidate()
         displayLink = nil
         
         mesh = nil
         
-        self.eviewMesh.context = nil
+        //TODO sssssssssss when does this become not nil?
+        //self.eviewMesh.context = nil
         
         dismiss(animated: true, completion: {
             if self.delegate?.meshViewDidDismiss != nil {
                 self.delegate?.meshViewDidDismiss()
             }
         })
+        
+        _appStatus.statusMessageDisabled = false
+        updateAppStatusMessage()
+        
+        resetSLAM()
+        
+        rendererMesh = MeshRenderer.init()
+
     }
     
 //
@@ -8246,7 +8286,7 @@ extension ViewController: UIImagePickerControllerDelegate{
         }
         //imageTake.image = selectedImage
         let imageView = UIImageView(image: selectedImage)
-        let theNumberOfAlreadyTakenPictures = reorderScrollView.subviews.count - 2;
+        let theNumberOfAlreadyTakenPictures = (reorderScrollView.subviews.count - 2) / 2;
         let thePictureHeight = reorderScrollView.bounds.size.height * 0.9;
         
         setImagePictureHeight = thePictureHeight;
@@ -8256,12 +8296,88 @@ extension ViewController: UIImagePickerControllerDelegate{
         let theX = thePictureWidth * CGFloat(1.1) * CGFloat(theNumberOfAlreadyTakenPictures);
         imageView.frame = CGRect(x: theX, y: CGFloat(0), width: thePictureWidth, height: thePictureHeight)
         reorderScrollView.addSubview(imageView)
+        imageView.accessibilityLabel = String(theNumberOfAlreadyTakenPictures);
+        
+        let deleteButton = UIButton();
+        deleteButton.addTarget(self, action: #selector(self.pressDeletePicture2), for: .primaryActionTriggered);
+        deleteButton.setTitle("ⓧ", for: .normal)
+        deleteButton.setTitleColor(UIColor.red, for: .normal)
+        deleteButton.frame = CGRect(x: theX + (thePictureWidth * 0.9), y: CGFloat(0), width: (thePictureWidth * 0.2), height: (thePictureWidth * 0.2))
+        reorderScrollView.addSubview(deleteButton)
+        deleteButton.accessibilityLabel = String(theNumberOfAlreadyTakenPictures);
+
         reorderScrollView.contentSize = CGSize(width: CGFloat(theX + thePictureWidth), height: CGFloat(thePictureHeight));
         reorderScrollView.showsHorizontalScrollIndicator = false;
         reorderScrollView.showsHorizontalScrollIndicator = true;
 
     }
-    
+    @objc func pressDeletePicture2(sender: UIButton!) {
+        var iUiImageViewToRemoveArray : [UIImageView] = [];
+        for iUiImageView in reorderScrollView.subviews {
+            let theImageView = (iUiImageView as? UIImageView);
+            if (theImageView != nil && theImageView!.accessibilityLabel ==
+                sender.accessibilityLabel) {
+                iUiImageViewToRemoveArray.append(theImageView!)
+            }
+        }
+        for iUiImageView in iUiImageViewToRemoveArray {
+            iUiImageView.removeFromSuperview()
+        }
+       
+        sender.removeFromSuperview()
+        
+        var iUiImageViewToKeepArray : [UIImageView] = [];
+
+        for iUIView in reorderScrollView.subviews {
+            let theImageView = (iUIView as? UIImageView);
+            if (theImageView != nil && theImageView?.accessibilityLabel != nil) {
+                iUiImageViewToKeepArray.append(theImageView!)
+            }
+        }
+        var iDeleteButtonsToRemoveArray : [UIButton] = [];
+
+        for iUIView in reorderScrollView.subviews {
+            let theDeleteButton = (iUIView as? UIButton);
+            if (theDeleteButton != nil) {
+                iDeleteButtonsToRemoveArray.append(theDeleteButton!);
+            }
+        }
+        for iUiDeleteButton in iDeleteButtonsToRemoveArray {
+            iUiDeleteButton.removeFromSuperview()
+        }
+
+        for iUiImageView in iUiImageViewToKeepArray {
+            iUiImageView.removeFromSuperview()
+        }
+        
+        var theNumberOfAlreadyTakenPictures = 0;
+        for iUiImageView in iUiImageViewToKeepArray {
+            
+            let thePictureHeight = reorderScrollView.bounds.size.height * 0.9;
+            
+            setImagePictureHeight = thePictureHeight;
+            
+            let theAspectRatio = iUiImageView.frame.height / iUiImageView.frame.width;
+            let thePictureWidth = thePictureHeight / theAspectRatio;
+            let theX = thePictureWidth * CGFloat(1.1) * CGFloat(theNumberOfAlreadyTakenPictures);
+            iUiImageView.frame = CGRect(x: theX, y: CGFloat(0), width: thePictureWidth, height: thePictureHeight)
+            iUiImageView.accessibilityLabel = String(theNumberOfAlreadyTakenPictures);
+            reorderScrollView.addSubview(iUiImageView)
+
+            let deleteButton = UIButton();
+            deleteButton.addTarget(self, action: #selector(self.pressDeletePicture2), for: .primaryActionTriggered);
+            deleteButton.setTitle("ⓧ", for: .normal)
+            deleteButton.setTitleColor(UIColor.red, for: .normal)
+            deleteButton.frame = CGRect(x: theX + (thePictureWidth * 0.9), y: CGFloat(0), width: (thePictureWidth * 0.2), height: (thePictureWidth * 0.2))
+            reorderScrollView.addSubview(deleteButton)
+            deleteButton.accessibilityLabel = String(theNumberOfAlreadyTakenPictures);
+            
+            theNumberOfAlreadyTakenPictures = theNumberOfAlreadyTakenPictures + 1;
+        }
+
+
+
+    }
 //    func sendEmailWithMailcore() {
 //        let smtpSession = MCOSMTPSession()
 //        smtpSession.hostname = "smtp.gmail.com"

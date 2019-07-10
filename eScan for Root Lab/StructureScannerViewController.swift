@@ -13,6 +13,20 @@ var toRGBA : STDepthToRgba?
 
 class StructureScannerViewController: UIViewController, STSensorControllerDelegate {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            if (enableAllOrientation) {
+                return .all
+            } else {
+                return .landscapeLeft
+            }
+            
+        }
+    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         STSensorController.shared().delegate = self

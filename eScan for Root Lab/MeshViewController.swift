@@ -11,6 +11,17 @@ import ImageIO
 
 open class MeshViewController: UIViewController, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate {
 
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            if (enableAllOrientation) {
+                return .all
+            } else {
+                return .portrait
+            }
+            
+        }
+    }
+
     required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 

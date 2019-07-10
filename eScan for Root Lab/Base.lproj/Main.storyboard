@@ -2303,9 +2303,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                         </state>
-                                        <connections>
-                                            <action selector="clickStructureSensorLogoWithSender:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="3sQ-xf-q5j"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-GP-bql">
                                         <rect key="frame" x="522" y="48" width="387" height="84"/>
@@ -2865,6 +2862,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                         <outlet property="backButton" destination="Vbx-3T-b1O" id="MAK-qX-CHi"/>
                         <outlet property="backNextView" destination="kVB-rS-GA4" id="1ip-fQ-Owj"/>
                         <outlet property="calibrationOverlay" destination="1n4-rZ-Qda" id="zfm-h8-nxc"/>
+                        <outlet property="cameraButton" destination="Fjk-Ad-hei" id="bH3-6W-rMY"/>
                         <outlet property="cancelDeletePractitioner" destination="mtg-hU-8NE" id="j5t-82-Zec"/>
                         <outlet property="commentsInstructionsLabel" destination="p2Z-b2-HzH" id="8Ex-46-qbX"/>
                         <outlet property="commentsTextArea" destination="ZIw-P8-YM3" id="uTj-7z-13f"/>
