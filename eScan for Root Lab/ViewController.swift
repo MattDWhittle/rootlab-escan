@@ -525,9 +525,8 @@ let orthosisAccomodativeEVALabels: [String] =
 let rushOrderExpressShippingPickerData: [String] =
     ["Express Shipping", "3 day", "2 day", "Next day"];
 
-
-let zipFilenameLeft = "comrootlabModelLeft.zip"
-let zipFilenameRight = "comrootlabModelRight.zip"
+var zipFilenameLeft = "comrootlabModelLeft.zip"
+var zipFilenameRight = "comrootlabModelRight.zip"
 
 
 var imagePicker: UIImagePickerController!
@@ -554,8 +553,8 @@ struct DynamicOptions {
 struct Options {
     // The initial scanning volume size will be 0.5 x 0.5 x 0.5 meters
     // (X is left-right, Y is up-down, Z is forward-back)
-    var initVolumeSizeInMeters: GLKVector3 = GLKVector3Make(0.005, 0.005, 0.005)
-    
+    var initVolumeSizeInMeters: GLKVector3 = GLKVector3Make(0.5, 0.5, 0.5)
+
     // The maximum number of keyframes saved in keyFrameManager
     var maxNumKeyFrames: Int = 48
     
@@ -6536,9 +6535,21 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         
         setupGLMesh(contextMesh!)
         mesh = inmesh;
+        
+        let thePatientName = (order.orderPatient?.firstName)! + " " + (order.orderPatient?.lastName)!;
+        let date = Date();
+
+        let dateFormatter2 : DateFormatter = DateFormatter();
+        dateFormatter2.dateFormat = "MM-dd-yyyy HH:mm:ss";
+        let dateString2 = dateFormatter2.string(from: date);
+        
+        let fileNamePrefix = dateString2 + "_" + thePatientName + "_";
+
         if (amScanningLeftFoot) {
+            zipFilenameLeft = fileNamePrefix + "left_3dscan.zip"
             order.leftFootObj = FileMgr.sharedInstance.saveMesh(zipFilenameLeft, data: inmesh!)
         } else {
+            zipFilenameLeft = fileNamePrefix + "right_3dscan.zip"
             order.rightFootObj = FileMgr.sharedInstance.saveMesh(zipFilenameRight, data: inmesh!)
         }
 
@@ -7491,7 +7502,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         let theSubject = (order.rushOrder2DayTurnaround ||
             order.rushOrderNextDayTurnaround) ? "RUSH ORDER: " + theStandardSubject : theStandardSubject;
         
+        let dateFormatter2 : DateFormatter = DateFormatter();
+        dateFormatter2.dateFormat = "MM-dd-yyyy HH:mm:ss";
+        let dateString2 = dateFormatter2.string(from: date);
         
+        let fileNamePrefix = dateString2 + "_" + thePatientName + "_";
+
         let smtpSession = MCOSMTPSession()
 //        smtpSession.hostname = "mail.root-lab.com"
         smtpSession.hostname = "smtp.root-lab.com"
@@ -7549,7 +7565,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
                 let imageData = theImage!.pngData()!
                 let attachment = MCOAttachment()
                 attachment.mimeType =  "image/png"
-                attachment.filename = "photo" + String(i) + ".png";
+                attachment.filename = fileNamePrefix + "photo" + String(i) + ".png";
                 attachment.data = imageData
                 builder.addAttachment(attachment)
             }
@@ -7557,16 +7573,13 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
         
         
-        let dateFormatter2 : DateFormatter = DateFormatter();
-        dateFormatter2.dateFormat = "MM-dd-yyyy HH:mm:ss";
-        let dateString2 = dateFormatter2.string(from: date);
-        
+
         
         let aPDFDocument = PDFDocument();
         aPDFDocument.insert(RooLabPDFPage().doParent(inParent: self), at: 0)
         let attachment = MCOAttachment()
         attachment.mimeType =  "application/pdf"
-        attachment.filename = dateString2 + " " + order.orderPractitioner!.lastName! + ", " + order.orderPractitioner!.firstName!;
+        attachment.filename = fileNamePrefix + "prescription.pdf";
         attachment.data =  aPDFDocument.dataRepresentation()!
         builder.addAttachment(attachment)
         
