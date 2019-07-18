@@ -147,7 +147,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <segmentedControl autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="btf-Jf-ARU">
-                                        <rect key="frame" x="0.0" y="1160" width="2048" height="29"/>
+                                        <rect key="frame" x="0.0" y="1158" width="2048" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="X-Ray"/>
@@ -2714,10 +2714,10 @@ Try to re-align or press reset.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMc-EE-Djz">
-                                        <rect key="frame" x="72" y="1315" width="216" height="169"/>
+                                        <rect key="frame" x="72" y="1314" width="216" height="169"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="32"/>
-                                        <state key="normal" title="Support" backgroundImage="Root Lab transparent back PNG.png">
+                                        <state key="normal" title="Support" backgroundImage="SupportButton.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                         </state>
@@ -2762,21 +2762,21 @@ Try to re-align or press reset.</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Are you sure?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Te6-IP-fOc">
-                                        <rect key="frame" x="0.0" y="165" width="884" height="153"/>
+                                        <rect key="frame" x="0.0" y="165" width="883" height="153"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delete Practitioner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x20-Ot-YSO">
-                                        <rect key="frame" x="0.0" y="0.0" width="884" height="144"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="883" height="144"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avm-Ce-gFa">
-                                        <rect key="frame" x="644" y="474" width="192" height="120"/>
+                                        <rect key="frame" x="643" y="474" width="192" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
                                         <state key="normal" title=" OK " backgroundImage="Button.png">
@@ -2807,7 +2807,7 @@ Try to re-align or press reset.</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An8-pY-BLg">
-                                        <rect key="frame" x="42" y="152" width="886" height="153"/>
+                                        <rect key="frame" x="42" y="152" width="884" height="153"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <string key="text">Press "Yes" to start a new order and remove all data entered for the current order. 
 Press "Cancel" to dismiss the dialog and continue the current order.</string>
@@ -2816,14 +2816,14 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start New Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axw-wm-wRc">
-                                        <rect key="frame" x="42" y="0.0" width="886" height="144"/>
+                                        <rect key="frame" x="42" y="0.0" width="884" height="144"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WpV-Hn-WUK">
-                                        <rect key="frame" x="599" y="474" width="329" height="120"/>
+                                        <rect key="frame" x="598" y="474" width="328" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
                                         <state key="normal" title="Yes" backgroundImage="Button.png">
@@ -3364,7 +3364,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="988" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UM9-Uh-CC4" id="n6P-Qd-5FE">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NOI-ER-tbs">
@@ -3426,7 +3426,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="1256" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0I5-Tc-0p5" id="hqU-LX-ikb">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asw-jd-Wia">
@@ -3484,7 +3484,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="1496" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T5C-dE-6kS" id="kCe-cI-ghG">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlk-KK-gZB">
@@ -3542,7 +3542,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="1736" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wqq-g0-Lu2" id="zcs-1B-0ch">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibM-WU-yke">
@@ -3600,7 +3600,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="1976" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fOU-GK-nIh" id="fRU-7J-i70">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0qU-kj-JKQ">
@@ -3658,7 +3658,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="2216" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f9h-MR-8ia" id="C4a-r0-78Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojq-Dt-jFv">
@@ -3720,7 +3720,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="2484" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dHh-H3-zOd" id="Bgq-nQ-KEh">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y8d-e7-OK4">
@@ -3778,7 +3778,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="2724" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YTA-E2-hrF" id="Lkz-1w-4hq">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sO-p5-3i7">
@@ -3836,7 +3836,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="2964" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JzV-3v-1Ly" id="1M7-yQ-ObM">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bjb-pt-F7f">
@@ -3894,7 +3894,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="3204" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k44-u7-6G4" id="w7E-P8-geX">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KbY-8c-C5d">
@@ -3952,7 +3952,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="3444" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xBc-vM-H4L" id="aAG-5L-ICR">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ts9-9w-owx">
@@ -4014,7 +4014,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="3712" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rrg-9S-U0R" id="VWo-lo-xFu">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvq-Oe-uMN">
@@ -4072,7 +4072,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="3952" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KYr-md-7pl" id="IKp-C2-dZQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNx-p2-owo">
@@ -4130,7 +4130,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="4192" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4U7-bI-RqY" id="psj-hL-vy4">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZP-VM-7ni">
@@ -4188,7 +4188,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="4432" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L6E-S6-JdC" id="p6c-3P-AcB">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhm-rC-Thf">
@@ -4246,7 +4246,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="4672" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XKg-Ho-cWg" id="sP5-YO-gq8">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmw-gb-hDH">
@@ -4304,7 +4304,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="4912" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ulv-Uz-Fil" id="J03-NM-IhN">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHf-E1-n3C">
@@ -4362,7 +4362,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="5152" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hmH-IT-vjM" id="m4W-Gm-cUd">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czJ-tK-8oR">
@@ -4420,7 +4420,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="5392" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ddZ-qc-MEB" id="6lx-qe-sYR">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emJ-rB-pIk">
@@ -4476,7 +4476,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="5632" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gVc-Dt-b4s" id="h9p-Xu-RoY">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKh-qM-Xx1">
@@ -4536,7 +4536,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="5900" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p0B-9w-nDk" id="4QB-KB-lEl">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVw-35-1Y6">
@@ -4604,7 +4604,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="6140" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oQE-l9-hfa" id="X9h-bM-1uY">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IT8-k7-OKd">
@@ -4674,7 +4674,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="6380" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yWg-QI-FJv" id="OfI-rs-Nbh">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRa-o9-2zc">
@@ -4744,7 +4744,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="6620" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ujx-Yg-VFb" id="Sct-XE-2W3">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uhh-z3-GZv">
@@ -4814,7 +4814,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="6860" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G5l-p7-PYi" id="hWb-Rl-7k1">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGr-fB-DpQ">
@@ -4884,7 +4884,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="7100" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xu9-VQ-Dnh" id="bQ7-Mg-XCK">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lC4-Ta-duf">
@@ -4954,7 +4954,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="7340" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ynz-7K-jC5" id="Jgk-Ow-uGw">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zXm-mc-P8l">
@@ -5024,7 +5024,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="7580" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3QE-QD-5dt" id="www-96-Hue">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sd4-pp-HVo">
@@ -5092,7 +5092,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         <rect key="frame" x="0.0" y="7820" width="1504" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mVq-ff-Ykv" id="7vL-js-j6u">
-                                            <rect key="frame" x="0.0" y="0.0" width="1504" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1003" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7hl-j3-nvv">
@@ -5440,14 +5440,14 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name of My Device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joX-zr-ZW3">
-                                        <rect key="frame" x="0.0" y="0.0" width="883" height="144"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="881" height="144"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4k5-cu-RqP">
-                                        <rect key="frame" x="156" y="474" width="316" height="120"/>
+                                        <rect key="frame" x="156" y="474" width="314" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
                                         <state key="normal" title=" Cancel " backgroundImage="Button.png">
@@ -5459,7 +5459,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHK-zl-oNI">
-                                        <rect key="frame" x="66" y="286" width="913" height="81"/>
+                                        <rect key="frame" x="66" y="286" width="911" height="81"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
@@ -5469,7 +5469,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJn-VW-UvD">
-                                        <rect key="frame" x="577" y="474" width="306" height="120"/>
+                                        <rect key="frame" x="575" y="474" width="306" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="80"/>
                                         <state key="normal" title="Save" backgroundImage="Button.png">
@@ -6855,14 +6855,14 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Description Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r87-os-mSX">
-                                            <rect key="frame" x="-13" y="-2" width="880" height="41"/>
+                                            <rect key="frame" x="-19" y="-3" width="880" height="38"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYA-dt-fNL">
-                                            <rect key="frame" x="876" y="-8" width="312" height="49"/>
+                                            <rect key="frame" x="875" y="-13" width="310" height="53"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="32"/>
                                             <state key="normal" title="Open Order" backgroundImage="Button.png">
@@ -6910,6 +6910,7 @@ Press "Cancel" to dismiss the dialog and continue the current order.</string>
         <image name="ScanR.png" width="402" height="991"/>
         <image name="SensorBatteryLow.png" width="522" height="131"/>
         <image name="StructureSensorRequired.png" width="681" height="97"/>
+        <image name="SupportButton.png" width="425" height="228"/>
         <image name="buttonLong.png" width="1245" height="220"/>
         <image name="buttonMD.png" width="956" height="269"/>
         <image name="fastcast3d.png" width="687" height="203"/>
