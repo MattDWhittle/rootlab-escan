@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22430FACBB0391771016282F /* Pods_eScan_for_Root_LabUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F70718464626024ACCCA47 /* Pods_eScan_for_Root_LabUITests.framework */; };
+		2D24C259234145B600877380 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D24C258234145B600877380 /* Structure.framework */; };
 		2D2B241122054D130057F8C2 /* Root Lab transparent back PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */; };
 		2D411F9E225074C7004D5862 /* ScannedR.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D411F9A225074C6004D5862 /* ScannedR.png */; };
 		2D411F9F225074C7004D5862 /* ScanR.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D411F9B225074C6004D5862 /* ScanR.png */; };
@@ -26,6 +27,7 @@
 		2D44BDF021B5728D009A1066 /* orthotics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D44BDEF21B5728D009A1066 /* orthotics.jpg */; };
 		2D52F7C221BC703A00AC60F5 /* podiatrist.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */; };
 		2D52F7C421BC713D00AC60F5 /* patient.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D52F7C321BC713C00AC60F5 /* patient.png */; };
+		2D61F50D22FBEFFF0057F794 /* eScan for Root Lab-2019-08-06-144131.ips.beta in Resources */ = {isa = PBXBuildFile; fileRef = 2D61F50C22FBEFFD0057F794 /* eScan for Root Lab-2019-08-06-144131.ips.beta */; };
 		2D6A61E221F3DBA40077A8B1 /* fastcast3d.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E121F3DBA40077A8B1 /* fastcast3d.png */; };
 		2D6A61E421F3DD250077A8B1 /* greybar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6A61E321F3DD210077A8B1 /* greybar.png */; };
 		2D6A61EE21F64A2B0077A8B1 /* MeshRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */; };
@@ -45,7 +47,6 @@
 		2D9B418121D87F0D0022FE2D /* mailcore2-ios.podspec.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D9B418021D87F0D0022FE2D /* mailcore2-ios.podspec.json */; };
 		2D9B41A321D88B2F0022FE2D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41A221D88B2F0022FE2D /* QuartzCore.framework */; };
 		2D9B41A521D88E1D0022FE2D /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41A421D88E1D0022FE2D /* PDFKit.framework */; };
-		2D9B41EE21E70C010022FE2D /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41ED21E70C010022FE2D /* Structure.framework */; };
 		2D9B41F021E714BC0022FE2D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41EF21E714BC0022FE2D /* libz.tbd */; };
 		2D9B41F221E714C70022FE2D /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41F121E714C70022FE2D /* ExternalAccessory.framework */; };
 		2D9B41F421E714D20022FE2D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9B41F321E714D10022FE2D /* ImageIO.framework */; };
@@ -119,6 +120,7 @@
 
 /* Begin PBXFileReference section */
 		16F70718464626024ACCCA47 /* Pods_eScan_for_Root_LabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eScan_for_Root_LabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D24C258234145B600877380 /* Structure.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Structure.framework; path = "Structure SDK/Frameworks/Structure.framework"; sourceTree = "<group>"; };
 		2D2B241022054D100057F8C2 /* Root Lab transparent back PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Root Lab transparent back PNG.png"; sourceTree = "<group>"; };
 		2D411F9A225074C6004D5862 /* ScannedR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScannedR.png; sourceTree = "<group>"; };
 		2D411F9B225074C6004D5862 /* ScanR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScanR.png; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		2D44BDEF21B5728D009A1066 /* orthotics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = orthotics.jpg; sourceTree = "<group>"; };
 		2D52F7C121BC703900AC60F5 /* podiatrist.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = podiatrist.jpeg; sourceTree = "<group>"; };
 		2D52F7C321BC713C00AC60F5 /* patient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patient.png; sourceTree = "<group>"; };
+		2D61F50C22FBEFFD0057F794 /* eScan for Root Lab-2019-08-06-144131.ips.beta */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "eScan for Root Lab-2019-08-06-144131.ips.beta"; sourceTree = "<group>"; };
 		2D6A61E121F3DBA40077A8B1 /* fastcast3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fastcast3d.png; sourceTree = "<group>"; };
 		2D6A61E321F3DD210077A8B1 /* greybar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greybar.png; sourceTree = "<group>"; };
 		2D6A61ED21F64A2B0077A8B1 /* MeshRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshRenderer.swift; sourceTree = "<group>"; };
@@ -163,7 +166,6 @@
 		2D9B418221D87F740022FE2D /* eScan for Root Lab-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eScan for Root Lab-Bridging-Header.h"; sourceTree = "<group>"; };
 		2D9B41A221D88B2F0022FE2D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2D9B41A421D88E1D0022FE2D /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
-		2D9B41ED21E70C010022FE2D /* Structure.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Structure.framework; sourceTree = "<group>"; };
 		2D9B41EF21E714BC0022FE2D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2D9B41F121E714C70022FE2D /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		2D9B41F321E714D10022FE2D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -233,7 +235,7 @@
 				2D9B41F421E714D20022FE2D /* ImageIO.framework in Frameworks */,
 				2D9B41F221E714C70022FE2D /* ExternalAccessory.framework in Frameworks */,
 				2D9B41F021E714BC0022FE2D /* libz.tbd in Frameworks */,
-				2D9B41EE21E70C010022FE2D /* Structure.framework in Frameworks */,
+				2D24C259234145B600877380 /* Structure.framework in Frameworks */,
 				2D9B41A521D88E1D0022FE2D /* PDFKit.framework in Frameworks */,
 				DD581B3A22B2BF5900BA6137 /* libMailCore-ios.a in Frameworks */,
 				2D9B41A321D88B2F0022FE2D /* QuartzCore.framework in Frameworks */,
@@ -325,6 +327,7 @@
 				2D44BDB821B4BF9C009A1066 /* Main.storyboard */,
 				2D44BDBE21B4BFA0009A1066 /* Assets.xcassets */,
 				2D44BDC021B4BFA0009A1066 /* LaunchScreen.storyboard */,
+				2D61F50C22FBEFFD0057F794 /* eScan for Root Lab-2019-08-06-144131.ips.beta */,
 				2D44BDC321B4BFA0009A1066 /* Info.plist */,
 				2D44BDBB21B4BF9C009A1066 /* eScan_for_Root_Lab.xcdatamodeld */,
 			);
@@ -396,12 +399,12 @@
 		2D9B417B21D874720022FE2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D24C258234145B600877380 /* Structure.framework */,
 				DD581B3922B2BF5800BA6137 /* libMailCore-ios.a */,
 				2D9B41F521E714DC0022FE2D /* Accelerate.framework */,
 				2D9B41F321E714D10022FE2D /* ImageIO.framework */,
 				2D9B41F121E714C70022FE2D /* ExternalAccessory.framework */,
 				2D9B41EF21E714BC0022FE2D /* libz.tbd */,
-				2D9B41ED21E70C010022FE2D /* Structure.framework */,
 				2D9B41A421D88E1D0022FE2D /* PDFKit.framework */,
 				2D9B41A221D88B2F0022FE2D /* QuartzCore.framework */,
 				2D9B417E21D8747E0022FE2D /* Security.framework */,
@@ -589,6 +592,7 @@
 				2DE307F22210DF56002795E7 /* Neuroma Pad.png in Resources */,
 				2DE3081922122E43002795E7 /* buttonLong.png in Resources */,
 				2DE3082022186839002795E7 /* Donebutton.png in Resources */,
+				2D61F50D22FBEFFF0057F794 /* eScan for Root Lab-2019-08-06-144131.ips.beta in Resources */,
 				2D411FA0225074C7004D5862 /* ScanL.png in Resources */,
 				2DE307F42210DF56002795E7 /* Metatarsal Bar.png in Resources */,
 				2D44BDEC21B56EF4009A1066 /* mid_bg.jpg in Resources */,
@@ -893,6 +897,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Structure\\ SDK/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/Structure.framework/Headers",
@@ -937,6 +942,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Structure\\ SDK/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/Structure.framework/Headers",
