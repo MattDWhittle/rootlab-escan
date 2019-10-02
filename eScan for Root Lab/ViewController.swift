@@ -4917,6 +4917,8 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             }
             return theReturn;
         }
+        
+        
 
         theReturn += calculateALeftAndRight(leftBool: order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeLeft, rightBool: order.orthosisSpecificationsOtherShellConfigurationsLateralFlangeRight, string: "Lateral flange");
         
@@ -4941,12 +4943,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             theReturn += " R, ";
         }
         
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsHeelCupHeightLeft), rightInt: String(order.orthosisSpecificationsHeelCupHeightRight), string: "Heel Cup Height");
         
-        theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsOtherMedmmLeft), rightInt: String(order.orthosisSpecificationsOtherMedmmRight), string: "Med(mm)");
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsOtherMedmmLeft), rightInt: String(order.orthosisSpecificationsOtherMedmmRight), string: "Other Heel Cup Height Med(mm)");
         
-        
-        
-        theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsOtherLatmmLeft), rightInt: String(order.orthosisSpecificationsOtherLatmmRight), string: "Lat(mm)");
+        theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsOtherLatmmLeft), rightInt: String(order.orthosisSpecificationsOtherLatmmRight), string: "Other Heel Cup Height Lat(mm)");
         
         
         if (theReturn.hasSuffix(", ")) {
