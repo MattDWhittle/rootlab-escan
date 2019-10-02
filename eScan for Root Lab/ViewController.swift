@@ -4943,7 +4943,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             theReturn += " R, ";
         }
         
-        theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsHeelCupHeightLeft), rightInt: String(order.orthosisSpecificationsHeelCupHeightRight), string: "Heel Cup Height");
+        let theLeftHeelCupSelection = Int(order.orthosisSpecificationsHeelCupHeightLeft);
+        let theRightHeelCupSelection = Int(order.orthosisSpecificationsHeelCupHeightRight);
+        if (theLeftHeelCupSelection > 0 || theLeftHeelCupSelection > 0) {
+            theReturn += calculateALeftAndRightInt(leftInt: String(orthosisSpecificationHeelCupRightPickerData[theLeftHeelCupSelection]), rightInt: String(orthosisSpecificationHeelCupRightPickerData[theRightHeelCupSelection]), string: "Heel Cup Height");
+        }
         
         theReturn += calculateALeftAndRightInt(leftInt: String(order.orthosisSpecificationsOtherMedmmLeft), rightInt: String(order.orthosisSpecificationsOtherMedmmRight), string: "Other Heel Cup Height Med(mm)");
         
