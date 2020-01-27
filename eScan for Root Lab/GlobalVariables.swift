@@ -14,4 +14,4 @@ var orthoticsDeviceViewController : OrthoticsDeviceViewController? = nil;
 var richieBraceViewController : RichieBraceViewController? = nil;
 var orderManagementViewController : OrderManagementViewController? = nil;
 var weHaveSeenAStructureSensorConnect = false;
-
+var escanBatteryLowFlag = false;

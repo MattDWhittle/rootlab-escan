@@ -3005,7 +3005,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
         }
     }
     @IBAction func clickStructureSensorLogo(sender: UIButton){
-        if let url = URL(string: "​http://structure.io/get-a-sensor") {
+        if let url = URL(string: "http://store.structure.io") {
             UIApplication.shared.openURL(url)
         }
     }
@@ -6696,9 +6696,11 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     
     func processDeviceMotion(_ motion: CMDeviceMotion, error: NSError?) {
         let batteryPercentage = STSensorController.getBatteryChargePercentage(_sensorController);
-        if (batteryPercentage() <= 5) {
-            escanBatteryLow.isHidden = false;
+        if (weHaveSeenAStructureSensorConnect) {
+            escanBatteryLowFlag = batteryPercentage() <= 5;
+            escanBatteryLow.isHidden = !escanBatteryLowFlag;
         }
+
 
         if _slamState.scannerState == .cubePlacement {
             
@@ -6856,8 +6858,7 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func showAppStatusMessage(_ msg: String) {
-        //TODO put that back in
-//        if (weHaveSeenAStructureSensorConnect) {
+        if (weHaveSeenAStructureSensorConnect) {
             weAreShowingAppStatus = true;
             _appStatus.needsDisplayOfStatusMessage = true
             view.layer.removeAllAnimations()
@@ -6866,30 +6867,33 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             appStatusMessageLabel.isHidden = false
             
             // Progressively show the message label.
-            eview!.isUserInteractionEnabled = false
+           // eview!.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.5, animations: {
                 self.appStatusMessageLabel.alpha = 1.0
             })
-//        } else {
-//            weAreShowingAppStatus = false;
-//            _appStatus.needsDisplayOfStatusMessage = true
-//            view.layer.removeAllAnimations()
-//
-//            escanPleaseConnectStructureScanner.isHidden = false
-//
-//            // Progressively show the message label.
-//            eview!.isUserInteractionEnabled = false
-//            UIView.animate(withDuration: 0.5, animations: {
-//                self.escanPleaseConnectStructureScanner.alpha = 1.0
-//            })
-//
-//        }
+        } else {
+            weAreShowingAppStatus = false;
+            _appStatus.needsDisplayOfStatusMessage = true
+            view.layer.removeAllAnimations()
+
+            escanPleaseConnectStructureScanner.isHidden = false
+
+            // Progressively show the message label.
+            //eview!.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.5, animations: {
+                self.escanPleaseConnectStructureScanner.alpha = 1.0
+            })
+
+        }
         
     }
     
     func hideAppStatusMessage() {
-        escanBatteryLow.isHidden = true;
-
+        let batteryPercentage = STSensorController.getBatteryChargePercentage(_sensorController);
+        if (weHaveSeenAStructureSensorConnect) {
+            escanBatteryLowFlag = batteryPercentage() <= 5;
+            escanBatteryLow.isHidden = !escanBatteryLowFlag;
+        }
         if !_appStatus.needsDisplayOfStatusMessage {
             return
         }
@@ -6932,6 +6936,12 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
     }
     
     func updateAppStatusMessage() {
+        let batteryPercentage = STSensorController.getBatteryChargePercentage(_sensorController);
+        if (weHaveSeenAStructureSensorConnect) {
+            escanBatteryLowFlag = batteryPercentage() <= 5;
+            escanBatteryLow.isHidden = !escanBatteryLowFlag;
+        }
+
         // Skip everything if we should not show app status messages (e.g. in viewing state).
         if _appStatus.statusMessageDisabled {
             hideAppStatusMessage()
@@ -6947,7 +6957,6 @@ STBackgroundTaskDelegate, MeshViewDelegate, UIGestureRecognizerDelegate, AVCaptu
             
         case .needsUserToCharge:
             showAppStatusMessage(_appStatus.pleaseChargeSensorMessage)
-            escanBatteryLow.isHidden = false;
             return
             
         case .ok:
